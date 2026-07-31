@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------------------------------------------------------------------------- */
+/* Google Fonts – include Tajawal Light (300) for elegant headers             */
+/* -------------------------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap");
+
+/* -------------------------------------------------------------------------- */
+/* Design Tokens                                                              */
+/* -------------------------------------------------------------------------- */
+:root {
+  --color-primary: #2e1a47;
+  --color-secondary: #f4a261;
+  --color-accent: #e9c46a;
+  --color-background: #f8f9fa;
+  --color-foreground: #212529;
+  --color-foreground-muted: #6c757d;
+  --color-card: #ffffff;
+
+  --radius-card: 16px;
+  --radius-button: 8px;
+  --shadow-soft: 0 2px 8px rgba(46, 26, 71, 0.08);
+
+  --font-tajawal: "Tajawal", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-noto-devanagari: "Noto Sans Devanagari", sans-serif;
+  --font-noto-nastaliq: "Noto Nastaliq Urdu", serif;
+
+  --leading-body: 1.75;
+  --leading-display: 1.35;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Base                                                                       */
+/* -------------------------------------------------------------------------- */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    min-height: 100vh;
+    font-weight: 400;
+    line-height: var(--leading-body);
+    letter-spacing: 0.01em;
+  }
+
+  html[lang="ar"] body,
+  html[dir="rtl"] body {
+    font-family: var(--font-tajawal);
+  }
+
+  html[lang="en"] body {
+    font-family: var(--font-inter);
+  }
+
+  html[lang="hi"] body {
+    font-family: var(--font-noto-devanagari);
+  }
+
+  html[lang="ur"] body,
+  html[lang="ur"][dir="rtl"] body {
+    font-family: var(--font-noto-nastaliq);
+    line-height: 2;
+  }
+
+  /* Premium display: light weight, generous line-height — never extrabold */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-primary);
+    font-weight: 300;
+    line-height: var(--leading-display);
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    line-height: var(--leading-body);
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+  }
+
+  /* Clear floating widgets on all pages */
+  main {
+    padding-bottom: 7rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Components                                                                 */
+/* -------------------------------------------------------------------------- */
+@layer components {
+  .card-soft {
+    background-color: var(--color-card);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+    border: none;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+      text-sm font-medium text-white transition-all duration-200
+      hover:opacity-90 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-button);
+    box-shadow: var(--shadow-soft);
+    min-height: 48px;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+      text-sm font-medium text-white transition-all duration-200
+      hover:opacity-90 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+    background-color: var(--color-secondary);
+    border-radius: var(--radius-button);
+    box-shadow: var(--shadow-soft);
+    min-height: 48px;
+  }
+
+  .btn-outline-light {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
+      text-sm font-medium text-white transition-all duration-200
+      hover:bg-white/10 active:scale-[0.98];
+    border-radius: var(--radius-button);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    background: transparent;
+    min-height: 48px;
+  }
+
+  .badge-gold {
+    @apply inline-flex items-center gap-1 px-3 py-1 text-sm font-medium;
+    background-color: rgba(233, 196, 106, 0.2);
+    color: var(--color-primary);
+    border-radius: 9999px;
+  }
+
+  .highlight-line {
+    display: block;
+    height: 2px;
+    width: 2.5rem;
+    margin-top: 1rem;
+    background-color: var(--color-accent);
+    border-radius: 9999px;
+  }
+
+  .icon-gold {
+    @apply flex items-center justify-center;
+    width: 3rem;
+    height: 3rem;
+    color: var(--color-accent);
+    background-color: rgba(233, 196, 106, 0.14);
+    border-radius: var(--radius-button);
+  }
+
+  .input-soft {
+    @apply w-full px-4 py-3 text-foreground placeholder:text-foreground-muted
+      transition-shadow duration-200 focus:outline-none;
+    background-color: var(--color-card);
+    border-radius: var(--radius-button);
+    box-shadow: var(--shadow-soft);
+    border: none;
+    min-height: 48px;
+  }
+
+  .input-soft:focus {
+    box-shadow: 0 0 0 2px rgba(244, 162, 97, 0.35), var(--shadow-soft);
+  }
+
+  .trust-bar {
+    @apply overflow-hidden whitespace-nowrap;
+    background-color: var(--color-card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .trust-bar-track {
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    animation: scroll-left 55s linear infinite;
+  }
+
+  .trust-bar-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* Page section rhythm */
+  .section-pad {
+    @apply px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24;
+  }
+
+  .page-shell {
+    @apply mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-18 lg:px-10 lg:py-20;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Utilities                                                                  */
+/* -------------------------------------------------------------------------- */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft) !important;
+  }
+
+  .font-display {
+    font-weight: 300;
+    line-height: var(--leading-display);
+  }
+
+  .touch-target {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .trust-bar-track,
+    .animate-scroll-left,
+    .animate-scroll-left-fast,
+    .animate-scroll-left-slow {
+      animation: none !important;
+    }
+  }
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}

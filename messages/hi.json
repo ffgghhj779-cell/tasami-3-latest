@@ -1,0 +1,281 @@
+{
+  "brand": {
+    "name": "Tasami",
+    "letter": "T"
+  },
+  "nav": {
+    "government": "Government",
+    "tech": "Tech",
+    "sectors": "Sectors",
+    "whatsapp": "WhatsApp",
+    "whatsappMobile": "Chat on WhatsApp",
+    "changeLanguage": "Change language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "languages": {
+    "ar": "العربية",
+    "en": "English",
+    "ur": "اردو",
+    "hi": "हिन्दी"
+  },
+  "trust": {
+    "message": "We are certified and trusted",
+    "messageMobile": "نحن معتمدون وموثوقون · We are certified and trusted",
+    "aria": "Trusted Saudi platforms",
+    "platforms": {
+      "absher": "Absher",
+      "qiwa": "Qiwa",
+      "commerce": "Ministry of Commerce",
+      "balady": "Balady",
+      "zakat": "Zakat",
+      "nafith": "Nafith",
+      "gosi": "GOSI",
+      "najiz": "Najiz",
+      "sehaty": "Sehaty",
+      "ejar": "Ejar",
+      "mudad": "Mudad",
+      "musaned": "Musaned",
+      "subul": "Subul",
+      "nusuk": "Nusuk",
+      "meras": "Meras",
+      "monshaat": "Monshaat",
+      "misa": "MISA"
+    }
+  },
+  "home": {
+    "eyebrow": "Premium Saudi Gov & Tech Platform",
+    "title": "Tasami",
+    "hero": "Government and tech services. Simple. Fast. In four languages.",
+    "ctaGov": "Start Gov Service",
+    "ctaTech": "Explore Tech",
+    "offerTitle": "What we offer",
+    "whyTitle": "Why Tasami?",
+    "core": {
+      "gov": {
+        "title": "Government Services",
+        "desc": "Setup, licensing, and compliance via certified official platforms.",
+        "cta": "View details"
+      },
+      "tech": {
+        "title": "Tech Solutions",
+        "desc": "Websites, apps, and AI systems at an enterprise standard.",
+        "cta": "View details"
+      },
+      "sectors": {
+        "title": "Business Sectors",
+        "desc": "Tailored solutions across 15 sectors for your business.",
+        "cta": "View details"
+      }
+    },
+    "why": {
+      "speed": {
+        "title": "Fast Delivery",
+        "desc": "Clear paths and complexity-free execution."
+      },
+      "trust": {
+        "title": "Official Trust",
+        "desc": "Deep expertise across Saudi government platforms."
+      },
+      "support": {
+        "title": "24/7 Support",
+        "desc": "Monjez and WhatsApp assistants always on call."
+      }
+    }
+  },
+  "gov": {
+    "eyebrow": "Services",
+    "title": "Government Services",
+    "subtitle": "13 categories covering your entity’s key needs with Saudi official bodies.",
+    "back": "Back to home",
+    "items": {
+      "passports": {
+        "title": "Passports & Residency",
+        "desc": "Visas, iqama, and renewals via Absher."
+      },
+      "labor": {
+        "title": "Labor & Sponsorship",
+        "desc": "Employment contracts, sponsorship transfer, Qiwa & Musaned."
+      },
+      "commerce": {
+        "title": "Ministry of Commerce",
+        "desc": "Commercial registration, licenses, and MoC services."
+      },
+      "zakat": {
+        "title": "Zakat & Tax",
+        "desc": "Registration, zakat/tax filings, and compliance."
+      },
+      "municipal": {
+        "title": "Municipal & Licensing",
+        "desc": "Municipal licenses and shop requirements via Balady."
+      },
+      "civilDefense": {
+        "title": "Civil Defense",
+        "desc": "Safety requirements and Civil Defense permits."
+      },
+      "gosi": {
+        "title": "Social Insurance (GOSI)",
+        "desc": "Entity registration and GOSI contributions."
+      },
+      "civilStatus": {
+        "title": "Citizenship & Civil Status",
+        "desc": "Civil status and citizenship services."
+      },
+      "najiz": {
+        "title": "Judicial Services (Najiz)",
+        "desc": "Notarization, powers of attorney, and e-cases via Najiz."
+      },
+      "traffic": {
+        "title": "Traffic (Absher Traffic)",
+        "desc": "Violations, license renewal, and Absher Traffic services."
+      },
+      "health": {
+        "title": "Health Services (Sehaty / Taminaty)",
+        "desc": "Health licenses and Sehaty / Taminaty services."
+      },
+      "ejar": {
+        "title": "Real Estate (Ejar)",
+        "desc": "Lease contracts and property documentation via Ejar."
+      },
+      "investment": {
+        "title": "Investment & Classification (MISA / Monshaat)",
+        "desc": "Investment licensing and entity classification via MISA & Monshaat."
+      }
+    }
+  },
+  "tech": {
+    "eyebrow": "Services",
+    "title": "Tech Solutions",
+    "subtitle": "9 tech categories to digitize your business—simply and professionally.",
+    "back": "Back to home",
+    "items": {
+      "websites": {
+        "title": "Websites & E-commerce Stores",
+        "desc": "Fast websites and stores with premium Saudi branding."
+      },
+      "mobile": {
+        "title": "Mobile Apps (iOS / Android)",
+        "desc": "Mobile apps with a smooth experience on every device."
+      },
+      "maps": {
+        "title": "Google Maps Visibility",
+        "desc": "Optimize your business profile on Google Maps."
+      },
+      "marketing": {
+        "title": "Digital Marketing & Ads",
+        "desc": "Measured campaigns and ads for clear growth."
+      },
+      "automation": {
+        "title": "Process Automation (CRM, Accounting, HR)",
+        "desc": "Automate operations with CRM, accounting, and HR systems."
+      },
+      "support": {
+        "title": "Tech Support & Consulting",
+        "desc": "Ongoing technical support and practical consulting."
+      },
+      "ai": {
+        "title": "AI Solutions",
+        "desc": "Bots, automation, and AI-powered analytics."
+      },
+      "data": {
+        "title": "Data & Analytics",
+        "desc": "Collect and analyze data for clearer decisions."
+      },
+      "cloud": {
+        "title": "Cloud Services",
+        "desc": "Hosting, migration, and secure cloud operations."
+      }
+    }
+  },
+  "sectors": {
+    "eyebrow": "Sectors",
+    "title": "Business Sectors",
+    "subtitle": "15 sectors — pick yours to explore tailored solutions.",
+    "back": "Back to home",
+    "ctaGov": "Gov Services",
+    "ctaTech": "Tech Solutions",
+    "close": "Close",
+    "items": {
+      "restaurants": {
+        "title": "Restaurants",
+        "desc": "Municipal & Civil Defense licensing, ordering, and store systems."
+      },
+      "clinics": {
+        "title": "Clinics",
+        "desc": "Health licenses, clinic systems, and MoH compliance."
+      },
+      "factories": {
+        "title": "Factories",
+        "desc": "Industrial licenses, automation, and ERP systems."
+      },
+      "shops": {
+        "title": "Shops",
+        "desc": "Commercial registration, municipal licenses, and digital POS."
+      },
+      "salons": {
+        "title": "Salons",
+        "desc": "Operating licenses and booking/appointment systems."
+      },
+      "contracting": {
+        "title": "Contracting",
+        "desc": "Contractor classification, site permits, and project ops."
+      },
+      "realEstate": {
+        "title": "Real Estate",
+        "desc": "Ejar, brokerage, and property management systems."
+      },
+      "institutes": {
+        "title": "Institutes",
+        "desc": "Education licensing and training platforms."
+      },
+      "law": {
+        "title": "Law Firms",
+        "desc": "Law office setup and case follow-up via Najiz."
+      },
+      "hotels": {
+        "title": "Hotels",
+        "desc": "Hospitality licensing and booking/management systems."
+      },
+      "education": {
+        "title": "Education",
+        "desc": "Education licensing and digital solutions for institutions."
+      },
+      "logistics": {
+        "title": "Transport & Logistics",
+        "desc": "Transport, customs clearance, and shipment tracking."
+      },
+      "agriculture": {
+        "title": "Agriculture & Farms",
+        "desc": "Agricultural licensing and agri-tech solutions."
+      },
+      "nonprofit": {
+        "title": "Non-profit",
+        "desc": "Setup and management for associations and NGOs."
+      },
+      "startups": {
+        "title": "Startups",
+        "desc": "Company formation, investment licensing, and growth tech."
+      }
+    }
+  },
+  "widgets": {
+    "monjezTitle": "Monjez",
+    "monjezOnline": "Online · 24/7",
+    "monjezWelcome": "Welcome to Tasami 👋 I’m Monjez, your round-the-clock AI assistant. How can I help?",
+    "monjezTyping": "Monjez is typing…",
+    "monjezPlaceholder": "Type your message…",
+    "monjezFallback": "Thanks for reaching out. The Tasami team will follow up soon. You can also use WhatsApp for a faster reply.",
+    "monjezError": "Connection issue. Please try again later or contact us on WhatsApp.",
+    "waTitle": "Tasami WhatsApp",
+    "waIntro": "Choose how to reach the Tasami team:",
+    "waSecretary": "Talk to the Secretary",
+    "waDirect": "Direct WhatsApp",
+    "openChat": "Open Monjez chat",
+    "openWhatsapp": "Open WhatsApp",
+    "close": "Close",
+    "send": "Send"
+  },
+  "common": {
+    "backHome": "Back to home"
+  }
+}
