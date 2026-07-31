@@ -12,9 +12,9 @@ import { Link, usePathname } from "@/navigation";
 
 const NAV = [
   { href: "/admin", key: "dashboard" as const, icon: ChartPieSlice, exact: true },
-  { href: "/admin/customers", key: "customers" as const, icon: Users },
-  { href: "/admin/conversations", key: "conversations" as const, icon: ChatCircleDots },
-  { href: "/admin/tasks", key: "tasks" as const, icon: CheckSquare },
+  { href: "/admin/customers", key: "customers" as const, icon: Users, exact: false },
+  { href: "/admin/conversations", key: "conversations" as const, icon: ChatCircleDots, exact: false },
+  { href: "/admin/tasks", key: "tasks" as const, icon: CheckSquare, exact: false },
 ] as const;
 
 export default function AdminSidebar() {
