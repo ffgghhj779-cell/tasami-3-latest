@@ -17,8 +17,9 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "@/navigation";
 import ServiceCard from "@/components/ServiceCard";
-import { GOV_KEYS, type GovKey } from "@/lib/content-keys";
+import { GOV_KEYS, GOV_SLUGS, type GovKey } from "@/lib/content-keys";
 import { rtlLocales, type Locale } from "@/i18n";
+import { buildPageMetadata } from "@/lib/seo";
 
 const GOV_ICONS: Record<GovKey, typeof IdentificationCard> = {
   passports: IdentificationCard,
@@ -39,6 +40,16 @@ const GOV_ICONS: Record<GovKey, typeof IdentificationCard> = {
 type Props = {
   params: { locale: string };
 };
+
+export async function generateMetadata({ params }: Props) {
+  const t = await getTranslations({ locale: params.locale, namespace: "gov" });
+  return buildPageMetadata({
+    title: t("title"),
+    description: t("subtitle"),
+    path: "/services/government",
+    locale: params.locale,
+  });
+}
 
 export default async function GovernmentServicesPage({ params }: Props) {
   const { locale } = params;
@@ -73,9 +84,11 @@ export default async function GovernmentServicesPage({ params }: Props) {
           {GOV_KEYS.map((key) => (
             <ServiceCard
               key={key}
+              href={`/services/government/${GOV_SLUGS[key]}`}
               icon={GOV_ICONS[key]}
               title={t(`items.${key}.title`)}
               description={t(`items.${key}.desc`)}
+              cta={t("viewServices")}
               rtl={isRtl}
             />
           ))}

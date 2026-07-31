@@ -30,6 +30,7 @@
       "balady": "Balady",
       "zakat": "Zakat",
       "nafith": "Nafith",
+      "absherBusiness": "Absher Business",
       "gosi": "GOSI",
       "najiz": "Najiz",
       "sehaty": "Sehaty",
@@ -47,9 +48,13 @@
     "eyebrow": "Premium Saudi Gov & Tech Platform",
     "title": "Tasami",
     "hero": "Government and tech services. Simple. Fast. In four languages.",
-    "ctaGov": "Start Gov Service",
-    "ctaTech": "Explore Tech",
+    "ctaGov": "Browse services",
+    "ctaTech": "WhatsApp direct",
+    "ctaWhatsapp": "WhatsApp direct",
     "offerTitle": "What we offer",
+    "coreCountGov": "13 services",
+    "coreCountTech": "9 services",
+    "coreCountSectors": "15 sectors",
     "offerSubtitle": "Three clear paths — pick what your business needs and we handle the rest.",
     "whyTitle": "Why Tasami?",
     "whySubtitle": "Built to feel simple for clients, and operate with elite precision behind the scenes.",
@@ -135,13 +140,19 @@
     "contactCta": "Contact now",
     "viewAll": "View all →",
     "rights": "All rights reserved.",
-    "built": "Designed for Vision 2030, digitally."
+    "built": "Designed for Vision 2030, digitally.",
+    "legalDisclaimer": "All our services are delivered via official portals or licensed authorized agents under applicable regulations."
   },
   "gov": {
     "eyebrow": "Services",
-    "title": "Government Services",
+    "title": "Government Services – We finish your transactions with a tap",
     "subtitle": "13 categories covering your entity’s key needs with Saudi official bodies.",
     "back": "Back to home",
+    "viewServices": "View services",
+    "serviceCount": "sub-services",
+    "askService": "Request service",
+    "talkMonjez": "Talk to Monjez",
+    "requiredDocs": "Required documents",
     "items": {
       "passports": {
         "title": "Passports & Residency",
@@ -199,7 +210,7 @@
   },
   "tech": {
     "eyebrow": "Services",
-    "title": "Tech Solutions",
+    "title": "Tech Services – Build your digital presence",
     "subtitle": "9 tech categories to digitize your business—simply and professionally.",
     "back": "Back to home",
     "items": {
@@ -243,7 +254,7 @@
   },
   "sectors": {
     "eyebrow": "Sectors",
-    "title": "Business Sectors",
+    "title": "Smart solutions for every sector",
     "subtitle": "15 sectors — pick yours to explore tailored solutions.",
     "back": "Back to home",
     "ctaGov": "Gov Services",
@@ -399,6 +410,8 @@
     "status": {
       "LEAD": "Lead",
       "ACTIVE": "Active",
+      "SLEEPING": "Sleeping",
+      "ANGRY": "Angry",
       "INACTIVE": "Inactive",
       "VIP": "VIP",
       "ARCHIVED": "Archived",
@@ -406,11 +419,13 @@
       "IN_PROGRESS": "In progress",
       "WAITING": "Waiting",
       "COMPLETED": "Completed",
+      "DONE": "Done",
       "CANCELLED": "Cancelled"
     },
     "sender": {
       "CUSTOMER": "Customer",
       "BOT": "Bot",
+      "SECRETARY": "Secretary",
       "AGENT": "Agent",
       "SYSTEM": "System"
     }

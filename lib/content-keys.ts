@@ -53,6 +53,7 @@ export const TRUST_PLATFORM_KEYS = [
   "balady",
   "zakat",
   "nafith",
+  "absherBusiness",
   "gosi",
   "najiz",
   "sehaty",
@@ -65,6 +66,22 @@ export const TRUST_PLATFORM_KEYS = [
   "monshaat",
   "misa",
 ] as const;
+
+export const GOV_SLUGS: Record<(typeof GOV_KEYS)[number], string> = {
+  passports: "jawazat",
+  labor: "omala",
+  commerce: "tijara",
+  zakat: "zakat",
+  municipal: "baladiya",
+  civilDefense: "difaa-madani",
+  gosi: "taminat",
+  civilStatus: "ahwal",
+  najiz: "najiz",
+  traffic: "muror",
+  health: "sehha",
+  ejar: "ejar",
+  investment: "istithmar",
+};
 
 export const HOME_CORE_KEYS = ["gov", "tech", "sectors"] as const;
 export const HOME_WHY_KEYS = [

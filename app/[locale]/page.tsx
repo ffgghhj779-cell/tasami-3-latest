@@ -110,13 +110,21 @@ export default async function HomePage({ params }: Props) {
           </p>
 
           <div className="mt-12 flex w-full max-w-lg flex-col items-stretch gap-3.5 sm:max-w-none sm:w-auto sm:flex-row sm:items-center sm:justify-center sm:gap-4">
-            <Link href="/services/government" className="btn-secondary min-w-[200px]">
+            <Link
+              href="/services/government"
+              className="inline-flex min-h-[48px] min-w-[200px] items-center justify-center gap-2 rounded-button border-[1.5px] border-tasami-pink bg-transparent px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-tasami-pink/15"
+            >
               {t("ctaGov")}
               <Arrow weight="bold" className="h-4 w-4" />
             </Link>
-            <Link href="/services/tech" className="btn-outline-light min-w-[200px]">
-              {t("ctaTech")}
-            </Link>
+            <a
+              href="https://wa.me/966500000000"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary min-w-[200px]"
+            >
+              {t("ctaWhatsapp")}
+            </a>
           </div>
         </div>
 
@@ -149,6 +157,13 @@ export default async function HomePage({ params }: Props) {
                   title={t(`core.${key}.title`)}
                   description={t(`core.${key}.desc`)}
                   cta={t(`core.${key}.cta`)}
+                  meta={
+                    key === "gov"
+                      ? t("coreCountGov")
+                      : key === "tech"
+                        ? t("coreCountTech")
+                        : t("coreCountSectors")
+                  }
                   rtl={isRtl}
                 />
               );

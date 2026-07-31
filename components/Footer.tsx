@@ -164,8 +164,11 @@ export default function Footer() {
           <p className="text-xs text-white/45">
             © {year} {t("brand")}. {t("rights")}
           </p>
-          <p className="text-xs text-white/45">{t("built")}</p>
+          <p className="max-w-md text-[10px] leading-relaxed text-white/40 sm:text-end">
+            {t("legalDisclaimer")}
+          </p>
         </div>
+        <p className="mt-4 text-center text-xs text-white/35">{t("built")}</p>
       </div>
     </footer>
   );

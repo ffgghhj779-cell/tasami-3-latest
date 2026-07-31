@@ -5,6 +5,23 @@ import { prisma } from "@/lib/prisma";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+/** Simple in-memory rate limit (~100 req/min per IP) — brief security requirement */
+const RATE_WINDOW_MS = 60_000;
+const RATE_MAX = 100;
+const hits = new Map<string, { count: number; reset: number }>();
+
+function rateLimit(ip: string): boolean {
+  const now = Date.now();
+  const row = hits.get(ip);
+  if (!row || now > row.reset) {
+    hits.set(ip, { count: 1, reset: now + RATE_WINDOW_MS });
+    return true;
+  }
+  if (row.count >= RATE_MAX) return false;
+  row.count += 1;
+  return true;
+}
+
 type ChatBody = {
   message?: string;
   locale?: string;
@@ -86,6 +103,18 @@ async function resolveCustomer(input: {
 }
 
 export async function POST(req: NextRequest) {
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("x-real-ip") ||
+    "unknown";
+
+  if (!rateLimit(ip)) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again shortly." },
+      { status: 429 }
+    );
+  }
+
   let body: ChatBody;
   try {
     body = (await req.json()) as ChatBody;

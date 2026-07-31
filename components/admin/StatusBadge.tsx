@@ -1,17 +1,21 @@
 import type { CustomerStatus, TaskStatus, Sender } from "@prisma/client";
 
+/** Brand-safe status tones (no default Tailwind blue/gray scales). */
 export function customerStatusClass(status: CustomerStatus): string {
   switch (status) {
     case "ACTIVE":
-      return "bg-[#22C55E]/15 text-[#15803D]";
+      return "bg-tasami-gold/25 text-tasami-purple";
     case "VIP":
       return "bg-tasami-pink/20 text-tasami-purple";
     case "LEAD":
-      return "bg-tasami-gold/25 text-tasami-purple";
-    case "INACTIVE":
-      return "bg-[#EF4444]/12 text-[#B91C1C]";
-    case "ARCHIVED":
+      return "bg-tasami-gold/15 text-tasami-gray";
+    case "SLEEPING":
       return "bg-tasami-purple/8 text-tasami-gray";
+    case "ANGRY":
+    case "INACTIVE":
+      return "bg-tasami-pink/25 text-[#8B3A1A]";
+    case "ARCHIVED":
+      return "bg-tasami-purple/10 text-tasami-gray";
     default:
       return "bg-tasami-offwhite text-tasami-gray";
   }
@@ -20,13 +24,14 @@ export function customerStatusClass(status: CustomerStatus): string {
 export function taskStatusClass(status: TaskStatus): string {
   switch (status) {
     case "COMPLETED":
-      return "bg-[#22C55E]/15 text-[#15803D]";
+    case "DONE":
+      return "bg-tasami-gold/25 text-tasami-purple";
     case "IN_PROGRESS":
       return "bg-tasami-pink/20 text-tasami-purple";
     case "WAITING":
-      return "bg-tasami-gold/25 text-tasami-purple";
+      return "bg-tasami-gold/15 text-tasami-gray";
     case "CANCELLED":
-      return "bg-[#EF4444]/12 text-[#B91C1C]";
+      return "bg-tasami-pink/25 text-[#8B3A1A]";
     case "PENDING":
     default:
       return "bg-tasami-purple/8 text-tasami-gray";
@@ -57,7 +62,10 @@ export function senderBubbleClass(sender: Sender): string {
       : "bg-tasami-purple/10 text-tasami-purple me-auto";
 }
 
-export function formatDate(value: Date | string | null | undefined, locale: string) {
+export function formatDate(
+  value: Date | string | null | undefined,
+  locale: string
+) {
   if (!value) return "—";
   const d = typeof value === "string" ? new Date(value) : value;
   return d.toLocaleString(locale === "ar" ? "ar-SA" : locale, {

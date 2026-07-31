@@ -1,4 +1,4 @@
-// Tasami – Prisma Schema
+// Tasami – Prisma Schema (aligned to master brief tables)
 // PostgreSQL · Absolute simplicity · CRM + Services backbone
 
 generator client {
@@ -11,7 +11,7 @@ datasource db {
 }
 
 // ---------------------------------------------------------------------------
-// Enums
+// Enums (brief-aligned + backwards-compatible values)
 // ---------------------------------------------------------------------------
 
 enum Language {
@@ -24,6 +24,8 @@ enum Language {
 enum CustomerStatus {
   LEAD
   ACTIVE
+  SLEEPING
+  ANGRY
   INACTIVE
   VIP
   ARCHIVED
@@ -31,6 +33,11 @@ enum CustomerStatus {
 
 enum CustomerSegment {
   INDIVIDUAL
+  COMPANY
+  FAMILY
+  STARTUP
+  NONPROFIT
+  INVESTOR
   SME
   ENTERPRISE
   GOVERNMENT
@@ -38,15 +45,18 @@ enum CustomerSegment {
 
 enum Channel {
   WHATSAPP
+  TELEGRAM
+  EMAIL
+  SITE
   WEB_CHAT
   PHONE
-  EMAIL
   IN_PERSON
 }
 
 enum Sender {
   CUSTOMER
   BOT
+  SECRETARY
   AGENT
   SYSTEM
 }
@@ -55,6 +65,7 @@ enum Sentiment {
   POSITIVE
   NEUTRAL
   NEGATIVE
+  ANGRY
   MIXED
 }
 
@@ -69,10 +80,15 @@ enum TaskStatus {
   IN_PROGRESS
   WAITING
   COMPLETED
+  DONE
   CANCELLED
 }
 
 enum CampaignType {
+  WELCOME
+  REMINDER
+  OFFER
+  NATIONAL_DAY
   WHATSAPP
   SMS
   EMAIL
@@ -89,6 +105,8 @@ enum CampaignStatus {
 }
 
 enum ReminderType {
+  IQAMA_EXPIRY
+  CR_EXPIRY
   FOLLOW_UP
   PAYMENT
   DOCUMENT
@@ -98,7 +116,8 @@ enum ReminderType {
 }
 
 // ---------------------------------------------------------------------------
-// Models
+// Models — 6 brief tables: customers, conversations, services, tasks,
+// campaigns, reminders
 // ---------------------------------------------------------------------------
 
 model Customer {
@@ -111,7 +130,7 @@ model Customer {
   segment          CustomerSegment @default(INDIVIDUAL)
   sector           String?
   cr_number        String?
-  status           CustomerStatus  @default(LEAD)
+  status           CustomerStatus  @default(ACTIVE)
   notes            String?
   last_interaction DateTime?
 
@@ -146,6 +165,7 @@ model Conversation {
   @@index([channel])
   @@index([created_at])
   @@index([intent])
+  @@index([sentiment])
   @@map("conversations")
 }
 
@@ -201,7 +221,7 @@ model Campaign {
   target_segment   String?
   message_template String
   scheduled_at     DateTime?
-  status           CampaignStatus @default(DRAFT)
+  status           CampaignStatus @default(SCHEDULED)
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
