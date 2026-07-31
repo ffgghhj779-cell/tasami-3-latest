@@ -5,6 +5,7 @@ import { usePathname } from "@/navigation";
 import Navbar from "@/components/Navbar";
 import TrustBar from "@/components/TrustBar";
 import FloatingWidgets from "@/components/FloatingWidgets";
+import Footer from "@/components/Footer";
 
 /** Hides public chrome on /admin routes so the secretary panel is full-bleed. */
 export default function SiteShell({ children }: { children: ReactNode }) {
@@ -20,6 +21,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
       <Navbar />
       <TrustBar />
       <main className="min-h-[60vh]">{children}</main>
+      <Footer />
       <FloatingWidgets />
     </>
   );

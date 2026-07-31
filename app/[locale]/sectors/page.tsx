@@ -57,7 +57,8 @@ export default function SectorsPage() {
   const [active, setActive] = useState<SectorKey | null>(null);
 
   return (
-    <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-18 lg:px-10 lg:py-20">
+    <div className="surface-dotted min-h-screen">
+      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-18 lg:px-10 lg:py-20">
       <Link
         href="/"
         className="mb-10 inline-flex min-h-[44px] items-center gap-1.5 text-sm font-medium text-tasami-gray transition-colors hover:text-tasami-pink"
@@ -77,7 +78,6 @@ export default function SectorsPage() {
         </p>
       </header>
 
-      {/* 1 → 2 → 3 columns (absolute simplicity) */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
         {SECTOR_KEYS.map((key) => {
           const Icon = SECTOR_ICONS[key];
@@ -86,9 +86,9 @@ export default function SectorsPage() {
               key={key}
               type="button"
               onClick={() => setActive(key)}
-              className="card-soft group flex min-h-[48px] flex-col items-center gap-4 p-8 text-center transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tasami-pink"
+              className="card-premium group flex min-h-[48px] flex-col items-center gap-4 p-8 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tasami-pink"
             >
-              <span className="icon-gold !h-14 !w-14 transition-colors group-hover:bg-tasami-gold/25">
+              <span className="icon-gold !h-14 !w-14 transition-transform duration-300 group-hover:scale-105">
                 <Icon weight="regular" className="h-7 w-7" />
               </span>
               <span className="text-sm font-medium text-tasami-purple">
@@ -104,6 +104,7 @@ export default function SectorsPage() {
           <SectorModal sectorKey={active} onClose={() => setActive(null)} />
         )}
       </AnimatePresence>
+      </div>
     </div>
   );
 }

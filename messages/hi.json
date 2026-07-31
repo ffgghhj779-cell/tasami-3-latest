@@ -50,38 +50,92 @@
     "ctaGov": "Start Gov Service",
     "ctaTech": "Explore Tech",
     "offerTitle": "What we offer",
+    "offerSubtitle": "Three clear paths — pick what your business needs and we handle the rest.",
     "whyTitle": "Why Tasami?",
+    "whySubtitle": "Built to feel simple for clients, and operate with elite precision behind the scenes.",
+    "badgeTrusted": "Trusted by Saudi businesses",
+    "badgeLang": "4 languages",
+    "badgeAi": "Monjez 24/7",
+    "processTitle": "How it works",
+    "processSubtitle": "Just three steps from request to delivery.",
+    "process": {
+      "one": {
+        "title": "Tell us what you need",
+        "desc": "Via WhatsApp or Monjez — in Arabic, English, Urdu, or Hindi."
+      },
+      "two": {
+        "title": "We map the path",
+        "desc": "Government, tech, or sector-specific — with a clear plan and transparent pricing."
+      },
+      "three": {
+        "title": "We deliver & update you",
+        "desc": "Continuous follow-up until the transaction or tech solution is complete."
+      }
+    },
+    "langsTitle": "We speak your language",
+    "langsSubtitle": "Interface and support in four languages for your whole team.",
+    "ctaBandTitle": "Ready to start?",
+    "ctaBandSubtitle": "Tasami’s team and Monjez are here — absolute simplicity, premium quality.",
+    "ctaBandAction": "Talk to the Secretary",
     "core": {
       "gov": {
         "title": "Government Services",
-        "desc": "Setup, licensing, and compliance via certified official platforms.",
-        "cta": "View details"
+        "desc": "Setup, licensing, and compliance via certified official platforms — from Absher to Najiz and Monshaat.",
+        "cta": "Explore services"
       },
       "tech": {
         "title": "Tech Solutions",
-        "desc": "Websites, apps, and AI systems at an enterprise standard.",
-        "cta": "View details"
+        "desc": "Websites, apps, automation, and AI at an enterprise standard that matches your brand.",
+        "cta": "Explore solutions"
       },
       "sectors": {
         "title": "Business Sectors",
-        "desc": "Tailored solutions across 15 sectors for your business.",
-        "cta": "View details"
+        "desc": "Tailored solutions across 15 sectors — from restaurants and clinics to factories and startups.",
+        "cta": "Choose your sector"
       }
     },
     "why": {
       "speed": {
         "title": "Fast Delivery",
-        "desc": "Clear paths and complexity-free execution."
+        "desc": "Clear paths and complexity-free execution. We shorten procedures and keep you informed at every stage."
       },
       "trust": {
         "title": "Official Trust",
-        "desc": "Deep expertise across Saudi government platforms."
+        "desc": "Deep expertise across Saudi government platforms and certified digital ecosystems."
       },
       "support": {
         "title": "24/7 Support",
-        "desc": "Monjez and WhatsApp assistants always on call."
+        "desc": "Monjez and WhatsApp assistants always on call — fast replies with human follow-up when needed."
+      },
+      "clarity": {
+        "title": "Full Transparency",
+        "desc": "Clear pricing and scope from day one. No surprises, no jargon."
+      },
+      "multilang": {
+        "title": "Four Languages",
+        "desc": "A unified experience in Arabic, English, Urdu, and Hindi for your team and customers."
+      },
+      "endtoend": {
+        "title": "Idea to Operations",
+        "desc": "We unite gov and tech in one path — formation, compliance, then digital growth."
       }
     }
+  },
+  "footer": {
+    "brand": "Tasami",
+    "about": "A premium Saudi platform for government and tech services — absolute simplicity, four languages, and a 24/7 AI assistant.",
+    "whatsapp": "Secretary WhatsApp",
+    "hours": "Around-the-clock support",
+    "govTitle": "Government Services",
+    "techTitle": "Tech Solutions",
+    "legalTitle": "Quick links",
+    "sectors": "Business Sectors",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contactCta": "Contact now",
+    "viewAll": "View all →",
+    "rights": "All rights reserved.",
+    "built": "Designed for Vision 2030, digitally."
   },
   "gov": {
     "eyebrow": "Services",

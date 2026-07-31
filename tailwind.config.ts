@@ -80,9 +80,21 @@ const config: Config = {
         soft: "12px",
       },
       boxShadow: {
-        /* Soft shadow only — brand rule */
         soft: "0 2px 8px rgba(46, 26, 71, 0.08)",
+        lift: "0 12px 32px rgba(46, 26, 71, 0.10)",
         none: "none",
+      },
+      backgroundImage: {
+        "hero-glow":
+          "radial-gradient(ellipse at 20% 20%, rgba(233,196,106,0.18), transparent 50%), radial-gradient(ellipse at 80% 10%, rgba(244,162,97,0.16), transparent 45%), radial-gradient(ellipse at 70% 80%, rgba(233,196,106,0.1), transparent 50%)",
+        "dot-soft":
+          "radial-gradient(rgba(46, 26, 71, 0.07) 1px, transparent 1px)",
+        "grid-soft":
+          "linear-gradient(rgba(46,26,71,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(46,26,71,0.035) 1px, transparent 1px)",
+      },
+      backgroundSize: {
+        dot: "22px 22px",
+        grid: "48px 48px",
       },
       spacing: {
         18: "4.5rem",
@@ -100,6 +112,10 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "float-soft": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
         pulseSoft: {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.65" },
@@ -110,6 +126,7 @@ const config: Config = {
         "scroll-left-slow": "scroll-left 70s linear infinite",
         "fade-in": "fade-in 0.55s ease-out forwards",
         "fade-in-up": "fade-in-up 0.65s ease-out forwards",
+        "float-soft": "float-soft 7s ease-in-out infinite",
         "pulse-soft": "pulseSoft 2.2s ease-in-out infinite",
       },
     },

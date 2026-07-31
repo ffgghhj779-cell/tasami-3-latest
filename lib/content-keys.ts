@@ -67,7 +67,16 @@ export const TRUST_PLATFORM_KEYS = [
 ] as const;
 
 export const HOME_CORE_KEYS = ["gov", "tech", "sectors"] as const;
-export const HOME_WHY_KEYS = ["speed", "trust", "support"] as const;
+export const HOME_WHY_KEYS = [
+  "speed",
+  "trust",
+  "support",
+  "clarity",
+  "multilang",
+  "endtoend",
+] as const;
+
+export const HOME_PROCESS_KEYS = ["one", "two", "three"] as const;
 
 export type GovKey = (typeof GOV_KEYS)[number];
 export type TechKey = (typeof TECH_KEYS)[number];
