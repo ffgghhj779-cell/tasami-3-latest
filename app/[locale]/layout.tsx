@@ -2,10 +2,8 @@ import type { ReactNode } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import Navbar from "@/components/Navbar";
-import TrustBar from "@/components/TrustBar";
-import FloatingWidgets from "@/components/FloatingWidgets";
 import { LocaleHtmlAttrs } from "@/components/LocaleHtmlAttrs";
+import SiteShell from "@/components/SiteShell";
 import { isLocale, locales, rtlLocales, type Locale } from "@/i18n";
 
 export function generateStaticParams() {
@@ -31,10 +29,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
       <LocaleHtmlAttrs locale={locale} dir={dir} />
-      <Navbar />
-      <TrustBar />
-      <main className="min-h-[60vh]">{children}</main>
-      <FloatingWidgets />
+      <SiteShell>{children}</SiteShell>
     </NextIntlClientProvider>
   );
 }

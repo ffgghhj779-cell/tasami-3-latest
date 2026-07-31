@@ -277,5 +277,88 @@
   },
   "common": {
     "backHome": "العودة للرئيسية"
+  },
+  "admin": {
+    "brand": "تسامي",
+    "secretary": "لوحة السكرتير",
+    "mockAuth": "وصول تجريبي · الحماية عبر نفاذ لاحقاً",
+    "backSite": "العودة للموقع",
+    "nav": {
+      "dashboard": "لوحة التحكم",
+      "customers": "العملاء",
+      "conversations": "المحادثات",
+      "tasks": "المهام"
+    },
+    "dashboard": {
+      "title": "لوحة التحكم",
+      "subtitle": "نظرة عامة سريعة على العملاء والمهام والمحادثات.",
+      "totalCustomers": "إجمالي العملاء",
+      "activeTasks": "مهام نشطة",
+      "recentChats": "محادثات اليوم",
+      "openLeads": "عملاء محتملون",
+      "recentConversations": "أحدث المحادثات",
+      "recentTasks": "أحدث المهام",
+      "viewAll": "عرض الكل",
+      "emptyConversations": "لا توجد محادثات بعد.",
+      "emptyTasks": "لا توجد مهام بعد.",
+      "dbHint": "تعذر الاتصال بقاعدة البيانات. تأكد من DATABASE_URL ثم نفّذ prisma db push."
+    },
+    "customers": {
+      "title": "العملاء",
+      "subtitle": "إدارة العملاء وسجل تفاعلاتهم.",
+      "name": "الاسم",
+      "phone": "الجوال",
+      "language": "اللغة",
+      "sector": "القطاع",
+      "status": "الحالة",
+      "lastInteraction": "آخر تواصل",
+      "actions": "إجراءات",
+      "view": "عرض",
+      "empty": "لا يوجد عملاء بعد.",
+      "detailTitle": "ملف العميل",
+      "conversations": "سجل المحادثات",
+      "noConversations": "لا توجد محادثات لهذا العميل.",
+      "back": "العودة للعملاء",
+      "notes": "ملاحظات",
+      "segment": "الشريحة"
+    },
+    "conversations": {
+      "title": "المحادثات",
+      "subtitle": "سجل الرسائل عبر القنوات.",
+      "customer": "العميل",
+      "channel": "القناة",
+      "sender": "المرسل",
+      "message": "الرسالة",
+      "time": "الوقت",
+      "empty": "لا توجد محادثات بعد."
+    },
+    "tasks": {
+      "title": "المهام",
+      "subtitle": "متابعة مهام السكرتير والتنفيذ.",
+      "customer": "العميل",
+      "status": "الحالة",
+      "assigned": "المسؤول",
+      "due": "الاستحقاق",
+      "notes": "ملاحظات",
+      "empty": "لا توجد مهام بعد."
+    },
+    "status": {
+      "LEAD": "محتمل",
+      "ACTIVE": "نشط",
+      "INACTIVE": "غير نشط",
+      "VIP": "VIP",
+      "ARCHIVED": "مؤرشف",
+      "PENDING": "قيد الانتظار",
+      "IN_PROGRESS": "قيد التنفيذ",
+      "WAITING": "بانتظار",
+      "COMPLETED": "مكتمل",
+      "CANCELLED": "ملغى"
+    },
+    "sender": {
+      "CUSTOMER": "عميل",
+      "BOT": "بوت",
+      "AGENT": "موظف",
+      "SYSTEM": "نظام"
+    }
   }
 }

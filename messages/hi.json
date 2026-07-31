@@ -277,5 +277,88 @@
   },
   "common": {
     "backHome": "Back to home"
+  },
+  "admin": {
+    "brand": "Tasami",
+    "secretary": "Secretary Panel",
+    "mockAuth": "Mock access · Nafath protection later",
+    "backSite": "Back to site",
+    "nav": {
+      "dashboard": "Dashboard",
+      "customers": "Customers",
+      "conversations": "Conversations",
+      "tasks": "Tasks"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "A clear overview of customers, tasks, and conversations.",
+      "totalCustomers": "Total Customers",
+      "activeTasks": "Active Tasks",
+      "recentChats": "Chats Today",
+      "openLeads": "Open Leads",
+      "recentConversations": "Recent Conversations",
+      "recentTasks": "Recent Tasks",
+      "viewAll": "View all",
+      "emptyConversations": "No conversations yet.",
+      "emptyTasks": "No tasks yet.",
+      "dbHint": "Could not reach the database. Set DATABASE_URL and run prisma db push."
+    },
+    "customers": {
+      "title": "Customers",
+      "subtitle": "Manage customers and their interaction history.",
+      "name": "Name",
+      "phone": "Phone",
+      "language": "Language",
+      "sector": "Sector",
+      "status": "Status",
+      "lastInteraction": "Last interaction",
+      "actions": "Actions",
+      "view": "View",
+      "empty": "No customers yet.",
+      "detailTitle": "Customer profile",
+      "conversations": "Conversation history",
+      "noConversations": "No conversations for this customer.",
+      "back": "Back to customers",
+      "notes": "Notes",
+      "segment": "Segment"
+    },
+    "conversations": {
+      "title": "Conversations",
+      "subtitle": "Message log across channels.",
+      "customer": "Customer",
+      "channel": "Channel",
+      "sender": "Sender",
+      "message": "Message",
+      "time": "Time",
+      "empty": "No conversations yet."
+    },
+    "tasks": {
+      "title": "Tasks",
+      "subtitle": "Track secretary and delivery work.",
+      "customer": "Customer",
+      "status": "Status",
+      "assigned": "Assigned",
+      "due": "Due",
+      "notes": "Notes",
+      "empty": "No tasks yet."
+    },
+    "status": {
+      "LEAD": "Lead",
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive",
+      "VIP": "VIP",
+      "ARCHIVED": "Archived",
+      "PENDING": "Pending",
+      "IN_PROGRESS": "In progress",
+      "WAITING": "Waiting",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled"
+    },
+    "sender": {
+      "CUSTOMER": "Customer",
+      "BOT": "Bot",
+      "AGENT": "Agent",
+      "SYSTEM": "System"
+    }
   }
 }
