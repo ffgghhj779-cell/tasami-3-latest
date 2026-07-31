@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import type { TaskStatus } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { Link } from "@/navigation";
 import {
@@ -9,19 +10,21 @@ import {
 
 type Props = { params: { locale: string } };
 
+type TaskRow = {
+  id: string;
+  status: TaskStatus;
+  assigned_to: string | null;
+  due_date: Date | null;
+  notes: string | null;
+  customer: { id: string; name: string };
+};
+
 export default async function AdminTasksPage({ params }: Props) {
   const { locale } = params;
   setRequestLocale(locale);
   const t = await getTranslations("admin");
 
-  let tasks: Array<{
-    id: string;
-    status: "PENDING" | "IN_PROGRESS" | "WAITING" | "COMPLETED" | "CANCELLED";
-    assigned_to: string | null;
-    due_date: Date | null;
-    notes: string | null;
-    customer: { id: string; name: string };
-  }> = [];
+  let tasks: TaskRow[] = [];
   let dbOk = true;
 
   try {
