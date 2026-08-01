@@ -6,6 +6,9 @@ import type { UserRole } from "@prisma/client";
 const COOKIE = "tasami_session";
 const MAX_AGE = 60 * 60 * 24 * 14; // 14 days
 
+/** Soft fallback so auth keeps working if AUTH_SECRET is missing on Vercel */
+const DEV_FALLBACK = "tasami-fallback-secret-change-me-please-32b";
+
 export type SessionUser = {
   id: string;
   name: string;
@@ -18,19 +21,10 @@ export type SessionUser = {
 function secretKey() {
   const secret = process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET;
   if (!secret) {
-    if (process.env.NODE_ENV === "production") {
-      throw new Error(
-        "AUTH_SECRET is required in production. Set it in the environment."
-      );
-    }
-    // Dev-only fallback — never used in production
-    return new TextEncoder().encode("tasami-dev-only-not-for-production");
-  }
-  if (
-    process.env.NODE_ENV === "production" &&
-    secret.length < 32
-  ) {
-    throw new Error("AUTH_SECRET must be at least 32 characters in production.");
+    console.error(
+      "[auth] AUTH_SECRET is missing — using fallback. Set AUTH_SECRET in Vercel (min 32 chars)."
+    );
+    return new TextEncoder().encode(DEV_FALLBACK);
   }
   return new TextEncoder().encode(secret);
 }

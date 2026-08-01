@@ -41,6 +41,8 @@ export default function AuthForm({ mode }: { mode: Mode }) {
         if (code === "Phone already registered") setError(t("phoneTaken"));
         else if (code === "Email already registered") setError(t("emailTaken"));
         else if (code === "Invalid credentials") setError(t("invalidCreds"));
+        else if (code === "Too many requests") setError(t("tooMany"));
+        else if (code === "Database not ready") setError(t("dbNotReady"));
         else setError(t("error"));
         return;
       }

@@ -366,6 +366,8 @@
     "invalidCreds": "Invalid phone or password.",
     "phoneTaken": "This phone is already registered. Please log in.",
     "emailTaken": "This email is already registered.",
+    "tooMany": "Too many attempts. Wait a minute and try again.",
+    "dbNotReady": "Database is not ready. Please contact support.",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
     "registerLink": "Sign up",

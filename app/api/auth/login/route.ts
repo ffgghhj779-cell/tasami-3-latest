@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   const ip = clientIp(req);
-  if (!rateLimit(`login:${ip}`, { max: 10, windowMs: 60_000 })) {
+  if (!rateLimit(`login:${ip}`, { max: 15, windowMs: 60_000 })) {
     return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
 
@@ -52,14 +52,22 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    await createSessionCookie({
-      id: user.id,
-      name: user.name,
-      phone: user.phone,
-      email: user.email,
-      role: user.role,
-      customerId: user.customer_id,
-    });
+    try {
+      await createSessionCookie({
+        id: user.id,
+        name: user.name,
+        phone: user.phone,
+        email: user.email,
+        role: user.role,
+        customerId: user.customer_id,
+      });
+    } catch (sessionErr) {
+      console.error("[auth/login] session cookie failed:", sessionErr);
+      return NextResponse.json(
+        { error: "Could not create session" },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       ok: true,
