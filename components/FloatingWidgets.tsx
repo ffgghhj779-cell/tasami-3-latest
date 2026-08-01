@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { WhatsappLogo, X } from "@phosphor-icons/react";
@@ -31,15 +31,14 @@ export default function FloatingWidgets() {
 
   useBodyScrollLock(waOpen || chatOpen, { hideFabs: false });
 
+  const onChatOpenChange = useCallback((open: boolean) => {
+    setChatOpen(open);
+    if (open) setWaOpen(false);
+  }, []);
+
   return (
     <>
-      <ChatWidget
-        forceClose={waOpen}
-        onOpenChange={(open) => {
-          setChatOpen(open);
-          if (open) setWaOpen(false);
-        }}
-      />
+      <ChatWidget forceClose={waOpen} onOpenChange={onChatOpenChange} />
 
       <div className="fab-shell pointer-events-none fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] end-3 z-50 flex flex-col items-end gap-3 sm:bottom-8 sm:end-6">
         {waOpen ? (

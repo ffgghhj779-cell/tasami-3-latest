@@ -84,9 +84,14 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
     if (forceClose) setOpenSafe(false);
   }, [forceClose, setOpenSafe]);
 
+  // Only close on real route changes — not when parent callback identity changes
+  const prevPathname = useRef(pathname);
   useEffect(() => {
-    setOpenSafe(false);
-  }, [pathname, setOpenSafe]);
+    if (prevPathname.current === pathname) return;
+    prevPathname.current = pathname;
+    setOpen(false);
+    onOpenChange?.(false);
+  }, [pathname, onOpenChange]);
 
   useEffect(() => {
     if (!welcomeSeeded.current) {
