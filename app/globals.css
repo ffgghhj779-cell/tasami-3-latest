@@ -77,6 +77,10 @@
     touch-action: pan-y;
   }
 
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
   html[lang="ar"] body {
     font-family: var(--font-arabic), "IBM Plex Sans Arabic", Tahoma, sans-serif;
     letter-spacing: 0;

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
   X,
@@ -106,11 +105,9 @@ export default function SectorsPage() {
         })}
       </div>
 
-      <AnimatePresence>
-        {active && (
+        {active ? (
           <SectorModal sectorKey={active} onClose={() => setActive(null)} />
-        )}
-      </AnimatePresence>
+        ) : null}
       </div>
     </div>
   );
@@ -130,13 +127,7 @@ function SectorModal({
   const title = t(`items.${sectorKey}.title`);
 
   return (
-    <motion.div
-      className="fixed inset-0 z-[70] flex items-stretch justify-center sm:items-center sm:p-5"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
-    >
+    <div className="fixed inset-0 z-[70] flex touch-manipulation items-stretch justify-center sm:items-center sm:p-5">
       <button
         type="button"
         aria-label={t("close")}
@@ -144,15 +135,11 @@ function SectorModal({
         onClick={onClose}
       />
 
-      <motion.div
+      <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="sector-modal-title"
-        initial={{ opacity: 0, y: 36 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        transition={{ type: "spring", stiffness: 280, damping: 28 }}
-        className="sheet-panel relative z-10 flex h-[min(100dvh,100%)] max-h-[100dvh] w-full flex-col overflow-hidden rounded-none bg-white shadow-soft sm:h-auto sm:max-h-[min(90vh,720px)] sm:rounded-card"
+        className="sheet-panel relative z-10 flex h-[min(100dvh,100%)] max-h-[100dvh] w-full flex-col overflow-hidden rounded-none bg-white shadow-soft touch-manipulation sm:h-auto sm:max-h-[min(90vh,720px)] sm:rounded-card"
       >
         <div className="flex shrink-0 items-start justify-between gap-4 bg-tasami-purple px-5 py-4 pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:py-5">
           <div className="flex min-w-0 flex-1 items-center gap-3">
@@ -178,7 +165,7 @@ function SectorModal({
             type="button"
             aria-label={t("close")}
             onClick={onClose}
-            className="touch-target shrink-0 flex items-center justify-center rounded-button p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+            className="touch-target flex shrink-0 items-center justify-center rounded-button p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
           >
             <X weight="bold" className="h-5 w-5" />
           </button>
@@ -215,7 +202,7 @@ function SectorModal({
             </Link>
           </div>
         </div>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }

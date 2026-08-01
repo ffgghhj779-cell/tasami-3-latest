@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChatCircleDots, PaperPlaneTilt, X } from "@phosphor-icons/react";
+import { usePathname } from "@/navigation";
 
 type ChatMessage = {
   id: string;
@@ -62,6 +63,7 @@ type Props = {
 export default function ChatWidget({ forceClose, onOpenChange }: Props) {
   const t = useTranslations("widgets");
   const locale = useLocale();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
@@ -81,6 +83,10 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
   useEffect(() => {
     if (forceClose) setOpenSafe(false);
   }, [forceClose, setOpenSafe]);
+
+  useEffect(() => {
+    setOpenSafe(false);
+  }, [pathname, setOpenSafe]);
 
   useEffect(() => {
     if (!welcomeSeeded.current) {
@@ -162,7 +168,7 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 16 }}
             transition={spring}
-            className="pointer-events-auto mb-1 flex h-[min(560px,calc(100dvh-8.5rem))] w-[min(380px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[20px] bg-white shadow-soft max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:top-auto max-sm:z-[60] max-sm:mb-0 max-sm:h-[min(88dvh,640px)] max-sm:w-full max-sm:rounded-b-none max-sm:rounded-t-[20px]"
+            className="pointer-events-auto mb-1 flex h-[min(560px,calc(100dvh-8.5rem))] w-[min(380px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[20px] bg-white shadow-soft touch-manipulation max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:top-auto max-sm:z-[60] max-sm:mb-0 max-sm:h-[min(88dvh,640px)] max-sm:w-full max-sm:rounded-b-none max-sm:rounded-t-[20px]"
             role="dialog"
             aria-label={t("monjezTitle")}
           >

@@ -2,67 +2,103 @@
 
 import { useEffect } from "react";
 
-let scrollLockCount = 0;
+/**
+ * Reference-counted body scroll lock.
+ *
+ * Critical mobile rules:
+ * - Never set `touch-action: none` on <body> (freezes taps/scroll after reopen).
+ * - Only apply/clear styles when the refcount crosses 0↔1 (nested locks safe).
+ * - Always clear fully on forceUnlock (route changes / bfcache).
+ */
+
+let lockCount = 0;
 let hideFabsCount = 0;
+let savedScrollY = 0;
 
 type Options = {
-  /** Hide floating chat/WhatsApp buttons (for page sheets/menus). Default true. */
+  /** Hide floating chat/WhatsApp buttons. Default true. */
   hideFabs?: boolean;
 };
 
-/** Locks document scroll while a mobile sheet/menu is open — unlocks cleanly on unmount. */
+function applyLock() {
+  const html = document.documentElement;
+  const body = document.body;
+  savedScrollY = window.scrollY || window.pageYOffset || 0;
+
+  html.dataset.sheetOpen = "true";
+  html.style.overflow = "hidden";
+  body.style.overflow = "hidden";
+  body.style.position = "fixed";
+  body.style.top = `-${savedScrollY}px`;
+  body.style.left = "0";
+  body.style.right = "0";
+  body.style.width = "100%";
+  // Do NOT set touch-action on body — it freezes mobile after lock/unlock cycles.
+}
+
+function clearLock() {
+  const html = document.documentElement;
+  const body = document.body;
+  const y = savedScrollY;
+
+  delete html.dataset.sheetOpen;
+  html.style.removeProperty("overflow");
+  body.style.removeProperty("overflow");
+  body.style.removeProperty("position");
+  body.style.removeProperty("top");
+  body.style.removeProperty("left");
+  body.style.removeProperty("right");
+  body.style.removeProperty("width");
+  body.style.removeProperty("touch-action");
+
+  window.scrollTo(0, y);
+  savedScrollY = 0;
+}
+
+function syncHideFabs() {
+  const html = document.documentElement;
+  if (hideFabsCount > 0) {
+    html.dataset.hideFabs = "true";
+  } else {
+    delete html.dataset.hideFabs;
+  }
+}
+
+/** Hard reset — call on route change / pageshow so a stuck lock never freezes the app. */
+export function forceUnlockBody() {
+  lockCount = 0;
+  hideFabsCount = 0;
+  clearLock();
+  syncHideFabs();
+}
+
 export function useBodyScrollLock(locked: boolean, options: Options = {}) {
   const hideFabs = options.hideFabs !== false;
 
   useEffect(() => {
     if (!locked) return;
 
-    const html = document.documentElement;
-    const body = document.body;
-    const scrollY = window.scrollY;
-
-    scrollLockCount += 1;
-    html.dataset.sheetOpen = "true";
+    const wasUnlocked = lockCount === 0;
+    lockCount += 1;
+    if (wasUnlocked) {
+      applyLock();
+    }
 
     if (hideFabs) {
       hideFabsCount += 1;
-      html.dataset.hideFabs = "true";
+      syncHideFabs();
     }
 
-    const prevHtmlOverflow = html.style.overflow;
-    const prevBodyOverflow = body.style.overflow;
-    const prevBodyPosition = body.style.position;
-    const prevBodyTop = body.style.top;
-    const prevBodyWidth = body.style.width;
-    const prevTouchAction = body.style.touchAction;
-
-    html.style.overflow = "hidden";
-    body.style.overflow = "hidden";
-    body.style.position = "fixed";
-    body.style.top = `-${scrollY}px`;
-    body.style.width = "100%";
-    body.style.touchAction = "none";
-
     return () => {
-      scrollLockCount = Math.max(0, scrollLockCount - 1);
-      if (scrollLockCount === 0) {
-        delete html.dataset.sheetOpen;
+      lockCount = Math.max(0, lockCount - 1);
+      if (lockCount === 0) {
+        clearLock();
       }
 
       if (hideFabs) {
         hideFabsCount = Math.max(0, hideFabsCount - 1);
-        if (hideFabsCount === 0) {
-          delete html.dataset.hideFabs;
-        }
+        syncHideFabs();
       }
-
-      html.style.overflow = prevHtmlOverflow;
-      body.style.overflow = prevBodyOverflow;
-      body.style.position = prevBodyPosition;
-      body.style.top = prevBodyTop;
-      body.style.width = prevBodyWidth;
-      body.style.touchAction = prevTouchAction;
-      window.scrollTo(0, scrollY);
     };
   }, [locked, hideFabs]);
 }
