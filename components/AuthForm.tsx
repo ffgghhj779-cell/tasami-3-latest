@@ -44,7 +44,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
         else setError(t("error"));
         return;
       }
-      router.push("/my-requests");
+      router.push(data?.user?.role === "ADMIN" ? "/admin" : "/my-requests");
       router.refresh();
     } catch {
       setError(t("error"));
@@ -132,7 +132,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
             />
           </label>
 
-          {error && <p className="text-sm text-[#8B3A1A]">{error}</p>}
+          {error && <p className="text-sm text-tasami-purple">{error}</p>}
 
           <button
             type="submit"

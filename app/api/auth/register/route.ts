@@ -6,11 +6,17 @@ import {
   hashPassword,
   normalizePhone,
 } from "@/lib/auth";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
+  const ip = clientIp(req);
+  if (!rateLimit(`register:${ip}`, { max: 5, windowMs: 60_000 })) {
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+  }
+
   let body: {
     name?: string;
     phone?: string;
@@ -34,6 +40,10 @@ export async function POST(req: NextRequest) {
       { error: "name, phone, and password (min 6) required" },
       { status: 400 }
     );
+  }
+
+  if (phone.length < 8) {
+    return NextResponse.json({ error: "Invalid phone" }, { status: 400 });
   }
 
   const existing = await prisma.user.findUnique({ where: { phone } });
@@ -62,6 +72,11 @@ export async function POST(req: NextRequest) {
     hi: Language.HI,
   };
 
+  const adminPhone = process.env.ADMIN_PHONE
+    ? normalizePhone(process.env.ADMIN_PHONE)
+    : "";
+  const role = adminPhone && phone === adminPhone ? "ADMIN" : "CLIENT";
+
   try {
     const customer = await prisma.customer.upsert({
       where: { phone },
@@ -88,7 +103,7 @@ export async function POST(req: NextRequest) {
         phone,
         email,
         password_hash,
-        role: "CLIENT",
+        role,
         customer_id: customer.id,
       },
     });

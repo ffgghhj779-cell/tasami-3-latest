@@ -7,7 +7,7 @@ import {
   TaskStatus,
 } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
-import { getSession, normalizePhone } from "@/lib/auth";
+import { getSession, normalizePhone, requireAdmin } from "@/lib/auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -198,13 +198,18 @@ export async function POST(req: NextRequest) {
   }
 }
 
-/** List requests — admin (all) or client (by phone) */
+/** List requests — admin (all) or logged-in client (own phone only) */
 export async function GET(req: NextRequest) {
   const phone = req.nextUrl.searchParams.get("phone");
   const admin = req.nextUrl.searchParams.get("admin") === "1";
 
   try {
     if (admin) {
+      const session = await requireAdmin();
+      if (!session) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      }
+
       const tasks = await prisma.task.findMany({
         take: 200,
         orderBy: { created_at: "desc" },
@@ -213,26 +218,41 @@ export async function GET(req: NextRequest) {
             select: { id: true, name: true, phone: true, language: true },
           },
           service: {
-            select: { id: true, name_ar: true, name_en: true, slug: true, category: true },
+            select: {
+              id: true,
+              name_ar: true,
+              name_en: true,
+              slug: true,
+              category: true,
+            },
           },
         },
       });
       return NextResponse.json({ requests: tasks });
     }
 
-    if (!phone) {
-      return NextResponse.json(
-        { error: "phone or admin=1 required" },
-        { status: 400 }
-      );
+    const session = await getSession();
+    if (!session) {
+      return NextResponse.json({ error: "Login required" }, { status: 401 });
     }
 
-    const normalized = normalizePhone(phone);
+    const requested = phone ? normalizePhone(phone) : session.phone;
+    if (normalizePhone(requested) !== normalizePhone(session.phone)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
     const customer = await prisma.customer.findUnique({
-      where: { phone: normalized },
+      where: { phone: normalizePhone(session.phone) },
     });
     if (!customer) {
-      return NextResponse.json({ requests: [] });
+      return NextResponse.json({
+        customer: {
+          id: null,
+          name: session.name,
+          phone: session.phone,
+        },
+        requests: [],
+      });
     }
 
     const tasks = await prisma.task.findMany({
@@ -263,6 +283,11 @@ type PatchBody = {
 };
 
 export async function PATCH(req: NextRequest) {
+  const session = await requireAdmin();
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   let body: PatchBody;
   try {
     body = (await req.json()) as PatchBody;

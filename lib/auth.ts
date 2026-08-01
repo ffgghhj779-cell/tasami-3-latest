@@ -16,10 +16,22 @@ export type SessionUser = {
 };
 
 function secretKey() {
-  const secret =
-    process.env.AUTH_SECRET ||
-    process.env.NEXTAUTH_SECRET ||
-    "tasami-dev-secret-change-me";
+  const secret = process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET;
+  if (!secret) {
+    if (process.env.NODE_ENV === "production") {
+      throw new Error(
+        "AUTH_SECRET is required in production. Set it in the environment."
+      );
+    }
+    // Dev-only fallback — never used in production
+    return new TextEncoder().encode("tasami-dev-only-not-for-production");
+  }
+  if (
+    process.env.NODE_ENV === "production" &&
+    secret.length < 32
+  ) {
+    throw new Error("AUTH_SECRET must be at least 32 characters in production.");
+  }
   return new TextEncoder().encode(secret);
 }
 
@@ -88,6 +100,12 @@ export async function getSession(): Promise<SessionUser | null> {
   } catch {
     return null;
   }
+}
+
+export async function requireAdmin(): Promise<SessionUser | null> {
+  const session = await getSession();
+  if (!session || session.role !== "ADMIN") return null;
+  return session;
 }
 
 export { COOKIE as SESSION_COOKIE };

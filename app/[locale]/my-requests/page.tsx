@@ -22,6 +22,7 @@ type MeUser = {
   id: string;
   name: string;
   phone: string;
+  role?: string;
 } | null;
 
 export default function MyRequestsPage() {
@@ -31,22 +32,22 @@ export default function MyRequestsPage() {
   const locale = useLocale();
   const router = useRouter();
   const [user, setUser] = useState<MeUser>(null);
-  const [phone, setPhone] = useState("");
+  const [authChecked, setAuthChecked] = useState(false);
   const [rows, setRows] = useState<RequestRow[]>([]);
   const [name, setName] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [searched, setSearched] = useState(false);
 
-  async function loadByPhone(p: string) {
+  async function loadMine() {
     setLoading(true);
     setError(null);
-    setSearched(true);
     try {
-      const res = await fetch(
-        `/api/requests?phone=${encodeURIComponent(p.trim())}`
-      );
+      const res = await fetch("/api/requests");
       const data = await res.json();
+      if (res.status === 401) {
+        setUser(null);
+        return;
+      }
       if (!res.ok) {
         setError(data.error || t("error"));
         setRows([]);
@@ -54,7 +55,6 @@ export default function MyRequestsPage() {
       }
       setName(data.customer?.name || null);
       setRows(data.requests || []);
-      localStorage.setItem("tasami_last_phone", p.trim());
     } catch {
       setError(t("error"));
     } finally {
@@ -66,33 +66,53 @@ export default function MyRequestsPage() {
     fetch("/api/auth/me")
       .then((r) => r.json())
       .then((data) => {
-        if (data?.user) {
-          setUser(data.user);
-          setPhone(data.user.phone);
-          loadByPhone(data.user.phone);
-        } else {
-          const saved = localStorage.getItem("tasami_last_phone");
-          if (saved) setPhone(saved);
-        }
+        setUser(data?.user || null);
+        setAuthChecked(true);
+        if (data?.user) loadMine();
       })
       .catch(() => {
-        const saved = localStorage.getItem("tasami_last_phone");
-        if (saved) setPhone(saved);
+        setUser(null);
+        setAuthChecked(true);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  async function lookup(e: React.FormEvent) {
-    e.preventDefault();
-    await loadByPhone(phone);
-  }
 
   async function logout() {
     await fetch("/api/auth/logout", { method: "POST" });
     setUser(null);
     setRows([]);
-    setSearched(false);
+    router.push("/login");
     router.refresh();
+  }
+
+  if (!authChecked) {
+    return (
+      <div className="surface-dotted flex min-h-screen items-center justify-center">
+        <p className="text-sm text-tasami-gray">{tAuth("loading")}</p>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="surface-dotted min-h-screen">
+        <div className="mx-auto max-w-md px-5 py-20 text-center">
+          <h1 className="font-display text-2xl text-tasami-purple">
+            {t("myTitle")}
+          </h1>
+          <span className="highlight-line mx-auto" />
+          <p className="mt-4 text-sm text-tasami-gray">{t("loginRequired")}</p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <Link href="/login" className="btn-secondary text-sm">
+              {tAuth("loginCta")}
+            </Link>
+            <Link href="/register" className="btn-primary text-sm">
+              {tAuth("registerCta")}
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -105,24 +125,13 @@ export default function MyRequestsPage() {
           >
             ← {t("backHome")}
           </Link>
-          {user ? (
-            <button
-              type="button"
-              onClick={logout}
-              className="text-sm font-medium text-tasami-gray hover:text-tasami-pink"
-            >
-              {tAuth("logout")}
-            </button>
-          ) : (
-            <div className="flex gap-3 text-sm">
-              <Link href="/login" className="font-medium text-tasami-pink">
-                {tAuth("loginLink")}
-              </Link>
-              <Link href="/register" className="text-tasami-gray hover:text-tasami-pink">
-                {tAuth("registerLink")}
-              </Link>
-            </div>
-          )}
+          <button
+            type="button"
+            onClick={logout}
+            className="text-sm font-medium text-tasami-gray hover:text-tasami-pink"
+          >
+            {tAuth("logout")}
+          </button>
         </div>
 
         <header className="mb-10">
@@ -131,46 +140,24 @@ export default function MyRequestsPage() {
           </h1>
           <span className="highlight-line" />
           <p className="mt-4 text-sm leading-relaxed text-tasami-gray">
-            {user ? t("mySubtitleLoggedIn") : t("mySubtitle")}
+            {t("mySubtitleLoggedIn")}
           </p>
         </header>
 
-        {!user && (
-          <form
-            onSubmit={lookup}
-            className="card-premium mb-8 flex flex-col gap-3 p-6 sm:flex-row sm:items-end"
-          >
-            <label className="block flex-1 text-xs font-medium text-tasami-purple">
-              {t("phone")}
-              <input
-                required
-                type="tel"
-                dir="ltr"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="input-soft mt-1.5"
-                placeholder="05xxxxxxxx"
-              />
-            </label>
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-secondary min-w-[140px] text-sm disabled:opacity-50"
-            >
-              {loading ? t("sending") : t("lookup")}
-            </button>
-          </form>
+        {loading && (
+          <p className="mb-4 text-sm text-tasami-gray">{tAuth("loading")}</p>
+        )}
+        {error && (
+          <p className="mb-4 text-sm text-tasami-purple/80">{error}</p>
         )}
 
-        {error && <p className="mb-4 text-sm text-[#8B3A1A]">{error}</p>}
-
-        {searched && !error && (
+        {!loading && !error && (
           <div className="space-y-4">
             {(name || user) && (
               <p className="text-sm text-tasami-gray">
                 {t("hello")}{" "}
                 <span className="font-medium text-tasami-purple">
-                  {name || user?.name}
+                  {name || user.name}
                 </span>
               </p>
             )}

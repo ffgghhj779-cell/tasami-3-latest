@@ -1,6 +1,8 @@
+import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import AdminSidebar from "@/components/admin/AdminSidebar";
+import { getSession } from "@/lib/auth";
 
 export default async function AdminLayout({
   children,
@@ -10,6 +12,14 @@ export default async function AdminLayout({
   params: { locale: string };
 }) {
   setRequestLocale(params.locale);
+
+  const session = await getSession();
+  if (!session) {
+    redirect(`/${params.locale}/login`);
+  }
+  if (session.role !== "ADMIN") {
+    redirect(`/${params.locale}/my-requests`);
+  }
 
   return (
     <div className="flex min-h-screen flex-col bg-tasami-offwhite md:flex-row">

@@ -5,11 +5,17 @@ import {
   normalizePhone,
   verifyPassword,
 } from "@/lib/auth";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
+  const ip = clientIp(req);
+  if (!rateLimit(`login:${ip}`, { max: 10, windowMs: 60_000 })) {
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+  }
+
   let body: { phone?: string; password?: string };
   try {
     body = await req.json();
@@ -28,12 +34,22 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const user = await prisma.user.findUnique({ where: { phone } });
+    let user = await prisma.user.findUnique({ where: { phone } });
     if (!user || !(await verifyPassword(password, user.password_hash))) {
       return NextResponse.json(
         { error: "Invalid credentials" },
         { status: 401 }
       );
+    }
+
+    const adminPhone = process.env.ADMIN_PHONE
+      ? normalizePhone(process.env.ADMIN_PHONE)
+      : "";
+    if (adminPhone && phone === adminPhone && user.role !== "ADMIN") {
+      user = await prisma.user.update({
+        where: { id: user.id },
+        data: { role: "ADMIN" },
+      });
     }
 
     await createSessionCookie({

@@ -13,7 +13,7 @@ export function customerStatusClass(status: CustomerStatus): string {
       return "bg-tasami-purple/8 text-tasami-gray";
     case "ANGRY":
     case "INACTIVE":
-      return "bg-tasami-pink/25 text-[#8B3A1A]";
+      return "bg-tasami-pink/25 text-tasami-purple";
     case "ARCHIVED":
       return "bg-tasami-purple/10 text-tasami-gray";
     default:
@@ -31,7 +31,7 @@ export function taskStatusClass(status: TaskStatus): string {
     case "WAITING":
       return "bg-tasami-gold/15 text-tasami-gray";
     case "CANCELLED":
-      return "bg-tasami-pink/25 text-[#8B3A1A]";
+      return "bg-tasami-pink/25 text-tasami-purple";
     case "PENDING":
     default:
       return "bg-tasami-purple/8 text-tasami-gray";

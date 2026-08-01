@@ -176,7 +176,7 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
                     م
                   </span>
                   <span
-                    className="absolute bottom-0 end-0 h-3 w-3 rounded-full border-2 border-tasami-purple bg-[#22C55E]"
+                    className="absolute bottom-0 end-0 h-3 w-3 rounded-full border-2 border-tasami-purple bg-tasami-gold"
                     title={t("monjezOnline")}
                   />
                 </div>
@@ -185,7 +185,7 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
                     منجز
                   </p>
                   <p className="flex items-center gap-1.5 text-[11px] text-white/65">
-                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#22C55E]" />
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-tasami-gold" />
                     {t("monjezOnline")}
                   </p>
                 </div>

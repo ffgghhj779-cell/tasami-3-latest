@@ -403,6 +403,7 @@
     "myTitle": "My Requests",
     "mySubtitle": "Enter your mobile number to see requests, or log in.",
     "mySubtitleLoggedIn": "Requests linked to your account.",
+    "loginRequired": "Log in to view your requests and track status securely.",
     "lookup": "Show requests",
     "emptyMy": "No requests found for this number.",
     "hello": "Hello",
@@ -619,7 +620,7 @@
   "admin": {
     "brand": "Tasami",
     "secretary": "Secretary Panel",
-    "mockAuth": "Mock access · Nafath protection later",
+    "mockAuth": "Protected access · Admins only",
     "backSite": "Back to site",
     "nav": {
       "dashboard": "Dashboard",

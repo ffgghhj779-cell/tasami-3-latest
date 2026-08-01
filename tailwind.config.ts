@@ -69,10 +69,11 @@ const config: Config = {
       },
       fontFamily: {
         tajawal: ["var(--font-tajawal)", "Tajawal", "sans-serif"],
-        inter: ["var(--font-inter)", "Inter", "sans-serif"],
+        latin: ["var(--font-latin)", "Manrope", "sans-serif"],
+        display: ["var(--font-display-latin)", "Cormorant Garamond", "Georgia", "serif"],
         hindi: ["var(--font-noto-devanagari)", "Noto Sans Devanagari", "sans-serif"],
         urdu: ["var(--font-noto-nastaliq)", "Noto Nastaliq Urdu", "serif"],
-        sans: ["var(--font-inter)", "Inter", "sans-serif"],
+        sans: ["var(--font-latin)", "Manrope", "sans-serif"],
       },
       borderRadius: {
         card: "16px",

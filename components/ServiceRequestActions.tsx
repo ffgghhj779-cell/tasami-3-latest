@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -133,6 +133,15 @@ export default function ServiceRequestActions({
     setDoneId(null);
     setError(null);
   }
+
+  useEffect(() => {
+    if (!open) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") close();
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   function openModal() {
     const saved = localStorage.getItem("tasami_last_phone");
@@ -402,7 +411,7 @@ export default function ServiceRequestActions({
                   </div>
 
                   {error && (
-                    <p className="text-sm text-[#8B3A1A]">{error}</p>
+                    <p className="text-sm text-tasami-purple">{error}</p>
                   )}
 
                   <button

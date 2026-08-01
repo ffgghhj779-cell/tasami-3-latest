@@ -70,46 +70,32 @@ export default async function HomePage({ params }: Props) {
       <section className="hero-premium relative min-h-[min(92vh,880px)]">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-hero-glow"
+          className="pointer-events-none absolute inset-0 bg-hero-glow opacity-70"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-24 top-24 h-72 w-72 animate-float-soft rounded-full bg-tasami-gold/20 blur-3xl"
+          className="pointer-events-none absolute -left-24 top-28 h-64 w-64 animate-float-soft rounded-full bg-tasami-gold/12 blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-16 bottom-20 h-80 w-80 rounded-full bg-tasami-pink/20 blur-3xl"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/3 h-40 w-[70%] -translate-x-1/2 rounded-full bg-white/5 blur-3xl"
+          className="pointer-events-none absolute -right-20 bottom-24 h-72 w-72 rounded-full bg-tasami-pink/10 blur-3xl"
         />
 
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-28 pt-24 text-center sm:px-8 sm:pb-32 sm:pt-28 lg:px-10 lg:pb-36 lg:pt-32">
-          {/* Trust pills */}
-          <div className="mb-8 flex flex-wrap items-center justify-center gap-2.5">
-            <span className="card-glass inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium text-white/90">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#22C55E]" />
-              {t("badgeTrusted")}
-            </span>
-            <span className="badge-gold">{t("badgeLang")}</span>
-            <span className="badge-gold">{t("badgeAi")}</span>
-          </div>
-
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-tasami-gold/90 sm:text-sm">
+          <p className="mb-5 text-xs font-medium uppercase tracking-[0.28em] text-tasami-gold/90 sm:text-sm">
             {t("eyebrow")}
           </p>
 
-          <h1 className="font-display max-w-4xl text-[2.75rem] text-white sm:text-6xl lg:text-7xl lg:leading-[1.05]">
+          <h1 className="font-display max-w-4xl text-[3.25rem] text-white sm:text-7xl lg:text-[5.5rem] lg:leading-[1.02]">
             {t("title")}
           </h1>
           <span className="highlight-line mx-auto !w-16 !bg-tasami-gold" />
 
-          <p className="mt-8 max-w-2xl text-base leading-[1.9] text-white/75 sm:text-xl sm:leading-relaxed">
+          <p className="mt-8 max-w-xl text-base leading-[1.9] text-white/75 sm:text-lg sm:leading-relaxed">
             {t("hero")}
           </p>
 
-          <div className="mt-12 flex w-full max-w-lg flex-col items-stretch gap-3.5 sm:max-w-none sm:w-auto sm:flex-row sm:items-center sm:justify-center sm:gap-4">
+          <div className="mt-12 flex w-full max-w-md flex-col items-stretch gap-3.5 sm:max-w-none sm:w-auto sm:flex-row sm:items-center sm:justify-center sm:gap-4">
             <Link
               href="/services/government"
               className="inline-flex min-h-[48px] min-w-[200px] items-center justify-center gap-2 rounded-button border-[1.5px] border-tasami-pink bg-transparent px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-tasami-pink/15"
