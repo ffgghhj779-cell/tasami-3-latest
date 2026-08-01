@@ -27,6 +27,7 @@ const TECH_LINKS = [
 
 export default function Footer() {
   const t = useTranslations("footer");
+  const tBrand = useTranslations("brand");
   const tGov = useTranslations("gov.items");
   const tTech = useTranslations("tech.items");
   const year = new Date().getFullYear();
@@ -43,7 +44,13 @@ export default function Footer() {
           {/* About */}
           <div>
             <div className="flex items-center gap-2.5">
-              <BrandLogo size={40} withWordmark wordmark={t("brand")} onDark />
+              <BrandLogo
+                size={42}
+                withWordmark
+                wordmark={tBrand("name")}
+                slogan={tBrand("slogan")}
+                onDark
+              />
             </div>
             <p className="mt-5 text-sm leading-relaxed text-white/65">
               {t("about")}

@@ -5,6 +5,8 @@ type BrandLogoProps = {
   /** Show wordmark next to mark */
   withWordmark?: boolean;
   wordmark?: string;
+  /** Short line under the brand name */
+  slogan?: string;
   /** Prefer light mark for dark purple backgrounds */
   onDark?: boolean;
 };
@@ -18,13 +20,14 @@ export default function BrandLogo({
   size = 40,
   withWordmark = false,
   wordmark = "تسامي",
+  slogan,
   onDark = true,
 }: BrandLogoProps) {
   const gold = "#E9C46A";
   const pink = "#F4A261";
-  const purple = "#2E1A47";
   const fill = onDark ? "rgba(233,196,106,0.16)" : "rgba(46,26,71,0.08)";
-  const wordColor = onDark ? "#FFFFFF" : purple;
+  const wordColor = onDark ? "#FFFFFF" : "#2E1A47";
+  const sloganColor = onDark ? "rgba(233,196,106,0.88)" : "#6C757D";
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
@@ -38,7 +41,6 @@ export default function BrandLogo({
         className="shrink-0"
       >
         <rect width="64" height="64" rx="14" fill={fill} />
-        {/* Ascending twin arcs — elevation */}
         <path
           d="M14 44 C22 44 26 28 32 18 C38 28 42 44 50 44"
           stroke={gold}
@@ -56,7 +58,6 @@ export default function BrandLogo({
           fill="none"
           opacity="0.9"
         />
-        {/* Refined ت baseline + dots */}
         <path
           d="M18 48 H46"
           stroke={gold}
@@ -67,11 +68,21 @@ export default function BrandLogo({
         <circle cx="36" cy="52.5" r="1.6" fill={gold} />
       </svg>
       {withWordmark && (
-        <span
-          className="text-xl font-light tracking-wide"
-          style={{ color: wordColor }}
-        >
-          {wordmark}
+        <span className="flex min-w-0 flex-col items-start leading-none">
+          <span
+            className="font-brand text-[1.35rem] font-normal tracking-[0.04em] sm:text-[1.45rem]"
+            style={{ color: wordColor }}
+          >
+            {wordmark}
+          </span>
+          {slogan ? (
+            <span
+              className="mt-1 max-w-[11rem] text-[0.62rem] font-medium uppercase leading-snug tracking-[0.18em] sm:max-w-none sm:tracking-[0.2em]"
+              style={{ color: sloganColor }}
+            >
+              {slogan}
+            </span>
+          ) : null}
         </span>
       )}
     </span>

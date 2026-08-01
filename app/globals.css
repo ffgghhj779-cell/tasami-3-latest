@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap");
 
 :root {
   --color-primary: #2e1a47;
@@ -21,6 +21,7 @@
   --font-tajawal: "Tajawal", sans-serif;
   --font-latin: "Manrope", sans-serif;
   --font-display-latin: "Cormorant Garamond", Georgia, serif;
+  --font-brand-ar: "Amiri", "Traditional Arabic", serif;
   --font-noto-devanagari: "Noto Sans Devanagari", sans-serif;
   --font-noto-nastaliq: "Noto Nastaliq Urdu", serif;
 
@@ -423,6 +424,26 @@
     font-family: var(--font-display-latin);
     font-weight: 400;
     letter-spacing: -0.01em;
+  }
+
+  /* Premium wordmark — Arabic literary serif / Latin editorial serif */
+  .font-brand {
+    font-family: var(--font-brand-ar);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  html[lang="en"] .font-brand,
+  html[lang="hi"] .font-brand {
+    font-family: var(--font-display-latin);
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0.06em;
+  }
+
+  html[lang="ur"] .font-brand {
+    font-family: var(--font-noto-nastaliq);
+    font-weight: 600;
   }
 
   .touch-target {
