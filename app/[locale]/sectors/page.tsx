@@ -131,7 +131,7 @@ function SectorModal({
 
   return (
     <motion.div
-      className="fixed inset-0 z-[60] flex items-end justify-center p-0 sm:items-center sm:p-5"
+      className="fixed inset-0 z-[70] flex items-stretch justify-center sm:items-center sm:p-5"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -140,7 +140,7 @@ function SectorModal({
       <button
         type="button"
         aria-label={t("close")}
-        className="absolute inset-0 bg-tasami-purple/40 sm:backdrop-blur-[2px]"
+        className="absolute inset-0 bg-tasami-purple/50"
         onClick={onClose}
       />
 
@@ -152,20 +152,20 @@ function SectorModal({
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
         transition={{ type: "spring", stiffness: 280, damping: 28 }}
-        className="scroll-touch relative z-10 max-h-[90dvh] w-full max-w-md overflow-y-auto rounded-t-[20px] bg-white shadow-soft sm:rounded-card"
+        className="sheet-panel relative z-10 flex h-[min(100dvh,100%)] max-h-[100dvh] w-full flex-col overflow-hidden rounded-none bg-white shadow-soft sm:h-auto sm:max-h-[min(90vh,720px)] sm:rounded-card"
       >
-        <div className="flex items-start justify-between gap-4 bg-tasami-purple px-6 py-5">
-          <div className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-button bg-tasami-gold/20">
+        <div className="flex shrink-0 items-start justify-between gap-4 bg-tasami-purple px-5 py-4 pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:py-5">
+          <div className="flex min-w-0 flex-1 items-center gap-3">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-button bg-tasami-gold/20">
               <ActiveIcon
                 weight="regular"
                 className="h-6 w-6 text-tasami-gold"
               />
             </span>
-            <div>
+            <div className="min-w-0">
               <h2
                 id="sector-modal-title"
-                className="text-lg font-light text-white"
+                className="truncate text-lg font-light text-white"
               >
                 {title}
               </h2>
@@ -178,13 +178,13 @@ function SectorModal({
             type="button"
             aria-label={t("close")}
             onClick={onClose}
-            className="touch-target flex items-center justify-center rounded-button p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+            className="touch-target shrink-0 flex items-center justify-center rounded-button p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
           >
             <X weight="bold" className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="space-y-4 p-6">
+        <div className="scroll-touch min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain px-5 py-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:px-6">
           <p className="text-sm leading-relaxed text-tasami-gray">
             {t(`items.${sectorKey}.desc`)}
           </p>

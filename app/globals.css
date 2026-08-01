@@ -43,6 +43,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
   }
 
   body {
@@ -58,6 +59,7 @@
     line-height: var(--leading-body);
     letter-spacing: 0.01em;
     overscroll-behavior-y: none;
+    overflow-x: clip;
   }
 
   button,
@@ -333,6 +335,25 @@
 
   .input-soft:focus {
     box-shadow: 0 0 0 2px rgba(244, 162, 97, 0.35), var(--shadow-soft);
+  }
+
+  /* Hide FABs while page sheets/menus are open — not while chat/WA themselves are open */
+  html[data-hide-fabs="true"] .fab-shell {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* Mobile bottom sheets: never let inner content overflow the viewport sideways */
+  .sheet-panel {
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  @media (min-width: 640px) {
+    .sheet-panel {
+      max-width: 28rem;
+    }
   }
 
   /* —— Trust bar —— */

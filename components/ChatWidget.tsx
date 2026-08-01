@@ -154,7 +154,7 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
   }
 
   return (
-    <div className="pointer-events-none fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] start-3 z-50 flex flex-col items-start gap-3 sm:bottom-8 sm:start-6">
+    <div className="fab-shell pointer-events-none fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] start-3 z-50 flex flex-col items-start gap-3 sm:bottom-8 sm:start-6">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -162,7 +162,7 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 16 }}
             transition={spring}
-            className="pointer-events-auto mb-1 flex h-[min(560px,calc(100dvh-8.5rem))] w-[min(380px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[20px] bg-white shadow-soft max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:top-auto max-sm:mb-0 max-sm:h-[min(85dvh,640px)] max-sm:w-full max-sm:rounded-b-none max-sm:rounded-t-[20px]"
+            className="pointer-events-auto mb-1 flex h-[min(560px,calc(100dvh-8.5rem))] w-[min(380px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[20px] bg-white shadow-soft max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:top-auto max-sm:z-[60] max-sm:mb-0 max-sm:h-[min(88dvh,640px)] max-sm:w-full max-sm:rounded-b-none max-sm:rounded-t-[20px]"
             role="dialog"
             aria-label={t("monjezTitle")}
           >

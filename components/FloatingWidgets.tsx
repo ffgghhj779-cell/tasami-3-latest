@@ -22,7 +22,7 @@ export default function FloatingWidgets() {
   const [waOpen, setWaOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
 
-  useBodyScrollLock(waOpen || chatOpen);
+  useBodyScrollLock(waOpen || chatOpen, { hideFabs: false });
 
   return (
     <>
@@ -35,7 +35,7 @@ export default function FloatingWidgets() {
       />
 
       {/* pointer-events-none on shell so empty space never blocks scroll */}
-      <div className="pointer-events-none fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] end-3 z-50 flex flex-col items-end gap-3 sm:bottom-8 sm:end-6">
+      <div className="fab-shell pointer-events-none fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] end-3 z-50 flex flex-col items-end gap-3 sm:bottom-8 sm:end-6">
         <AnimatePresence>
           {waOpen && (
             <motion.div
@@ -98,7 +98,9 @@ export default function FloatingWidgets() {
           }}
           whileTap={{ scale: 0.94 }}
           transition={spring}
-          className="pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-soft"
+          className={`pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-soft ${
+            chatOpen ? "max-sm:hidden" : ""
+          }`}
         >
           {waOpen ? (
             <X weight="bold" className="h-6 w-6" />
