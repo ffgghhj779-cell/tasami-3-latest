@@ -146,7 +146,12 @@
     "viewAll": "View all →",
     "rights": "All rights reserved.",
     "built": "Designed for Vision 2030, digitally.",
-    "legalDisclaimer": "All our services are delivered via official portals or licensed authorized agents under applicable regulations."
+    "legalDisclaimer": "All our services are delivered via official portals or licensed authorized agents under applicable regulations.",
+    "company": {
+      "cr": "CR",
+      "vat": "VAT No.",
+      "address": "Address"
+    }
   },
   "gov": {
     "eyebrow": "Services",
@@ -349,6 +354,9 @@
   "common": {
     "backHome": "Back to home"
   },
+  "a11y": {
+    "skip": "Skip to content"
+  },
   "auth": {
     "loginTitle": "Log in",
     "loginSubtitle": "Sign in to track your requests and transaction status.",
@@ -374,7 +382,22 @@
     "registerLink": "Sign up",
     "loginLink": "Log in",
     "logout": "Log out",
-    "backHome": "Back to home"
+    "backHome": "Back to home",
+    "forgotLink": "Forgot your password?",
+    "forgotTitle": "Reset your password",
+    "forgotSubtitle": "Enter your email or mobile number and we'll send you a reset link if an account exists.",
+    "forgotIdentifier": "Email or mobile number",
+    "forgotIdentifierPh": "you@email.com or 05xxxxxxxx",
+    "forgotCta": "Send reset link",
+    "forgotSent": "If an account exists, a reset link has been sent. Please check your email.",
+    "resetTitle": "Set a new password",
+    "resetSubtitle": "Choose a new password for your account.",
+    "resetConfirmPassword": "Confirm password",
+    "resetCta": "Reset password",
+    "resetSuccess": "Your password has been updated. You can now log in.",
+    "resetInvalidToken": "This reset link is invalid or has expired. Please request a new one.",
+    "resetPasswordShort": "Password must be at least 6 characters.",
+    "resetMismatch": "Passwords do not match."
   },
   "request": {
     "ctaSite": "Request service",
@@ -389,6 +412,9 @@
     "notes": "Request details",
     "notesPh": "Any extra details that matter for this transaction…",
     "serviceDetails": "Details for this service",
+    "attachments": "Attachments (optional)",
+    "attachmentsHint": "Up to 3 files — PDF, JPEG, PNG, or WebP, ~450KB each.",
+    "attachmentsError": "One or more files were skipped — check file type and size (max ~450KB each).",
     "requiredDocs": "Documents usually required",
     "selectPlaceholder": "Select…",
     "submit": "Submit request",
@@ -620,6 +646,66 @@
       }
     }
   },
+  "legal": {
+    "back": "Back to home",
+    "updated": "Last updated: {date}",
+    "privacy": {
+      "eyebrow": "Legal",
+      "title": "Privacy Policy",
+      "subtitle": "How Tasami collects, uses, and protects your information.",
+      "intro": "Tasami (\"we\", \"us\", \"our\") provides government and technology services to businesses and individuals in Saudi Arabia. This Privacy Policy explains what information we collect, why we collect it, and how we handle it when you use our website, WhatsApp channels, or Monjez assistant.",
+      "sections": {
+        "s1": {
+          "title": "1. Information We Collect",
+          "body": "We collect information you provide directly — such as your name, mobile number, email, national ID or commercial registration details, and any documents you share when requesting a service. We also collect basic technical data (device, browser, and usage patterns) to keep the platform secure and improve performance."
+        },
+        "s2": {
+          "title": "2. How We Use Your Information",
+          "body": "We use your information to process service requests, communicate updates via WhatsApp, email, or Monjez, verify your identity where required by law, and improve the quality and speed of our services. We do not sell your personal data to third parties."
+        },
+        "s3": {
+          "title": "3. Sharing With Official Platforms & Partners",
+          "body": "To complete government transactions, we may submit your information to official Saudi platforms (such as Absher, Qiwa, or Najiz) or licensed authorized agents acting on your behalf, strictly for the purpose of fulfilling your request and in line with applicable regulations."
+        },
+        "s4": {
+          "title": "4. Data Security & Retention",
+          "body": "We apply reasonable technical and organizational safeguards to protect your data against unauthorized access, loss, or misuse. We retain information only for as long as necessary to deliver our services and meet legal or regulatory obligations."
+        },
+        "s5": {
+          "title": "5. Your Rights & Contact",
+          "body": "You may request access to, correction of, or deletion of your personal information at any time by contacting us via WhatsApp or email below. We will respond to reasonable requests within a reasonable timeframe."
+        }
+      }
+    },
+    "terms": {
+      "eyebrow": "Legal",
+      "title": "Terms of Service",
+      "subtitle": "The terms that govern your use of Tasami's services.",
+      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the Tasami website, WhatsApp channels, and Monjez assistant. By requesting a service or using our platform, you agree to these Terms.",
+      "sections": {
+        "s1": {
+          "title": "1. Scope of Services",
+          "body": "Tasami facilitates government transactions and technology solutions on your behalf, either directly or through licensed authorized agents and official Saudi platforms. Availability, processing time, and requirements for each service depend on the relevant government or technical authority and may change without prior notice."
+        },
+        "s2": {
+          "title": "2. Client Responsibilities",
+          "body": "You are responsible for providing accurate, complete, and up-to-date information and documents. Delays, rejections, or additional fees resulting from incorrect or incomplete information provided by you are not the responsibility of Tasami."
+        },
+        "s3": {
+          "title": "3. Fees & Payment",
+          "body": "Service fees, where applicable, are communicated transparently before work begins, either via WhatsApp, Monjez, or our secretary team. Government fees, third-party charges, and taxes are separate from our service fees and are your responsibility."
+        },
+        "s4": {
+          "title": "4. Service Delivery & Timelines",
+          "body": "We aim to keep you informed at every stage of your request through your preferred channel. Estimated timelines are provided in good faith but are not guaranteed, as many transactions depend on external government or technical systems outside our control."
+        },
+        "s5": {
+          "title": "5. Limitation of Liability & Governing Law",
+          "body": "Tasami is not liable for delays, losses, or damages arising from circumstances beyond our reasonable control, including outages or changes at official government platforms. These Terms are governed by the laws of the Kingdom of Saudi Arabia, and any dispute shall be subject to the exclusive jurisdiction of its competent courts."
+        }
+      }
+    }
+  },
   "admin": {
     "brand": "Tasami",
     "secretary": "Secretary Panel",
@@ -630,7 +716,9 @@
       "requests": "Service Requests",
       "customers": "Customers",
       "conversations": "Conversations",
-      "tasks": "Tasks"
+      "tasks": "Tasks",
+      "campaigns": "Campaigns",
+      "reminders": "Reminders"
     },
     "requests": {
       "title": "Service Requests",
@@ -675,7 +763,14 @@
       "noConversations": "No conversations for this customer.",
       "back": "Back to customers",
       "notes": "Notes",
-      "segment": "Segment"
+      "segment": "Segment",
+      "editTitle": "Edit customer",
+      "email": "Email",
+      "emailPh": "example@email.com",
+      "editError": "Could not save changes. Try again.",
+      "editSaved": "Changes saved successfully.",
+      "save": "Save changes",
+      "saving": "Saving…"
     },
     "conversations": {
       "title": "Conversations",
@@ -685,7 +780,63 @@
       "sender": "Sender",
       "message": "Message",
       "time": "Time",
-      "empty": "No conversations yet."
+      "empty": "No conversations yet.",
+      "viewProfile": "View profile",
+      "replyTitle": "Secretary reply",
+      "replyCustomer": "Customer",
+      "replySelect": "Select a customer…",
+      "replyMessage": "Message",
+      "replyMessagePh": "Type your reply…",
+      "replySend": "Send reply",
+      "replySending": "Sending…",
+      "replyRequired": "Select a customer and enter a message.",
+      "replyError": "Could not send reply. Try again."
+    },
+    "campaigns": {
+      "title": "Campaigns",
+      "subtitle": "Manage outreach campaigns across channels.",
+      "refresh": "Refresh",
+      "error": "Something went wrong. Try again.",
+      "createTitle": "Create a new campaign",
+      "name": "Campaign name",
+      "namePh": "e.g. Quick setup offer",
+      "type": "Type",
+      "targetSegment": "Target segment",
+      "targetSegmentPh": "e.g. New customers",
+      "scheduledAt": "Scheduled at",
+      "messageTemplate": "Message template",
+      "messageTemplatePh": "Write the message sent to customers…",
+      "formRequired": "Name and message template are required.",
+      "saving": "Saving…",
+      "create": "Create campaign",
+      "status": "Status",
+      "actions": "Actions",
+      "empty": "No campaigns yet.",
+      "delete": "Delete",
+      "confirmDelete": "Delete this campaign?"
+    },
+    "reminders": {
+      "title": "Reminders",
+      "subtitle": "Track customer reminders — Iqama, CR expiry, and appointments.",
+      "refresh": "Refresh",
+      "error": "Something went wrong. Try again.",
+      "createTitle": "Add a reminder",
+      "customerPhone": "Customer phone",
+      "customerPhonePh": "05xxxxxxxx",
+      "type": "Type",
+      "date": "Reminder date",
+      "formRequired": "Phone number and reminder date are required.",
+      "saving": "Saving…",
+      "create": "Add reminder",
+      "customer": "Customer",
+      "phone": "Phone",
+      "sentStatus": "Status",
+      "sent": "Sent",
+      "pending": "Pending",
+      "actions": "Actions",
+      "empty": "No reminders yet.",
+      "delete": "Delete",
+      "confirmDelete": "Delete this reminder?"
     },
     "tasks": {
       "title": "Tasks",
@@ -718,6 +869,45 @@
       "SECRETARY": "Secretary",
       "AGENT": "Agent",
       "SYSTEM": "System"
+    },
+    "segment": {
+      "INDIVIDUAL": "Individual",
+      "COMPANY": "Company",
+      "FAMILY": "Family",
+      "STARTUP": "Startup",
+      "NONPROFIT": "Nonprofit",
+      "INVESTOR": "Investor",
+      "SME": "SME",
+      "ENTERPRISE": "Enterprise",
+      "GOVERNMENT": "Government"
+    },
+    "campaignType": {
+      "WELCOME": "Welcome",
+      "REMINDER": "Reminder",
+      "OFFER": "Offer",
+      "NATIONAL_DAY": "National day",
+      "WHATSAPP": "WhatsApp",
+      "SMS": "SMS",
+      "EMAIL": "Email",
+      "PUSH": "Push"
+    },
+    "campaignStatus": {
+      "DRAFT": "Draft",
+      "SCHEDULED": "Scheduled",
+      "RUNNING": "Running",
+      "PAUSED": "Paused",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled"
+    },
+    "reminderType": {
+      "IQAMA_EXPIRY": "Iqama expiry",
+      "CR_EXPIRY": "CR expiry",
+      "FOLLOW_UP": "Follow-up",
+      "PAYMENT": "Payment",
+      "DOCUMENT": "Document",
+      "APPOINTMENT": "Appointment",
+      "RENEWAL": "Renewal",
+      "CUSTOM": "Custom"
     }
   }
 }

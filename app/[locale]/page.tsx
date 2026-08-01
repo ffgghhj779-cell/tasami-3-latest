@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import {
   Buildings,
@@ -24,6 +25,7 @@ import {
   HOME_PROCESS_KEYS,
 } from "@/lib/content-keys";
 import { rtlLocales, type Locale } from "@/i18n";
+import { getWhatsAppUrl } from "@/lib/site";
 
 const CORE_META = {
   gov: { href: "/services/government", icon: Buildings },
@@ -65,11 +67,21 @@ export default async function HomePage({ params }: Props) {
   const tBrand = await getTranslations("brand");
   const isRtl = rtlLocales.includes(locale as Locale);
   const Arrow = isRtl ? ArrowLeft : ArrowRight;
+  const waUrl = getWhatsAppUrl();
 
   return (
     <div>
       {/* —— Hero —— */}
       <section className="hero-premium relative min-h-[min(88vh,820px)]">
+        <Image
+          src="/og-image.jpg"
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          sizes="100vw"
+          className="pointer-events-none object-cover opacity-10 sm:opacity-15"
+        />
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-hero-glow opacity-50 sm:opacity-70"
@@ -111,7 +123,7 @@ export default async function HomePage({ params }: Props) {
               <Arrow weight="bold" className="h-4 w-4" />
             </Link>
             <a
-              href="https://wa.me/966500000000"
+              href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary w-full sm:w-auto sm:min-w-[200px]"
@@ -275,7 +287,7 @@ export default async function HomePage({ params }: Props) {
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <a
-              href="https://wa.me/966500000000"
+              href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary min-w-[200px]"

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -24,7 +24,9 @@ import {
 } from "@phosphor-icons/react";
 import type { ComponentType, SVGProps } from "react";
 import { Link } from "@/navigation";
+import ServiceRequestActions from "@/components/ServiceRequestActions";
 import { SECTOR_KEYS, type SectorKey } from "@/lib/content-keys";
+import { SECTOR_PRICE_FROM, formatPriceFrom } from "@/lib/service-pricing";
 import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
 
 type PhosphorIcon = ComponentType<
@@ -55,6 +57,7 @@ const spring = { type: "spring" as const, stiffness: 260, damping: 24, mass: 0.8
 
 export default function SectorsPage() {
   const t = useTranslations("sectors");
+  const locale = useLocale();
   const [active, setActive] = useState<SectorKey | null>(null);
 
   return (
@@ -95,6 +98,9 @@ export default function SectorsPage() {
               <span className="text-sm font-medium text-tasami-purple">
                 {t(`items.${key}.title`)}
               </span>
+              <span className="text-[10px] font-medium text-tasami-gold">
+                {formatPriceFrom(SECTOR_PRICE_FROM[key], locale)}
+              </span>
             </button>
           );
         })}
@@ -118,8 +124,10 @@ function SectorModal({
   onClose: () => void;
 }) {
   const t = useTranslations("sectors");
+  const locale = useLocale();
   const ActiveIcon = SECTOR_ICONS[sectorKey];
   useBodyScrollLock(true);
+  const title = t(`items.${sectorKey}.title`);
 
   return (
     <motion.div
@@ -154,12 +162,17 @@ function SectorModal({
                 className="h-6 w-6 text-tasami-gold"
               />
             </span>
-            <h2
-              id="sector-modal-title"
-              className="text-lg font-light text-white"
-            >
-              {t(`items.${sectorKey}.title`)}
-            </h2>
+            <div>
+              <h2
+                id="sector-modal-title"
+                className="text-lg font-light text-white"
+              >
+                {title}
+              </h2>
+              <p className="mt-1 text-xs text-tasami-gold">
+                {formatPriceFrom(SECTOR_PRICE_FROM[sectorKey], locale)}
+              </p>
+            </div>
           </div>
           <button
             type="button"
@@ -171,12 +184,21 @@ function SectorModal({
           </button>
         </div>
 
-        <div className="space-y-6 p-6">
+        <div className="space-y-4 p-6">
           <p className="text-sm leading-relaxed text-tasami-gray">
             {t(`items.${sectorKey}.desc`)}
           </p>
 
-          <div className="flex flex-col gap-3 sm:flex-row">
+          <ServiceRequestActions
+            serviceSlug={`sector-${sectorKey}`}
+            serviceNameAr={title}
+            serviceNameEn={title}
+            category="sector"
+            subcategory={sectorKey}
+            priceFrom={SECTOR_PRICE_FROM[sectorKey]}
+          />
+
+          <div className="flex flex-col gap-3 border-t border-tasami-purple/8 pt-4 sm:flex-row">
             <Link
               href="/services/government"
               className="btn-primary flex-1 text-sm"

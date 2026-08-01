@@ -18,6 +18,7 @@ import {
 import { Link } from "@/navigation";
 import ServiceCard from "@/components/ServiceCard";
 import { GOV_KEYS, GOV_SLUGS, type GovKey } from "@/lib/content-keys";
+import { GOV_PRICE_FROM, formatPriceFrom } from "@/lib/service-pricing";
 import { rtlLocales, type Locale } from "@/i18n";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -89,6 +90,7 @@ export default async function GovernmentServicesPage({ params }: Props) {
               title={t(`items.${key}.title`)}
               description={t(`items.${key}.desc`)}
               cta={t("viewServices")}
+              meta={formatPriceFrom(GOV_PRICE_FROM[key], locale)}
               rtl={isRtl}
             />
           ))}

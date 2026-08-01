@@ -55,7 +55,7 @@ export default function ServiceCard({
             <span />
           )}
           {meta && (
-            <span className="text-[10px] font-medium uppercase tracking-wider text-tasami-gold">
+            <span className="text-[10px] font-medium tracking-wide text-tasami-gold">
               {meta}
             </span>
           )}

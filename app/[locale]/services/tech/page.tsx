@@ -14,6 +14,7 @@ import {
 import { Link } from "@/navigation";
 import ServiceCard from "@/components/ServiceCard";
 import { TECH_KEYS, TECH_SLUGS, type TechKey } from "@/lib/content-keys";
+import { TECH_PRICE_FROM, formatPriceFrom } from "@/lib/service-pricing";
 import { rtlLocales, type Locale } from "@/i18n";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -81,6 +82,7 @@ export default async function TechServicesPage({ params }: Props) {
               title={t(`items.${key}.title`)}
               description={t(`items.${key}.desc`)}
               cta={t("viewServices")}
+              meta={formatPriceFrom(TECH_PRICE_FROM[key], locale)}
               rtl={isRtl}
             />
           ))}

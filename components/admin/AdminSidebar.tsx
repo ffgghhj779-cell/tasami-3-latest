@@ -7,6 +7,8 @@ import {
   ChatCircleDots,
   CheckSquare,
   ClipboardText,
+  Megaphone,
+  BellRinging,
   ArrowLeft,
 } from "@phosphor-icons/react";
 import { Link, usePathname } from "@/navigation";
@@ -18,6 +20,8 @@ const NAV = [
   { href: "/admin/customers", key: "customers" as const, icon: Users, exact: false },
   { href: "/admin/conversations", key: "conversations" as const, icon: ChatCircleDots, exact: false },
   { href: "/admin/tasks", key: "tasks" as const, icon: CheckSquare, exact: false },
+  { href: "/admin/campaigns", key: "campaigns" as const, icon: Megaphone, exact: false },
+  { href: "/admin/reminders", key: "reminders" as const, icon: BellRinging, exact: false },
 ] as const;
 
 export default function AdminSidebar() {

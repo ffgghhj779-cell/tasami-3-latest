@@ -6,10 +6,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { WhatsappLogo, X } from "@phosphor-icons/react";
 import ChatWidget from "@/components/ChatWidget";
 import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
+import { whatsappUrl } from "@/lib/site";
 
-const WHATSAPP_URL =
-  "https://wa.me/966500000000?text=" +
-  encodeURIComponent("مرحباً، أرغب بالتواصل مع سكرتير تسامي");
+const WHATSAPP_URL = whatsappUrl("مرحباً، أرغب بالتواصل مع سكرتير تسامي");
 
 const spring = {
   type: "spring" as const,

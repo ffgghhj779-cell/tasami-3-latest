@@ -1,4 +1,9 @@
-import type { CustomerStatus, TaskStatus, Sender } from "@prisma/client";
+import type {
+  CustomerStatus,
+  TaskStatus,
+  Sender,
+  CampaignStatus,
+} from "@prisma/client";
 
 /** Brand-safe status tones (no default Tailwind blue/gray scales). */
 export function customerStatusClass(status: CustomerStatus): string {
@@ -36,6 +41,30 @@ export function taskStatusClass(status: TaskStatus): string {
     default:
       return "bg-tasami-purple/8 text-tasami-gray";
   }
+}
+
+export function campaignStatusClass(status: CampaignStatus): string {
+  switch (status) {
+    case "RUNNING":
+      return "bg-tasami-gold/25 text-tasami-purple";
+    case "SCHEDULED":
+      return "bg-tasami-pink/20 text-tasami-purple";
+    case "COMPLETED":
+      return "bg-tasami-gold/15 text-tasami-gray";
+    case "PAUSED":
+      return "bg-tasami-purple/8 text-tasami-gray";
+    case "CANCELLED":
+      return "bg-tasami-pink/25 text-tasami-purple";
+    case "DRAFT":
+    default:
+      return "bg-tasami-offwhite text-tasami-gray";
+  }
+}
+
+export function reminderToneClass(sent: boolean): string {
+  return sent
+    ? "bg-tasami-gold/15 text-tasami-gray"
+    : "bg-tasami-pink/20 text-tasami-purple";
 }
 
 export function StatusBadge({

@@ -8,31 +8,24 @@ import {
 } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { getSession, normalizePhone, requireAdmin } from "@/lib/auth";
+import { clientIp, rateLimitAsync } from "@/lib/rate-limit";
+import { notifyNewRequest, notifyRequestStatusChange } from "@/lib/notify";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-const RATE_WINDOW_MS = 60_000;
-const RATE_MAX = 30;
-const hits = new Map<string, { count: number; reset: number }>();
-
-function rateLimit(ip: string): boolean {
-  const now = Date.now();
-  const row = hits.get(ip);
-  if (!row || now > row.reset) {
-    hits.set(ip, { count: 1, reset: now + RATE_WINDOW_MS });
-    return true;
-  }
-  if (row.count >= RATE_MAX) return false;
-  row.count += 1;
-  return true;
-}
 
 const LOCALE_TO_LANG: Record<string, Language> = {
   ar: Language.AR,
   en: Language.EN,
   ur: Language.UR,
   hi: Language.HI,
+};
+
+type AttachmentIn = {
+  name?: string;
+  mime?: string;
+  size?: number;
+  dataBase64?: string;
 };
 
 type CreateBody = {
@@ -47,15 +40,31 @@ type CreateBody = {
   serviceNameEn?: string;
   category?: "government" | "tech" | "sector";
   subcategory?: string;
+  attachments?: AttachmentIn[];
+  priceFrom?: number;
 };
 
-export async function POST(req: NextRequest) {
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    req.headers.get("x-real-ip") ||
-    "unknown";
+const MAX_FILES = 3;
+const MAX_FILE_BYTES = 450_000; // ~450KB decoded
 
-  if (!rateLimit(ip)) {
+function sanitizeAttachments(raw: AttachmentIn[] | undefined) {
+  if (!raw?.length) return null;
+  const out = [];
+  for (const file of raw.slice(0, MAX_FILES)) {
+    const name = String(file.name || "file").slice(0, 120);
+    const mime = String(file.mime || "application/octet-stream").slice(0, 80);
+    const dataBase64 = String(file.dataBase64 || "");
+    const size = Number(file.size) || Math.floor((dataBase64.length * 3) / 4);
+    if (!dataBase64 || size > MAX_FILE_BYTES) continue;
+    if (!/^(image\/(jpeg|png|webp)|application\/pdf)$/.test(mime)) continue;
+    out.push({ name, mime, size, dataBase64 });
+  }
+  return out.length ? out : null;
+}
+
+export async function POST(req: NextRequest) {
+  const ip = clientIp(req);
+  if (!(await rateLimitAsync(`requests:${ip}`, { max: 30 }))) {
     return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
 
@@ -92,6 +101,8 @@ export async function POST(req: NextRequest) {
   };
   const category =
     categoryMap[body.category || "government"] ?? ServiceCategory.GOVERNMENT;
+
+  const attachments = sanitizeAttachments(body.attachments);
 
   try {
     const session = await getSession();
@@ -131,11 +142,13 @@ export async function POST(req: NextRequest) {
         subcategory: body.subcategory || null,
         description: serviceNameAr,
         slug: serviceSlug,
+        price_from: body.priceFrom ?? null,
       },
       update: {
         name_ar: serviceNameAr,
         name_en: serviceNameEn || serviceNameAr,
         subcategory: body.subcategory || undefined,
+        price_from: body.priceFrom ?? undefined,
       },
     });
 
@@ -144,12 +157,17 @@ export async function POST(req: NextRequest) {
         ? `\n---\nتفاصيل النموذج:\n${JSON.stringify(body.fields, null, 2)}`
         : "";
 
+    const attachNote = attachments?.length
+      ? `\nمرفقات: ${attachments.map((a) => a.name).join(", ")}`
+      : "";
+
     const notesParts = [
       `طلب خدمة من الموقع`,
       `الخدمة: ${serviceNameAr}`,
       body.subcategory ? `التصنيف: ${body.subcategory}` : null,
       body.notes?.trim() ? `\n${body.notes.trim()}` : null,
       fieldsBlock || null,
+      attachNote || null,
     ].filter(Boolean);
 
     const task = await prisma.task.create({
@@ -159,10 +177,11 @@ export async function POST(req: NextRequest) {
         status: TaskStatus.PENDING,
         assigned_to: "secretary",
         notes: notesParts.join("\n"),
+        attachments: attachments ?? undefined,
       },
       include: {
         service: true,
-        customer: { select: { id: true, name: true, phone: true } },
+        customer: { select: { id: true, name: true, phone: true, email: true } },
       },
     });
 
@@ -176,6 +195,14 @@ export async function POST(req: NextRequest) {
         sender: Sender.CUSTOMER,
         intent: "service_request",
       },
+    });
+
+    void notifyNewRequest({
+      customerName: customer.name,
+      customerPhone: customer.phone,
+      customerEmail: customer.email,
+      serviceName: serviceNameAr,
+      requestId: task.id,
     });
 
     return NextResponse.json({
@@ -215,7 +242,7 @@ export async function GET(req: NextRequest) {
         orderBy: { created_at: "desc" },
         include: {
           customer: {
-            select: { id: true, name: true, phone: true, language: true },
+            select: { id: true, name: true, phone: true, language: true, email: true },
           },
           service: {
             select: {
@@ -224,6 +251,7 @@ export async function GET(req: NextRequest) {
               name_en: true,
               slug: true,
               category: true,
+              price_from: true,
             },
           },
         },
@@ -260,7 +288,13 @@ export async function GET(req: NextRequest) {
       orderBy: { created_at: "desc" },
       include: {
         service: {
-          select: { name_ar: true, name_en: true, slug: true, category: true },
+          select: {
+            name_ar: true,
+            name_en: true,
+            slug: true,
+            category: true,
+            price_from: true,
+          },
         },
       },
     });
@@ -303,6 +337,17 @@ export async function PATCH(req: NextRequest) {
   }
 
   try {
+    const prev = await prisma.task.findUnique({
+      where: { id: body.requestId },
+      include: {
+        customer: true,
+        service: true,
+      },
+    });
+    if (!prev) {
+      return NextResponse.json({ error: "Not found" }, { status: 404 });
+    }
+
     const task = await prisma.task.update({
       where: { id: body.requestId },
       data: {
@@ -310,7 +355,37 @@ export async function PATCH(req: NextRequest) {
         assigned_to: body.assigned_to,
         notes: body.notes,
       },
+      include: {
+        customer: true,
+        service: true,
+      },
     });
+
+    if (prev.status !== body.status) {
+      const notify = await notifyRequestStatusChange({
+        customerName: task.customer.name,
+        customerPhone: task.customer.phone,
+        customerEmail: task.customer.email,
+        serviceName: task.service?.name_ar || "خدمة",
+        status: task.status,
+        requestId: task.id,
+      });
+
+      await prisma.conversation.create({
+        data: {
+          customer_id: task.customer_id,
+          channel: Channel.SITE,
+          message: `تحديث حالة الطلب إلى ${task.status}${
+            notify.whatsappLink && notify.whatsappLink !== "#"
+              ? ` — واتساب: ${notify.whatsappLink}`
+              : ""
+          }`,
+          sender: Sender.SYSTEM,
+          intent: "status_update",
+        },
+      });
+    }
+
     return NextResponse.json({ ok: true, request: task });
   } catch (err) {
     console.error("[requests] patch failed:", err);

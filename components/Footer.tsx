@@ -10,6 +10,7 @@ import {
 } from "@phosphor-icons/react";
 import { Link } from "@/navigation";
 import BrandLogo from "@/components/BrandLogo";
+import { getCompanyInfo, getContactEmail, whatsappUrl } from "@/lib/site";
 
 const GOV_LINKS = [
   "passports",
@@ -31,6 +32,8 @@ export default function Footer() {
   const tGov = useTranslations("gov.items");
   const tTech = useTranslations("tech.items");
   const year = new Date().getFullYear();
+  const company = getCompanyInfo();
+  const contactEmail = getContactEmail();
 
   return (
     <footer className="relative border-t border-tasami-purple/8 bg-tasami-purple text-white">
@@ -57,23 +60,33 @@ export default function Footer() {
             </p>
             <div className="mt-6 flex flex-col gap-2.5 text-sm text-white/70">
               <a
-                href="https://wa.me/966500000000"
+                href={whatsappUrl()}
                 className="inline-flex items-center gap-2 hover:text-tasami-pink"
               >
                 <WhatsappLogo weight="fill" className="h-4 w-4 text-tasami-gold" />
                 {t("whatsapp")}
               </a>
               <a
-                href="mailto:hello@tasami.sa"
+                href={`mailto:${contactEmail}`}
                 className="inline-flex items-center gap-2 hover:text-tasami-pink"
               >
                 <EnvelopeSimple weight="regular" className="h-4 w-4 text-tasami-gold" />
-                hello@tasami.sa
+                {contactEmail}
               </a>
               <span className="inline-flex items-center gap-2">
                 <Phone weight="regular" className="h-4 w-4 text-tasami-gold" />
                 {t("hours")}
               </span>
+            </div>
+
+            <div className="mt-6 space-y-1.5 border-t border-white/10 pt-5 text-xs text-white/45">
+              <p>
+                {t("company.cr")}: {company.cr}
+              </p>
+              <p>
+                {t("company.vat")}: {company.vat}
+              </p>
+              <p>{company.address}</p>
             </div>
           </div>
 
@@ -156,14 +169,24 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <span className="text-sm text-white/60">{t("privacy")}</span>
+                <Link
+                  href="/privacy"
+                  className="text-sm text-white/60 transition-colors hover:text-tasami-pink"
+                >
+                  {t("privacy")}
+                </Link>
               </li>
               <li>
-                <span className="text-sm text-white/60">{t("terms")}</span>
+                <Link
+                  href="/terms"
+                  className="text-sm text-white/60 transition-colors hover:text-tasami-pink"
+                >
+                  {t("terms")}
+                </Link>
               </li>
               <li>
                 <a
-                  href="https://wa.me/966500000000"
+                  href={whatsappUrl()}
                   className="inline-flex min-h-[44px] items-center rounded-button bg-tasami-pink px-4 py-2.5 text-sm font-medium text-white shadow-soft transition-opacity hover:opacity-90"
                 >
                   {t("contactCta")}

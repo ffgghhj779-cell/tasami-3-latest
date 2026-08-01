@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "@/navigation";
 import { GOV_KEYS, GOV_SLUGS, type GovKey } from "@/lib/content-keys";
+import { GOV_PRICE_FROM } from "@/lib/service-pricing";
 import { buildPageMetadata } from "@/lib/seo";
 import ServiceRequestActions, {
   MonjezHint,
@@ -115,6 +116,7 @@ export default async function GovernmentCategoryPage({ params }: Props) {
               serviceNameEn={titleEn}
               category="government"
               subcategory={key}
+              priceFrom={GOV_PRICE_FROM[key]}
             />
             <MonjezHint />
           </article>

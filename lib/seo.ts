@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getWhatsAppUrl } from "@/lib/site";
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://tasami.sa";
@@ -82,6 +83,7 @@ export function buildPageMetadata({
 }
 
 export function organizationJsonLd() {
+  const waUrl = getWhatsAppUrl();
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -90,15 +92,13 @@ export function organizationJsonLd() {
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     description: DEFAULT_DESCRIPTION_AR,
-    sameAs: [
-      "https://wa.me/966500000000",
-    ],
+    sameAs: waUrl === "#" ? [] : [waUrl],
     contactPoint: [
       {
         "@type": "ContactPoint",
         contactType: "customer service",
         availableLanguage: ["ar", "en", "ur", "hi"],
-        url: "https://wa.me/966500000000",
+        url: waUrl,
       },
     ],
     areaServed: {

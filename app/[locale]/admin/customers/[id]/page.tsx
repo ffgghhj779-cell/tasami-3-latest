@@ -9,6 +9,7 @@ import {
   formatDate,
   senderBubbleClass,
 } from "@/components/admin/StatusBadge";
+import CustomerEditForm from "./CustomerEditForm";
 
 type Props = { params: { locale: string; id: string } };
 
@@ -92,6 +93,14 @@ export default async function AdminCustomerDetailPage({ params }: Props) {
           </div>
         )}
       </header>
+
+      <CustomerEditForm
+        customerId={customer.id}
+        initialStatus={customer.status}
+        initialSegment={customer.segment}
+        initialNotes={customer.notes}
+        initialEmail={customer.email}
+      />
 
       <section className="card-soft overflow-hidden">
         <div className="border-b border-tasami-purple/5 px-6 py-4">

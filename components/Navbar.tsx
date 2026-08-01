@@ -17,6 +17,7 @@ import { Link, usePathname } from "@/navigation";
 import { locales, type Locale } from "@/i18n";
 import BrandLogo from "@/components/BrandLogo";
 import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
+import { whatsappUrl } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "/services/government", key: "government" as const, icon: Buildings },
@@ -24,9 +25,7 @@ const NAV_LINKS = [
   { href: "/sectors", key: "sectors" as const, icon: SquaresFour },
 ] as const;
 
-const WHATSAPP_URL =
-  "https://wa.me/966500000000?text=" +
-  encodeURIComponent("مرحباً، أرغب بالتواصل مع سكرتير تسامي");
+const WHATSAPP_URL = whatsappUrl("مرحباً، أرغب بالتواصل مع سكرتير تسامي");
 
 const springSoft = { type: "spring" as const, stiffness: 280, damping: 26 };
 

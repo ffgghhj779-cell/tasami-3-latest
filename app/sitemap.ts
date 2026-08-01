@@ -3,7 +3,16 @@ import { locales } from "@/i18n";
 import { GOV_SLUGS, TECH_SLUGS } from "@/lib/content-keys";
 import { SITE_URL } from "@/lib/seo";
 
-const STATIC = ["", "/services/government", "/services/tech", "/sectors", "/login", "/register"];
+const STATIC = [
+  "",
+  "/services/government",
+  "/services/tech",
+  "/sectors",
+  "/login",
+  "/register",
+  "/privacy",
+  "/terms",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

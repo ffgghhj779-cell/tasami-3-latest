@@ -147,6 +147,15 @@ export default function AuthForm({ mode }: { mode: Mode }) {
                 ? t("loginCta")
                 : t("registerCta")}
           </button>
+
+          {mode === "login" && (
+            <Link
+              href="/forgot-password"
+              className="block text-center text-xs font-medium text-tasami-gray hover:text-tasami-pink"
+            >
+              {t("forgotLink")}
+            </Link>
+          )}
         </form>
 
         <p className="mt-6 text-center text-sm text-tasami-gray">

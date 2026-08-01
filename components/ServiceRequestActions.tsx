@@ -17,6 +17,7 @@ import {
   type ServiceField,
 } from "@/lib/service-forms";
 import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
+import { whatsappUrl } from "@/lib/site";
 
 const spring = {
   type: "spring" as const,
@@ -25,15 +26,36 @@ const spring = {
   mass: 0.75,
 };
 
-const WHATSAPP_BASE = "https://wa.me/966500000000?text=";
-
 type Props = {
   serviceSlug: string;
   serviceNameAr: string;
   serviceNameEn: string;
   category?: "government" | "tech" | "sector";
   subcategory?: string;
+  priceFrom?: number;
 };
+
+const MAX_FILES = 3;
+const MAX_FILE_BYTES = 450 * 1024; // ~450KB
+const ALLOWED_MIME = [
+  "application/pdf",
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+];
+
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = String(reader.result || "");
+      const commaIdx = result.indexOf(",");
+      resolve(commaIdx >= 0 ? result.slice(commaIdx + 1) : result);
+    };
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
 
 export default function ServiceRequestActions({
   serviceSlug,
@@ -41,6 +63,7 @@ export default function ServiceRequestActions({
   serviceNameEn,
   category = "government",
   subcategory,
+  priceFrom,
 }: Props) {
   const t = useTranslations("request");
   const locale = useLocale();
@@ -55,16 +78,16 @@ export default function ServiceRequestActions({
     email: "",
   });
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [files, setFiles] = useState<File[]>([]);
+  const [fileError, setFileError] = useState<string | null>(null);
 
   useBodyScrollLock(open);
 
-  const waUrl =
-    WHATSAPP_BASE +
-    encodeURIComponent(
-      locale === "ar"
-        ? `مرحباً، أرغب بطلب خدمة: ${serviceNameAr}`
-        : `Hello, I would like to request: ${serviceNameEn}`
-    );
+  const waUrl = whatsappUrl(
+    locale === "ar"
+      ? `مرحباً، أرغب بطلب خدمة: ${serviceNameAr}`
+      : `Hello, I would like to request: ${serviceNameEn}`
+  );
 
   function fieldLabel(id: string) {
     return t(`fields.${id}`);
@@ -82,6 +105,32 @@ export default function ServiceRequestActions({
     setAnswers((a) => ({ ...a, [id]: value }));
   }
 
+  function handleFilesChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const selected = Array.from(e.target.files || []);
+    e.target.value = "";
+    if (!selected.length) return;
+
+    setFileError(null);
+    const valid: File[] = [];
+    for (const file of selected) {
+      if (!ALLOWED_MIME.includes(file.type)) {
+        setFileError(t("attachmentsError"));
+        continue;
+      }
+      if (file.size > MAX_FILE_BYTES) {
+        setFileError(t("attachmentsError"));
+        continue;
+      }
+      valid.push(file);
+    }
+
+    setFiles((prev) => [...prev, ...valid].slice(0, MAX_FILES));
+  }
+
+  function removeFile(idx: number) {
+    setFiles((prev) => prev.filter((_, i) => i !== idx));
+  }
+
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
@@ -95,6 +144,17 @@ export default function ServiceRequestActions({
     );
 
     try {
+      const attachments = files.length
+        ? await Promise.all(
+            files.map(async (file) => ({
+              name: file.name,
+              mime: file.type,
+              size: file.size,
+              dataBase64: await fileToBase64(file),
+            }))
+          )
+        : undefined;
+
       const res = await fetch("/api/requests", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -108,6 +168,8 @@ export default function ServiceRequestActions({
           serviceNameEn,
           category,
           subcategory,
+          priceFrom,
+          attachments,
         }),
       });
 
@@ -135,6 +197,8 @@ export default function ServiceRequestActions({
     setOpen(false);
     setDoneId(null);
     setError(null);
+    setFiles([]);
+    setFileError(null);
   }
 
   useEffect(() => {
@@ -411,6 +475,50 @@ export default function ServiceRequestActions({
                     <div className="space-y-3.5">
                       {formDef.fields.map(renderField)}
                     </div>
+                  </div>
+
+                  <div className="border-t border-tasami-purple/8 pt-3">
+                    <label className="block text-xs font-medium text-tasami-purple">
+                      {t("attachments")}
+                      <input
+                        type="file"
+                        multiple
+                        accept="application/pdf,image/jpeg,image/png,image/webp"
+                        onChange={handleFilesChange}
+                        disabled={files.length >= MAX_FILES}
+                        className="input-soft mt-1.5 cursor-pointer text-xs file:me-3 file:cursor-pointer file:rounded-button file:border-0 file:bg-tasami-purple/10 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-tasami-purple disabled:cursor-not-allowed disabled:opacity-50"
+                      />
+                    </label>
+                    <p className="mt-1.5 text-[11px] text-tasami-gray">
+                      {t("attachmentsHint")}
+                    </p>
+
+                    {files.length > 0 && (
+                      <ul className="mt-2 space-y-1.5">
+                        {files.map((file, idx) => (
+                          <li
+                            key={`${file.name}-${idx}`}
+                            className="flex items-center justify-between gap-2 rounded-button bg-tasami-offwhite px-3 py-1.5 text-[11px] text-tasami-purple"
+                          >
+                            <span className="truncate">{file.name}</span>
+                            <button
+                              type="button"
+                              onClick={() => removeFile(idx)}
+                              className="touch-target shrink-0 rounded-button p-1 text-tasami-gray hover:text-tasami-pink"
+                              aria-label={t("close")}
+                            >
+                              <X weight="bold" className="h-3 w-3" />
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {fileError && (
+                      <p className="mt-1.5 text-[11px] text-tasami-purple">
+                        {fileError}
+                      </p>
+                    )}
                   </div>
 
                   {error && (

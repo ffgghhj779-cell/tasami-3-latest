@@ -137,7 +137,8 @@ model User {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  customer Customer? @relation(fields: [customer_id], references: [id], onDelete: SetNull)
+  customer     Customer?            @relation(fields: [customer_id], references: [id], onDelete: SetNull)
+  reset_tokens PasswordResetToken[]
 
   @@index([role])
   @@map("users")
@@ -223,6 +224,8 @@ model Task {
   assigned_to String?
   due_date    DateTime?
   notes       String?
+  /// Uploaded docs: [{ name, mime, size, dataBase64 }]
+  attachments Json?
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -236,6 +239,32 @@ model Task {
   @@index([assigned_to])
   @@index([due_date])
   @@map("tasks")
+}
+
+model RateLimit {
+  id       String   @id @default(cuid())
+  key      String   @unique
+  count    Int      @default(0)
+  reset_at DateTime
+
+  @@index([reset_at])
+  @@map("rate_limits")
+}
+
+model PasswordResetToken {
+  id         String   @id @default(cuid())
+  user_id    String
+  token_hash String   @unique
+  expires_at DateTime
+  used       Boolean  @default(false)
+
+  created_at DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id])
+  @@index([expires_at])
+  @@map("password_reset_tokens")
 }
 
 model Campaign {

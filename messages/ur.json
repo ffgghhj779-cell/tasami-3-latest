@@ -1,21 +1,21 @@
 {
   "brand": {
-    "name": "Tasami",
-    "letter": "T",
-    "slogan": "Simply done"
+    "name": "تسامی",
+    "letter": "ت",
+    "slogan": "سادگی سے مکمل"
   },
   "nav": {
-    "government": "Government",
-    "tech": "Tech",
-    "sectors": "Sectors",
-    "whatsapp": "WhatsApp",
-    "whatsappMobile": "Chat on WhatsApp",
-    "login": "Log in",
-    "register": "Sign up",
-    "account": "My account",
-    "changeLanguage": "Change language",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "government": "حکومتی",
+    "tech": "تکنیکی",
+    "sectors": "شعبے",
+    "whatsapp": "واٹس ایپ",
+    "whatsappMobile": "واٹس ایپ پر بات کریں",
+    "login": "لاگ ان",
+    "register": "سائن اپ",
+    "account": "میرا اکاؤنٹ",
+    "changeLanguage": "زبان تبدیل کریں",
+    "openMenu": "مینو کھولیں",
+    "closeMenu": "مینو بند کریں"
   },
   "languages": {
     "ar": "العربية",
@@ -24,700 +24,887 @@
     "hi": "हिन्दी"
   },
   "trust": {
-    "message": "We are certified and trusted",
-    "messageMobile": "نحن معتمدون وموثوقون · We are certified and trusted",
-    "aria": "Trusted Saudi platforms",
+    "message": "ہم مصدقہ اور قابلِ اعتماد ہیں",
+    "messageMobile": "ہم مصدقہ اور قابلِ اعتماد ہیں · We are certified and trusted",
+    "aria": "قابلِ اعتماد سعودی پلیٹ فارمز",
     "platforms": {
-      "absher": "Absher",
-      "qiwa": "Qiwa",
-      "commerce": "Ministry of Commerce",
-      "balady": "Balady",
-      "zakat": "Zakat",
-      "nafith": "Nafith",
-      "absherBusiness": "Absher Business",
+      "absher": "ابشر",
+      "qiwa": "قوی",
+      "commerce": "وزارتِ تجارت",
+      "balady": "بلدی",
+      "zakat": "زکوٰۃ",
+      "nafith": "نافذ",
+      "absherBusiness": "ابشر بزنس",
       "gosi": "GOSI",
-      "najiz": "Najiz",
-      "sehaty": "Sehaty",
-      "ejar": "Ejar",
-      "mudad": "Mudad",
-      "musaned": "Musaned",
-      "subul": "Subul",
-      "nusuk": "Nusuk",
-      "meras": "Meras",
-      "monshaat": "Monshaat",
+      "najiz": "ناجز",
+      "sehaty": "صحتی",
+      "ejar": "ایجار",
+      "mudad": "مدد",
+      "musaned": "مساند",
+      "subul": "سبل",
+      "nusuk": "نسک",
+      "meras": "میراس",
+      "monshaat": "منشآت",
       "misa": "MISA"
     }
   },
   "home": {
-    "eyebrow": "Tasami",
-    "title": "We finish your transactions — simply",
-    "hero": "Government and tech in one clear path — fast, calm, and in four languages.",
-    "ctaGov": "Browse services",
-    "ctaTech": "WhatsApp direct",
-    "ctaWhatsapp": "WhatsApp direct",
-    "offerTitle": "What we offer",
-    "coreCountGov": "13 services",
-    "coreCountTech": "9 services",
-    "coreCountSectors": "15 sectors",
-    "offerSubtitle": "Three clear paths — pick what your business needs and we handle the rest.",
-    "whyTitle": "Why Tasami?",
-    "whySubtitle": "Built to feel simple for clients, and operate with elite precision behind the scenes.",
-    "badgeTrusted": "Trusted by Saudi businesses",
-    "badgeLang": "4 languages",
-    "badgeAi": "Monjez 24/7",
-    "processTitle": "How it works",
-    "processSubtitle": "Just three steps from request to delivery.",
+    "eyebrow": "تسامی",
+    "title": "ہم آپ کے معاملات سادگی سے مکمل کرتے ہیں",
+    "hero": "حکومتی اور تکنیکی خدمات ایک واضح راستے پر — تیز، پرسکون، اور چار زبانوں میں۔",
+    "ctaGov": "خدمات دیکھیں",
+    "ctaTech": "براہ راست واٹس ایپ",
+    "ctaWhatsapp": "براہ راست واٹس ایپ",
+    "offerTitle": "ہم کیا پیش کرتے ہیں",
+    "coreCountGov": "13 خدمات",
+    "coreCountTech": "9 خدمات",
+    "coreCountSectors": "15 شعبے",
+    "offerSubtitle": "تین واضح راستے — اپنے کاروبار کی ضرورت منتخب کریں، باقی ہم سنبھال لیں گے۔",
+    "whyTitle": "تسامی کیوں؟",
+    "whySubtitle": "کلائنٹس کے لیے سادہ اور پسِ پردہ اعلیٰ درستگی کے ساتھ کام کرنے کے لیے تیار کیا گیا۔",
+    "badgeTrusted": "سعودی کاروباروں کا اعتماد",
+    "badgeLang": "4 زبانیں",
+    "badgeAi": "منجز 24/7",
+    "processTitle": "یہ کیسے کام کرتا ہے",
+    "processSubtitle": "درخواست سے تکمیل تک صرف تین مراحل۔",
     "process": {
       "one": {
-        "title": "Tell us what you need",
-        "desc": "Via WhatsApp or Monjez — in Arabic, English, Urdu, or Hindi."
+        "title": "ہمیں اپنی ضرورت بتائیں",
+        "desc": "واٹس ایپ یا منجز کے ذریعے — عربی، انگریزی، اردو، یا ہندی میں۔"
       },
       "two": {
-        "title": "We map the path",
-        "desc": "Government, tech, or sector-specific — with a clear plan and transparent pricing."
+        "title": "ہم راستہ طے کرتے ہیں",
+        "desc": "حکومتی، تکنیکی، یا شعبہ جاتی — واضح منصوبے اور شفاف قیمت کے ساتھ۔"
       },
       "three": {
-        "title": "We deliver & update you",
-        "desc": "Continuous follow-up until the transaction or tech solution is complete."
+        "title": "ہم مکمل کر کے آپ کو آگاہ کرتے ہیں",
+        "desc": "معاملہ یا تکنیکی حل مکمل ہونے تک مسلسل پیروی۔"
       }
     },
-    "langsTitle": "We speak your language",
-    "langsSubtitle": "Interface and support in four languages for your whole team.",
-    "ctaBandTitle": "Ready to start?",
-    "ctaBandSubtitle": "Tasami’s team and Monjez are here — absolute simplicity, premium quality.",
-    "ctaBandAction": "Talk to the Secretary",
+    "langsTitle": "ہم آپ کی زبان بولتے ہیں",
+    "langsSubtitle": "آپ کی پوری ٹیم کے لیے چار زبانوں میں انٹرفیس اور معاونت۔",
+    "ctaBandTitle": "شروع کرنے کے لیے تیار ہیں؟",
+    "ctaBandSubtitle": "تسامی کی ٹیم اور منجز حاضر ہیں — مکمل سادگی، اعلیٰ معیار۔",
+    "ctaBandAction": "سیکرٹری سے بات کریں",
     "core": {
       "gov": {
-        "title": "Government Services",
-        "desc": "Setup, licensing, and compliance via certified official platforms — from Absher to Najiz and Monshaat.",
-        "cta": "Explore services"
+        "title": "حکومتی خدمات",
+        "desc": "تصدیق شدہ سرکاری پلیٹ فارمز کے ذریعے قیام، لائسنسنگ، اور تعمیل — ابشر سے ناجز اور منشآت تک۔",
+        "cta": "خدمات دریافت کریں"
       },
       "tech": {
-        "title": "Tech Solutions",
-        "desc": "Websites, apps, automation, and AI at an enterprise standard that matches your brand.",
-        "cta": "Explore solutions"
+        "title": "تکنیکی حل",
+        "desc": "ویب سائٹس، ایپس، آٹومیشن، اور مصنوعی ذہانت — آپ کے برانڈ سے ہم آہنگ اعلیٰ معیار پر۔",
+        "cta": "حل دریافت کریں"
       },
       "sectors": {
-        "title": "Business Sectors",
-        "desc": "Tailored solutions across 15 sectors — from restaurants and clinics to factories and startups.",
-        "cta": "Choose your sector"
+        "title": "کاروباری شعبے",
+        "desc": "15 شعبوں کے لیے موزوں حل — ریسٹورنٹس اور کلینکس سے لے کر فیکٹریوں اور اسٹارٹ اپس تک۔",
+        "cta": "اپنا شعبہ منتخب کریں"
       }
     },
     "why": {
       "speed": {
-        "title": "Fast Delivery",
-        "desc": "Clear paths and complexity-free execution. We shorten procedures and keep you informed at every stage."
+        "title": "تیز رفتار تکمیل",
+        "desc": "واضح راستے اور بلا پیچیدگی عمل درآمد۔ ہم طریقہ کار کو مختصر کرتے ہیں اور ہر مرحلے پر آپ کو آگاہ رکھتے ہیں۔"
       },
       "trust": {
-        "title": "Official Trust",
-        "desc": "Deep expertise across Saudi government platforms and certified digital ecosystems."
+        "title": "سرکاری اعتماد",
+        "desc": "سعودی سرکاری پلیٹ فارمز اور تصدیق شدہ ڈیجیٹل نظاموں میں گہری مہارت۔"
       },
       "support": {
-        "title": "24/7 Support",
-        "desc": "Monjez and WhatsApp assistants always on call — fast replies with human follow-up when needed."
+        "title": "24/7 معاونت",
+        "desc": "منجز اور واٹس ایپ اسسٹنٹ ہمہ وقت حاضر — تیز جواب اور بوقتِ ضرورت انسانی پیروی۔"
       },
       "clarity": {
-        "title": "Full Transparency",
-        "desc": "Clear pricing and scope from day one. No surprises, no jargon."
+        "title": "مکمل شفافیت",
+        "desc": "پہلے دن سے واضح قیمت اور دائرہ کار۔ نہ کوئی حیرت، نہ پیچیدہ اصطلاحات۔"
       },
       "multilang": {
-        "title": "Four Languages",
-        "desc": "A unified experience in Arabic, English, Urdu, and Hindi for your team and customers."
+        "title": "چار زبانیں",
+        "desc": "آپ کی ٹیم اور صارفین کے لیے عربی، انگریزی، اردو، اور ہندی میں یکساں تجربہ۔"
       },
       "endtoend": {
-        "title": "Idea to Operations",
-        "desc": "We unite gov and tech in one path — formation, compliance, then digital growth."
+        "title": "خیال سے عملی نفاذ تک",
+        "desc": "ہم حکومتی اور تکنیکی خدمات کو ایک راستے پر یکجا کرتے ہیں — قیام، تعمیل، پھر ڈیجیٹل ترقی۔"
       }
     }
   },
   "footer": {
-    "brand": "Tasami",
-    "about": "A premium Saudi platform for government and tech services — absolute simplicity, four languages, and a 24/7 AI assistant.",
-    "whatsapp": "Secretary WhatsApp",
-    "hours": "Around-the-clock support",
-    "govTitle": "Government Services",
-    "techTitle": "Tech Solutions",
-    "legalTitle": "Quick links",
-    "sectors": "Business Sectors",
-    "myRequests": "My requests",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "contactCta": "Contact now",
-    "viewAll": "View all →",
-    "rights": "All rights reserved.",
-    "built": "Designed for Vision 2030, digitally.",
-    "legalDisclaimer": "All our services are delivered via official portals or licensed authorized agents under applicable regulations."
+    "brand": "تسامی",
+    "about": "حکومتی اور تکنیکی خدمات کے لیے ایک اعلیٰ درجے کا سعودی پلیٹ فارم — مکمل سادگی، چار زبانیں، اور 24/7 مصنوعی ذہانت اسسٹنٹ۔",
+    "whatsapp": "سیکرٹری واٹس ایپ",
+    "hours": "چوبیس گھنٹے معاونت",
+    "govTitle": "حکومتی خدمات",
+    "techTitle": "تکنیکی حل",
+    "legalTitle": "فوری روابط",
+    "sectors": "کاروباری شعبے",
+    "myRequests": "میری درخواستیں",
+    "privacy": "پرائیویسی پالیسی",
+    "terms": "شرائطِ خدمت",
+    "contactCta": "ابھی رابطہ کریں",
+    "viewAll": "سب دیکھیں ←",
+    "rights": "جملہ حقوق محفوظ ہیں۔",
+    "built": "وژن 2030 کے لیے ڈیجیٹل انداز میں تیار کیا گیا۔",
+    "legalDisclaimer": "ہماری تمام خدمات متعلقہ ضوابط کے تحت سرکاری پورٹلز یا لائسنس یافتہ مجاز ایجنٹس کے ذریعے فراہم کی جاتی ہیں۔",
+    "company": {
+      "cr": "سی آر نمبر",
+      "vat": "ویٹ نمبر",
+      "address": "پتہ"
+    }
   },
   "gov": {
-    "eyebrow": "Services",
-    "title": "Government Services – We finish your transactions with a tap",
-    "subtitle": "13 categories covering your entity’s key needs with Saudi official bodies.",
-    "back": "Back to home",
-    "viewServices": "View services",
-    "serviceCount": "sub-services",
-    "askService": "Request service",
-    "talkMonjez": "Talk to Monjez",
-    "requiredDocs": "Required documents",
+    "eyebrow": "خدمات",
+    "title": "حکومتی خدمات – ایک کلک میں معاملات مکمل",
+    "subtitle": "13 اقسام جو سعودی سرکاری اداروں کے ساتھ آپ کے ادارے کی اہم ضروریات کا احاطہ کرتی ہیں۔",
+    "back": "ہوم پیج پر واپس",
+    "viewServices": "خدمات دیکھیں",
+    "serviceCount": "ذیلی خدمات",
+    "askService": "خدمت کی درخواست دیں",
+    "talkMonjez": "منجز سے بات کریں",
+    "requiredDocs": "درکار دستاویزات",
     "items": {
       "passports": {
-        "title": "Passports & Residency",
-        "desc": "Visas, iqama, and renewals via Absher."
+        "title": "پاسپورٹ اور اقامہ",
+        "desc": "ابشر کے ذریعے ویزے، اقامہ، اور تجدیدات۔"
       },
       "labor": {
-        "title": "Labor & Sponsorship",
-        "desc": "Employment contracts, sponsorship transfer, Qiwa & Musaned."
+        "title": "محنت اور کفالت",
+        "desc": "ملازمت کے معاہدے، کفالت کی منتقلی، قوی اور مساند۔"
       },
       "commerce": {
-        "title": "Ministry of Commerce",
-        "desc": "Commercial registration, licenses, and MoC services."
+        "title": "وزارتِ تجارت",
+        "desc": "کمرشل رجسٹریشن، لائسنس، اور وزارتِ تجارت کی خدمات۔"
       },
       "zakat": {
-        "title": "Zakat & Tax",
-        "desc": "Registration, zakat/tax filings, and compliance."
+        "title": "زکوٰۃ اور ٹیکس",
+        "desc": "رجسٹریشن، زکوٰۃ/ٹیکس فائلنگ، اور تعمیل۔"
       },
       "municipal": {
-        "title": "Municipal & Licensing",
-        "desc": "Municipal licenses and shop requirements via Balady."
+        "title": "بلدیہ اور لائسنسنگ",
+        "desc": "بلدی کے ذریعے بلدیاتی لائسنس اور دکان کی شرائط۔"
       },
       "civilDefense": {
-        "title": "Civil Defense",
-        "desc": "Safety requirements and Civil Defense permits."
+        "title": "سول ڈیفنس",
+        "desc": "حفاظتی تقاضے اور سول ڈیفنس اجازت نامے۔"
       },
       "gosi": {
-        "title": "Social Insurance (GOSI)",
-        "desc": "Entity registration and GOSI contributions."
+        "title": "سماجی بیمہ (GOSI)",
+        "desc": "ادارے کی رجسٹریشن اور GOSI میں شراکتیں۔"
       },
       "civilStatus": {
-        "title": "Citizenship & Civil Status",
-        "desc": "Civil status and citizenship services."
+        "title": "شہریت اور سول اسٹیٹس",
+        "desc": "سول اسٹیٹس اور شہریت کی خدمات۔"
       },
       "najiz": {
-        "title": "Judicial Services (Najiz)",
-        "desc": "Notarization, powers of attorney, and e-cases via Najiz."
+        "title": "عدالتی خدمات (ناجز)",
+        "desc": "تصدیقِ دستاویزات، وکالت نامے، اور الیکٹرانک مقدمات ناجز کے ذریعے۔"
       },
       "traffic": {
-        "title": "Traffic (Absher Traffic)",
-        "desc": "Violations, license renewal, and Absher Traffic services."
+        "title": "ٹریفک (ابشر ٹریفک)",
+        "desc": "خلاف ورزیاں، لائسنس کی تجدید، اور ابشر ٹریفک کی خدمات۔"
       },
       "health": {
-        "title": "Health Services (Sehaty / Taminaty)",
-        "desc": "Health licenses and Sehaty / Taminaty services."
+        "title": "صحت کی خدمات (صحتی / تأمینی)",
+        "desc": "صحت کے لائسنس اور صحتی / تأمینی کی خدمات۔"
       },
       "ejar": {
-        "title": "Real Estate (Ejar)",
-        "desc": "Lease contracts and property documentation via Ejar."
+        "title": "رئیل اسٹیٹ (ایجار)",
+        "desc": "ایجار کے ذریعے کرایہ کے معاہدے اور پراپرٹی دستاویزات۔"
       },
       "investment": {
-        "title": "Investment & Classification (MISA / Monshaat)",
-        "desc": "Investment licensing and entity classification via MISA & Monshaat."
+        "title": "سرمایہ کاری اور درجہ بندی (MISA / منشآت)",
+        "desc": "MISA اور منشآت کے ذریعے سرمایہ کاری لائسنسنگ اور ادارہ جاتی درجہ بندی۔"
       }
     }
   },
   "tech": {
-    "eyebrow": "Services",
-    "title": "Tech Services – Build your digital presence",
-    "subtitle": "9 tech categories to digitize your business—simply and professionally.",
-    "back": "Back to home",
-    "viewServices": "Request service",
+    "eyebrow": "خدمات",
+    "title": "تکنیکی خدمات – اپنی ڈیجیٹل موجودگی بنائیں",
+    "subtitle": "آپ کے کاروبار کو سادگی اور پیشہ ورانہ انداز میں ڈیجیٹل بنانے کے لیے 9 تکنیکی اقسام۔",
+    "back": "ہوم پیج پر واپس",
+    "viewServices": "خدمت کی درخواست دیں",
     "items": {
       "websites": {
-        "title": "Websites & E-commerce Stores",
-        "desc": "Fast websites and stores with premium Saudi branding."
+        "title": "ویب سائٹس اور ای کامرس اسٹورز",
+        "desc": "اعلیٰ سعودی برانڈنگ کے ساتھ تیز رفتار ویب سائٹس اور اسٹورز۔"
       },
       "mobile": {
-        "title": "Mobile Apps (iOS / Android)",
-        "desc": "Mobile apps with a smooth experience on every device."
+        "title": "موبائل ایپس (iOS / Android)",
+        "desc": "ہر ڈیوائس پر ہموار تجربہ فراہم کرنے والی موبائل ایپس۔"
       },
       "maps": {
-        "title": "Google Maps Visibility",
-        "desc": "Optimize your business profile on Google Maps."
+        "title": "گوگل میپس پر نمایاں موجودگی",
+        "desc": "گوگل میپس پر اپنے کاروباری پروفائل کو بہتر بنائیں۔"
       },
       "marketing": {
-        "title": "Digital Marketing & Ads",
-        "desc": "Measured campaigns and ads for clear growth."
+        "title": "ڈیجیٹل مارکیٹنگ اور اشتہارات",
+        "desc": "واضح ترقی کے لیے قابلِ پیمائش مہمات اور اشتہارات۔"
       },
       "automation": {
-        "title": "Process Automation (CRM, Accounting, HR)",
-        "desc": "Automate operations with CRM, accounting, and HR systems."
+        "title": "پراسیس آٹومیشن (CRM، اکاؤنٹنگ، HR)",
+        "desc": "CRM، اکاؤنٹنگ، اور HR سسٹمز کے ذریعے کاروباری عمل خودکار بنائیں۔"
       },
       "support": {
-        "title": "Tech Support & Consulting",
-        "desc": "Ongoing technical support and practical consulting."
+        "title": "تکنیکی معاونت اور مشاورت",
+        "desc": "مسلسل تکنیکی معاونت اور عملی مشاورت۔"
       },
       "ai": {
-        "title": "AI Solutions",
-        "desc": "Bots, automation, and AI-powered analytics."
+        "title": "مصنوعی ذہانت کے حل",
+        "desc": "بوٹس، آٹومیشن، اور AI پر مبنی تجزیات۔"
       },
       "data": {
-        "title": "Data & Analytics",
-        "desc": "Collect and analyze data for clearer decisions."
+        "title": "ڈیٹا اور تجزیات",
+        "desc": "واضح فیصلوں کے لیے ڈیٹا اکٹھا اور تجزیہ کریں۔"
       },
       "cloud": {
-        "title": "Cloud Services",
-        "desc": "Hosting, migration, and secure cloud operations."
+        "title": "کلاؤڈ خدمات",
+        "desc": "ہوسٹنگ، منتقلی، اور محفوظ کلاؤڈ آپریشنز۔"
       }
     }
   },
   "sectors": {
-    "eyebrow": "Sectors",
-    "title": "Smart solutions for every sector",
-    "subtitle": "15 sectors — pick yours to explore tailored solutions.",
-    "back": "Back to home",
-    "ctaGov": "Gov Services",
-    "ctaTech": "Tech Solutions",
-    "close": "Close",
+    "eyebrow": "شعبے",
+    "title": "ہر شعبے کے لیے ذہین حل",
+    "subtitle": "15 شعبے — اپنی مرضی کے حل دیکھنے کے لیے اپنا شعبہ منتخب کریں۔",
+    "back": "ہوم پیج پر واپس",
+    "ctaGov": "حکومتی خدمات",
+    "ctaTech": "تکنیکی حل",
+    "close": "بند کریں",
     "items": {
       "restaurants": {
-        "title": "Restaurants",
-        "desc": "Municipal & Civil Defense licensing, ordering, and store systems."
+        "title": "ریسٹورنٹس",
+        "desc": "بلدیہ اور سول ڈیفنس لائسنسنگ، آرڈرنگ، اور اسٹور سسٹمز۔"
       },
       "clinics": {
-        "title": "Clinics",
-        "desc": "Health licenses, clinic systems, and MoH compliance."
+        "title": "کلینکس",
+        "desc": "صحت کے لائسنس، کلینک سسٹمز، اور وزارتِ صحت کی تعمیل۔"
       },
       "factories": {
-        "title": "Factories",
-        "desc": "Industrial licenses, automation, and ERP systems."
+        "title": "فیکٹریاں",
+        "desc": "صنعتی لائسنس، آٹومیشن، اور ERP سسٹمز۔"
       },
       "shops": {
-        "title": "Shops",
-        "desc": "Commercial registration, municipal licenses, and digital POS."
+        "title": "دکانیں",
+        "desc": "کمرشل رجسٹریشن، بلدیاتی لائسنس، اور ڈیجیٹل POS۔"
       },
       "salons": {
-        "title": "Salons",
-        "desc": "Operating licenses and booking/appointment systems."
+        "title": "سیلونز",
+        "desc": "آپریٹنگ لائسنس اور بکنگ/اپائنٹمنٹ سسٹمز۔"
       },
       "contracting": {
-        "title": "Contracting",
-        "desc": "Contractor classification, site permits, and project ops."
+        "title": "ٹھیکیداری",
+        "desc": "ٹھیکیدار کی درجہ بندی، سائٹ اجازت نامے، اور پراجیکٹ آپریشنز۔"
       },
       "realEstate": {
-        "title": "Real Estate",
-        "desc": "Ejar, brokerage, and property management systems."
+        "title": "رئیل اسٹیٹ",
+        "desc": "ایجار، بروکریج، اور پراپرٹی مینجمنٹ سسٹمز۔"
       },
       "institutes": {
-        "title": "Institutes",
-        "desc": "Education licensing and training platforms."
+        "title": "ادارے",
+        "desc": "تعلیمی لائسنسنگ اور تربیتی پلیٹ فارمز۔"
       },
       "law": {
-        "title": "Law Firms",
-        "desc": "Law office setup and case follow-up via Najiz."
+        "title": "قانونی فرمیں",
+        "desc": "قانونی دفتر کا قیام اور ناجز کے ذریعے مقدمات کی پیروی۔"
       },
       "hotels": {
-        "title": "Hotels",
-        "desc": "Hospitality licensing and booking/management systems."
+        "title": "ہوٹلز",
+        "desc": "ہاسپیٹیلٹی لائسنسنگ اور بکنگ/مینجمنٹ سسٹمز۔"
       },
       "education": {
-        "title": "Education",
-        "desc": "Education licensing and digital solutions for institutions."
+        "title": "تعلیم",
+        "desc": "تعلیمی لائسنسنگ اور اداروں کے لیے ڈیجیٹل حل۔"
       },
       "logistics": {
-        "title": "Transport & Logistics",
-        "desc": "Transport, customs clearance, and shipment tracking."
+        "title": "ٹرانسپورٹ اور لاجسٹکس",
+        "desc": "ٹرانسپورٹ، کسٹمز کلیئرنس، اور شپمنٹ ٹریکنگ۔"
       },
       "agriculture": {
-        "title": "Agriculture & Farms",
-        "desc": "Agricultural licensing and agri-tech solutions."
+        "title": "زراعت اور فارمز",
+        "desc": "زرعی لائسنسنگ اور ایگری ٹیک حل۔"
       },
       "nonprofit": {
-        "title": "Non-profit",
-        "desc": "Setup and management for associations and NGOs."
+        "title": "غیر منافع بخش",
+        "desc": "انجمنوں اور این جی اوز کا قیام اور انتظام۔"
       },
       "startups": {
-        "title": "Startups",
-        "desc": "Company formation, investment licensing, and growth tech."
+        "title": "اسٹارٹ اپس",
+        "desc": "کمپنی کا قیام، سرمایہ کاری لائسنسنگ، اور ترقی کے لیے ٹیکنالوجی۔"
       }
     }
   },
   "widgets": {
-    "monjezTitle": "Monjez",
-    "monjezOnline": "Online · 24/7",
-    "monjezWelcome": "Welcome to Tasami 👋 I’m Monjez, your round-the-clock AI assistant. How can I help?",
-    "monjezTyping": "Monjez is typing…",
-    "monjezPlaceholder": "Type your message…",
-    "monjezFallback": "Thanks for reaching out. The Tasami team will follow up soon. You can also use WhatsApp for a faster reply.",
-    "monjezError": "Connection issue. Please try again later or contact us on WhatsApp.",
-    "waTitle": "Tasami WhatsApp",
-    "waIntro": "Choose how to reach the Tasami team:",
-    "waSecretary": "Talk to the Secretary",
-    "waDirect": "Direct WhatsApp",
-    "openChat": "Open Monjez chat",
-    "openWhatsapp": "Open WhatsApp",
-    "close": "Close",
-    "send": "Send"
+    "monjezTitle": "منجز",
+    "monjezOnline": "آن لائن · 24/7",
+    "monjezWelcome": "تسامی میں خوش آمدید 👋 میں منجز ہوں، آپ کا چوبیس گھنٹے دستیاب AI اسسٹنٹ۔ میں آپ کی کیا مدد کر سکتا ہوں؟",
+    "monjezTyping": "منجز لکھ رہا ہے…",
+    "monjezPlaceholder": "اپنا پیغام لکھیں…",
+    "monjezFallback": "رابطہ کرنے کا شکریہ۔ تسامی ٹیم جلد آپ سے رابطہ کرے گی۔ تیز جواب کے لیے آپ واٹس ایپ بھی استعمال کر سکتے ہیں۔",
+    "monjezError": "کنکشن میں مسئلہ ہے۔ براہِ کرم بعد میں دوبارہ کوشش کریں یا واٹس ایپ پر رابطہ کریں۔",
+    "waTitle": "تسامی واٹس ایپ",
+    "waIntro": "تسامی ٹیم سے رابطے کا طریقہ منتخب کریں:",
+    "waSecretary": "سیکرٹری سے بات کریں",
+    "waDirect": "براہ راست واٹس ایپ",
+    "openChat": "منجز چیٹ کھولیں",
+    "openWhatsapp": "واٹس ایپ کھولیں",
+    "close": "بند کریں",
+    "send": "بھیجیں"
   },
   "common": {
-    "backHome": "Back to home"
+    "backHome": "ہوم پیج پر واپس"
+  },
+  "a11y": {
+    "skip": "مواد پر جائیں"
   },
   "auth": {
-    "loginTitle": "Log in",
-    "loginSubtitle": "Sign in to track your requests and transaction status.",
-    "registerTitle": "Create account",
-    "registerSubtitle": "Create an account to request services and track them from your client panel.",
-    "name": "Full name",
-    "namePh": "Your full name",
-    "phone": "Mobile number",
-    "email": "Email (optional)",
-    "password": "Password",
-    "passwordPh": "At least 6 characters",
-    "loginCta": "Log in",
-    "registerCta": "Create account",
-    "loading": "Loading…",
-    "error": "Something went wrong. Please try again.",
-    "invalidCreds": "Invalid phone or password.",
-    "phoneTaken": "This phone is already registered. Please log in.",
-    "emailTaken": "This email is already registered.",
-    "tooMany": "Too many attempts. Wait a minute and try again.",
-    "dbNotReady": "Database is not ready. Please contact support.",
-    "noAccount": "Don't have an account?",
-    "hasAccount": "Already have an account?",
-    "registerLink": "Sign up",
-    "loginLink": "Log in",
-    "logout": "Log out",
-    "backHome": "Back to home"
+    "loginTitle": "لاگ ان",
+    "loginSubtitle": "اپنی درخواستوں اور معاملات کی صورتحال دیکھنے کے لیے لاگ ان کریں۔",
+    "registerTitle": "اکاؤنٹ بنائیں",
+    "registerSubtitle": "خدمات کی درخواست دینے اور اپنے کلائنٹ پینل سے ان کی نگرانی کے لیے اکاؤنٹ بنائیں۔",
+    "name": "پورا نام",
+    "namePh": "آپ کا پورا نام",
+    "phone": "موبائل نمبر",
+    "email": "ای میل (اختیاری)",
+    "password": "پاس ورڈ",
+    "passwordPh": "کم از کم 6 حروف",
+    "loginCta": "لاگ ان",
+    "registerCta": "اکاؤنٹ بنائیں",
+    "loading": "لوڈ ہو رہا ہے…",
+    "error": "کچھ غلط ہو گیا۔ براہِ کرم دوبارہ کوشش کریں۔",
+    "invalidCreds": "موبائل نمبر یا پاس ورڈ درست نہیں ہے۔",
+    "phoneTaken": "یہ نمبر پہلے سے رجسٹرڈ ہے۔ براہِ کرم لاگ ان کریں۔",
+    "emailTaken": "یہ ای میل پہلے سے رجسٹرڈ ہے۔",
+    "tooMany": "بہت زیادہ کوششیں ہو چکی ہیں۔ ایک منٹ انتظار کر کے دوبارہ کوشش کریں۔",
+    "dbNotReady": "ڈیٹا بیس تیار نہیں ہے۔ براہِ کرم سپورٹ سے رابطہ کریں۔",
+    "noAccount": "اکاؤنٹ نہیں ہے؟",
+    "hasAccount": "پہلے سے اکاؤنٹ ہے؟",
+    "registerLink": "سائن اپ",
+    "loginLink": "لاگ ان",
+    "logout": "لاگ آؤٹ",
+    "backHome": "ہوم پیج پر واپس",
+    "forgotLink": "پاس ورڈ بھول گئے؟",
+    "forgotTitle": "پاس ورڈ دوبارہ ترتیب دیں",
+    "forgotSubtitle": "اپنا ای میل یا موبائل نمبر درج کریں، اگر اکاؤنٹ موجود ہو تو ہم آپ کو ری سیٹ لنک بھیج دیں گے۔",
+    "forgotIdentifier": "ای میل یا موبائل نمبر",
+    "forgotIdentifierPh": "you@email.com یا 05xxxxxxxx",
+    "forgotCta": "ری سیٹ لنک بھیجیں",
+    "forgotSent": "اگر اکاؤنٹ موجود ہے تو ری سیٹ لنک بھیج دیا گیا ہے۔ براہِ کرم اپنا ای میل چیک کریں۔",
+    "resetTitle": "نیا پاس ورڈ ترتیب دیں",
+    "resetSubtitle": "اپنے اکاؤنٹ کے لیے نیا پاس ورڈ منتخب کریں۔",
+    "resetConfirmPassword": "پاس ورڈ کی تصدیق کریں",
+    "resetCta": "پاس ورڈ دوبارہ ترتیب دیں",
+    "resetSuccess": "آپ کا پاس ورڈ اپڈیٹ ہو گیا ہے۔ اب آپ لاگ ان کر سکتے ہیں۔",
+    "resetInvalidToken": "یہ ری سیٹ لنک غلط یا میعاد ختم ہو چکا ہے۔ براہِ کرم نیا لنک حاصل کریں۔",
+    "resetPasswordShort": "پاس ورڈ کم از کم 6 حروف کا ہونا چاہیے۔",
+    "resetMismatch": "پاس ورڈز میل نہیں کھاتے۔"
   },
   "request": {
-    "ctaSite": "Request service",
-    "ctaWhatsapp": "WhatsApp",
-    "hint": "Submit inside the site so the secretary gets it instantly — or use WhatsApp.",
-    "modalEyebrow": "In-site service request",
-    "modalIntro": "Enter your details, then complete the fields specific to this service.",
-    "name": "Full name",
-    "namePh": "Your full name",
-    "phone": "Mobile number",
-    "email": "Email (optional)",
-    "notes": "Request details",
-    "notesPh": "Any extra details that matter for this transaction…",
-    "serviceDetails": "Details for this service",
-    "requiredDocs": "Documents usually required",
-    "selectPlaceholder": "Select…",
-    "submit": "Submit request",
-    "sending": "Sending…",
-    "close": "Close",
-    "error": "Could not send the request. Please try again.",
-    "successTitle": "Request received",
-    "successBody": "The Tasami team will follow up soon. Track status from My Requests.",
-    "refLabel": "Reference",
-    "viewMyRequests": "View my requests",
-    "preferWhatsapp": "Prefer WhatsApp instead",
-    "monjezHint": "Or open Monjez from the corner for instant chat",
-    "accountHint": "For easier tracking later:",
-    "createAccount": "Create an account",
-    "myTitle": "My Requests",
-    "mySubtitle": "Enter your mobile number to see requests, or log in.",
-    "mySubtitleLoggedIn": "Requests linked to your account.",
-    "loginRequired": "Log in to view your requests and track status securely.",
-    "lookup": "Show requests",
-    "emptyMy": "No requests found for this number.",
-    "hello": "Hello",
-    "backHome": "Back to home",
+    "ctaSite": "خدمت کی درخواست دیں",
+    "ctaWhatsapp": "واٹس ایپ",
+    "hint": "سائٹ کے اندر جمع کروائیں تاکہ سیکرٹری کو فوری موصول ہو — یا واٹس ایپ استعمال کریں۔",
+    "modalEyebrow": "سائٹ کے اندر خدمت کی درخواست",
+    "modalIntro": "اپنی تفصیلات درج کریں، پھر اس خدمت سے متعلق فیلڈز مکمل کریں۔",
+    "name": "پورا نام",
+    "namePh": "آپ کا پورا نام",
+    "phone": "موبائل نمبر",
+    "email": "ای میل (اختیاری)",
+    "notes": "درخواست کی تفصیلات",
+    "notesPh": "اس معاملے سے متعلق کوئی اضافی تفصیلات…",
+    "serviceDetails": "اس خدمت کی تفصیلات",
+    "requiredDocs": "عام طور پر درکار دستاویزات",
+    "selectPlaceholder": "منتخب کریں…",
+    "submit": "درخواست جمع کروائیں",
+    "sending": "بھیجا جا رہا ہے…",
+    "close": "بند کریں",
+    "error": "درخواست بھیجی نہیں جا سکی۔ دوبارہ کوشش کریں۔",
+    "successTitle": "درخواست موصول ہو گئی",
+    "successBody": "تسامی ٹیم جلد رابطہ کرے گی۔ \"میری درخواستیں\" سے صورتحال دیکھیں۔",
+    "refLabel": "حوالہ نمبر",
+    "viewMyRequests": "میری درخواستیں دیکھیں",
+    "preferWhatsapp": "بجائے اس کے واٹس ایپ ترجیح دیں",
+    "monjezHint": "یا فوری چیٹ کے لیے کونے سے منجز کھولیں",
+    "accountHint": "بعد میں آسان نگرانی کے لیے:",
+    "createAccount": "اکاؤنٹ بنائیں",
+    "myTitle": "میری درخواستیں",
+    "mySubtitle": "درخواستیں دیکھنے کے لیے اپنا موبائل نمبر درج کریں، یا لاگ ان کریں۔",
+    "mySubtitleLoggedIn": "آپ کے اکاؤنٹ سے منسلک درخواستیں۔",
+    "loginRequired": "اپنی درخواستیں دیکھنے اور محفوظ طریقے سے صورتحال جاننے کے لیے لاگ ان کریں۔",
+    "lookup": "درخواستیں دکھائیں",
+    "emptyMy": "اس نمبر کے لیے کوئی درخواست نہیں ملی۔",
+    "hello": "ہیلو",
+    "backHome": "ہوم پیج پر واپس",
     "fields": {
-      "serviceType": "Required service type",
-      "nationalId": "National ID / Iqama number",
-      "iqamaExpiry": "Iqama expiry date",
-      "workersCount": "Number of workers / people",
-      "details": "Additional details",
-      "crNumber": "Commercial registration number",
-      "establishmentName": "Establishment name",
-      "activityType": "Activity type",
-      "city": "City",
-      "tinNumber": "Tax number",
-      "fiscalYear": "Fiscal year",
-      "district": "District",
-      "buildingType": "Building / activity type",
-      "gosiNumber": "GOSI subscription number",
-      "caseNumber": "Case / transaction number",
-      "plateNumber": "Plate number",
-      "facilityName": "Health facility name",
-      "propertyCity": "Property city",
-      "contractNumber": "Lease contract number",
-      "nationality": "Nationality",
-      "investmentSector": "Investment sector",
-      "capitalEstimate": "Estimated capital",
-      "projectType": "Project type",
-      "businessName": "Business / company name",
-      "hasDomain": "Do you have a domain?",
-      "pagesEstimate": "Approximate page count",
-      "platform": "Platform",
-      "appPurpose": "App purpose",
-      "hasDesign": "Do you have a design ready?",
-      "channel": "Marketing channel",
-      "monthlyBudget": "Approximate monthly budget",
-      "automationGoal": "Automation goal",
-      "currentSoftware": "Current systems",
-      "supportType": "Support type",
-      "systemsInUse": "Systems in use",
-      "aiUseCase": "AI use case",
-      "dataNeed": "Data need",
-      "dataSources": "Data sources",
-      "cloudNeed": "Cloud need",
-      "currentHost": "Current hosting"
+      "serviceType": "مطلوبہ خدمت کی قسم",
+      "nationalId": "قومی شناختی کارڈ / اقامہ نمبر",
+      "iqamaExpiry": "اقامہ کی میعاد ختم ہونے کی تاریخ",
+      "workersCount": "کارکنوں / افراد کی تعداد",
+      "details": "اضافی تفصیلات",
+      "crNumber": "کمرشل رجسٹریشن نمبر",
+      "establishmentName": "ادارے کا نام",
+      "activityType": "سرگرمی کی قسم",
+      "city": "شہر",
+      "tinNumber": "ٹیکس نمبر",
+      "fiscalYear": "مالی سال",
+      "district": "ضلع",
+      "buildingType": "عمارت / سرگرمی کی قسم",
+      "gosiNumber": "GOSI رکنیت نمبر",
+      "caseNumber": "کیس / معاملہ نمبر",
+      "plateNumber": "نمبر پلیٹ",
+      "facilityName": "صحت مرکز کا نام",
+      "propertyCity": "پراپرٹی کا شہر",
+      "contractNumber": "کرایہ نامے کا نمبر",
+      "nationality": "قومیت",
+      "investmentSector": "سرمایہ کاری کا شعبہ",
+      "capitalEstimate": "تخمینی سرمایہ",
+      "projectType": "پراجیکٹ کی قسم",
+      "businessName": "کاروبار / کمپنی کا نام",
+      "hasDomain": "کیا آپ کے پاس ڈومین ہے؟",
+      "pagesEstimate": "صفحات کی تخمینی تعداد",
+      "platform": "پلیٹ فارم",
+      "appPurpose": "ایپ کا مقصد",
+      "hasDesign": "کیا ڈیزائن تیار ہے؟",
+      "channel": "مارکیٹنگ چینل",
+      "monthlyBudget": "ماہانہ تخمینی بجٹ",
+      "automationGoal": "آٹومیشن کا مقصد",
+      "currentSoftware": "موجودہ سسٹمز",
+      "supportType": "معاونت کی قسم",
+      "systemsInUse": "زیرِ استعمال سسٹمز",
+      "aiUseCase": "AI کے استعمال کا معاملہ",
+      "dataNeed": "ڈیٹا کی ضرورت",
+      "dataSources": "ڈیٹا کے ذرائع",
+      "cloudNeed": "کلاؤڈ کی ضرورت",
+      "currentHost": "موجودہ ہوسٹنگ"
     },
     "docs": {
-      "idIqama": "Valid ID or Iqama",
-      "passportCopy": "Passport copy",
-      "photos": "Photos if required",
-      "sponsorAuth": "Sponsor authorization if any",
-      "crCopy": "Commercial registration copy",
-      "qiwaAccess": "Qiwa / labor platform access",
-      "contractCopy": "Employment contract if any",
-      "nationalId": "National ID / Iqama",
-      "articles": "Articles of association if any",
-      "ownerId": "Owner ID",
-      "financials": "Financials or Zakat data",
-      "leaseContract": "Lease contract",
-      "sketch": "Location sketch",
-      "floorPlan": "Floor / site plan",
-      "safetyReport": "Safety report if any",
-      "payroll": "Payroll data if needed",
-      "familyCard": "Family record if needed",
-      "birthDeath": "Birth / death certificate if needed",
-      "agencyDoc": "Power of attorney if any",
-      "caseDocs": "Case documents",
-      "license": "Driving license",
-      "vehicleReg": "Vehicle registration",
-      "medicalReport": "Medical report if needed",
-      "propertyDeed": "Title deed if any",
-      "businessPlan": "Short business plan",
-      "brandAssets": "Logo and brand colors",
-      "contentDraft": "Content draft if any",
-      "domainInfo": "Domain details",
-      "appWireframes": "App sketches or concept",
-      "storeAccounts": "Store accounts if any",
-      "businessAddress": "Business address",
-      "targetAudience": "Target audience description",
-      "adAccounts": "Ad accounts if any",
-      "currentTools": "Current tools list",
-      "processMap": "Process description",
-      "systemAccess": "System access credentials needs",
-      "issueLog": "Current issues log",
-      "useCaseBrief": "Use-case brief",
-      "dataSample": "Data sample if possible",
-      "dataSources": "Data sources",
-      "kpiList": "Required KPIs",
-      "infraList": "Current infrastructure list",
-      "accessNeeds": "Access requirements",
-      "relevantDocs": "Any relevant documents"
+      "idIqama": "درست شناختی کارڈ یا اقامہ",
+      "passportCopy": "پاسپورٹ کی کاپی",
+      "photos": "ضرورت کے مطابق تصاویر",
+      "sponsorAuth": "کفیل کی اجازت (اگر ہو)",
+      "crCopy": "کمرشل رجسٹریشن کی کاپی",
+      "qiwaAccess": "قوی / لیبر پلیٹ فارم تک رسائی",
+      "contractCopy": "ملازمت کا معاہدہ (اگر ہو)",
+      "nationalId": "قومی شناختی کارڈ / اقامہ",
+      "articles": "آرٹیکلز آف ایسوسی ایشن (اگر ہو)",
+      "ownerId": "مالک کا شناختی کارڈ",
+      "financials": "مالیاتی یا زکوٰۃ کا ڈیٹا",
+      "leaseContract": "کرایہ نامہ",
+      "sketch": "مقام کا خاکہ",
+      "floorPlan": "فلور / سائٹ پلان",
+      "safetyReport": "حفاظتی رپورٹ (اگر ہو)",
+      "payroll": "پے رول ڈیٹا (اگر ضرورت ہو)",
+      "familyCard": "خاندانی ریکارڈ (اگر ضرورت ہو)",
+      "birthDeath": "پیدائش / وفات کا سرٹیفکیٹ (اگر ضرورت ہو)",
+      "agencyDoc": "وکالت نامہ (اگر ہو)",
+      "caseDocs": "کیس دستاویزات",
+      "license": "ڈرائیونگ لائسنس",
+      "vehicleReg": "گاڑی کی رجسٹریشن",
+      "medicalReport": "میڈیکل رپورٹ (اگر ضرورت ہو)",
+      "propertyDeed": "ملکیت کا دستاویز (اگر ہو)",
+      "businessPlan": "مختصر بزنس پلان",
+      "brandAssets": "لوگو اور برانڈ کے رنگ",
+      "contentDraft": "مواد کا مسودہ (اگر ہو)",
+      "domainInfo": "ڈومین کی تفصیلات",
+      "appWireframes": "ایپ کے خاکے یا تصور",
+      "storeAccounts": "اسٹور اکاؤنٹس (اگر ہوں)",
+      "businessAddress": "کاروباری پتہ",
+      "targetAudience": "ہدف صارفین کی وضاحت",
+      "adAccounts": "ایڈ اکاؤنٹس (اگر ہوں)",
+      "currentTools": "موجودہ ٹولز کی فہرست",
+      "processMap": "عمل کی وضاحت",
+      "systemAccess": "سسٹم تک رسائی کی ضروریات",
+      "issueLog": "موجودہ مسائل کا لاگ",
+      "useCaseBrief": "استعمال کے معاملے کی مختصر تفصیل",
+      "dataSample": "ڈیٹا کا نمونہ (ممکن ہو تو)",
+      "dataSources": "ڈیٹا کے ذرائع",
+      "kpiList": "درکار KPIs",
+      "infraList": "موجودہ انفراسٹرکچر کی فہرست",
+      "accessNeeds": "رسائی کی ضروریات",
+      "relevantDocs": "کوئی بھی متعلقہ دستاویزات"
     },
     "options": {
       "serviceType": {
-        "iqamaRenew": "Iqama renewal",
-        "exitReentry": "Exit / re-entry",
-        "visitVisa": "Visit visa",
-        "finalExit": "Final exit",
-        "transfer": "Service transfer",
-        "contract": "Employment contracts",
-        "sponsorshipTransfer": "Sponsorship transfer",
-        "qiwa": "Qiwa services",
-        "musaned": "Musaned",
-        "workPermit": "Work permit",
-        "newCr": "New commercial registration",
-        "crRenew": "CR renewal",
-        "crUpdate": "CR update",
-        "tradeName": "Trade name",
-        "license": "License",
-        "registration": "Registration",
-        "returnFiling": "Return filing",
-        "certificate": "Certificate",
-        "amendment": "Amendment",
-        "shopLicense": "Shop license",
-        "renewal": "Renewal",
-        "healthCert": "Health certificate",
-        "signage": "Signage",
-        "newPermit": "New permit",
-        "inspection": "Inspection",
-        "addEmployee": "Add employee",
-        "removeEmployee": "Remove employee",
-        "birth": "Birth",
-        "marriage": "Marriage",
-        "familyCard": "Family record",
-        "idIssue": "ID issuance",
-        "lawsuit": "Lawsuit",
-        "execution": "Execution",
-        "agency": "Power of attorney",
-        "notary": "Notary",
-        "licenseRenew": "License renewal",
-        "vehicleTransfer": "Vehicle ownership transfer",
-        "plates": "Plates",
-        "violation": "Violations",
-        "facilityLicense": "Facility license",
-        "practitioner": "Practitioner",
-        "sehaty": "Sehaty / health services",
-        "newContract": "New lease",
-        "terminate": "Terminate lease",
-        "dispute": "Lease dispute",
-        "misaLicense": "MISA investment license",
-        "companySetup": "Company setup",
-        "branch": "Branch / representation",
-        "googleBusiness": "Google Business Profile",
-        "mapsPin": "Maps pin",
-        "reviewMgmt": "Review management",
-        "other": "Other"
+        "iqamaRenew": "اقامہ کی تجدید",
+        "exitReentry": "خروج / دوبارہ داخلہ",
+        "visitVisa": "وزٹ ویزا",
+        "finalExit": "حتمی خروج",
+        "transfer": "خدمت کی منتقلی",
+        "contract": "ملازمت کے معاہدے",
+        "sponsorshipTransfer": "کفالت کی منتقلی",
+        "qiwa": "قوی کی خدمات",
+        "musaned": "مساند",
+        "workPermit": "ورک پرمٹ",
+        "newCr": "نئی کمرشل رجسٹریشن",
+        "crRenew": "کمرشل رجسٹریشن کی تجدید",
+        "crUpdate": "کمرشل رجسٹریشن اپ ڈیٹ",
+        "tradeName": "تجارتی نام",
+        "license": "لائسنس",
+        "registration": "رجسٹریشن",
+        "returnFiling": "ریٹرن فائلنگ",
+        "certificate": "سرٹیفکیٹ",
+        "amendment": "ترمیم",
+        "shopLicense": "دکان کا لائسنس",
+        "renewal": "تجدید",
+        "healthCert": "صحت سرٹیفکیٹ",
+        "signage": "سائن بورڈ",
+        "newPermit": "نیا اجازت نامہ",
+        "inspection": "معائنہ",
+        "addEmployee": "ملازم شامل کریں",
+        "removeEmployee": "ملازم ہٹائیں",
+        "birth": "پیدائش",
+        "marriage": "شادی",
+        "familyCard": "خاندانی ریکارڈ",
+        "idIssue": "شناختی کارڈ کا اجراء",
+        "lawsuit": "مقدمہ",
+        "execution": "تنفیذ",
+        "agency": "وکالت نامہ",
+        "notary": "تصدیقِ دستاویزات",
+        "licenseRenew": "لائسنس کی تجدید",
+        "vehicleTransfer": "گاڑی کی ملکیت کی منتقلی",
+        "plates": "نمبر پلیٹس",
+        "violation": "خلاف ورزیاں",
+        "facilityLicense": "ادارے کا لائسنس",
+        "practitioner": "معالج",
+        "sehaty": "صحتی / صحت کی خدمات",
+        "newContract": "نیا کرایہ نامہ",
+        "terminate": "کرایہ نامہ ختم کریں",
+        "dispute": "کرایہ کا تنازع",
+        "misaLicense": "MISA سرمایہ کاری لائسنس",
+        "companySetup": "کمپنی کا قیام",
+        "branch": "شاخ / نمائندگی",
+        "googleBusiness": "گوگل بزنس پروفائل",
+        "mapsPin": "میپس پن",
+        "reviewMgmt": "ریویو مینجمنٹ",
+        "other": "دیگر"
       },
       "projectType": {
-        "corporate": "Corporate site",
-        "ecommerce": "E-commerce",
-        "landing": "Landing page",
-        "redesign": "Redesign",
-        "other": "Other"
+        "corporate": "کارپوریٹ ویب سائٹ",
+        "ecommerce": "ای کامرس",
+        "landing": "لینڈنگ پیج",
+        "redesign": "ری ڈیزائن",
+        "other": "دیگر"
       },
       "hasDomain": {
-        "yes": "Yes",
-        "no": "No",
-        "needHelp": "Need help"
+        "yes": "جی ہاں",
+        "no": "نہیں",
+        "needHelp": "مدد درکار ہے"
       },
       "platform": {
         "ios": "iOS",
         "android": "Android",
-        "both": "Both",
-        "other": "Other"
+        "both": "دونوں",
+        "other": "دیگر"
       },
       "hasDesign": {
-        "yes": "Yes",
-        "no": "No",
-        "partial": "Partial"
+        "yes": "جی ہاں",
+        "no": "نہیں",
+        "partial": "جزوی"
       },
       "channel": {
-        "social": "Social media",
-        "ads": "Paid ads",
-        "seo": "SEO",
-        "full": "Full package",
-        "other": "Other"
+        "social": "سوشل میڈیا",
+        "ads": "ادائیگی والے اشتہارات",
+        "seo": "سرچ انجن آپٹیمائزیشن (SEO)",
+        "full": "مکمل پیکج",
+        "other": "دیگر"
       },
       "automationGoal": {
-        "whatsappFlow": "WhatsApp automation",
+        "whatsappFlow": "واٹس ایپ آٹومیشن",
         "crm": "CRM",
-        "invoicing": "Invoicing",
+        "invoicing": "انوائسنگ",
         "hr": "HR",
-        "other": "Other"
+        "other": "دیگر"
       },
       "supportType": {
-        "helpdesk": "Helpdesk",
-        "maintenance": "Maintenance",
-        "onCall": "On-call",
-        "other": "Other"
+        "helpdesk": "ہیلپ ڈیسک",
+        "maintenance": "دیکھ بھال",
+        "onCall": "آن کال",
+        "other": "دیگر"
       },
       "aiUseCase": {
-        "chatbot": "Chatbot",
-        "content": "Content generation",
-        "internalTools": "Internal tools",
-        "vision": "Computer vision",
-        "other": "Other"
+        "chatbot": "چیٹ بوٹ",
+        "content": "مواد کی تخلیق",
+        "internalTools": "اندرونی ٹولز",
+        "vision": "کمپیوٹر وژن",
+        "other": "دیگر"
       },
       "dataNeed": {
-        "dashboard": "Dashboard",
-        "reporting": "Reporting",
-        "migration": "Migration",
-        "analysis": "Analysis",
-        "other": "Other"
+        "dashboard": "ڈیش بورڈ",
+        "reporting": "رپورٹنگ",
+        "migration": "منتقلی",
+        "analysis": "تجزیہ",
+        "other": "دیگر"
       },
       "cloudNeed": {
-        "hosting": "Hosting",
-        "migration": "Migration",
-        "backup": "Backup",
-        "security": "Security",
-        "other": "Other"
+        "hosting": "ہوسٹنگ",
+        "migration": "منتقلی",
+        "backup": "بیک اپ",
+        "security": "سیکیورٹی",
+        "other": "دیگر"
+      }
+    }
+  },
+  "legal": {
+    "back": "ہوم پیج پر واپس",
+    "updated": "آخری تازہ کاری: {date}",
+    "privacy": {
+      "eyebrow": "قانونی",
+      "title": "پرائیویسی پالیسی",
+      "subtitle": "تسامی آپ کی معلومات کیسے اکٹھی، استعمال، اور محفوظ کرتی ہے۔",
+      "intro": "تسامی (\"ہم\"، \"ہمیں\"، \"ہمارا\") سعودی عرب میں افراد اور کاروباری اداروں کو حکومتی اور تکنیکی خدمات فراہم کرتی ہے۔ یہ پرائیویسی پالیسی وضاحت کرتی ہے کہ ہم کون سی معلومات اکٹھی کرتے ہیں، کیوں کرتے ہیں، اور جب آپ ہماری ویب سائٹ، واٹس ایپ چینلز، یا منجز اسسٹنٹ استعمال کرتے ہیں تو ہم ان کو کیسے سنبھالتے ہیں۔",
+      "sections": {
+        "s1": {
+          "title": "1. وہ معلومات جو ہم اکٹھی کرتے ہیں",
+          "body": "ہم وہ معلومات اکٹھی کرتے ہیں جو آپ براہِ راست فراہم کرتے ہیں — جیسے آپ کا نام، موبائل نمبر، ای میل، قومی شناختی کارڈ یا کمرشل رجسٹریشن کی تفصیلات، اور کوئی بھی دستاویزات جو آپ خدمت کی درخواست کے دوران فراہم کرتے ہیں۔ ہم بنیادی تکنیکی ڈیٹا (ڈیوائس، براؤزر، اور استعمال کے انداز) بھی اکٹھا کرتے ہیں تاکہ پلیٹ فارم کو محفوظ رکھا جا سکے اور کارکردگی بہتر بنائی جا سکے۔"
+        },
+        "s2": {
+          "title": "2. ہم آپ کی معلومات کیسے استعمال کرتے ہیں",
+          "body": "ہم آپ کی معلومات خدمت کی درخواستوں پر عمل درآمد، واٹس ایپ، ای میل، یا منجز کے ذریعے تازہ کاری پہنچانے، قانون کے مطابق ضرورت پڑنے پر شناخت کی تصدیق، اور اپنی خدمات کے معیار اور رفتار کو بہتر بنانے کے لیے استعمال کرتے ہیں۔ ہم آپ کا ذاتی ڈیٹا کسی تیسرے فریق کو فروخت نہیں کرتے۔"
+        },
+        "s3": {
+          "title": "3. سرکاری پلیٹ فارمز اور شراکت داروں کے ساتھ اشتراک",
+          "body": "حکومتی معاملات مکمل کرنے کے لیے، ہم آپ کی معلومات سرکاری سعودی پلیٹ فارمز (جیسے ابشر، قوی، یا ناجز) یا آپ کی جانب سے کام کرنے والے لائسنس یافتہ مجاز ایجنٹس کو بھیج سکتے ہیں، صرف آپ کی درخواست پوری کرنے اور متعلقہ ضوابط کے مطابق۔"
+        },
+        "s4": {
+          "title": "4. ڈیٹا کی حفاظت اور برقراری",
+          "body": "ہم آپ کے ڈیٹا کو غیر مجاز رسائی، نقصان، یا غلط استعمال سے بچانے کے لیے مناسب تکنیکی اور تنظیمی تحفظات اپناتے ہیں۔ ہم معلومات کو صرف اس وقت تک محفوظ رکھتے ہیں جب تک ہماری خدمات فراہم کرنے اور قانونی یا ضابطہ جاتی ذمہ داریاں پوری کرنے کے لیے ضروری ہو۔"
+        },
+        "s5": {
+          "title": "5. آپ کے حقوق اور رابطہ",
+          "body": "آپ کسی بھی وقت نیچے دیے گئے واٹس ایپ یا ای میل کے ذریعے ہم سے رابطہ کر کے اپنی ذاتی معلومات تک رسائی، اس میں تصحیح، یا اسے حذف کرنے کی درخواست کر سکتے ہیں۔ ہم مناسب مدت کے اندر مناسب درخواستوں کا جواب دیں گے۔"
+        }
+      }
+    },
+    "terms": {
+      "eyebrow": "قانونی",
+      "title": "شرائطِ خدمت",
+      "subtitle": "وہ شرائط جو تسامی کی خدمات کے استعمال کو کنٹرول کرتی ہیں۔",
+      "intro": "یہ شرائطِ خدمت (\"شرائط\") تسامی کی ویب سائٹ، واٹس ایپ چینلز، اور منجز اسسٹنٹ تک آپ کی رسائی اور استعمال کو کنٹرول کرتی ہیں۔ کسی خدمت کی درخواست دینے یا ہمارے پلیٹ فارم کو استعمال کرنے سے آپ ان شرائط سے اتفاق کرتے ہیں۔",
+      "sections": {
+        "s1": {
+          "title": "1. خدمات کا دائرہ کار",
+          "body": "تسامی آپ کی جانب سے حکومتی معاملات اور تکنیکی حل، براہِ راست یا لائسنس یافتہ مجاز ایجنٹس اور سرکاری سعودی پلیٹ فارمز کے ذریعے سہولت فراہم کرتی ہے۔ ہر خدمت کی دستیابی، پروسیسنگ کا وقت، اور تقاضے متعلقہ حکومتی یا تکنیکی ادارے پر منحصر ہیں اور پیشگی اطلاع کے بغیر تبدیل ہو سکتے ہیں۔"
+        },
+        "s2": {
+          "title": "2. کلائنٹ کی ذمہ داریاں",
+          "body": "درست، مکمل، اور تازہ ترین معلومات اور دستاویزات فراہم کرنا آپ کی ذمہ داری ہے۔ آپ کی جانب سے فراہم کردہ غلط یا نامکمل معلومات کے نتیجے میں تاخیر، مسترد ہونے، یا اضافی فیس تسامی کی ذمہ داری نہیں ہے۔"
+        },
+        "s3": {
+          "title": "3. فیس اور ادائیگی",
+          "body": "خدمت کی فیس، جہاں لاگو ہو، کام شروع ہونے سے پہلے واٹس ایپ، منجز، یا ہماری سیکرٹری ٹیم کے ذریعے شفاف طریقے سے بتائی جاتی ہے۔ حکومتی فیس، تیسرے فریق کے چارجز، اور ٹیکس ہماری خدمت کی فیس سے الگ ہیں اور آپ کی ذمہ داری ہیں۔"
+        },
+        "s4": {
+          "title": "4. خدمت کی فراہمی اور اوقات",
+          "body": "ہم آپ کی پسندیدہ چینل کے ذریعے آپ کی درخواست کے ہر مرحلے پر آپ کو آگاہ رکھنے کی کوشش کرتے ہیں۔ تخمینی اوقات نیک نیتی سے فراہم کیے جاتے ہیں لیکن ان کی ضمانت نہیں دی جاتی، کیونکہ بہت سے معاملات ہمارے کنٹرول سے باہر بیرونی حکومتی یا تکنیکی نظاموں پر منحصر ہوتے ہیں۔"
+        },
+        "s5": {
+          "title": "5. ذمہ داری کی حد اور قابلِ اطلاق قانون",
+          "body": "تسامی ہمارے مناسب کنٹرول سے باہر حالات کے نتیجے میں تاخیر، نقصانات، یا خسارے کی ذمہ دار نہیں، بشمول سرکاری پلیٹ فارمز میں تعطل یا تبدیلی۔ یہ شرائط مملکتِ سعودی عرب کے قوانین کے تحت ہیں، اور کسی بھی تنازع کی صورت میں اس کی متعلقہ عدالتوں کو خصوصی دائرہ اختیار حاصل ہوگا۔"
+        }
       }
     }
   },
   "admin": {
-    "brand": "Tasami",
-    "secretary": "Secretary Panel",
-    "mockAuth": "Protected access · Admins only",
-    "backSite": "Back to site",
+    "brand": "تسامی",
+    "secretary": "سیکرٹری پینل",
+    "mockAuth": "محفوظ رسائی · صرف ایڈمنز",
+    "backSite": "سائٹ پر واپس",
     "nav": {
-      "dashboard": "Dashboard",
-      "requests": "Service Requests",
-      "customers": "Customers",
-      "conversations": "Conversations",
-      "tasks": "Tasks"
+      "dashboard": "ڈیش بورڈ",
+      "requests": "خدمات کی درخواستیں",
+      "customers": "کسٹمرز",
+      "conversations": "گفتگو",
+      "tasks": "کام",
+      "campaigns": "مہمات",
+      "reminders": "یاد دہانیاں"
     },
     "requests": {
-      "title": "Service Requests",
-      "subtitle": "All website requests — update status so the client can track progress.",
-      "refresh": "Refresh",
-      "service": "Service",
-      "customer": "Customer",
-      "phone": "Phone",
-      "status": "Status",
-      "date": "Date",
-      "notes": "Notes",
-      "empty": "No requests yet."
+      "title": "خدمات کی درخواستیں",
+      "subtitle": "ویب سائٹ کی تمام درخواستیں — کلائنٹ کی پیشرفت دیکھنے کے لیے حالت اپ ڈیٹ کریں۔",
+      "refresh": "تازہ کریں",
+      "service": "خدمت",
+      "customer": "کسٹمر",
+      "phone": "فون",
+      "status": "حالت",
+      "date": "تاریخ",
+      "notes": "نوٹس",
+      "empty": "ابھی تک کوئی درخواست نہیں۔"
     },
     "dashboard": {
-      "title": "Dashboard",
-      "subtitle": "A clear overview of customers, tasks, and conversations.",
-      "totalCustomers": "Total Customers",
-      "activeTasks": "Active Tasks",
-      "recentChats": "Chats Today",
-      "openLeads": "Open Leads",
-      "recentConversations": "Recent Conversations",
-      "recentTasks": "Recent Tasks",
-      "viewAll": "View all",
-      "emptyConversations": "No conversations yet.",
-      "emptyTasks": "No tasks yet.",
-      "dbHint": "Could not reach the database. Set DATABASE_URL and run prisma db push."
+      "title": "ڈیش بورڈ",
+      "subtitle": "کسٹمرز، کاموں، اور گفتگو کا واضح جائزہ۔",
+      "totalCustomers": "کل کسٹمرز",
+      "activeTasks": "فعال کام",
+      "recentChats": "آج کی گفتگو",
+      "openLeads": "کھلے لیڈز",
+      "recentConversations": "حالیہ گفتگو",
+      "recentTasks": "حالیہ کام",
+      "viewAll": "سب دیکھیں",
+      "emptyConversations": "ابھی تک کوئی گفتگو نہیں۔",
+      "emptyTasks": "ابھی تک کوئی کام نہیں۔",
+      "dbHint": "ڈیٹا بیس تک رسائی نہیں ہو سکی۔ DATABASE_URL سیٹ کریں اور prisma db push چلائیں۔"
     },
     "customers": {
-      "title": "Customers",
-      "subtitle": "Manage customers and their interaction history.",
-      "name": "Name",
-      "phone": "Phone",
-      "language": "Language",
-      "sector": "Sector",
-      "status": "Status",
-      "lastInteraction": "Last interaction",
-      "actions": "Actions",
-      "view": "View",
-      "empty": "No customers yet.",
-      "detailTitle": "Customer profile",
-      "conversations": "Conversation history",
-      "noConversations": "No conversations for this customer.",
-      "back": "Back to customers",
-      "notes": "Notes",
-      "segment": "Segment"
+      "title": "کسٹمرز",
+      "subtitle": "کسٹمرز اور ان کی گفتگو کی تاریخ کا انتظام کریں۔",
+      "name": "نام",
+      "phone": "فون",
+      "language": "زبان",
+      "sector": "شعبہ",
+      "status": "حالت",
+      "lastInteraction": "آخری رابطہ",
+      "actions": "اقدامات",
+      "view": "دیکھیں",
+      "empty": "ابھی تک کوئی کسٹمر نہیں۔",
+      "detailTitle": "کسٹمر پروفائل",
+      "conversations": "گفتگو کی تاریخ",
+      "noConversations": "اس کسٹمر کے لیے کوئی گفتگو نہیں۔",
+      "back": "کسٹمرز پر واپس",
+      "notes": "نوٹس",
+      "segment": "سیگمنٹ",
+      "editTitle": "کسٹمر میں ترمیم کریں",
+      "email": "ای میل",
+      "emailPh": "example@email.com",
+      "editError": "تبدیلیاں محفوظ نہیں ہو سکیں۔ دوبارہ کوشش کریں۔",
+      "editSaved": "تبدیلیاں کامیابی سے محفوظ ہو گئیں۔",
+      "save": "تبدیلیاں محفوظ کریں",
+      "saving": "محفوظ ہو رہا ہے…"
     },
     "conversations": {
-      "title": "Conversations",
-      "subtitle": "Message log across channels.",
-      "customer": "Customer",
-      "channel": "Channel",
-      "sender": "Sender",
-      "message": "Message",
-      "time": "Time",
-      "empty": "No conversations yet."
+      "title": "گفتگو",
+      "subtitle": "تمام چینلز کے پیغامات کا لاگ۔",
+      "customer": "کسٹمر",
+      "channel": "چینل",
+      "sender": "بھیجنے والا",
+      "message": "پیغام",
+      "time": "وقت",
+      "empty": "ابھی تک کوئی گفتگو نہیں۔",
+      "viewProfile": "پروفائل دیکھیں",
+      "replyTitle": "سیکرٹری کا جواب",
+      "replyCustomer": "کسٹمر",
+      "replySelect": "کسٹمر منتخب کریں…",
+      "replyMessage": "پیغام",
+      "replyMessagePh": "اپنا جواب لکھیں…",
+      "replySend": "جواب بھیجیں",
+      "replySending": "بھیجا جا رہا ہے…",
+      "replyRequired": "کسٹمر منتخب کریں اور پیغام درج کریں۔",
+      "replyError": "جواب نہیں بھیجا جا سکا۔ دوبارہ کوشش کریں۔"
+    },
+    "campaigns": {
+      "title": "مہمات",
+      "subtitle": "چینلز پر آؤٹ ریچ مہمات کا انتظام کریں۔",
+      "refresh": "تازہ کریں",
+      "error": "کچھ غلط ہو گیا۔ دوبارہ کوشش کریں۔",
+      "createTitle": "نئی مہم بنائیں",
+      "name": "مہم کا نام",
+      "namePh": "مثلاً: فوری قیام کی پیشکش",
+      "type": "قسم",
+      "targetSegment": "ہدف سیگمنٹ",
+      "targetSegmentPh": "مثلاً: نئے کسٹمرز",
+      "scheduledAt": "شیڈول کا وقت",
+      "messageTemplate": "پیغام کا ٹیمپلیٹ",
+      "messageTemplatePh": "کسٹمرز کو بھیجا جانے والا پیغام لکھیں…",
+      "formRequired": "نام اور پیغام کا ٹیمپلیٹ درکار ہیں۔",
+      "saving": "محفوظ ہو رہا ہے…",
+      "create": "مہم بنائیں",
+      "status": "حالت",
+      "actions": "اقدامات",
+      "empty": "ابھی تک کوئی مہم نہیں۔",
+      "delete": "حذف کریں",
+      "confirmDelete": "کیا اس مہم کو حذف کرنا ہے؟"
+    },
+    "reminders": {
+      "title": "یاد دہانیاں",
+      "subtitle": "کسٹمر یاد دہانیوں کی نگرانی کریں — اقامہ، کمرشل رجسٹریشن کی میعاد، اور اپائنٹمنٹس۔",
+      "refresh": "تازہ کریں",
+      "error": "کچھ غلط ہو گیا۔ دوبارہ کوشش کریں۔",
+      "createTitle": "یاد دہانی شامل کریں",
+      "customerPhone": "کسٹمر کا فون",
+      "customerPhonePh": "05xxxxxxxx",
+      "type": "قسم",
+      "date": "یاد دہانی کی تاریخ",
+      "formRequired": "فون نمبر اور یاد دہانی کی تاریخ درکار ہیں۔",
+      "saving": "محفوظ ہو رہا ہے…",
+      "create": "یاد دہانی شامل کریں",
+      "customer": "کسٹمر",
+      "phone": "فون",
+      "sentStatus": "حالت",
+      "sent": "بھیج دیا گیا",
+      "pending": "زیرِ التوا",
+      "actions": "اقدامات",
+      "empty": "ابھی تک کوئی یاد دہانی نہیں۔",
+      "delete": "حذف کریں",
+      "confirmDelete": "کیا اس یاد دہانی کو حذف کرنا ہے؟"
     },
     "tasks": {
-      "title": "Tasks",
-      "subtitle": "Track secretary and delivery work.",
-      "customer": "Customer",
-      "status": "Status",
-      "assigned": "Assigned",
-      "due": "Due",
-      "notes": "Notes",
-      "empty": "No tasks yet."
+      "title": "کام",
+      "subtitle": "سیکرٹری اور تکمیل کے کام کی نگرانی کریں۔",
+      "customer": "کسٹمر",
+      "status": "حالت",
+      "assigned": "تفویض شدہ",
+      "due": "آخری تاریخ",
+      "notes": "نوٹس",
+      "empty": "ابھی تک کوئی کام نہیں۔"
     },
     "status": {
-      "LEAD": "Lead",
-      "ACTIVE": "Active",
-      "SLEEPING": "Sleeping",
-      "ANGRY": "Angry",
-      "INACTIVE": "Inactive",
+      "LEAD": "ممکنہ کسٹمر",
+      "ACTIVE": "فعال",
+      "SLEEPING": "خاموش",
+      "ANGRY": "ناراض",
+      "INACTIVE": "غیر فعال",
       "VIP": "VIP",
-      "ARCHIVED": "Archived",
-      "PENDING": "Pending",
-      "IN_PROGRESS": "In progress",
-      "WAITING": "Waiting",
-      "COMPLETED": "Completed",
-      "DONE": "Done",
-      "CANCELLED": "Cancelled"
+      "ARCHIVED": "آرکائیو شدہ",
+      "PENDING": "زیرِ التوا",
+      "IN_PROGRESS": "جاری ہے",
+      "WAITING": "منتظر",
+      "COMPLETED": "مکمل",
+      "DONE": "ہو گیا",
+      "CANCELLED": "منسوخ"
     },
     "sender": {
-      "CUSTOMER": "Customer",
-      "BOT": "Bot",
-      "SECRETARY": "Secretary",
-      "AGENT": "Agent",
-      "SYSTEM": "System"
+      "CUSTOMER": "کسٹمر",
+      "BOT": "بوٹ",
+      "SECRETARY": "سیکرٹری",
+      "AGENT": "ایجنٹ",
+      "SYSTEM": "سسٹم"
+    },
+    "segment": {
+      "INDIVIDUAL": "انفرادی",
+      "COMPANY": "کمپنی",
+      "FAMILY": "خاندان",
+      "STARTUP": "اسٹارٹ اپ",
+      "NONPROFIT": "غیر منافع بخش",
+      "INVESTOR": "سرمایہ کار",
+      "SME": "چھوٹا/درمیانہ ادارہ (SME)",
+      "ENTERPRISE": "بڑا ادارہ",
+      "GOVERNMENT": "حکومتی"
+    },
+    "campaignType": {
+      "WELCOME": "خوش آمدید",
+      "REMINDER": "یاد دہانی",
+      "OFFER": "پیشکش",
+      "NATIONAL_DAY": "قومی دن",
+      "WHATSAPP": "واٹس ایپ",
+      "SMS": "SMS",
+      "EMAIL": "ای میل",
+      "PUSH": "پش نوٹیفکیشن"
+    },
+    "campaignStatus": {
+      "DRAFT": "ڈرافٹ",
+      "SCHEDULED": "شیڈول شدہ",
+      "RUNNING": "جاری",
+      "PAUSED": "موقوف",
+      "COMPLETED": "مکمل",
+      "CANCELLED": "منسوخ"
+    },
+    "reminderType": {
+      "IQAMA_EXPIRY": "اقامہ کی میعاد",
+      "CR_EXPIRY": "کمرشل رجسٹریشن کی میعاد",
+      "FOLLOW_UP": "پیروی",
+      "PAYMENT": "ادائیگی",
+      "DOCUMENT": "دستاویز",
+      "APPOINTMENT": "اپائنٹمنٹ",
+      "RENEWAL": "تجدید",
+      "CUSTOM": "حسبِ ضرورت"
     }
   }
 }

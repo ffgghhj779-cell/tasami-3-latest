@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import "./globals.css";
 import JsonLd from "@/components/JsonLd";
+import Analytics from "@/components/Analytics";
 import { buildPageMetadata } from "@/lib/seo";
 import { fontVariables } from "@/lib/fonts";
 
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   );
