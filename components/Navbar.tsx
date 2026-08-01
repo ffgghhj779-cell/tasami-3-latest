@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -11,6 +11,7 @@ import {
   Cpu,
   SquaresFour,
   GlobeHemisphereWest,
+  UserCircle,
 } from "@phosphor-icons/react";
 import { Link, usePathname } from "@/navigation";
 import { locales, type Locale } from "@/i18n";
@@ -36,13 +37,21 @@ export default function Navbar() {
   const isRtl = locale === "ar" || locale === "ur";
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/auth/me")
+      .then((r) => r.json())
+      .then((d) => setLoggedIn(Boolean(d?.user)))
+      .catch(() => setLoggedIn(false));
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 bg-tasami-purple shadow-soft">
       <nav className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between gap-4 px-5 sm:px-8 lg:px-10">
         <Link
           href="/"
-          className="flex items-center gap-2.5 shrink-0"
+          className="flex shrink-0 items-center gap-2.5"
           onClick={() => setMobileOpen(false)}
         >
           <span className="flex h-10 w-10 items-center justify-center rounded-button bg-tasami-gold/20">
@@ -55,7 +64,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <ul className="hidden md:flex items-center gap-1">
+        <ul className="hidden items-center gap-1 md:flex">
           {NAV_LINKS.map(({ href, key, icon: Icon }) => {
             const active = pathname.includes(href);
             return (
@@ -68,10 +77,7 @@ export default function Navbar() {
                       : "text-white/80 hover:bg-white/10 hover:text-tasami-pink"
                   }`}
                 >
-                  <Icon
-                    weight="regular"
-                    className="h-4 w-4 text-tasami-gold"
-                  />
+                  <Icon weight="regular" className="h-4 w-4 text-tasami-gold" />
                   {t(key)}
                 </Link>
               </li>
@@ -133,11 +139,21 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
+          <Link
+            href={loggedIn ? "/my-requests" : "/login"}
+            className="hidden min-h-[44px] items-center gap-1.5 rounded-button px-3 py-2.5 text-sm font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-tasami-pink sm:inline-flex"
+          >
+            <UserCircle weight="regular" className="h-5 w-5 text-tasami-gold" />
+            <span className="hidden lg:inline">
+              {loggedIn ? t("account") : t("login")}
+            </span>
+          </Link>
+
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex min-h-[44px] items-center gap-2 rounded-button bg-tasami-pink px-4 py-2.5 text-sm font-medium text-white shadow-soft transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
+            className="hidden min-h-[44px] items-center gap-2 rounded-button bg-tasami-pink px-4 py-2.5 text-sm font-medium text-white shadow-soft transition-all duration-200 hover:opacity-90 active:scale-[0.98] sm:inline-flex"
           >
             <WhatsappLogo weight="fill" className="h-4 w-4" />
             <span className="hidden lg:inline">{t("whatsapp")}</span>
@@ -148,7 +164,7 @@ export default function Navbar() {
             aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((v) => !v)}
-            className="touch-target flex h-11 w-11 items-center justify-center rounded-button text-white md:hidden hover:bg-white/10"
+            className="touch-target flex h-11 w-11 items-center justify-center rounded-button text-white hover:bg-white/10 md:hidden"
           >
             {mobileOpen ? (
               <X weight="bold" className="h-5 w-5" />
@@ -188,6 +204,27 @@ export default function Navbar() {
                   </li>
                 );
               })}
+              <li>
+                <Link
+                  href={loggedIn ? "/my-requests" : "/login"}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex min-h-[48px] items-center gap-3 rounded-button px-4 py-3.5 text-sm font-medium text-white/90 hover:bg-white/10"
+                >
+                  <UserCircle weight="regular" className="h-5 w-5 text-tasami-gold" />
+                  {loggedIn ? t("account") : t("login")}
+                </Link>
+              </li>
+              {!loggedIn && (
+                <li>
+                  <Link
+                    href="/register"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex min-h-[48px] items-center gap-3 rounded-button px-4 py-3.5 text-sm font-medium text-white/90 hover:bg-white/10"
+                  >
+                    {t("register")}
+                  </Link>
+                </li>
+              )}
               <li className="pt-3">
                 <a
                   href={WHATSAPP_URL}

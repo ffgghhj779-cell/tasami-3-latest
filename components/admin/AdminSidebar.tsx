@@ -6,12 +6,14 @@ import {
   Users,
   ChatCircleDots,
   CheckSquare,
+  ClipboardText,
   ArrowLeft,
 } from "@phosphor-icons/react";
 import { Link, usePathname } from "@/navigation";
 
 const NAV = [
   { href: "/admin", key: "dashboard" as const, icon: ChartPieSlice, exact: true },
+  { href: "/admin/requests", key: "requests" as const, icon: ClipboardText, exact: false },
   { href: "/admin/customers", key: "customers" as const, icon: Users, exact: false },
   { href: "/admin/conversations", key: "conversations" as const, icon: ChatCircleDots, exact: false },
   { href: "/admin/tasks", key: "tasks" as const, icon: CheckSquare, exact: false },

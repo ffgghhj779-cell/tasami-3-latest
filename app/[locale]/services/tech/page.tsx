@@ -13,8 +13,9 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "@/navigation";
 import ServiceCard from "@/components/ServiceCard";
-import { TECH_KEYS, type TechKey } from "@/lib/content-keys";
+import { TECH_KEYS, TECH_SLUGS, type TechKey } from "@/lib/content-keys";
 import { rtlLocales, type Locale } from "@/i18n";
+import { buildPageMetadata } from "@/lib/seo";
 
 const TECH_ICONS: Record<TechKey, typeof Globe> = {
   websites: Globe,
@@ -31,6 +32,16 @@ const TECH_ICONS: Record<TechKey, typeof Globe> = {
 type Props = {
   params: { locale: string };
 };
+
+export async function generateMetadata({ params }: Props) {
+  const t = await getTranslations({ locale: params.locale, namespace: "tech" });
+  return buildPageMetadata({
+    title: t("title"),
+    description: t("subtitle"),
+    path: "/services/tech",
+    locale: params.locale,
+  });
+}
 
 export default async function TechServicesPage({ params }: Props) {
   const { locale } = params;
@@ -65,9 +76,11 @@ export default async function TechServicesPage({ params }: Props) {
           {TECH_KEYS.map((key) => (
             <ServiceCard
               key={key}
+              href={`/services/tech/${TECH_SLUGS[key]}`}
               icon={TECH_ICONS[key]}
               title={t(`items.${key}.title`)}
               description={t(`items.${key}.desc`)}
+              cta={t("viewServices")}
               rtl={isRtl}
             />
           ))}

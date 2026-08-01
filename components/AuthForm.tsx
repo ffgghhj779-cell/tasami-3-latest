@@ -1,0 +1,162 @@
+"use client";
+
+import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { Link, useRouter } from "@/navigation";
+
+type Mode = "login" | "register";
+
+export default function AuthForm({ mode }: { mode: Mode }) {
+  const t = useTranslations("auth");
+  const locale = useLocale();
+  const router = useRouter();
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    password: "",
+  });
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await fetch(
+        mode === "login" ? "/api/auth/login" : "/api/auth/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...form,
+            locale,
+          }),
+        }
+      );
+      const data = await res.json().catch(() => null);
+      if (!res.ok) {
+        const code = data?.error as string | undefined;
+        if (code === "Phone already registered") setError(t("phoneTaken"));
+        else if (code === "Email already registered") setError(t("emailTaken"));
+        else if (code === "Invalid credentials") setError(t("invalidCreds"));
+        else setError(t("error"));
+        return;
+      }
+      router.push("/my-requests");
+      router.refresh();
+    } catch {
+      setError(t("error"));
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="surface-dotted min-h-screen">
+      <div className="mx-auto flex max-w-md flex-col px-5 py-14 sm:px-8 lg:py-20">
+        <Link
+          href="/"
+          className="mb-8 text-sm font-medium text-tasami-gray hover:text-tasami-pink"
+        >
+          ← {t("backHome")}
+        </Link>
+
+        <header className="mb-8">
+          <h1 className="font-display text-2xl text-tasami-purple sm:text-3xl">
+            {mode === "login" ? t("loginTitle") : t("registerTitle")}
+          </h1>
+          <span className="highlight-line" />
+          <p className="mt-4 text-sm leading-relaxed text-tasami-gray">
+            {mode === "login" ? t("loginSubtitle") : t("registerSubtitle")}
+          </p>
+        </header>
+
+        <form onSubmit={submit} className="card-premium space-y-3.5 p-6">
+          {mode === "register" && (
+            <label className="block text-xs font-medium text-tasami-purple">
+              {t("name")}
+              <input
+                required
+                value={form.name}
+                onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                className="input-soft mt-1.5"
+                placeholder={t("namePh")}
+              />
+            </label>
+          )}
+
+          <label className="block text-xs font-medium text-tasami-purple">
+            {t("phone")}
+            <input
+              required
+              type="tel"
+              dir="ltr"
+              value={form.phone}
+              onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
+              className="input-soft mt-1.5"
+              placeholder="05xxxxxxxx"
+            />
+          </label>
+
+          {mode === "register" && (
+            <label className="block text-xs font-medium text-tasami-purple">
+              {t("email")}
+              <input
+                type="email"
+                dir="ltr"
+                value={form.email}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, email: e.target.value }))
+                }
+                className="input-soft mt-1.5"
+                placeholder="optional@email.com"
+              />
+            </label>
+          )}
+
+          <label className="block text-xs font-medium text-tasami-purple">
+            {t("password")}
+            <input
+              required
+              type="password"
+              dir="ltr"
+              minLength={6}
+              value={form.password}
+              onChange={(e) =>
+                setForm((f) => ({ ...f, password: e.target.value }))
+              }
+              className="input-soft mt-1.5"
+              placeholder={t("passwordPh")}
+            />
+          </label>
+
+          {error && <p className="text-sm text-[#8B3A1A]">{error}</p>}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="btn-secondary w-full text-sm disabled:opacity-50"
+          >
+            {loading
+              ? t("loading")
+              : mode === "login"
+                ? t("loginCta")
+                : t("registerCta")}
+          </button>
+        </form>
+
+        <p className="mt-6 text-center text-sm text-tasami-gray">
+          {mode === "login" ? t("noAccount") : t("hasAccount")}{" "}
+          <Link
+            href={mode === "login" ? "/register" : "/login"}
+            className="font-medium text-tasami-pink hover:text-tasami-purple"
+          >
+            {mode === "login" ? t("registerLink") : t("loginLink")}
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+}

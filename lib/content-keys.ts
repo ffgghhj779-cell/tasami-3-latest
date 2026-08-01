@@ -83,6 +83,18 @@ export const GOV_SLUGS: Record<(typeof GOV_KEYS)[number], string> = {
   investment: "istithmar",
 };
 
+export const TECH_SLUGS: Record<(typeof TECH_KEYS)[number], string> = {
+  websites: "websites",
+  mobile: "mobile",
+  maps: "maps",
+  marketing: "marketing",
+  automation: "automation",
+  support: "support",
+  ai: "ai",
+  data: "data",
+  cloud: "cloud",
+};
+
 export const HOME_CORE_KEYS = ["gov", "tech", "sectors"] as const;
 export const HOME_WHY_KEYS = [
   "speed",

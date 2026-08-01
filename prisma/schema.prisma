@@ -115,10 +115,33 @@ enum ReminderType {
   CUSTOM
 }
 
+enum UserRole {
+  CLIENT
+  ADMIN
+}
+
 // ---------------------------------------------------------------------------
-// Models — 6 brief tables: customers, conversations, services, tasks,
-// campaigns, reminders
+// Models — customers, conversations, services, tasks,
+// campaigns, reminders, users (site auth)
 // ---------------------------------------------------------------------------
+
+model User {
+  id            String   @id @default(cuid())
+  name          String
+  phone         String   @unique
+  email         String?  @unique
+  password_hash String
+  role          UserRole @default(CLIENT)
+  customer_id   String?  @unique
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  customer Customer? @relation(fields: [customer_id], references: [id], onDelete: SetNull)
+
+  @@index([role])
+  @@map("users")
+}
 
 model Customer {
   id               String          @id @default(cuid())
@@ -140,6 +163,7 @@ model Customer {
   conversations Conversation[]
   tasks         Task[]
   reminders     Reminder[]
+  user          User?
 
   @@index([status])
   @@index([segment])

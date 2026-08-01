@@ -143,6 +143,14 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link
+                  href="/my-requests"
+                  className="text-sm text-white/60 transition-colors hover:text-tasami-pink"
+                >
+                  {t("myRequests")}
+                </Link>
+              </li>
+              <li>
                 <span className="text-sm text-white/60">{t("privacy")}</span>
               </li>
               <li>
