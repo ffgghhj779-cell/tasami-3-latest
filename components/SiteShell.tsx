@@ -20,7 +20,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
     <>
       <Navbar />
       <TrustBar />
-      <main className="min-h-[60vh]">{children}</main>
+      <main className="min-h-[50vh] min-h-[50dvh]">{children}</main>
       <Footer />
       <FloatingWidgets />
     </>

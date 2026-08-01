@@ -13,9 +13,9 @@ type ChatMessage = {
 
 const spring = {
   type: "spring" as const,
-  stiffness: 260,
-  damping: 24,
-  mass: 0.8,
+  stiffness: 280,
+  damping: 28,
+  mass: 0.75,
 };
 
 const GUEST_KEY = "tasami_monjez_guest";
@@ -41,7 +41,7 @@ function TypingDots() {
         <motion.span
           key={i}
           className="block h-1.5 w-1.5 rounded-full bg-tasami-gray/70"
-          animate={{ y: [0, -4, 0], opacity: [0.4, 1, 0.4] }}
+          animate={{ y: [0, -3, 0], opacity: [0.4, 1, 0.4] }}
           transition={{
             duration: 0.9,
             repeat: Infinity,
@@ -55,7 +55,6 @@ function TypingDots() {
 }
 
 type Props = {
-  /** When WhatsApp opens, close chat */
   forceClose?: boolean;
   onOpenChange?: (open: boolean) => void;
 };
@@ -69,7 +68,6 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [customerId, setCustomerId] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
-  const listRef = useRef<HTMLDivElement>(null);
   const welcomeSeeded = useRef(false);
 
   const setOpenSafe = useCallback(
@@ -97,7 +95,7 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
 
   useEffect(() => {
     if (!open) return;
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [messages, sending, open]);
 
   async function sendMessage(e?: React.FormEvent) {
@@ -156,33 +154,29 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
   }
 
   return (
-    <div className="fixed bottom-6 start-4 z-50 flex flex-col items-start gap-3 sm:bottom-8 sm:start-6">
+    <div className="pointer-events-none fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] start-3 z-50 flex flex-col items-start gap-3 sm:bottom-8 sm:start-6">
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 28, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 16, scale: 0.97 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
             transition={spring}
-            className="mb-1 flex h-[min(520px,68vh)] w-[min(360px,calc(100vw-5.5rem))] flex-col overflow-hidden rounded-[20px] bg-white shadow-soft"
+            className="pointer-events-auto mb-1 flex h-[min(560px,calc(100dvh-8.5rem))] w-[min(380px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[20px] bg-white shadow-soft max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:top-auto max-sm:mb-0 max-sm:h-[min(85dvh,640px)] max-sm:w-full max-sm:rounded-b-none max-sm:rounded-t-[20px]"
             role="dialog"
             aria-label={t("monjezTitle")}
           >
-            {/* Header — deep purple + live status */}
-            <div className="relative flex items-center justify-between bg-tasami-purple px-4 py-3.5">
+            <div className="relative flex shrink-0 items-center justify-between bg-tasami-purple px-4 py-3.5">
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <span className="flex h-11 w-11 items-center justify-center rounded-full bg-tasami-gold/20 text-base font-light text-tasami-gold">
                     م
                   </span>
-                  <span
-                    className="absolute bottom-0 end-0 h-3 w-3 rounded-full border-2 border-tasami-purple bg-tasami-gold"
-                    title={t("monjezOnline")}
-                  />
+                  <span className="absolute bottom-0 end-0 h-3 w-3 rounded-full border-2 border-tasami-purple bg-tasami-gold" />
                 </div>
                 <div>
                   <p className="text-[15px] font-medium tracking-wide text-white">
-                    منجز
+                    {t("monjezTitle")}
                   </p>
                   <p className="flex items-center gap-1.5 text-[11px] text-white/65">
                     <span className="inline-block h-1.5 w-1.5 rounded-full bg-tasami-gold" />
@@ -194,59 +188,45 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
                 type="button"
                 aria-label={t("close")}
                 onClick={() => setOpenSafe(false)}
-                className="touch-target flex items-center justify-center rounded-button p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                className="touch-target flex items-center justify-center rounded-button p-2 text-white/80 active:bg-white/10"
               >
                 <X weight="bold" className="h-4 w-4" />
               </button>
             </div>
 
-            {/* Messages */}
-            <div
-              ref={listRef}
-              className="flex-1 space-y-3 overflow-y-auto bg-[#F8F9FA] px-3.5 py-4"
-            >
-              <AnimatePresence initial={false}>
-                {messages.map((msg) => (
-                  <motion.div
-                    key={msg.id}
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={spring}
-                    className={`flex ${
-                      msg.sender === "user" ? "justify-end" : "justify-start"
+            <div className="scroll-touch flex-1 space-y-3 overflow-y-auto bg-[#F8F9FA] px-3.5 py-4">
+              {messages.map((msg) => (
+                <div
+                  key={msg.id}
+                  className={`flex ${
+                    msg.sender === "user" ? "justify-end" : "justify-start"
+                  }`}
+                >
+                  <div
+                    className={`max-w-[82%] px-3.5 py-2.5 text-[14px] leading-[1.55] ${
+                      msg.sender === "user"
+                        ? "rounded-[18px] rounded-ee-md bg-tasami-pink text-tasami-dark"
+                        : "rounded-[18px] rounded-es-md bg-white text-tasami-dark shadow-soft"
                     }`}
                   >
-                    <div
-                      className={`max-w-[82%] px-3.5 py-2.5 text-[14px] leading-[1.55] ${
-                        msg.sender === "user"
-                          ? "rounded-[18px] rounded-ee-md bg-tasami-pink text-tasami-dark"
-                          : "rounded-[18px] rounded-es-md bg-white text-tasami-dark shadow-soft"
-                      }`}
-                    >
-                      {msg.text}
-                    </div>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
 
               {sending && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex justify-start"
-                >
+                <div className="flex justify-start">
                   <div className="rounded-[18px] rounded-es-md bg-white px-4 py-3 shadow-soft">
                     <TypingDots />
                   </div>
-                </motion.div>
+                </div>
               )}
               <div ref={bottomRef} />
             </div>
 
-            {/* Composer — iOS-style */}
             <form
               onSubmit={sendMessage}
-              className="flex items-end gap-2 border-t border-tasami-purple/5 bg-white px-3 py-3"
+              className="flex shrink-0 items-end gap-2 border-t border-tasami-purple/5 bg-white px-3 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
             >
               <input
                 type="text"
@@ -254,13 +234,14 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={t("monjezPlaceholder")}
                 disabled={sending}
+                enterKeyHint="send"
                 className="min-h-[44px] flex-1 rounded-full bg-[#F8F9FA] px-4 py-2.5 text-sm text-tasami-dark placeholder:text-tasami-gray shadow-soft focus:outline-none focus:ring-2 focus:ring-tasami-pink/30 disabled:opacity-60"
               />
               <button
                 type="submit"
                 disabled={sending || !input.trim()}
                 aria-label={t("send")}
-                className="touch-target flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-tasami-purple text-tasami-gold shadow-soft transition-all hover:opacity-90 disabled:opacity-35"
+                className="touch-target flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-tasami-purple text-tasami-gold shadow-soft active:opacity-90 disabled:opacity-35"
               >
                 <PaperPlaneTilt weight="fill" className="h-[18px] w-[18px]" />
               </button>
@@ -273,10 +254,11 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
         type="button"
         aria-label={t("openChat")}
         onClick={() => setOpenSafe(!open)}
-        whileHover={{ scale: 1.04 }}
-        whileTap={{ scale: 0.96 }}
+        whileTap={{ scale: 0.94 }}
         transition={spring}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-tasami-purple text-white shadow-soft"
+        className={`pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-tasami-purple text-white shadow-soft ${
+          open ? "max-sm:hidden" : ""
+        }`}
       >
         {open ? (
           <X weight="bold" className="h-6 w-6" />

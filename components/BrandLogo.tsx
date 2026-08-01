@@ -9,6 +9,8 @@ type BrandLogoProps = {
   slogan?: string;
   /** Prefer light mark for dark purple backgrounds */
   onDark?: boolean;
+  /** Hide slogan on very small screens to keep nav clean */
+  compactOnMobile?: boolean;
 };
 
 /**
@@ -22,6 +24,7 @@ export default function BrandLogo({
   wordmark = "تسامي",
   slogan,
   onDark = true,
+  compactOnMobile = false,
 }: BrandLogoProps) {
   const gold = "#E9C46A";
   const pink = "#F4A261";
@@ -77,7 +80,9 @@ export default function BrandLogo({
           </span>
           {slogan ? (
             <span
-              className="mt-1 max-w-[11rem] text-[0.62rem] font-medium uppercase leading-snug tracking-[0.18em] sm:max-w-none sm:tracking-[0.2em]"
+              className={`mt-1 max-w-[11rem] text-[0.62rem] font-medium uppercase leading-snug tracking-[0.18em] sm:max-w-none sm:tracking-[0.2em] ${
+                compactOnMobile ? "max-[380px]:hidden" : ""
+              }`}
               style={{ color: sloganColor }}
             >
               {slogan}

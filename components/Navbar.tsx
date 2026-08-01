@@ -16,6 +16,7 @@ import {
 import { Link, usePathname } from "@/navigation";
 import { locales, type Locale } from "@/i18n";
 import BrandLogo from "@/components/BrandLogo";
+import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
 
 const NAV_LINKS = [
   { href: "/services/government", key: "government" as const, icon: Buildings },
@@ -40,6 +41,8 @@ export default function Navbar() {
   const [langOpen, setLangOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
 
+  useBodyScrollLock(mobileOpen);
+
   useEffect(() => {
     fetch("/api/auth/me")
       .then((r) => r.json())
@@ -56,11 +59,12 @@ export default function Navbar() {
           onClick={() => setMobileOpen(false)}
         >
           <BrandLogo
-            size={42}
+            size={40}
             withWordmark
             wordmark={tBrand("name")}
             slogan={tBrand("slogan")}
             onDark
+            compactOnMobile
           />
         </Link>
 

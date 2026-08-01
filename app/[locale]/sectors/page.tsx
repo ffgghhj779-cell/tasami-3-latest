@@ -25,6 +25,7 @@ import {
 import type { ComponentType, SVGProps } from "react";
 import { Link } from "@/navigation";
 import { SECTOR_KEYS, type SectorKey } from "@/lib/content-keys";
+import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
 
 type PhosphorIcon = ComponentType<
   SVGProps<SVGSVGElement> & {
@@ -118,19 +119,20 @@ function SectorModal({
 }) {
   const t = useTranslations("sectors");
   const ActiveIcon = SECTOR_ICONS[sectorKey];
+  useBodyScrollLock(true);
 
   return (
     <motion.div
-      className="fixed inset-0 z-[60] flex items-end justify-center p-5 sm:items-center"
+      className="fixed inset-0 z-[60] flex items-end justify-center p-0 sm:items-center sm:p-5"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.22 }}
+      transition={{ duration: 0.2 }}
     >
       <button
         type="button"
         aria-label={t("close")}
-        className="absolute inset-0 bg-tasami-purple/40 backdrop-blur-[2px]"
+        className="absolute inset-0 bg-tasami-purple/40 sm:backdrop-blur-[2px]"
         onClick={onClose}
       />
 
@@ -138,11 +140,11 @@ function SectorModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="sector-modal-title"
-        initial={{ opacity: 0, y: 36, scale: 0.97 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 20, scale: 0.98 }}
-        transition={spring}
-        className="relative z-10 w-full max-w-md overflow-hidden rounded-card bg-white shadow-soft"
+        initial={{ opacity: 0, y: 36 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
+        transition={{ type: "spring", stiffness: 280, damping: 28 }}
+        className="scroll-touch relative z-10 max-h-[90dvh] w-full max-w-md overflow-y-auto rounded-t-[20px] bg-white shadow-soft sm:rounded-card"
       >
         <div className="flex items-start justify-between gap-4 bg-tasami-purple px-6 py-5">
           <div className="flex items-center gap-3">

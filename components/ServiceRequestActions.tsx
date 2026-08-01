@@ -16,12 +16,13 @@ import {
   getServiceForm,
   type ServiceField,
 } from "@/lib/service-forms";
+import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
 
 const spring = {
   type: "spring" as const,
-  stiffness: 260,
-  damping: 24,
-  mass: 0.8,
+  stiffness: 280,
+  damping: 28,
+  mass: 0.75,
 };
 
 const WHATSAPP_BASE = "https://wa.me/966500000000?text=";
@@ -54,6 +55,8 @@ export default function ServiceRequestActions({
     email: "",
   });
   const [answers, setAnswers] = useState<Record<string, string>>({});
+
+  useBodyScrollLock(open);
 
   const waUrl =
     WHATSAPP_BASE +
@@ -281,7 +284,7 @@ export default function ServiceRequestActions({
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[70] flex items-end justify-center p-4 sm:items-center"
+            className="fixed inset-0 z-[70] flex items-end justify-center p-0 sm:items-center sm:p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -289,18 +292,18 @@ export default function ServiceRequestActions({
             <button
               type="button"
               aria-label={t("close")}
-              className="absolute inset-0 bg-tasami-purple/45 backdrop-blur-[2px]"
+              className="absolute inset-0 bg-tasami-purple/45 sm:backdrop-blur-[2px]"
               onClick={close}
             />
 
             <motion.div
               role="dialog"
               aria-modal="true"
-              initial={{ opacity: 0, y: 36, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.98 }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 24 }}
               transition={spring}
-              className="relative z-10 max-h-[90vh] w-full max-w-md overflow-y-auto rounded-card bg-white shadow-soft"
+              className="scroll-touch relative z-10 max-h-[92dvh] w-full max-w-md overflow-y-auto rounded-t-[20px] bg-white shadow-soft sm:max-h-[90vh] sm:rounded-card"
             >
               <div className="sticky top-0 z-10 flex items-start justify-between gap-3 bg-tasami-purple px-5 py-4">
                 <div>
