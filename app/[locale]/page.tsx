@@ -192,16 +192,19 @@ export default async function HomePage({ params }: Props) {
             {HOME_WHY_KEYS.map((key) => {
               const Icon = WHY_ICONS[key];
               return (
-                <div key={key} className="card-premium p-7 sm:p-8">
-                  <span className="icon-gold-lg mb-5">
-                    <Icon weight="regular" className="h-7 w-7" />
-                  </span>
-                  <h3 className="text-base font-medium text-tasami-purple sm:text-lg">
-                    {t(`why.${key}.title`)}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-tasami-gray">
-                    {t(`why.${key}.desc`)}
-                  </p>
+                <div key={key} className="feature-card">
+                  <div className="feature-card-accent" aria-hidden />
+                  <div className="p-6 sm:p-7">
+                    <span className="icon-gold-lg mb-5">
+                      <Icon weight="regular" className="h-7 w-7" />
+                    </span>
+                    <h3 className="text-base font-medium text-tasami-purple sm:text-lg">
+                      {t(`why.${key}.title`)}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-tasami-gray">
+                      {t(`why.${key}.desc`)}
+                    </p>
+                  </div>
                 </div>
               );
             })}

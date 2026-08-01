@@ -23,10 +23,12 @@ import {
 } from "@phosphor-icons/react";
 import type { ComponentType, SVGProps } from "react";
 import { Link } from "@/navigation";
+import ServiceCard from "@/components/ServiceCard";
 import ServiceRequestActions from "@/components/ServiceRequestActions";
 import { SECTOR_KEYS, type SectorKey } from "@/lib/content-keys";
 import { SECTOR_PRICE_FROM, formatPriceFrom } from "@/lib/service-pricing";
 import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
+import { rtlLocales, type Locale } from "@/i18n";
 
 type PhosphorIcon = ComponentType<
   SVGProps<SVGSVGElement> & {
@@ -52,58 +54,49 @@ const SECTOR_ICONS: Record<SectorKey, PhosphorIcon> = {
   startups: RocketLaunch,
 };
 
-const spring = { type: "spring" as const, stiffness: 260, damping: 24, mass: 0.8 };
-
 export default function SectorsPage() {
   const t = useTranslations("sectors");
   const locale = useLocale();
+  const isRtl = rtlLocales.includes(locale as Locale);
   const [active, setActive] = useState<SectorKey | null>(null);
 
   return (
     <div className="surface-dotted min-h-screen">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-18 lg:px-10 lg:py-20">
-      <Link
-        href="/"
-        className="mb-10 inline-flex min-h-[44px] items-center gap-1.5 text-sm font-medium text-tasami-gray transition-colors hover:text-tasami-pink"
-      >
-        <ArrowLeft weight="bold" className="h-4 w-4 rtl:rotate-180" />
-        {t("back")}
-      </Link>
+        <Link
+          href="/"
+          className="mb-10 inline-flex min-h-[44px] items-center gap-1.5 text-sm font-medium text-tasami-gray transition-colors hover:text-tasami-pink"
+        >
+          <ArrowLeft weight="bold" className="h-4 w-4 rtl:rotate-180" />
+          {t("back")}
+        </Link>
 
-      <header className="mb-14 max-w-2xl">
-        <p className="text-sm font-medium text-tasami-pink">{t("eyebrow")}</p>
-        <h1 className="font-display mt-3 text-2xl text-tasami-purple sm:text-4xl">
-          {t("title")}
-        </h1>
-        <span className="highlight-line" />
-        <p className="mt-5 text-base leading-relaxed text-tasami-gray">
-          {t("subtitle")}
-        </p>
-      </header>
+        <header className="mb-14 max-w-2xl">
+          <p className="text-sm font-medium text-tasami-pink">{t("eyebrow")}</p>
+          <h1 className="font-display mt-3 text-2xl text-tasami-purple sm:text-4xl">
+            {t("title")}
+          </h1>
+          <span className="highlight-line" />
+          <p className="mt-5 text-base leading-relaxed text-tasami-gray">
+            {t("subtitle")}
+          </p>
+        </header>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
-        {SECTOR_KEYS.map((key) => {
-          const Icon = SECTOR_ICONS[key];
-          return (
-            <button
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+          {SECTOR_KEYS.map((key) => (
+            <ServiceCard
               key={key}
-              type="button"
+              icon={SECTOR_ICONS[key]}
+              title={t(`items.${key}.title`)}
+              description={t(`items.${key}.desc`)}
+              meta={formatPriceFrom(SECTOR_PRICE_FROM[key], locale)}
+              cta={t("openSector")}
               onClick={() => setActive(key)}
-              className="card-premium group flex min-h-[48px] flex-col items-center gap-4 p-8 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tasami-pink"
-            >
-              <span className="icon-gold !h-14 !w-14 transition-transform duration-300 group-hover:scale-105">
-                <Icon weight="regular" className="h-7 w-7" />
-              </span>
-              <span className="text-sm font-medium text-tasami-purple">
-                {t(`items.${key}.title`)}
-              </span>
-              <span className="text-[10px] font-medium text-tasami-gold">
-                {formatPriceFrom(SECTOR_PRICE_FROM[key], locale)}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+              asButton
+              rtl={isRtl}
+            />
+          ))}
+        </div>
 
         {active ? (
           <SectorModal sectorKey={active} onClose={() => setActive(null)} />
