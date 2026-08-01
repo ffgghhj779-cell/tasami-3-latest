@@ -5,12 +5,10 @@ type BrandLogoProps = {
   /** Show wordmark next to mark */
   withWordmark?: boolean;
   wordmark?: string;
-  /** Short line under the brand name */
+  /** Short line under the brand name — always visible when set */
   slogan?: string;
   /** Prefer light mark for dark purple backgrounds */
   onDark?: boolean;
-  /** Hide slogan on very small screens to keep nav clean */
-  compactOnMobile?: boolean;
 };
 
 /**
@@ -24,13 +22,12 @@ export default function BrandLogo({
   wordmark = "تسامي",
   slogan,
   onDark = true,
-  compactOnMobile = false,
 }: BrandLogoProps) {
   const gold = "#E9C46A";
   const pink = "#F4A261";
   const fill = onDark ? "rgba(233,196,106,0.16)" : "rgba(46,26,71,0.08)";
   const wordColor = onDark ? "#FFFFFF" : "#2E1A47";
-  const sloganColor = onDark ? "rgba(233,196,106,0.88)" : "#6C757D";
+  const sloganColor = onDark ? "rgba(233,196,106,0.9)" : "#6C757D";
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
@@ -73,16 +70,14 @@ export default function BrandLogo({
       {withWordmark && (
         <span className="flex min-w-0 flex-col items-start leading-none">
           <span
-            className="font-brand text-[1.35rem] font-normal tracking-[0.04em] sm:text-[1.45rem]"
+            className="font-brand text-[1.35rem] font-normal sm:text-[1.45rem]"
             style={{ color: wordColor }}
           >
             {wordmark}
           </span>
           {slogan ? (
             <span
-              className={`mt-1 max-w-[11rem] text-[0.62rem] font-medium uppercase leading-snug tracking-[0.18em] sm:max-w-none sm:tracking-[0.2em] ${
-                compactOnMobile ? "max-[380px]:hidden" : ""
-              }`}
+              className="font-brand-slogan mt-1.5 text-[0.65rem] leading-snug sm:text-[0.7rem]"
               style={{ color: sloganColor }}
             >
               {slogan}

@@ -68,13 +68,13 @@ const config: Config = {
         },
       },
       fontFamily: {
-        tajawal: ["var(--font-tajawal)", "Tajawal", "sans-serif"],
+        arabic: ["var(--font-arabic)", "IBM Plex Sans Arabic", "Tahoma", "sans-serif"],
         latin: ["var(--font-latin)", "Manrope", "sans-serif"],
         display: ["var(--font-display-latin)", "Cormorant Garamond", "Georgia", "serif"],
         brand: ["var(--font-brand-ar)", "Amiri", "serif"],
         hindi: ["var(--font-noto-devanagari)", "Noto Sans Devanagari", "sans-serif"],
         urdu: ["var(--font-noto-nastaliq)", "Noto Nastaliq Urdu", "serif"],
-        sans: ["var(--font-latin)", "Manrope", "sans-serif"],
+        sans: ["var(--font-arabic)", "IBM Plex Sans Arabic", "var(--font-latin)", "Manrope", "sans-serif"],
       },
       borderRadius: {
         card: "16px",

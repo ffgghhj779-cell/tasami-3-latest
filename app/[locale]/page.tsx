@@ -62,34 +62,38 @@ export default async function HomePage({ params }: Props) {
   setRequestLocale(locale);
 
   const t = await getTranslations("home");
+  const tBrand = await getTranslations("brand");
   const isRtl = rtlLocales.includes(locale as Locale);
   const Arrow = isRtl ? ArrowLeft : ArrowRight;
 
   return (
     <div>
       {/* —— Hero —— */}
-      <section className="hero-premium relative min-h-[min(92vh,880px)]">
+      <section className="hero-premium relative min-h-[min(88vh,820px)]">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-hero-glow opacity-70"
+          className="pointer-events-none absolute inset-0 bg-hero-glow opacity-50 sm:opacity-70"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-24 top-28 h-64 w-64 animate-float-soft rounded-full bg-tasami-gold/12 blur-3xl"
+          className="pointer-events-none absolute -left-24 top-28 hidden h-64 w-64 animate-float-soft rounded-full bg-tasami-gold/12 blur-3xl sm:block"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-20 bottom-24 h-72 w-72 rounded-full bg-tasami-pink/10 blur-3xl"
+          className="pointer-events-none absolute -right-20 bottom-24 hidden h-72 w-72 rounded-full bg-tasami-pink/10 blur-3xl sm:block"
         />
 
-        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-24 pt-16 text-center sm:px-8 sm:pb-32 sm:pt-28 lg:px-10 lg:pb-36 lg:pt-32">
-          <BrandLogo size={48} className="mb-6 sm:mb-8 sm:h-14 sm:w-14" onDark />
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-20 pt-14 text-center sm:px-8 sm:pb-32 sm:pt-28 lg:px-10 lg:pb-36 lg:pt-32">
+          <BrandLogo
+            size={52}
+            withWordmark
+            wordmark={tBrand("name")}
+            slogan={tBrand("slogan")}
+            onDark
+            className="mb-8 sm:mb-10"
+          />
 
-          <p className="mb-4 text-[0.7rem] font-medium uppercase tracking-[0.28em] text-tasami-gold/90 sm:mb-5 sm:text-sm">
-            {t("eyebrow")}
-          </p>
-
-          <h1 className="font-display max-w-4xl text-[1.85rem] leading-[1.2] text-white sm:text-5xl lg:text-6xl lg:leading-[1.08]">
+          <h1 className="font-display max-w-4xl text-[1.85rem] leading-[1.25] text-white sm:text-5xl lg:text-6xl lg:leading-[1.08]">
             {t("title")}
           </h1>
           <span className="highlight-line mx-auto !w-16 !bg-tasami-gold" />

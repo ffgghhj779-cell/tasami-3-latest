@@ -1,11 +1,16 @@
 "use client";
 
 import type { ReactNode } from "react";
+import dynamic from "next/dynamic";
 import { usePathname } from "@/navigation";
 import Navbar from "@/components/Navbar";
 import TrustBar from "@/components/TrustBar";
-import FloatingWidgets from "@/components/FloatingWidgets";
 import Footer from "@/components/Footer";
+
+/** Defer chat/WhatsApp widgets — keeps first paint lighter on mobile */
+const FloatingWidgets = dynamic(() => import("@/components/FloatingWidgets"), {
+  ssr: false,
+});
 
 /** Hides public chrome on /admin routes so the secretary panel is full-bleed. */
 export default function SiteShell({ children }: { children: ReactNode }) {

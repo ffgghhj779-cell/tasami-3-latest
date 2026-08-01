@@ -23,17 +23,26 @@ export default function TrustBar() {
       aria-label={t("aria")}
       className="trust-bar relative border-b border-tasami-purple/5"
     >
-      <div className="trust-fade-l z-[12]" />
-      <div className="trust-fade-r z-[12]" />
-
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-[15] flex items-center ps-5 sm:ps-8 rtl:left-auto rtl:right-0 rtl:pe-5 rtl:ps-0 rtl:sm:pe-8">
-        <span className="hidden items-center gap-1.5 rounded-button bg-tasami-purple px-3.5 py-2 text-xs font-medium text-white shadow-soft sm:inline-flex">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-[15] hidden items-center ps-5 sm:flex sm:ps-8 rtl:left-auto rtl:right-0 rtl:pe-5 rtl:ps-0 rtl:sm:pe-8">
+        <span className="inline-flex items-center gap-1.5 rounded-button bg-tasami-purple px-3.5 py-2 text-xs font-medium text-white shadow-soft">
           <SealCheck weight="fill" className="h-3.5 w-3.5 text-tasami-gold" />
           {t("message")}
         </span>
       </div>
 
-      <div className="overflow-hidden py-3.5">
+      {/* Mobile: native horizontal scroll — no CSS marquee (smoother) */}
+      <div className="scroll-touch overflow-x-auto py-3.5 [-ms-overflow-style:none] [scrollbar-width:none] sm:hidden [&::-webkit-scrollbar]:hidden">
+        <div className="inline-flex min-w-full items-center px-4">
+          {platforms.map((name) => (
+            <TrustItem key={name} name={name} />
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop: infinite marquee */}
+      <div className="relative hidden overflow-hidden py-3.5 sm:block">
+        <div className="trust-fade-l z-[12]" />
+        <div className="trust-fade-r z-[12]" />
         <div className="trust-bar-track">
           {strip.map((name, i) => (
             <TrustItem key={`${name}-${i}`} name={name} />

@@ -64,7 +64,6 @@ export default function Navbar() {
             wordmark={tBrand("name")}
             slogan={tBrand("slogan")}
             onDark
-            compactOnMobile
           />
         </Link>
 
