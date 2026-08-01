@@ -15,6 +15,7 @@ import {
 } from "@phosphor-icons/react";
 import { Link, usePathname } from "@/navigation";
 import { locales, type Locale } from "@/i18n";
+import BrandLogo from "@/components/BrandLogo";
 
 const NAV_LINKS = [
   { href: "/services/government", key: "government" as const, icon: Buildings },
@@ -54,14 +55,7 @@ export default function Navbar() {
           className="flex shrink-0 items-center gap-2.5"
           onClick={() => setMobileOpen(false)}
         >
-          <span className="flex h-10 w-10 items-center justify-center rounded-button bg-tasami-gold/20">
-            <span className="text-lg font-light text-tasami-gold">
-              {tBrand("letter")}
-            </span>
-          </span>
-          <span className="text-xl font-light tracking-wide text-white">
-            {tBrand("name")}
-          </span>
+          <BrandLogo size={40} withWordmark wordmark={tBrand("name")} onDark />
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">

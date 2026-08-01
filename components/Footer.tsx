@@ -9,6 +9,7 @@ import {
   WhatsappLogo,
 } from "@phosphor-icons/react";
 import { Link } from "@/navigation";
+import BrandLogo from "@/components/BrandLogo";
 
 const GOV_LINKS = [
   "passports",
@@ -42,10 +43,7 @@ export default function Footer() {
           {/* About */}
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-button bg-tasami-gold/20 text-lg font-light text-tasami-gold">
-                ت
-              </span>
-              <span className="text-xl font-light tracking-wide">{t("brand")}</span>
+              <BrandLogo size={40} withWordmark wordmark={t("brand")} onDark />
             </div>
             <p className="mt-5 text-sm leading-relaxed text-white/65">
               {t("about")}

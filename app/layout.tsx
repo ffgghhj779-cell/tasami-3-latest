@@ -3,11 +3,17 @@ import "./globals.css";
 import JsonLd from "@/components/JsonLd";
 import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = buildPageMetadata({
-  title: "خدمات حكومية وتقنية بسيطة وسريعة",
-  path: "",
-  locale: "ar",
-});
+export const metadata = {
+  ...buildPageMetadata({
+    title: "خدمات حكومية وتقنية بسيطة وسريعة",
+    path: "",
+    locale: "ar",
+  }),
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

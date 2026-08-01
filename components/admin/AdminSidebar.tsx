@@ -10,6 +10,7 @@ import {
   ArrowLeft,
 } from "@phosphor-icons/react";
 import { Link, usePathname } from "@/navigation";
+import BrandLogo from "@/components/BrandLogo";
 
 const NAV = [
   { href: "/admin", key: "dashboard" as const, icon: ChartPieSlice, exact: true },
@@ -26,9 +27,7 @@ export default function AdminSidebar() {
   return (
     <aside className="flex w-full shrink-0 flex-col bg-tasami-purple text-white md:sticky md:top-0 md:h-screen md:w-64">
       <div className="flex items-center gap-3 border-b border-white/10 px-6 py-6">
-        <span className="flex h-10 w-10 items-center justify-center rounded-button bg-tasami-gold/20 text-lg font-light text-tasami-gold">
-          ت
-        </span>
+        <BrandLogo size={40} onDark />
         <div>
           <p className="text-sm font-medium tracking-wide">{t("brand")}</p>
           <p className="text-[11px] text-white/55">{t("secretary")}</p>

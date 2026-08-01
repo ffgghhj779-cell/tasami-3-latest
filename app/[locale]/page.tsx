@@ -17,6 +17,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "@/navigation";
 import ServiceCard from "@/components/ServiceCard";
+import BrandLogo from "@/components/BrandLogo";
 import {
   HOME_CORE_KEYS,
   HOME_WHY_KEYS,
@@ -82,11 +83,13 @@ export default async function HomePage({ params }: Props) {
         />
 
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-28 pt-24 text-center sm:px-8 sm:pb-32 sm:pt-28 lg:px-10 lg:pb-36 lg:pt-32">
+          <BrandLogo size={56} className="mb-8" onDark />
+
           <p className="mb-5 text-xs font-medium uppercase tracking-[0.28em] text-tasami-gold/90 sm:text-sm">
             {t("eyebrow")}
           </p>
 
-          <h1 className="font-display max-w-4xl text-[3.25rem] text-white sm:text-7xl lg:text-[5.5rem] lg:leading-[1.02]">
+          <h1 className="font-display max-w-4xl text-[2.35rem] leading-[1.15] text-white sm:text-5xl lg:text-6xl lg:leading-[1.08]">
             {t("title")}
           </h1>
           <span className="highlight-line mx-auto !w-16 !bg-tasami-gold" />
