@@ -19,6 +19,7 @@ import {
 import { Link } from "@/navigation";
 import ServiceCard from "@/components/ServiceCard";
 import BrandLogo from "@/components/BrandLogo";
+import PlatformsShowcase from "@/components/PlatformsShowcase";
 import {
   HOME_CORE_KEYS,
   HOME_WHY_KEYS,
@@ -176,6 +177,8 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      <PlatformsShowcase />
 
       {/* —— Why Tasami (6 features) —— */}
       <section className="surface-grid surface-noise relative border-y border-tasami-purple/5 py-20 sm:py-24 lg:py-28">

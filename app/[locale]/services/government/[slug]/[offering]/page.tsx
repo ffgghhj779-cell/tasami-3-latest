@@ -8,7 +8,8 @@ import {
   GOV_OFFERINGS,
   offeringsByCategory,
 } from "@/lib/gov-offerings";
-import { formatPriceFrom } from "@/lib/service-pricing";
+import { getOfferingIcon } from "@/lib/gov-offering-icons";
+import { formatOfferingPrice } from "@/lib/service-pricing";
 import { getServiceForm } from "@/lib/service-forms";
 import { buildPageMetadata } from "@/lib/seo";
 import ServiceRequestActions, {
@@ -90,7 +91,7 @@ export default async function GovernmentOfferingPage({ params }: Props) {
   const tAr = await getTranslations({ locale: "ar", namespace: "gov" });
   const tEn = await getTranslations({ locale: "en", namespace: "gov" });
 
-  const Icon = GOV_ICONS[categoryKey];
+  const Icon = getOfferingIcon(offering.key);
   const title = t(`offerings.${offering.key}.title`);
   const titleAr = tAr(`offerings.${offering.key}.title`);
   const titleEn = tEn(`offerings.${offering.key}.title`);
@@ -98,6 +99,7 @@ export default async function GovernmentOfferingPage({ params }: Props) {
   const siblings = offeringsByCategory(categoryKey).filter(
     (o) => o.key !== offering.key
   );
+  const CategoryIcon = GOV_ICONS[categoryKey];
 
   return (
     <div className="surface-dotted min-h-screen">
@@ -115,7 +117,8 @@ export default async function GovernmentOfferingPage({ params }: Props) {
             <span className="icon-gold-lg mb-5">
               <Icon weight="regular" className="h-7 w-7" />
             </span>
-            <p className="text-sm font-medium text-tasami-pink">
+            <p className="inline-flex items-center gap-2 text-sm font-medium text-tasami-pink">
+              <CategoryIcon weight="regular" className="h-4 w-4" />
               {t(`items.${categoryKey}.title`)}
             </p>
             <h1 className="font-display mt-2 text-2xl text-tasami-purple sm:text-4xl">
@@ -125,8 +128,15 @@ export default async function GovernmentOfferingPage({ params }: Props) {
             <p className="mt-5 text-base leading-relaxed text-tasami-gray">
               {t(`offerings.${offering.key}.desc`)}
             </p>
-            <p className="mt-4 text-sm font-medium text-tasami-gold">
-              {formatPriceFrom(offering.priceFrom, locale)}
+            <p className="mt-4 text-base font-medium text-tasami-gold">
+              {formatOfferingPrice(
+                offering.priceFrom,
+                offering.priceTo,
+                locale
+              )}
+            </p>
+            <p className="mt-1.5 text-[11px] leading-relaxed text-tasami-gray">
+              {t("priceNote")}
             </p>
 
             {form.docs.length > 0 ? (

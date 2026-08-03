@@ -4,7 +4,8 @@ import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "@/navigation";
 import { GOV_KEYS, GOV_SLUGS, type GovKey } from "@/lib/content-keys";
 import { offeringsByCategory } from "@/lib/gov-offerings";
-import { GOV_PRICE_FROM, formatPriceFrom } from "@/lib/service-pricing";
+import { getOfferingIcon } from "@/lib/gov-offering-icons";
+import { GOV_PRICE_FROM, formatOfferingPrice } from "@/lib/service-pricing";
 import { buildPageMetadata } from "@/lib/seo";
 import { rtlLocales, type Locale } from "@/i18n";
 import ServiceCard from "@/components/ServiceCard";
@@ -127,11 +128,15 @@ export default async function GovernmentCategoryPage({ params }: Props) {
                 <ServiceCard
                   key={offering.key}
                   href={`/services/government/${slug}/${offering.slug}`}
-                  icon={Icon}
+                  icon={getOfferingIcon(offering.key)}
                   title={t(`offerings.${offering.key}.title`)}
                   description={t(`offerings.${offering.key}.desc`)}
                   cta={t("askService")}
-                  meta={formatPriceFrom(offering.priceFrom, locale)}
+                  meta={formatOfferingPrice(
+                    offering.priceFrom,
+                    offering.priceTo,
+                    locale
+                  )}
                   rtl={isRtl}
                 />
               ))}
@@ -154,7 +159,11 @@ export default async function GovernmentCategoryPage({ params }: Props) {
               serviceNameEn={titleEn}
               category="government"
               subcategory={key}
-              priceFrom={GOV_PRICE_FROM[key]}
+              priceFrom={
+                offerings.length > 0
+                  ? Math.min(...offerings.map((o) => o.priceFrom))
+                  : GOV_PRICE_FROM[key]
+              }
             />
             <MonjezHint />
           </article>

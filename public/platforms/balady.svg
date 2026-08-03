@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" role="img" aria-label="Balady">
+  <rect width="240" height="160" rx="16" fill="#F6FBF7"/>
+  <circle cx="56" cy="80" r="34" fill="#168F4B"/>
+  <path d="M40 92 V68 h8 v10 h8 V68 h8 v24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M44 68 l12-10 12 10" fill="none" stroke="#E9C46A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="108" y="72" font-family="Tahoma, Arial, sans-serif" font-size="28" font-weight="700" fill="#168F4B">(D/J #9E'D</text>
+  <text x="108" y="102" font-family="Manrope, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="0.1em" fill="#5E7A68">BALADY</text>
+</svg>

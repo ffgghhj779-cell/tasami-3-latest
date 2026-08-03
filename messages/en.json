@@ -30,6 +30,8 @@
     "platforms": {
       "absher": "Absher",
       "qiwa": "Qiwa",
+      "muqeem": "Muqeem",
+      "businessCenter": "Saudi Business Center",
       "commerce": "Ministry of Commerce",
       "balady": "Balady",
       "zakat": "Zakat",
@@ -46,6 +48,49 @@
       "meras": "Meras",
       "monshaat": "Monshaat",
       "misa": "MISA"
+    }
+  },
+  "platformsShowcase": {
+    "eyebrow": "Official platforms",
+    "title": "We operate on certified platforms",
+    "subtitle": "Your transactions are completed on official Saudi government platforms — with clear operational expertise for each one.",
+    "disclaimer": "Logos and names belong to their respective owners. Tasami is an operational services platform working through these official channels and does not claim an undeclared official partnership.",
+    "items": {
+      "absher": {
+        "title": "Absher",
+        "desc": "Ministry of Interior digital platform for individuals and businesses: iqama, visas, and passports.",
+        "use": "We handle: iqama renewals, exit/re-entry, and visas."
+      },
+      "qiwa": {
+        "title": "Qiwa",
+        "desc": "HRSD platform for employment contracts, Saudization, and establishment services.",
+        "use": "We handle: work contracts, profession changes, and labor services."
+      },
+      "muqeem": {
+        "title": "Muqeem",
+        "desc": "Resident data management system for establishments, integrated with Passports.",
+        "use": "We handle: resident status tracking and workforce data updates."
+      },
+      "businessCenter": {
+        "title": "Saudi Business Center",
+        "desc": "Unified gateway for company formation, licensing, and government business services.",
+        "use": "We handle: formation, licensing, and business request follow-up."
+      },
+      "balady": {
+        "title": "Balady Business",
+        "desc": "Municipal services platform for establishments: licenses and municipal requirements.",
+        "use": "We handle: municipal licenses, waste contracts, and local requirements."
+      },
+      "sehhaty": {
+        "title": "Sehhaty",
+        "desc": "Ministry of Health digital platform for appointments and health services.",
+        "use": "We handle: health requirements linked to business and individual files when needed."
+      },
+      "gosi": {
+        "title": "Social Insurance (GOSI)",
+        "desc": "General Organization for Social Insurance for establishment and contributor registration.",
+        "use": "We handle: registration, contributions, and insurance file follow-up."
+      }
     }
   },
   "home": {
@@ -169,6 +214,7 @@
     "backToCategory": "Back to category",
     "generalRequest": "General request for this category",
     "generalRequestHint": "If you don't see your service by name, send a general request and we'll follow up.",
+    "priceNote": "Tasami service fees (government fees not included).",
     "items": {
       "passports": {
         "title": "Passports & Residency",

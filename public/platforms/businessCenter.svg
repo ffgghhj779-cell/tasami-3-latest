@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 160" role="img" aria-label="Saudi Business Center">
+  <rect width="280" height="160" rx="16" fill="#F7FAF8"/>
+  <g transform="translate(28,44)">
+    <path d="M0 56 L28 0 L56 56 Z" fill="#1F7A4D"/>
+    <rect x="18" y="28" width="20" height="28" rx="2" fill="#fff"/>
+    <rect x="22" y="34" width="5" height="8" fill="#1F7A4D"/>
+    <rect x="29" y="34" width="5" height="8" fill="#1F7A4D"/>
+  </g>
+  <text x="100" y="70" font-family="Tahoma, Arial, sans-serif" font-size="18" font-weight="700" fill="#1F7A4D">'DE1C2 'D39H/J</text>
+  <text x="100" y="94" font-family="Tahoma, Arial, sans-serif" font-size="18" font-weight="700" fill="#1F7A4D">DD#9E'D</text>
+  <text x="100" y="120" font-family="Manrope, Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="0.06em" fill="#6A7F72">SAUDI BUSINESS CENTER</text>
+</svg>

@@ -49,8 +49,10 @@ export const SECTOR_KEYS = [
 export const TRUST_PLATFORM_KEYS = [
   "absher",
   "qiwa",
-  "commerce",
+  "muqeem",
+  "businessCenter",
   "balady",
+  "commerce",
   "zakat",
   "nafith",
   "absherBusiness",
