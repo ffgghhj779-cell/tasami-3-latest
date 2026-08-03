@@ -9,7 +9,7 @@ import Navbar from "@/components/Navbar";
 import TrustBar from "@/components/TrustBar";
 import Footer from "@/components/Footer";
 import SkipToContent from "@/components/SkipToContent";
-import { forceUnlockBody } from "@/lib/useBodyScrollLock";
+import { forceUnlockBody, isBodyScrollLocked } from "@/lib/useBodyScrollLock";
 
 /** Defer chat/WhatsApp widgets — keeps first paint lighter on mobile */
 const FloatingWidgets = dynamic(() => import("@/components/FloatingWidgets"), {
@@ -31,15 +31,15 @@ function BodyLockSafety() {
       if (e.persisted) forceUnlockBody();
     };
     const onVisible = () => {
-      if (document.visibilityState === "visible") {
-        // If styles look locked but nothing should own the lock, clear.
-        const body = document.body;
-        if (
-          body.style.position === "fixed" ||
-          body.style.touchAction === "none"
-        ) {
-          forceUnlockBody();
-        }
+      if (document.visibilityState !== "visible") return;
+      // Don't clear while a sheet/menu still owns the lock
+      if (isBodyScrollLocked()) return;
+      const body = document.body;
+      if (
+        body.style.position === "fixed" ||
+        body.style.touchAction === "none"
+      ) {
+        forceUnlockBody();
       }
     };
 

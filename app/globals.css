@@ -74,6 +74,13 @@
   .scroll-touch {
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
+    /* Allow both axes — TrustBar needs horizontal pan on mobile */
+    touch-action: pan-x pan-y;
+  }
+
+  .scroll-touch-y {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     touch-action: pan-y;
   }
 

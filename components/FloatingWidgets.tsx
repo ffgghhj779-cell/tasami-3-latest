@@ -9,7 +9,12 @@ import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
 import { whatsappUrl } from "@/lib/site";
 import { usePathname } from "@/navigation";
 
-const WHATSAPP_URL = whatsappUrl("مرحباً، أرغب بالتواصل مع سكرتير تسامي");
+const WHATSAPP_SECRETARY = whatsappUrl(
+  "مرحباً، أرغب بالتواصل مع سكرتير تسامي"
+);
+const WHATSAPP_DIRECT = whatsappUrl(
+  "مرحباً، أريد الاستفسار عن خدمات تسامي مباشرة"
+);
 
 const spring = {
   type: "spring" as const,
@@ -29,7 +34,7 @@ export default function FloatingWidgets() {
     setChatOpen(false);
   }, [pathname]);
 
-  useBodyScrollLock(waOpen || chatOpen, { hideFabs: false });
+  useBodyScrollLock(chatOpen, { hideFabs: false });
 
   const onChatOpenChange = useCallback((open: boolean) => {
     setChatOpen(open);
@@ -67,7 +72,7 @@ export default function FloatingWidgets() {
                 {t("waIntro")}
               </p>
               <a
-                href={WHATSAPP_URL}
+                href={WHATSAPP_SECRETARY}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button bg-tasami-pink px-4 py-3 text-sm font-medium text-white shadow-soft active:opacity-90"
@@ -76,7 +81,7 @@ export default function FloatingWidgets() {
                 {t("waSecretary")}
               </a>
               <a
-                href={WHATSAPP_URL}
+                href={WHATSAPP_DIRECT}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button bg-tasami-purple px-4 py-3 text-sm font-medium text-white shadow-soft active:opacity-90"

@@ -1,8 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" role="img" aria-label="Muqeem">
-  <rect width="240" height="160" rx="16" fill="#F5F8FC"/>
-  <rect x="22" y="46" width="56" height="68" rx="12" fill="#1B4F72"/>
-  <path d="M36 78h28M50 64v28" stroke="#E9C46A" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="50" cy="58" r="5" fill="#fff"/>
-  <text x="98" y="74" font-family="Tahoma, Arial, sans-serif" font-size="32" font-weight="700" fill="#1B4F72">EBJE</text>
-  <text x="98" y="104" font-family="Manrope, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="0.1em" fill="#5B6E7E">MUQEEM</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Muqeem">
+  <rect width="120" height="120" rx="28" fill="#F4F7FB"/>
+  <rect x="28" y="28" width="64" height="64" rx="16" fill="#1B4F72"/>
+  <circle cx="60" cy="48" r="8" fill="#fff"/>
+  <path d="M42 78c4-12 12-18 18-18s14 6 18 18" fill="none" stroke="#E9C46A" stroke-width="4" stroke-linecap="round"/>
 </svg>

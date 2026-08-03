@@ -11,6 +11,7 @@ import {
 import { Link } from "@/navigation";
 import BrandLogo from "@/components/BrandLogo";
 import { getCompanyInfo, getContactEmail, whatsappUrl } from "@/lib/site";
+import { GOV_SLUGS, TECH_SLUGS } from "@/lib/content-keys";
 
 const GOV_LINKS = [
   "passports",
@@ -100,7 +101,7 @@ export default function Footer() {
               {GOV_LINKS.map((key) => (
                 <li key={key}>
                   <Link
-                    href="/services/government"
+                    href={`/services/government/${GOV_SLUGS[key]}`}
                     className="text-sm text-white/60 transition-colors hover:text-tasami-pink"
                   >
                     {tGov(`${key}.title`)}
@@ -128,7 +129,7 @@ export default function Footer() {
               {TECH_LINKS.map((key) => (
                 <li key={key}>
                   <Link
-                    href="/services/tech"
+                    href={`/services/tech/${TECH_SLUGS[key]}`}
                     className="text-sm text-white/60 transition-colors hover:text-tasami-pink"
                   >
                     {tTech(`${key}.title`)}

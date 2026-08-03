@@ -72,6 +72,11 @@ export function forceUnlockBody() {
   syncHideFabs();
 }
 
+/** True while any sheet/menu owns the scroll lock. */
+export function isBodyScrollLocked() {
+  return lockCount > 0;
+}
+
 export function useBodyScrollLock(locked: boolean, options: Options = {}) {
   const hideFabs = options.hideFabs !== false;
 
