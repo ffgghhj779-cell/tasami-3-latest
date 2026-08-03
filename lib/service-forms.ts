@@ -363,6 +363,348 @@ export const SERVICE_FORMS: Record<string, ServiceFormDef> = {
       { id: "details", type: "textarea", required: true },
     ],
   },
+
+  // —— Concrete gov offerings ——
+  domesticVisa: {
+    docs: ["idIqama", "passportCopy", "sponsorAuth", "photos", "musanedAccess"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "workersCount", type: "number", required: true },
+      { id: "nationality", type: "text", required: true },
+      { id: "city", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  driverIqamaRenew: {
+    docs: ["idIqama", "passportCopy", "sponsorAuth", "license"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "iqamaExpiry", type: "date", required: true },
+      { id: "sponsorId", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  familyVisitVisa: {
+    docs: ["idIqama", "passportCopy", "sponsorAuth", "familyCard"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "visitorName", type: "text", required: true },
+      { id: "passportNumber", type: "text", required: true },
+      { id: "relationType", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  touristVisitVisa: {
+    docs: ["passportCopy", "idIqama", "photos"],
+    fields: [
+      { id: "visitorName", type: "text", required: true },
+      { id: "passportNumber", type: "text", required: true },
+      { id: "nationality", type: "text", required: true },
+      { id: "travelDate", type: "date" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  workerIqamaRenew: {
+    docs: ["idIqama", "passportCopy", "sponsorAuth", "qiwaAccess"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "iqamaExpiry", type: "date", required: true },
+      { id: "workersCount", type: "number", required: true },
+      { id: "establishmentName", type: "text" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  exitReentryIssue: {
+    docs: ["idIqama", "passportCopy", "sponsorAuth"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "travelDate", type: "date", required: true },
+      { id: "visaDuration", type: "select", required: true, options: ["days30", "days60", "days90", "other"] },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  exitReentryExtend: {
+    docs: ["idIqama", "passportCopy", "sponsorAuth"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "currentVisaExpiry", type: "date", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  finalExit: {
+    docs: ["idIqama", "passportCopy", "sponsorAuth"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "travelDate", type: "date" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  consulateAppointment: {
+    docs: ["idIqama", "passportCopy", "relevantDocs"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "consulateCity", type: "text", required: true },
+      { id: "appointmentPurpose", type: "text", required: true },
+      { id: "preferredDate", type: "date" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  workVisaPermanent: {
+    docs: ["idIqama", "crCopy", "qiwaAccess", "contractCopy", "passportCopy"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text", required: true },
+      { id: "nationality", type: "text", required: true },
+      { id: "profession", type: "text", required: true },
+      { id: "workersCount", type: "number", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  workVisaTemporary: {
+    docs: ["idIqama", "crCopy", "qiwaAccess", "passportCopy"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text", required: true },
+      { id: "nationality", type: "text", required: true },
+      { id: "visaDuration", type: "text", required: true },
+      { id: "workersCount", type: "number", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  dropAbscondedWorker: {
+    docs: ["idIqama", "crCopy", "qiwaAccess", "policeReport"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text" },
+      { id: "exitDate", type: "date" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  ajeerContract: {
+    docs: ["idIqama", "crCopy", "contractCopy"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text", required: true },
+      { id: "workersCount", type: "number", required: true },
+      { id: "contractPeriod", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  changeProfession: {
+    docs: ["idIqama", "crCopy", "qiwaAccess", "qualification"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "currentProfession", type: "text", required: true },
+      { id: "newProfession", type: "text", required: true },
+      { id: "establishmentName", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  mudadWagesFile: {
+    docs: ["crCopy", "payroll", "qiwaAccess"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text", required: true },
+      { id: "payrollMonth", type: "text", required: true },
+      { id: "workersCount", type: "number", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  openCr: {
+    docs: ["nationalId", "leaseContract", "ownerId"],
+    fields: [
+      { id: "activityType", type: "text", required: true },
+      { id: "city", type: "text", required: true },
+      { id: "tradeName", type: "text", required: true },
+      { id: "nationalId", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  renewCr: {
+    docs: ["nationalId", "crCopy"],
+    fields: [
+      { id: "crNumber", type: "text", required: true },
+      { id: "establishmentName", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  addActivity: {
+    docs: ["nationalId", "crCopy"],
+    fields: [
+      { id: "crNumber", type: "text", required: true },
+      { id: "activityType", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  reserveTradeName: {
+    docs: ["nationalId"],
+    fields: [
+      { id: "tradeName", type: "text", required: true },
+      { id: "activityType", type: "text", required: true },
+      { id: "nationalId", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  cancelCr: {
+    docs: ["nationalId", "crCopy", "ownerId"],
+    fields: [
+      { id: "crNumber", type: "text", required: true },
+      { id: "establishmentName", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  transferCrOwnership: {
+    docs: ["nationalId", "crCopy", "ownerId", "buyerId"],
+    fields: [
+      { id: "crNumber", type: "text", required: true },
+      { id: "sellerName", type: "text", required: true },
+      { id: "buyerName", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  transferActivityLicense: {
+    docs: ["nationalId", "crCopy", "licenseCopy"],
+    fields: [
+      { id: "crNumber", type: "text", required: true },
+      { id: "licenseNumber", type: "text", required: true },
+      { id: "activityType", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  chamberMembership: {
+    docs: ["nationalId", "crCopy"],
+    fields: [
+      { id: "crNumber", type: "text", required: true },
+      { id: "city", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  chamberAttestation: {
+    docs: ["crCopy", "documentToAttest", "nationalId"],
+    fields: [
+      { id: "crNumber", type: "text", required: true },
+      { id: "documentType", type: "text", required: true },
+      { id: "city", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  mofaAttestation: {
+    docs: ["documentToAttest", "nationalId", "passportCopy"],
+    fields: [
+      { id: "documentType", type: "text", required: true },
+      { id: "nationalId", type: "text", required: true },
+      { id: "destinationCountry", type: "text" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  mediaLicense: {
+    docs: ["nationalId", "crCopy", "brandAssets"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text" },
+      { id: "mediaActivity", type: "text", required: true },
+      { id: "city", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  municipalLicense: {
+    docs: ["crCopy", "leaseContract", "sketch", "idIqama"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text", required: true },
+      { id: "city", type: "text", required: true },
+      { id: "district", type: "text" },
+      { id: "activityType", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  wasteContract: {
+    docs: ["crCopy", "leaseContract", "idIqama"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text", required: true },
+      { id: "city", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  safetyLicense: {
+    docs: ["crCopy", "floorPlan", "safetyReport", "idIqama"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text", required: true },
+      { id: "city", type: "text", required: true },
+      { id: "buildingType", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  sfdaLicense: {
+    docs: ["crCopy", "idIqama", "medicalReport", "facilityDocs"],
+    fields: [
+      { id: "facilityName", type: "text", required: true },
+      { id: "crNumber", type: "text", required: true },
+      { id: "licensePurpose", type: "text", required: true },
+      { id: "city", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  trafficAppointment: {
+    docs: ["idIqama", "license", "vehicleReg"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "appointmentPurpose", type: "text", required: true },
+      { id: "city", type: "text", required: true },
+      { id: "preferredDate", type: "date" },
+      { id: "plateNumber", type: "text" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  najizAppointment: {
+    docs: ["idIqama", "relevantDocs"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "appointmentPurpose", type: "text", required: true },
+      { id: "caseNumber", type: "text" },
+      { id: "preferredDate", type: "date" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  socialInsuranceReg: {
+    docs: ["idIqama", "nationalId", "relevantDocs"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "fullNameArabic", type: "text", required: true },
+      { id: "city", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  noorRegistration: {
+    docs: ["idIqama", "familyCard", "birthDeath"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "studentName", type: "text", required: true },
+      { id: "schoolName", type: "text" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  citizenAccount: {
+    docs: ["idIqama", "nationalId", "ibanProof"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "mobileNumber", type: "tel", required: true },
+      { id: "iban", type: "text" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  vatFiling: {
+    docs: ["crCopy", "financials", "nationalId"],
+    fields: [
+      { id: "crNumber", type: "text", required: true },
+      { id: "tinNumber", type: "text", required: true },
+      { id: "fiscalPeriod", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
 };
 
 export function getServiceForm(subcategory?: string): ServiceFormDef {

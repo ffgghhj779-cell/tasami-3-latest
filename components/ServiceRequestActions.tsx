@@ -82,12 +82,18 @@ export default function ServiceRequestActions({
   );
 
   function fieldLabel(id: string) {
-    return t(`fields.${id}`);
+    try {
+      const label = t(`fields.${id}`);
+      return label.startsWith("fields.") ? id : label;
+    } catch {
+      return id;
+    }
   }
 
   function optionLabel(fieldId: string, option: string) {
     try {
-      return t(`options.${fieldId}.${option}`);
+      const label = t(`options.${fieldId}.${option}`);
+      return label.startsWith("options.") ? option : label;
     } catch {
       return option;
     }

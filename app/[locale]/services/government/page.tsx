@@ -18,6 +18,7 @@ import {
 import { Link } from "@/navigation";
 import ServiceCard from "@/components/ServiceCard";
 import { GOV_KEYS, GOV_SLUGS, type GovKey } from "@/lib/content-keys";
+import { offeringsByCategory } from "@/lib/gov-offerings";
 import { GOV_PRICE_FROM, formatPriceFrom } from "@/lib/service-pricing";
 import { rtlLocales, type Locale } from "@/i18n";
 import { buildPageMetadata } from "@/lib/seo";
@@ -82,18 +83,25 @@ export default async function GovernmentServicesPage({ params }: Props) {
         </header>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
-          {GOV_KEYS.map((key) => (
-            <ServiceCard
-              key={key}
-              href={`/services/government/${GOV_SLUGS[key]}`}
-              icon={GOV_ICONS[key]}
-              title={t(`items.${key}.title`)}
-              description={t(`items.${key}.desc`)}
-              cta={t("viewServices")}
-              meta={formatPriceFrom(GOV_PRICE_FROM[key], locale)}
-              rtl={isRtl}
-            />
-          ))}
+          {GOV_KEYS.map((key) => {
+            const count = offeringsByCategory(key).length;
+            return (
+              <ServiceCard
+                key={key}
+                href={`/services/government/${GOV_SLUGS[key]}`}
+                icon={GOV_ICONS[key]}
+                title={t(`items.${key}.title`)}
+                description={t(`items.${key}.desc`)}
+                cta={t("viewServices")}
+                meta={
+                  count > 0
+                    ? t("offeringCount", { count })
+                    : formatPriceFrom(GOV_PRICE_FROM[key], locale)
+                }
+                rtl={isRtl}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

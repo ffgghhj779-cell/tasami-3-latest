@@ -3,8 +3,11 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "@/navigation";
 import { GOV_KEYS, GOV_SLUGS, type GovKey } from "@/lib/content-keys";
-import { GOV_PRICE_FROM } from "@/lib/service-pricing";
+import { offeringsByCategory } from "@/lib/gov-offerings";
+import { GOV_PRICE_FROM, formatPriceFrom } from "@/lib/service-pricing";
 import { buildPageMetadata } from "@/lib/seo";
+import { rtlLocales, type Locale } from "@/i18n";
+import ServiceCard from "@/components/ServiceCard";
 import ServiceRequestActions, {
   MonjezHint,
 } from "@/components/ServiceRequestActions";
@@ -72,10 +75,12 @@ export default async function GovernmentCategoryPage({ params }: Props) {
   const t = await getTranslations("gov");
   const tAr = await getTranslations({ locale: "ar", namespace: "gov" });
   const tEn = await getTranslations({ locale: "en", namespace: "gov" });
+  const isRtl = rtlLocales.includes(locale as Locale);
   const Icon = GOV_ICONS[key];
   const title = t(`items.${key}.title`);
   const titleAr = tAr(`items.${key}.title`);
   const titleEn = tEn(`items.${key}.title`);
+  const offerings = offeringsByCategory(key);
 
   return (
     <div className="surface-dotted min-h-screen">
@@ -92,7 +97,12 @@ export default async function GovernmentCategoryPage({ params }: Props) {
           <span className="icon-gold-lg mb-5">
             <Icon weight="regular" className="h-7 w-7" />
           </span>
-          <h1 className="font-display text-2xl text-tasami-purple sm:text-4xl">
+          <p className="text-sm font-medium text-tasami-pink">
+            {offerings.length > 0
+              ? t("offeringCount", { count: offerings.length })
+              : t("eyebrow")}
+          </p>
+          <h1 className="font-display mt-2 text-2xl text-tasami-purple sm:text-4xl">
             {title}
           </h1>
           <span className="highlight-line" />
@@ -101,13 +111,41 @@ export default async function GovernmentCategoryPage({ params }: Props) {
           </p>
         </header>
 
-        <div className="mx-auto max-w-xl">
+        {offerings.length > 0 ? (
+          <section className="mb-16">
+            <div className="mb-8 max-w-2xl">
+              <h2 className="text-lg font-medium text-tasami-purple sm:text-xl">
+                {t("offeringsTitle")}
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-tasami-gray">
+                {t("offeringsSubtitle")}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+              {offerings.map((offering) => (
+                <ServiceCard
+                  key={offering.key}
+                  href={`/services/government/${slug}/${offering.slug}`}
+                  icon={Icon}
+                  title={t(`offerings.${offering.key}.title`)}
+                  description={t(`offerings.${offering.key}.desc`)}
+                  cta={t("askService")}
+                  meta={formatPriceFrom(offering.priceFrom, locale)}
+                  rtl={isRtl}
+                />
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        <section className="mx-auto max-w-xl">
           <article className="card-premium p-7 sm:p-8">
             <h2 className="text-base font-medium text-tasami-purple sm:text-lg">
-              {title}
+              {t("generalRequest")}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-tasami-gray">
-              {t(`items.${key}.desc`)}
+              {t("generalRequestHint")}
             </p>
 
             <ServiceRequestActions
@@ -120,7 +158,7 @@ export default async function GovernmentCategoryPage({ params }: Props) {
             />
             <MonjezHint />
           </article>
-        </div>
+        </section>
       </div>
     </div>
   );

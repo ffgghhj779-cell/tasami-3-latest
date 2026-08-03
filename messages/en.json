@@ -156,13 +156,19 @@
   "gov": {
     "eyebrow": "Services",
     "title": "Government Services – We finish your transactions with a tap",
-    "subtitle": "13 categories covering your entity’s key needs with Saudi official bodies.",
+    "subtitle": "13 categories with 35+ named government services from Saudi official bodies — pick your exact service instead of guessing.",
     "back": "Back to home",
     "viewServices": "View services",
     "serviceCount": "sub-services",
     "askService": "Request service",
     "talkMonjez": "Talk to Monjez",
     "requiredDocs": "Required documents",
+    "offeringsTitle": "Available services",
+    "offeringsSubtitle": "Choose the exact service to start a request with the right fields and documents.",
+    "offeringCount": "{count} services",
+    "backToCategory": "Back to category",
+    "generalRequest": "General request for this category",
+    "generalRequestHint": "If you don't see your service by name, send a general request and we'll follow up.",
     "items": {
       "passports": {
         "title": "Passports & Residency",
@@ -215,6 +221,152 @@
       "investment": {
         "title": "Investment & Classification (MISA / Monshaat)",
         "desc": "Investment licensing and entity classification via MISA & Monshaat."
+      }
+    },
+    "offerings": {
+      "domesticVisa": {
+        "title": "Domestic Worker Visa",
+        "desc": "Recruit a domestic worker via Musaned with full official procedures."
+      },
+      "driverIqamaRenew": {
+        "title": "Driver Iqama Renewal",
+        "desc": "Renew a private driver's iqama before it expires."
+      },
+      "familyVisitVisa": {
+        "title": "Family Visit Visa",
+        "desc": "Issue a visit visa for a family member via Absher."
+      },
+      "touristVisitVisa": {
+        "title": "Tourist Visit Visa",
+        "desc": "Issue a tourist visit visa to the Kingdom quickly."
+      },
+      "workerIqamaRenew": {
+        "title": "Worker Iqama Renewal",
+        "desc": "Renew a worker's iqama before the expiry date."
+      },
+      "exitReentryIssue": {
+        "title": "Exit/Re-entry Visa",
+        "desc": "Issue an exit and re-entry visa for a sponsored worker via Absher."
+      },
+      "exitReentryExtend": {
+        "title": "Extend Exit/Re-entry",
+        "desc": "Extend an existing exit and re-entry visa."
+      },
+      "finalExit": {
+        "title": "Final Exit Visa",
+        "desc": "Issue a final exit visa to formally end a worker's residency."
+      },
+      "consulateAppointment": {
+        "title": "Consulate Appointment",
+        "desc": "Book an appointment at a consulate or embassy for an official matter."
+      },
+      "workVisaPermanent": {
+        "title": "Permanent Work Visa",
+        "desc": "Recruit an employee on a permanent work contract via Qiwa."
+      },
+      "workVisaTemporary": {
+        "title": "Temporary Work Visa",
+        "desc": "Recruit workers on a temporary contract for a project or season."
+      },
+      "dropAbscondedWorker": {
+        "title": "Report Absconded Worker",
+        "desc": "File an absconding report for a missing worker via Absher Business."
+      },
+      "ajeerContract": {
+        "title": "Ajeer Contract",
+        "desc": "Register a temporary employment contract via the Ajeer platform."
+      },
+      "changeProfession": {
+        "title": "Change Profession",
+        "desc": "Update a worker's job title or profession on their iqama."
+      },
+      "mudadWagesFile": {
+        "title": "Mudad Wages Filing",
+        "desc": "Upload and certify the monthly wage protection file via Mudad."
+      },
+      "openCr": {
+        "title": "Open Commercial Registration",
+        "desc": "Establish and issue a new commercial registration for your business."
+      },
+      "renewCr": {
+        "title": "Renew Commercial Registration",
+        "desc": "Renew your commercial registration before it expires."
+      },
+      "addActivity": {
+        "title": "Add Business Activity",
+        "desc": "Add a new activity to an existing commercial registration."
+      },
+      "reserveTradeName": {
+        "title": "Reserve Trade Name",
+        "desc": "Reserve and approve a trade name before company formation."
+      },
+      "cancelCr": {
+        "title": "Cancel Commercial Registration",
+        "desc": "Permanently cancel a commercial registration with the Ministry of Commerce."
+      },
+      "transferCrOwnership": {
+        "title": "Transfer CR Ownership",
+        "desc": "Transfer ownership of a commercial registration to a new owner."
+      },
+      "transferActivityLicense": {
+        "title": "Transfer Activity License",
+        "desc": "Transfer a business activity license to another entity."
+      },
+      "chamberMembership": {
+        "title": "Chamber Membership",
+        "desc": "Register or renew your Chamber of Commerce membership."
+      },
+      "chamberAttestation": {
+        "title": "Chamber Attestation",
+        "desc": "Attest business documents through the Chamber of Commerce."
+      },
+      "mofaAttestation": {
+        "title": "MOFA Attestation",
+        "desc": "Attest official documents through the Ministry of Foreign Affairs."
+      },
+      "mediaLicense": {
+        "title": "Media License",
+        "desc": "Obtain a media activity license from the Ministry of Media."
+      },
+      "municipalLicense": {
+        "title": "Municipal License",
+        "desc": "Obtain an operating license for your business via Balady."
+      },
+      "wasteContract": {
+        "title": "Waste Contract",
+        "desc": "Contract waste collection and management services for your facility."
+      },
+      "safetyLicense": {
+        "title": "Civil Defense Safety License",
+        "desc": "Obtain a Civil Defense safety license for your facility."
+      },
+      "sfdaLicense": {
+        "title": "SFDA License",
+        "desc": "Obtain a product or facility license from the Saudi Food & Drug Authority."
+      },
+      "trafficAppointment": {
+        "title": "Traffic Appointment",
+        "desc": "Book an appointment with Traffic to complete a vehicle transaction."
+      },
+      "najizAppointment": {
+        "title": "Najiz Appointment",
+        "desc": "Book an appointment with Najiz for a judicial or notarization matter."
+      },
+      "socialInsuranceReg": {
+        "title": "GOSI Registration",
+        "desc": "Register your facility or a subscriber with Social Insurance (GOSI)."
+      },
+      "noorRegistration": {
+        "title": "Noor Registration",
+        "desc": "Register a student in the Noor education system."
+      },
+      "citizenAccount": {
+        "title": "Citizen Account",
+        "desc": "Register or update your Citizen's Account details."
+      },
+      "vatFiling": {
+        "title": "VAT Filing",
+        "desc": "Prepare and submit your facility's VAT return."
       }
     }
   },
@@ -478,7 +630,37 @@
       "dataNeed": "Data need",
       "dataSources": "Data sources",
       "cloudNeed": "Cloud need",
-      "currentHost": "Current hosting"
+      "currentHost": "Current hosting",
+      "passportNumber": "Passport number",
+      "sponsorId": "Sponsor ID number",
+      "visitorName": "Visitor's name",
+      "relationType": "Relationship",
+      "travelDate": "Travel date",
+      "visaDuration": "Visa duration",
+      "currentVisaExpiry": "Current visa expiry date",
+      "consulateCity": "Consulate city",
+      "appointmentPurpose": "Appointment purpose",
+      "preferredDate": "Preferred date",
+      "profession": "Profession",
+      "exitDate": "Exit date",
+      "contractPeriod": "Contract period",
+      "currentProfession": "Current profession",
+      "newProfession": "New profession",
+      "payrollMonth": "Payroll month",
+      "tradeName": "Trade name",
+      "sellerName": "Seller's name",
+      "buyerName": "Buyer's name",
+      "licenseNumber": "License number",
+      "documentType": "Document type",
+      "destinationCountry": "Destination country",
+      "mediaActivity": "Media activity",
+      "licensePurpose": "License purpose",
+      "fullNameArabic": "Full name in Arabic",
+      "studentName": "Student's name",
+      "schoolName": "School name",
+      "mobileNumber": "Mobile number",
+      "iban": "IBAN",
+      "fiscalPeriod": "Fiscal period"
     },
     "docs": {
       "idIqama": "Valid ID or Iqama",
@@ -524,7 +706,15 @@
       "kpiList": "Required KPIs",
       "infraList": "Current infrastructure list",
       "accessNeeds": "Access requirements",
-      "relevantDocs": "Any relevant documents"
+      "relevantDocs": "Any relevant documents",
+      "musanedAccess": "Musaned platform access",
+      "policeReport": "Police report if any",
+      "qualification": "Qualification certificate",
+      "buyerId": "Buyer's ID",
+      "licenseCopy": "License copy",
+      "documentToAttest": "Document to be attested",
+      "facilityDocs": "Facility documents",
+      "ibanProof": "IBAN proof"
     },
     "options": {
       "serviceType": {
@@ -643,6 +833,12 @@
         "migration": "Migration",
         "backup": "Backup",
         "security": "Security",
+        "other": "Other"
+      },
+      "visaDuration": {
+        "days30": "30 days",
+        "days60": "60 days",
+        "days90": "90 days",
         "other": "Other"
       }
     }

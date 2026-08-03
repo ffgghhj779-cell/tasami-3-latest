@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { locales } from "@/i18n";
 import { GOV_SLUGS, TECH_SLUGS } from "@/lib/content-keys";
+import { GOV_OFFERINGS } from "@/lib/gov-offerings";
 import { SITE_URL } from "@/lib/seo";
 
 const STATIC = [
@@ -33,6 +34,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: now,
         changeFrequency: "monthly",
         priority: 0.6,
+      });
+    }
+    for (const offering of GOV_OFFERINGS) {
+      const catSlug = GOV_SLUGS[offering.category];
+      entries.push({
+        url: `${SITE_URL}/${locale}/services/government/${catSlug}/${offering.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.55,
       });
     }
     for (const slug of Object.values(TECH_SLUGS)) {
