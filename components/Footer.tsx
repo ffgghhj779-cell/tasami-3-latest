@@ -10,7 +10,13 @@ import {
 } from "@phosphor-icons/react";
 import { Link } from "@/navigation";
 import BrandLogo from "@/components/BrandLogo";
-import { getCompanyInfo, getContactEmail, whatsappUrl } from "@/lib/site";
+import {
+  getCompanyInfo,
+  getContactEmail,
+  getPhoneDisplay,
+  telUrl,
+  whatsappUrl,
+} from "@/lib/site";
 import { GOV_SLUGS, TECH_SLUGS } from "@/lib/content-keys";
 
 const GOV_LINKS = [
@@ -62,10 +68,20 @@ export default function Footer() {
             <div className="mt-6 flex flex-col gap-2.5 text-sm text-white/70">
               <a
                 href={whatsappUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 hover:text-tasami-pink"
               >
                 <WhatsappLogo weight="fill" className="h-4 w-4 text-tasami-gold" />
                 {t("whatsapp")}
+              </a>
+              <a
+                href={telUrl()}
+                dir="ltr"
+                className="inline-flex items-center gap-2 hover:text-tasami-pink"
+              >
+                <Phone weight="regular" className="h-4 w-4 text-tasami-gold" />
+                {getPhoneDisplay()}
               </a>
               <a
                 href={`mailto:${contactEmail}`}
@@ -75,7 +91,6 @@ export default function Footer() {
                 {contactEmail}
               </a>
               <span className="inline-flex items-center gap-2">
-                <Phone weight="regular" className="h-4 w-4 text-tasami-gold" />
                 {t("hours")}
               </span>
             </div>

@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "@/navigation";
 import { buildPageMetadata } from "@/lib/seo";
-import { getContactEmail, getWhatsAppUrl } from "@/lib/site";
+import { getContactEmail, getPhoneDisplay, getWhatsAppUrl, telUrl } from "@/lib/site";
 
 const SECTION_KEYS = ["s1", "s2", "s3", "s4", "s5"] as const;
 
@@ -28,6 +28,7 @@ export default async function TermsPage({ params }: Props) {
   const tt = await getTranslations("legal.terms");
   const contactEmail = getContactEmail();
   const waUrl = getWhatsAppUrl();
+  const phoneDisplay = getPhoneDisplay();
   const updated = t("updated", {
     date: new Date().toLocaleDateString(locale, {
       year: "numeric",
@@ -81,6 +82,14 @@ export default async function TermsPage({ params }: Props) {
               className="font-medium text-tasami-pink hover:underline"
             >
               WhatsApp
+            </a>
+            {" · "}
+            <a
+              href={telUrl()}
+              dir="ltr"
+              className="font-medium text-tasami-pink hover:underline"
+            >
+              {phoneDisplay}
             </a>
             {" · "}
             <a

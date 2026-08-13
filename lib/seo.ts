@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getWhatsAppUrl } from "@/lib/site";
+import { getWhatsAppNumber, getWhatsAppUrl } from "@/lib/site";
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://tasami.sa";
@@ -97,6 +97,7 @@ export function organizationJsonLd() {
       {
         "@type": "ContactPoint",
         contactType: "customer service",
+        telephone: `+${getWhatsAppNumber()}`,
         availableLanguage: ["ar", "en", "ur", "hi"],
         url: waUrl,
       },

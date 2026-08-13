@@ -5,17 +5,38 @@
  * server components, client components, and route handlers.
  */
 
-export const WHATSAPP_NUMBER = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "").replace(
-  /\D/g,
-  ""
-);
+/** Official Tasami WhatsApp / phone — used across the site. */
+export const OFFICIAL_PHONE_E164 = "966559962847";
+export const OFFICIAL_PHONE_DISPLAY = "+966 55 996 2847";
+
+const PLACEHOLDER_NUMBERS = new Set(["", "966500000000"]);
+
+function digitsOnly(value: string): string {
+  return value.replace(/\D/g, "");
+}
+
+function resolveWhatsAppNumber(): string {
+  const fromEnv = digitsOnly(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "");
+  if (fromEnv && !PLACEHOLDER_NUMBERS.has(fromEnv)) return fromEnv;
+  return OFFICIAL_PHONE_E164;
+}
+
+export const WHATSAPP_NUMBER = resolveWhatsAppNumber();
 
 export function getWhatsAppNumber(): string {
-  return (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "").replace(/\D/g, "");
+  return resolveWhatsAppNumber();
+}
+
+export function getPhoneDisplay(): string {
+  return OFFICIAL_PHONE_DISPLAY;
+}
+
+export function telUrl(): string {
+  return `tel:+${getWhatsAppNumber()}`;
 }
 
 export function whatsappUrl(text?: string): string {
-  const number = WHATSAPP_NUMBER;
+  const number = getWhatsAppNumber();
   if (!number) return "#";
   const query = text ? `?text=${encodeURIComponent(text)}` : "";
   return `https://wa.me/${number}${query}`;
