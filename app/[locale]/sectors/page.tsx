@@ -136,7 +136,7 @@ function SectorModal({
       >
         <div className="flex shrink-0 items-start justify-between gap-4 bg-[#1A0845] px-5 py-4 pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:py-5">
           <div className="flex min-w-0 flex-1 items-center gap-3">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-tasami-gold">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-tasami-lilac">
               <ActiveIcon
                 weight="bold"
                 className="h-6 w-6 text-tasami-dark"

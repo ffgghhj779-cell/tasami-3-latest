@@ -1,42 +1,23 @@
 import {
-  Amiri,
-  Cormorant_Garamond,
-  IBM_Plex_Sans_Arabic,
+  Cairo,
   Manrope,
   Noto_Nastaliq_Urdu,
   Noto_Sans_Devanagari,
 } from "next/font/google";
 
-/** Premium Arabic UI — complete glyphs, sharp, professional */
-export const fontArabic = IBM_Plex_Sans_Arabic({
+/** Khalsana Arabic — rounded geometric, close to the official wordmark */
+export const fontArabic = Cairo({
   subsets: ["arabic", "latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-arabic",
-  display: "swap",
-  preload: true,
-});
-
-/** Literary Arabic wordmark */
-export const fontBrandAr = Amiri({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "700"],
-  variable: "--font-brand-ar",
   display: "swap",
   preload: true,
 });
 
 export const fontLatin = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-latin",
-  display: "swap",
-});
-
-export const fontDisplayLatin = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-  variable: "--font-display-latin",
   display: "swap",
 });
 
@@ -58,9 +39,7 @@ export const fontUrdu = Noto_Nastaliq_Urdu({
 
 export const fontVariables = [
   fontArabic.variable,
-  fontBrandAr.variable,
   fontLatin.variable,
-  fontDisplayLatin.variable,
   fontHindi.variable,
   fontUrdu.variable,
 ].join(" ");

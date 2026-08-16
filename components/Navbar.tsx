@@ -157,7 +157,7 @@ export default function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden min-h-[44px] items-center gap-2 rounded-full bg-tasami-gold px-4 py-2 text-sm font-semibold text-tasami-dark shadow-soft transition-all duration-200 hover:opacity-90 active:scale-[0.98] sm:inline-flex"
+            className="hidden min-h-[44px] items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-white shadow-soft transition-all duration-200 hover:opacity-90 active:scale-[0.98] sm:inline-flex"
           >
             <WhatsappLogo weight="fill" className="h-4 w-4" />
             <span className="hidden lg:inline">{t("whatsapp")}</span>
@@ -235,7 +235,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
-                  className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-tasami-gold px-4 py-3.5 text-sm font-semibold text-tasami-dark shadow-soft"
+                  className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 py-3.5 text-sm font-semibold text-white shadow-soft"
                 >
                   <WhatsappLogo weight="fill" className="h-5 w-5" />
                   {t("whatsappMobile")}

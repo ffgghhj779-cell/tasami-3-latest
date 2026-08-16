@@ -212,7 +212,7 @@ export default function Footer() {
               <li>
                 <a
                   href={whatsappUrl()}
-                  className="inline-flex min-h-[44px] items-center rounded-full bg-tasami-gold px-4 py-2.5 text-sm font-semibold text-tasami-dark shadow-soft transition-opacity hover:opacity-90"
+                  className="inline-flex min-h-[44px] items-center rounded-full bg-tasami-pink px-4 py-2.5 text-sm font-semibold text-white shadow-soft transition-opacity hover:opacity-90"
                 >
                   {t("contactCta")}
                 </a>

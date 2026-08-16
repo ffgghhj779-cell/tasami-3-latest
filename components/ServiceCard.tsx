@@ -22,7 +22,7 @@ type ServiceCardProps = {
   centered?: boolean;
 };
 
-const TONES = ["tone-aurora", "tone-volt", "tone-deep", "tone-lilac"] as const;
+const TONES = ["tone-aurora", "tone-deep", "tone-lilac"] as const;
 
 function visualTone(seed: string) {
   let hash = 0;

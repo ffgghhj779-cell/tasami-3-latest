@@ -73,22 +73,10 @@ export default async function HomePage({ params }: Props) {
   return (
     <div>
       {/* —— Hero —— */}
-      <section className="hero-premium relative min-h-[min(88vh,860px)]">
+      <section className="hero-premium relative min-h-[min(78vh,780px)]">
         <HeroAurora />
-        <div className="hero-deck hero-deck-a hidden sm:block" aria-hidden>
-          <span>government</span>
-          <p>إنجاز حكومي ببساطة</p>
-        </div>
-        <div className="hero-deck hero-deck-b hidden sm:block" aria-hidden>
-          <span>platforms</span>
-          <p>أبشر · قوى · مقيم</p>
-        </div>
-        <div className="hero-deck hero-deck-c hidden lg:block" aria-hidden>
-          <span>khalsana</span>
-          <p>من الطلب إلى التسليم</p>
-        </div>
 
-        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-20 pt-14 text-center sm:px-8 sm:pb-32 sm:pt-24 lg:px-10 lg:pb-36 lg:pt-28">
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-16 pt-16 text-center sm:px-8 sm:pb-24 sm:pt-20 lg:px-10 lg:pb-28 lg:pt-24">
           <BrandLogo
             lockup
             lockupSize="lg"
@@ -98,37 +86,17 @@ export default async function HomePage({ params }: Props) {
             className="mb-8 sm:mb-10"
           />
 
-          <h1 className="hero-title-glow font-display max-w-4xl text-[1.95rem] leading-[1.15] text-white sm:text-5xl lg:text-[4.15rem] lg:leading-[1.05]">
+          <h1 className="hero-title-glow font-display max-w-3xl text-[2rem] leading-[1.15] text-white sm:text-5xl lg:text-[3.85rem] lg:leading-[1.08]">
             {t("title")}
           </h1>
-          <span className="highlight-line mx-auto !w-16" />
 
-          <p className="mt-6 max-w-xl text-[0.95rem] leading-[1.85] text-white/78 sm:mt-8 sm:text-lg sm:leading-relaxed">
-            {t("hero")}
-          </p>
-
-          <div className="mt-10 w-full max-w-xl rounded-[28px] bg-white p-3 text-start shadow-lift sm:mt-12 sm:p-4">
-            <p className="px-3 pt-1 text-sm text-tasami-gray sm:text-base">
-              {t("offerSubtitle")}
-            </p>
-            <div className="mt-4 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-end">
-              <Link
-                href="/services/government"
-                className="btn-primary w-full sm:w-auto sm:min-w-[168px]"
-              >
-                {t("ctaGov")}
-                <Arrow weight="bold" className="h-4 w-4" />
-              </Link>
-              <a
-                href={waUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary w-full sm:w-auto sm:min-w-[168px]"
-              >
-                {t("ctaWhatsapp")}
-              </a>
-            </div>
-          </div>
+          <Link
+            href="/services/government"
+            className="btn-primary mt-10 w-full sm:mt-12 sm:w-auto sm:min-w-[200px]"
+          >
+            {t("ctaGov")}
+            <Arrow weight="bold" className="h-4 w-4" />
+          </Link>
         </div>
 
         {/* Bottom wave fade into content */}
@@ -293,7 +261,7 @@ export default async function HomePage({ params }: Props) {
               href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary min-w-[200px]"
+              className="btn-whatsapp min-w-[200px]"
             >
               {t("ctaBandAction")}
             </a>
