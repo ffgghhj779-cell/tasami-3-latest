@@ -12,8 +12,8 @@ type BrandLogoProps = {
 };
 
 /**
- * Tasami brand mark — ascending geometric monogram (excellence / elevation)
- * Colors: purple #2E1A47 · gold #E9C46A · pink #F4A261
+ * Tasami brand mark — ascending geometric monogram
+ * Pitch-inspired: electric violet + lime
  */
 export default function BrandLogo({
   className = "",
@@ -23,11 +23,11 @@ export default function BrandLogo({
   slogan,
   onDark = true,
 }: BrandLogoProps) {
-  const gold = "#E9C46A";
-  const pink = "#F4A261";
-  const fill = onDark ? "rgba(233,196,106,0.16)" : "rgba(46,26,71,0.08)";
-  const wordColor = onDark ? "#FFFFFF" : "#2E1A47";
-  const sloganColor = onDark ? "rgba(233,196,106,0.9)" : "#6C757D";
+  const lime = "#C4EE87";
+  const electric = "#6B53FF";
+  const fill = onDark ? "rgba(198,165,255,0.18)" : "rgba(107,83,255,0.1)";
+  const wordColor = onDark ? "#FFFFFF" : "#0C021C";
+  const sloganColor = onDark ? "rgba(196,238,135,0.92)" : "#5C5E6B";
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
@@ -40,10 +40,10 @@ export default function BrandLogo({
         aria-hidden
         className="shrink-0"
       >
-        <rect width="64" height="64" rx="14" fill={fill} />
+        <rect width="64" height="64" rx="18" fill={fill} />
         <path
           d="M14 44 C22 44 26 28 32 18 C38 28 42 44 50 44"
-          stroke={gold}
+          stroke={lime}
           strokeWidth="2.4"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -51,21 +51,21 @@ export default function BrandLogo({
         />
         <path
           d="M20 44 C25 44 28 34 32 26 C36 34 39 44 44 44"
-          stroke={pink}
-          strokeWidth="2"
+          stroke={electric}
+          strokeWidth="2.2"
           strokeLinecap="round"
           strokeLinejoin="round"
           fill="none"
-          opacity="0.9"
+          opacity="0.95"
         />
         <path
           d="M18 48 H46"
-          stroke={gold}
+          stroke={lime}
           strokeWidth="2.2"
           strokeLinecap="round"
         />
-        <circle cx="28" cy="52.5" r="1.6" fill={gold} />
-        <circle cx="36" cy="52.5" r="1.6" fill={gold} />
+        <circle cx="28" cy="52.5" r="1.6" fill={lime} />
+        <circle cx="36" cy="52.5" r="1.6" fill={electric} />
       </svg>
       {withWordmark && (
         <span className="flex min-w-0 flex-col items-start leading-none">

@@ -29,7 +29,7 @@ export default function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex w-full shrink-0 flex-col bg-tasami-purple text-white md:sticky md:top-0 md:h-screen md:w-64">
+    <aside className="flex w-full shrink-0 flex-col bg-[#0C021C] text-white md:sticky md:top-0 md:h-screen md:w-64">
       <div className="flex items-center gap-3 border-b border-white/10 px-6 py-6">
         <BrandLogo size={40} onDark />
         <div>
@@ -49,13 +49,13 @@ export default function AdminSidebar() {
               href={href}
               className={`flex min-h-[44px] items-center gap-3 rounded-button px-3.5 py-2.5 text-sm transition-colors ${
                 active
-                  ? "bg-white/12 text-tasami-pink"
+                  ? "bg-white/10 text-tasami-gold"
                   : "text-white/75 hover:bg-white/8 hover:text-white"
               }`}
             >
               <Icon
                 weight="regular"
-                className={`h-5 w-5 ${active ? "text-tasami-gold" : "text-tasami-gold/70"}`}
+                className={`h-5 w-5 ${active ? "text-tasami-gold" : "text-tasami-lilac/80"}`}
               />
               {t(`nav.${key}`)}
             </Link>

@@ -75,7 +75,7 @@ export default function FloatingWidgets() {
                 href={WHATSAPP_SECRETARY}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button bg-tasami-pink px-4 py-3 text-sm font-medium text-white shadow-soft active:opacity-90"
+                className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-tasami-pink px-4 py-3 text-sm font-semibold text-white shadow-soft active:opacity-90"
               >
                 <WhatsappLogo weight="fill" className="h-5 w-5" />
                 {t("waSecretary")}
@@ -84,7 +84,7 @@ export default function FloatingWidgets() {
                 href={WHATSAPP_DIRECT}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button bg-tasami-purple px-4 py-3 text-sm font-medium text-white shadow-soft active:opacity-90"
+                className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-[#1A0845] px-4 py-3 text-sm font-semibold text-white shadow-soft active:opacity-90"
               >
                 <WhatsappLogo weight="regular" className="h-5 w-5" />
                 {t("waDirect")}

@@ -133,7 +133,7 @@ export default async function AdminDashboardPage({ params }: Props) {
               <p className="text-xs font-medium tracking-wide text-tasami-gray">
                 {t(`dashboard.${key}`)}
               </p>
-              <p className="mt-1 text-3xl font-light text-tasami-purple tabular-nums">
+              <p className="mt-1 text-3xl font-semibold text-tasami-purple tabular-nums">
                 {value}
               </p>
             </div>

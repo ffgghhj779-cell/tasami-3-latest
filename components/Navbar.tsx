@@ -50,7 +50,7 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 bg-tasami-purple shadow-soft">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#1A0845]/92 shadow-soft backdrop-blur-xl">
       <nav className="mx-auto flex h-[4.75rem] max-w-7xl items-center justify-between gap-2 px-4 sm:gap-4 sm:px-8 lg:px-10">
         <Link
           href="/"
@@ -74,13 +74,13 @@ export default function Navbar() {
               <li key={href}>
                 <Link
                   href={href}
-                  className={`flex items-center gap-2 rounded-button px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
+                  className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200 ${
                     active
-                      ? "bg-white/10 text-tasami-pink"
-                      : "text-white/80 hover:bg-white/10 hover:text-tasami-pink"
+                      ? "bg-white/12 text-tasami-gold"
+                      : "text-white/80 hover:bg-white/10 hover:text-white"
                   }`}
                 >
-                  <Icon weight="regular" className="h-4 w-4 text-tasami-gold" />
+                  <Icon weight="regular" className="h-4 w-4 text-tasami-lilac" />
                   {t(key)}
                 </Link>
               </li>
@@ -144,9 +144,9 @@ export default function Navbar() {
 
           <Link
             href={loggedIn ? "/my-requests" : "/login"}
-            className="hidden min-h-[44px] items-center gap-1.5 rounded-button px-3 py-2.5 text-sm font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-tasami-pink sm:inline-flex"
+            className="hidden min-h-[44px] items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-semibold text-tasami-dark shadow-soft transition-opacity hover:opacity-90 sm:inline-flex"
           >
-            <UserCircle weight="regular" className="h-5 w-5 text-tasami-gold" />
+            <UserCircle weight="regular" className="h-5 w-5 text-tasami-pink" />
             <span className="hidden lg:inline">
               {loggedIn ? t("account") : t("login")}
             </span>
@@ -156,7 +156,7 @@ export default function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden min-h-[44px] items-center gap-2 rounded-button bg-tasami-pink px-4 py-2.5 text-sm font-medium text-white shadow-soft transition-all duration-200 hover:opacity-90 active:scale-[0.98] sm:inline-flex"
+            className="hidden min-h-[44px] items-center gap-2 rounded-full bg-tasami-gold px-4 py-2 text-sm font-semibold text-tasami-dark shadow-soft transition-all duration-200 hover:opacity-90 active:scale-[0.98] sm:inline-flex"
           >
             <WhatsappLogo weight="fill" className="h-4 w-4" />
             <span className="hidden lg:inline">{t("whatsapp")}</span>
@@ -195,13 +195,13 @@ export default function Navbar() {
                     <Link
                       href={href}
                       onClick={() => setMobileOpen(false)}
-                      className={`flex min-h-[48px] items-center gap-3 rounded-button px-4 py-3.5 text-sm font-medium transition-colors ${
+                      className={`flex min-h-[48px] items-center gap-3 rounded-full px-4 py-3.5 text-sm font-semibold transition-colors ${
                         active
-                          ? "bg-white/10 text-tasami-pink"
+                          ? "bg-white/12 text-tasami-gold"
                           : "text-white/90 hover:bg-white/10"
                       }`}
                     >
-                      <Icon weight="regular" className="h-5 w-5 text-tasami-gold" />
+                      <Icon weight="regular" className="h-5 w-5 text-tasami-lilac" />
                       {t(key)}
                     </Link>
                   </li>
@@ -211,7 +211,7 @@ export default function Navbar() {
                 <Link
                   href={loggedIn ? "/my-requests" : "/login"}
                   onClick={() => setMobileOpen(false)}
-                  className="flex min-h-[48px] items-center gap-3 rounded-button px-4 py-3.5 text-sm font-medium text-white/90 hover:bg-white/10"
+                  className="flex min-h-[48px] items-center gap-3 rounded-full px-4 py-3.5 text-sm font-semibold text-white/90 hover:bg-white/10"
                 >
                   <UserCircle weight="regular" className="h-5 w-5 text-tasami-gold" />
                   {loggedIn ? t("account") : t("login")}
@@ -234,7 +234,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
-                  className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button bg-tasami-pink px-4 py-3.5 text-sm font-medium text-white shadow-soft"
+                  className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-tasami-gold px-4 py-3.5 text-sm font-semibold text-tasami-dark shadow-soft"
                 >
                   <WhatsappLogo weight="fill" className="h-5 w-5" />
                   {t("whatsappMobile")}

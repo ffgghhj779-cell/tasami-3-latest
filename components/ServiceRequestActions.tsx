@@ -348,7 +348,7 @@ export default function ServiceRequestActions({
             <button
               type="button"
               aria-label={t("close")}
-              className="absolute inset-0 bg-tasami-purple/50"
+              className="absolute inset-0 bg-[#0C021C]/55"
               onClick={close}
             />
 
@@ -357,12 +357,12 @@ export default function ServiceRequestActions({
               aria-modal="true"
               className="sheet-panel relative z-10 flex h-[min(100dvh,100%)] max-h-[100dvh] w-full flex-col overflow-hidden rounded-none bg-white shadow-soft touch-manipulation sm:h-auto sm:max-h-[min(90vh,720px)] sm:rounded-card"
             >
-              <div className="flex shrink-0 items-start justify-between gap-3 bg-tasami-purple px-5 py-4 pt-[max(1rem,env(safe-area-inset-top))]">
+              <div className="flex shrink-0 items-start justify-between gap-3 bg-[#1A0845] px-5 py-4 pt-[max(1rem,env(safe-area-inset-top))]">
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs font-medium text-tasami-gold">
+                  <p className="text-xs font-semibold text-tasami-gold">
                     {t("modalEyebrow")}
                   </p>
-                  <h2 className="mt-1 truncate text-lg font-light text-white">
+                  <h2 className="mt-1 truncate text-lg font-semibold text-white">
                     {locale === "ar" ? serviceNameAr : serviceNameEn}
                   </h2>
                 </div>

@@ -85,7 +85,7 @@ export default function AdminRequestsClient({ locale }: { locale: string }) {
           type="button"
           onClick={load}
           disabled={pending}
-          className="rounded-button bg-tasami-purple px-4 py-2.5 text-sm font-medium text-white shadow-soft disabled:opacity-50"
+          className="rounded-full bg-tasami-pink px-4 py-2.5 text-sm font-medium text-white shadow-soft disabled:opacity-50"
         >
           {t("requests.refresh")}
         </button>

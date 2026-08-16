@@ -22,9 +22,18 @@ type ServiceCardProps = {
   centered?: boolean;
 };
 
+const TONES = ["tone-aurora", "tone-volt", "tone-deep", "tone-lilac"] as const;
+
+function visualTone(seed: string) {
+  let hash = 0;
+  for (let i = 0; i < seed.length; i += 1) {
+    hash = (hash + seed.charCodeAt(i) * (i + 1)) % TONES.length;
+  }
+  return TONES[hash];
+}
+
 /**
- * Service catalogue card — purple visual band + body + clear CTA
- * (inspired by premium media templates, adapted to Tasami identity)
+ * Service catalogue card — Pitch-style 16:9 slide thumbnail + metadata.
  */
 export default function ServiceCard({
   href,
@@ -42,9 +51,9 @@ export default function ServiceCard({
 
   const inner: ReactNode = (
     <>
-      <div className="service-card-visual" aria-hidden>
+      <div className={`service-card-visual ${visualTone(title)}`} aria-hidden>
         <span className="service-card-icon">
-          <Icon weight="regular" className="h-7 w-7" />
+          <Icon weight="bold" className="h-6 w-6" />
         </span>
         {meta ? (
           <span className="service-card-meta-pill">{meta}</span>
@@ -52,28 +61,26 @@ export default function ServiceCard({
       </div>
 
       <div
-        className={`flex flex-1 flex-col p-5 sm:p-6 ${
+        className={`mt-4 flex flex-1 flex-col ${
           centered ? "items-center text-center" : "text-start"
         }`}
       >
-        <h3 className="text-base font-medium leading-snug text-tasami-purple sm:text-lg">
+        <h3 className="text-base font-semibold leading-snug text-tasami-dark sm:text-[1.05rem]">
           {title}
         </h3>
-        <p className="mt-2.5 flex-1 text-sm leading-relaxed text-tasami-gray">
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-tasami-gray">
           {description}
         </p>
 
         {cta ? (
-          <div
-            className={`mt-5 flex w-full items-center gap-3 border-t border-tasami-purple/8 pt-4 ${
-              centered ? "justify-center" : "justify-between"
+          <span
+            className={`mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-tasami-pink transition-colors group-hover:text-tasami-purple ${
+              centered ? "" : ""
             }`}
           >
-            <span className="inline-flex items-center gap-1.5 text-sm font-medium text-tasami-pink transition-colors group-hover:text-tasami-purple">
-              {cta}
-              <Arrow weight="bold" className="h-3.5 w-3.5" />
-            </span>
-          </div>
+            {cta}
+            <Arrow weight="bold" className="h-3.5 w-3.5" />
+          </span>
         ) : null}
       </div>
     </>

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import {
   Buildings,
@@ -73,30 +72,33 @@ export default async function HomePage({ params }: Props) {
   return (
     <div>
       {/* —— Hero —— */}
-      <section className="hero-premium relative min-h-[min(88vh,820px)]">
-        <Image
-          src="/og-image.jpg"
-          alt=""
-          aria-hidden="true"
-          fill
-          priority
-          sizes="100vw"
-          className="pointer-events-none object-cover opacity-10 sm:opacity-15"
+      <section className="hero-premium relative min-h-[min(88vh,860px)]">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-hero-glow opacity-80"
+        />
+        <div className="hero-deck hero-deck-a hidden sm:block" aria-hidden>
+          <span>government</span>
+          <p>إنجاز حكومي ببساطة</p>
+        </div>
+        <div className="hero-deck hero-deck-b hidden sm:block" aria-hidden>
+          <span>platforms</span>
+          <p>أبشر · قوى · مقيم</p>
+        </div>
+        <div className="hero-deck hero-deck-c hidden lg:block" aria-hidden>
+          <span>tasami</span>
+          <p>من الطلب إلى التسليم</p>
+        </div>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-24 top-28 hidden h-72 w-72 animate-float-soft rounded-full bg-tasami-lilac/30 blur-3xl sm:block"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-hero-glow opacity-50 sm:opacity-70"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-24 top-28 hidden h-64 w-64 animate-float-soft rounded-full bg-tasami-gold/12 blur-3xl sm:block"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-20 bottom-24 hidden h-72 w-72 rounded-full bg-tasami-pink/10 blur-3xl sm:block"
+          className="pointer-events-none absolute -right-20 bottom-16 hidden h-80 w-80 rounded-full bg-tasami-pink/25 blur-3xl sm:block"
         />
 
-        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-20 pt-14 text-center sm:px-8 sm:pb-32 sm:pt-28 lg:px-10 lg:pb-36 lg:pt-32">
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-20 pt-14 text-center sm:px-8 sm:pb-32 sm:pt-24 lg:px-10 lg:pb-36 lg:pt-28">
           <BrandLogo
             size={52}
             withWordmark
@@ -106,31 +108,36 @@ export default async function HomePage({ params }: Props) {
             className="mb-8 sm:mb-10"
           />
 
-          <h1 className="font-display max-w-4xl text-[1.85rem] leading-[1.25] text-white sm:text-5xl lg:text-6xl lg:leading-[1.08]">
+          <h1 className="hero-title-glow font-display max-w-4xl text-[1.95rem] leading-[1.15] text-white sm:text-5xl lg:text-[4.15rem] lg:leading-[1.05]">
             {t("title")}
           </h1>
-          <span className="highlight-line mx-auto !w-16 !bg-tasami-gold" />
+          <span className="highlight-line mx-auto !w-16" />
 
-          <p className="mt-6 max-w-xl text-[0.95rem] leading-[1.85] text-white/75 sm:mt-8 sm:text-lg sm:leading-relaxed">
+          <p className="mt-6 max-w-xl text-[0.95rem] leading-[1.85] text-white/78 sm:mt-8 sm:text-lg sm:leading-relaxed">
             {t("hero")}
           </p>
 
-          <div className="mt-10 flex w-full max-w-md flex-col items-stretch gap-3 sm:mt-12 sm:max-w-none sm:w-auto sm:flex-row sm:items-center sm:justify-center sm:gap-4">
-            <Link
-              href="/services/government"
-              className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button border-[1.5px] border-tasami-pink bg-transparent px-7 py-3.5 text-sm font-medium text-white transition-all active:bg-tasami-pink/15 sm:w-auto sm:min-w-[200px] hover:bg-tasami-pink/15"
-            >
-              {t("ctaGov")}
-              <Arrow weight="bold" className="h-4 w-4" />
-            </Link>
-            <a
-              href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary w-full sm:w-auto sm:min-w-[200px]"
-            >
-              {t("ctaWhatsapp")}
-            </a>
+          <div className="mt-10 w-full max-w-xl rounded-[28px] bg-white p-3 text-start shadow-lift sm:mt-12 sm:p-4">
+            <p className="px-3 pt-1 text-sm text-tasami-gray sm:text-base">
+              {t("offerSubtitle")}
+            </p>
+            <div className="mt-4 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-end">
+              <Link
+                href="/services/government"
+                className="btn-primary w-full sm:w-auto sm:min-w-[168px]"
+              >
+                {t("ctaGov")}
+                <Arrow weight="bold" className="h-4 w-4" />
+              </Link>
+              <a
+                href={waUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary w-full sm:w-auto sm:min-w-[168px]"
+              >
+                {t("ctaWhatsapp")}
+              </a>
+            </div>
           </div>
         </div>
 
@@ -267,9 +274,9 @@ export default async function HomePage({ params }: Props) {
             {LANG_PILLS.map((l) => (
               <span
                 key={l.code}
-                className="inline-flex min-w-[7.5rem] flex-col items-center rounded-card border border-tasami-purple/8 bg-tasami-offwhite px-5 py-4 shadow-soft"
+                className="inline-flex min-w-[7.5rem] flex-col items-center rounded-full border border-tasami-pink/15 bg-white px-5 py-4 shadow-soft"
               >
-                <span className="text-xs font-medium tracking-wider text-tasami-gold">
+                <span className="text-xs font-semibold tracking-wider text-tasami-pink">
                   {l.code}
                 </span>
                 <span className="mt-1 text-sm font-medium text-tasami-purple">

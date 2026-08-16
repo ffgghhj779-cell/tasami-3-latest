@@ -43,7 +43,7 @@ export default function Footer() {
   const contactEmail = getContactEmail();
 
   return (
-    <footer className="relative border-t border-tasami-purple/8 bg-tasami-purple text-white">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#0C021C] text-white">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-hero-glow opacity-40"
@@ -203,7 +203,7 @@ export default function Footer() {
               <li>
                 <a
                   href={whatsappUrl()}
-                  className="inline-flex min-h-[44px] items-center rounded-button bg-tasami-pink px-4 py-2.5 text-sm font-medium text-white shadow-soft transition-opacity hover:opacity-90"
+                  className="inline-flex min-h-[44px] items-center rounded-full bg-tasami-gold px-4 py-2.5 text-sm font-semibold text-tasami-dark shadow-soft transition-opacity hover:opacity-90"
                 >
                   {t("contactCta")}
                 </a>

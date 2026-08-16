@@ -157,7 +157,7 @@ export default function CustomerEditForm({
         <button
           type="submit"
           disabled={saving}
-          className="rounded-button bg-tasami-purple px-5 py-2.5 text-sm font-medium text-white shadow-soft disabled:opacity-50"
+          className="rounded-full bg-tasami-pink px-5 py-2.5 text-sm font-medium text-white shadow-soft disabled:opacity-50"
         >
           {saving ? t("customers.saving") : t("customers.save")}
         </button>

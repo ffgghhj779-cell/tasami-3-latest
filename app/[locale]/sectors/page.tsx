@@ -124,7 +124,7 @@ function SectorModal({
       <button
         type="button"
         aria-label={t("close")}
-        className="absolute inset-0 bg-tasami-purple/50"
+        className="absolute inset-0 bg-[#0C021C]/55"
         onClick={onClose}
       />
 
@@ -134,18 +134,18 @@ function SectorModal({
         aria-labelledby="sector-modal-title"
         className="sheet-panel relative z-10 flex h-[min(100dvh,100%)] max-h-[100dvh] w-full flex-col overflow-hidden rounded-none bg-white shadow-soft touch-manipulation sm:h-auto sm:max-h-[min(90vh,720px)] sm:rounded-card"
       >
-        <div className="flex shrink-0 items-start justify-between gap-4 bg-tasami-purple px-5 py-4 pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:py-5">
+        <div className="flex shrink-0 items-start justify-between gap-4 bg-[#1A0845] px-5 py-4 pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:py-5">
           <div className="flex min-w-0 flex-1 items-center gap-3">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-button bg-tasami-gold/20">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-tasami-gold">
               <ActiveIcon
-                weight="regular"
-                className="h-6 w-6 text-tasami-gold"
+                weight="bold"
+                className="h-6 w-6 text-tasami-dark"
               />
             </span>
             <div className="min-w-0">
               <h2
                 id="sector-modal-title"
-                className="truncate text-lg font-light text-white"
+                className="truncate text-lg font-semibold text-white"
               >
                 {title}
               </h2>

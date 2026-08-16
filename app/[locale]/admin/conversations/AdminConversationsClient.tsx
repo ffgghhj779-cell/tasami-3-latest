@@ -125,7 +125,7 @@ export default function AdminConversationsClient({
         <button
           type="submit"
           disabled={sending}
-          className="rounded-button bg-tasami-purple px-5 py-2.5 text-sm font-medium text-white shadow-soft disabled:opacity-50"
+          className="rounded-full bg-tasami-pink px-5 py-2.5 text-sm font-medium text-white shadow-soft disabled:opacity-50"
         >
           {sending ? t("conversations.replySending") : t("conversations.replySend")}
         </button>

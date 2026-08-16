@@ -14,7 +14,7 @@ export default async function PlatformsShowcase() {
         className="pointer-events-none absolute inset-0 opacity-[0.035]"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 1px 1px, #2E1A47 1px, transparent 0)",
+            "radial-gradient(circle at 1px 1px, #6B53FF 1px, transparent 0)",
           backgroundSize: "28px 28px",
         }}
         aria-hidden
@@ -39,7 +39,7 @@ export default async function PlatformsShowcase() {
               href={platform.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col rounded-[1.25rem] border border-tasami-purple/[0.06] bg-[#FCFCFD] p-5 transition duration-300 active:scale-[0.99] hover:-translate-y-0.5 hover:border-tasami-gold/35 hover:bg-white hover:shadow-[0_18px_40px_-28px_rgba(46,26,71,0.45)] sm:p-6"
+              className="group flex flex-col rounded-[1.25rem] border border-tasami-pink/10 bg-[#F6F6FB] p-5 transition duration-300 active:scale-[0.99] hover:-translate-y-0.5 hover:border-tasami-pink/30 hover:bg-white hover:shadow-lift sm:p-6"
             >
               <div className="mb-5 flex items-center gap-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -48,7 +48,7 @@ export default async function PlatformsShowcase() {
                   alt=""
                   width={72}
                   height={72}
-                  className="h-[4.25rem] w-[4.25rem] shrink-0 rounded-[1.15rem] object-contain shadow-[0_8px_20px_-14px_rgba(46,26,71,0.45)] ring-1 ring-tasami-purple/[0.05]"
+                  className="h-[4.25rem] w-[4.25rem] shrink-0 rounded-[1.15rem] object-contain shadow-soft ring-1 ring-tasami-pink/10"
                   loading="lazy"
                   decoding="async"
                 />
@@ -59,7 +59,7 @@ export default async function PlatformsShowcase() {
                     </h3>
                     <ArrowSquareOut
                       weight="bold"
-                      className="mt-0.5 h-4 w-4 shrink-0 text-tasami-gold/70 transition group-hover:text-tasami-gold"
+                      className="mt-0.5 h-4 w-4 shrink-0 text-tasami-pink/70 transition group-hover:text-tasami-pink"
                       aria-hidden
                     />
                   </div>
