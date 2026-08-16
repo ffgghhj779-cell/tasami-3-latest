@@ -1,4 +1,4 @@
-// Tasami – Prisma Schema (aligned to master brief tables)
+// Khalsana – Prisma Schema (aligned to master brief tables)
 // PostgreSQL · Absolute simplicity · CRM + Services backbone
 
 generator client {

@@ -1,7 +1,7 @@
 /**
  * Concrete government offerings under each category.
  *
- * Prices = Tasami service fees (SAR), not government fees.
+ * Prices = Khalsana service fees (SAR), not government fees.
  * Edit priceFrom / priceTo here only — UI reads from this file.
  */
 import type { GovKey } from "@/lib/content-keys";

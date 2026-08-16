@@ -130,8 +130,8 @@ export async function POST(req: NextRequest) {
   const locale = (body.locale || "ar").toLowerCase();
   const fallbackReply =
     locale === "ar"
-      ? "شكراً لتواصلك. سيتابع فريق تسامي طلبك قريباً. يمكنك أيضاً التواصل عبر واتساب للرد الفوري."
-      : "Thanks for reaching out. The Tasami team will follow up soon. You can also use WhatsApp for a faster reply.";
+      ? "شكراً لتواصلك. سيتابع فريق خلصانة طلبك قريباً. يمكنك أيضاً التواصل عبر واتساب للرد الفوري."
+      : "Thanks for reaching out. The Khalsana team will follow up soon. You can also use WhatsApp for a faster reply.";
 
   let customerId: string | null = body.customerId ?? null;
   let dbAvailable = true;

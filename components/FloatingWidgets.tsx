@@ -10,10 +10,10 @@ import { whatsappUrl } from "@/lib/site";
 import { usePathname } from "@/navigation";
 
 const WHATSAPP_SECRETARY = whatsappUrl(
-  "مرحباً، أرغب بالتواصل مع سكرتير تسامي"
+  "مرحباً، أرغب بالتواصل مع سكرتير خلصانة"
 );
 const WHATSAPP_DIRECT = whatsappUrl(
-  "مرحباً، أريد الاستفسار عن خدمات تسامي مباشرة"
+  "مرحباً، أريد الاستفسار عن خدمات خلصانة مباشرة"
 );
 
 const spring = {

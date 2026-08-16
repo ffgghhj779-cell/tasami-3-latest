@@ -84,17 +84,16 @@ export default async function HomePage({ params }: Props) {
           <p>أبشر · قوى · مقيم</p>
         </div>
         <div className="hero-deck hero-deck-c hidden lg:block" aria-hidden>
-          <span>tasami</span>
+          <span>khalsana</span>
           <p>من الطلب إلى التسليم</p>
         </div>
 
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-20 pt-14 text-center sm:px-8 sm:pb-32 sm:pt-24 lg:px-10 lg:pb-36 lg:pt-28">
           <BrandLogo
-            size={52}
-            withWordmark
+            lockup
+            priority
             wordmark={tBrand("name")}
             slogan={tBrand("slogan")}
-            onDark
             className="mb-8 sm:mb-10"
           />
 
@@ -177,7 +176,7 @@ export default async function HomePage({ params }: Props) {
 
       <PlatformsShowcase />
 
-      {/* —— Why Tasami (6 features) —— */}
+      {/* —— Why Khalsana (6 features) —— */}
       <section className="surface-grid surface-noise relative border-y border-tasami-purple/5 py-20 sm:py-24 lg:py-28">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <div className="section-heading mb-14 sm:mb-16">

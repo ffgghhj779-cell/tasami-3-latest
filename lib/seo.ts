@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
-import { getWhatsAppNumber, getWhatsAppUrl } from "@/lib/site";
+import { getTikTokUrl, getWhatsAppNumber, getWhatsAppUrl } from "@/lib/site";
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://tasami.sa";
 
-export const SITE_NAME = "تسامي";
-export const SITE_NAME_EN = "Tasami";
+export const SITE_NAME = "خَلْصَانَة";
+export const SITE_NAME_EN = "KHALSANA";
 
 const DEFAULT_DESCRIPTION_AR =
-  "تسامي — منصة سعودية للخدمات الحكومية والتقنية. بسيطة. سريعة. بأربع لغات. دعم عبر واتساب ومُنجز على مدار الساعة.";
+  "خَلْصَانَة — منصة سعودية للخدمات الحكومية والتقنية. بسيطة. سريعة. بأربع لغات. دعم عبر واتساب ومُنجز على مدار الساعة.";
 
 const DEFAULT_KEYWORDS = [
-  "تسامي",
+  "خلصانة",
+  "خَلْصَانَة",
+  "KHALSANA",
   "خدمات حكومية سعودية",
   "تجديد إقامة",
   "سجل تجاري",
@@ -20,7 +22,7 @@ const DEFAULT_KEYWORDS = [
   "خدمات تقنية",
   "تصميم مواقع",
   "تطبيقات جوال",
-  "Tasami",
+  "Khalsana",
   "Saudi government services",
 ];
 
@@ -92,7 +94,7 @@ export function organizationJsonLd() {
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     description: DEFAULT_DESCRIPTION_AR,
-    sameAs: waUrl === "#" ? [] : [waUrl],
+    sameAs: [getTikTokUrl(), ...(waUrl === "#" ? [] : [waUrl])],
     contactPoint: [
       {
         "@type": "ContactPoint",

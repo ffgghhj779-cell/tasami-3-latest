@@ -14,6 +14,7 @@ import {
   getCompanyInfo,
   getContactEmail,
   getPhoneDisplay,
+  getTikTokUrl,
   telUrl,
   whatsappUrl,
 } from "@/lib/site";
@@ -54,13 +55,7 @@ export default function Footer() {
           {/* About */}
           <div>
             <div className="flex items-center gap-2.5">
-              <BrandLogo
-                size={42}
-                withWordmark
-                wordmark={tBrand("name")}
-                slogan={tBrand("slogan")}
-                onDark
-              />
+              <BrandLogo lockup wordmark={tBrand("name")} slogan={tBrand("slogan")} />
             </div>
             <p className="mt-5 text-sm leading-relaxed text-white/65">
               {t("about")}
@@ -74,6 +69,15 @@ export default function Footer() {
               >
                 <WhatsappLogo weight="fill" className="h-4 w-4 text-tasami-gold" />
                 {t("whatsapp")}
+              </a>
+              <a
+                href={getTikTokUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 hover:text-tasami-pink"
+              >
+                <TikTokMark className="h-4 w-4 text-tasami-gold" />
+                {t("tiktok")}
               </a>
               <a
                 href={telUrl()}
@@ -223,5 +227,18 @@ export default function Footer() {
         <p className="mt-4 text-center text-xs text-white/35">{t("built")}</p>
       </div>
     </footer>
+  );
+}
+
+function TikTokMark({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+      aria-hidden
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.28 0 .54.04.79.13V9.4a6.33 6.33 0 0 0-.79-.05A6.34 6.34 0 0 0 3.42 15.7a6.34 6.34 0 0 0 10.76 4.55v-7.11a8.18 8.18 0 0 0 4.86 1.57V11.4a4.87 4.87 0 0 1 .55-.02z" />
+    </svg>
   );
 }

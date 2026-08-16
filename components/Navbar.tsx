@@ -25,7 +25,7 @@ const NAV_LINKS = [
   { href: "/sectors", key: "sectors" as const, icon: SquaresFour },
 ] as const;
 
-const WHATSAPP_URL = whatsappUrl("مرحباً، أرغب بالتواصل مع سكرتير تسامي");
+const WHATSAPP_URL = whatsappUrl("مرحباً، أرغب بالتواصل مع سكرتير خلصانة");
 
 const springSoft = { type: "spring" as const, stiffness: 280, damping: 26 };
 
@@ -60,6 +60,7 @@ export default function Navbar() {
           <BrandLogo
             size={36}
             withWordmark
+            priority
             wordmark={tBrand("name")}
             slogan={tBrand("slogan")}
             onDark

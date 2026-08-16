@@ -37,7 +37,7 @@ export async function notifyRequestStatusChange(args: NotifyStatusArgs) {
     try {
       const from =
         process.env.RESEND_FROM_EMAIL?.trim() ||
-        `Tasami <${getContactEmail()}>`;
+        `Khalsana <${getContactEmail()}>`;
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
@@ -47,10 +47,10 @@ export async function notifyRequestStatusChange(args: NotifyStatusArgs) {
         body: JSON.stringify({
           from,
           to: [to],
-          subject: `تحديث طلب تسامي — ${statusLabel}`,
+          subject: `تحديث طلب خلصانة — ${statusLabel}`,
           html: `
             <div dir="rtl" style="font-family:Tahoma,sans-serif;line-height:1.7;color:#212529">
-              <h2 style="color:#6B53FF">تسامي</h2>
+              <h2 style="color:#6B53FF">خَلْصَانَة</h2>
               <p>مرحباً ${escapeHtml(args.customerName)}،</p>
               <p>تم تحديث حالة طلبك <strong>${escapeHtml(args.serviceName)}</strong> إلى:</p>
               <p style="font-size:18px;color:#6B53FF"><strong>${escapeHtml(statusLabel)}</strong></p>
@@ -124,7 +124,7 @@ export async function notifyNewRequest(args: {
     try {
       const from =
         process.env.RESEND_FROM_EMAIL?.trim() ||
-        `Tasami <${getContactEmail()}>`;
+        `Khalsana <${getContactEmail()}>`;
       await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {

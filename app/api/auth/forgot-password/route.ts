@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
         const resetLink = `${siteUrl}/${locale}/reset-password?token=${rawToken}`;
         const from =
           process.env.RESEND_FROM_EMAIL?.trim() ||
-          `Tasami <${getContactEmail()}>`;
+          `Khalsana <${getContactEmail()}>`;
 
         try {
           await fetch("https://api.resend.com/emails", {
@@ -79,10 +79,10 @@ export async function POST(req: NextRequest) {
             body: JSON.stringify({
               from,
               to: [user.email],
-              subject: "إعادة تعيين كلمة المرور — تسامي",
+              subject: "إعادة تعيين كلمة المرور — خلصانة",
               html: `
                 <div dir="rtl" style="font-family:Tahoma,sans-serif;line-height:1.7;color:#212529">
-                  <h2 style="color:#6B53FF">تسامي</h2>
+                  <h2 style="color:#6B53FF">خَلْصَانَة</h2>
                   <p>مرحباً ${escapeHtml(user.name)}،</p>
                   <p>وصلنا طلب لإعادة تعيين كلمة المرور الخاصة بحسابك. اضغط على الرابط أدناه لإنشاء كلمة مرور جديدة (صالح لمدة ساعة واحدة):</p>
                   <p><a href="${resetLink}" style="color:#6B53FF">إعادة تعيين كلمة المرور</a></p>
