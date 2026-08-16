@@ -87,14 +87,6 @@ export default async function HomePage({ params }: Props) {
           <span>tasami</span>
           <p>من الطلب إلى التسليم</p>
         </div>
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-24 top-28 hidden h-72 w-72 animate-float-soft rounded-full bg-tasami-lilac/30 blur-3xl sm:block"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-20 bottom-16 hidden h-80 w-80 rounded-full bg-tasami-pink/25 blur-3xl sm:block"
-        />
 
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-20 pt-14 text-center sm:px-8 sm:pb-32 sm:pt-24 lg:px-10 lg:pb-36 lg:pt-28">
           <BrandLogo
