@@ -250,65 +250,80 @@
   }
 
   .hero-title-glow {
-    text-shadow: 0 0 42px rgba(255, 255, 255, 0.28);
+    text-shadow:
+      0 1px 0 rgba(12, 2, 28, 0.35),
+      0 0 28px rgba(12, 2, 28, 0.45),
+      0 0 42px rgba(255, 255, 255, 0.28);
   }
 
   .hero-reel {
-    position: relative;
-    width: min(20rem, 90vw);
-    height: 11.75rem;
-    margin-inline: auto;
-    margin-bottom: 1.75rem;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: auto;
+    height: auto;
+    margin: 0;
     pointer-events: none;
+    overflow: hidden;
   }
 
   .hero-reel-card {
     position: absolute;
     left: 50%;
-    top: 0.35rem;
-    width: 78%;
-    margin-left: -39%;
+    top: 46%;
+    width: min(16.5rem, 68vw);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: 0.9rem 1rem 1rem;
-    animation: hero-reel-cycle 12s ease-in-out infinite;
+    opacity: 0.34;
+    filter: saturate(1.15);
+    box-shadow: 0 0 56px rgba(107, 83, 255, 0.38);
+    animation: hero-reel-glow 18s ease-in-out infinite;
     will-change: transform, opacity;
   }
 
   .hero-reel-card:nth-child(1) {
+    top: 40%;
     animation-delay: 0s;
   }
   .hero-reel-card:nth-child(2) {
-    animation-delay: -4s;
+    top: 50%;
+    animation-name: hero-reel-glow-b;
+    animation-delay: -6s;
   }
   .hero-reel-card:nth-child(3) {
-    animation-delay: -8s;
+    top: 58%;
+    animation-delay: -12s;
   }
 
   .hero-reel-title {
     max-width: 80%;
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     font-weight: 700;
     line-height: 1.25;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.78);
   }
 
   .hero-reel-meta {
     position: absolute;
     top: 0.85rem;
     inset-inline-end: 0.85rem;
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 600;
-    letter-spacing: 0.01em;
-    color: rgba(255, 255, 255, 0.82);
+    color: rgba(255, 255, 255, 0.55);
   }
 
   .hero-reel .service-card-icon {
     position: static;
-    margin-bottom: 0.55rem;
-    width: 2.35rem;
-    height: 2.35rem;
+    margin-bottom: 0.45rem;
+    width: 2.1rem;
+    height: 2.1rem;
+    background: rgba(107, 83, 255, 0.7);
+  }
+
+  .hero-reel .service-card-visual {
+    box-shadow: none;
   }
 
   /* —— Cards —— */
@@ -895,21 +910,21 @@
     }
 
     .hero-reel-card:nth-child(1) {
-      transform: translate3d(0, 0, 0) scale(1);
-      opacity: 1;
-      z-index: 3;
+      transform: translate3d(-50%, -50%, 0) translate3d(-18%, -8%, 0) rotate(-7deg)
+        scale(0.92);
+      opacity: 0.32;
     }
 
     .hero-reel-card:nth-child(2) {
-      transform: translate3d(-26%, 22%, 0) rotate(-8deg) scale(0.84);
-      opacity: 0.55;
-      z-index: 1;
+      transform: translate3d(-50%, -50%, 0) translate3d(16%, 8%, 0) rotate(6deg)
+        scale(0.9);
+      opacity: 0.28;
     }
 
     .hero-reel-card:nth-child(3) {
-      transform: translate3d(24%, 18%, 0) rotate(7deg) scale(0.86);
-      opacity: 0.62;
-      z-index: 2;
+      transform: translate3d(-50%, -50%, 0) translate3d(4%, 18%, 0) rotate(-3deg)
+        scale(0.88);
+      opacity: 0.3;
     }
   }
 }
@@ -941,30 +956,31 @@
   }
 }
 
-@keyframes hero-reel-cycle {
+@keyframes hero-reel-glow-b {
   0%,
-  8% {
-    transform: translate3d(-26%, 22%, 0) rotate(-8deg) scale(0.84);
-    opacity: 0.5;
-    z-index: 1;
-  }
-  24%,
-  41% {
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-    opacity: 1;
-    z-index: 3;
-  }
-  57%,
-  74% {
-    transform: translate3d(24%, 18%, 0) rotate(7deg) scale(0.86);
-    opacity: 0.62;
-    z-index: 2;
-  }
-  90%,
   100% {
-    transform: translate3d(-26%, 22%, 0) rotate(-8deg) scale(0.84);
-    opacity: 0.5;
-    z-index: 1;
+    transform: translate3d(-50%, -50%, 0) translate3d(18%, 8%, 0) rotate(5deg)
+      scale(0.92);
+    opacity: 0.24;
+  }
+  50% {
+    transform: translate3d(-50%, -50%, 0) translate3d(-14%, -12%, 0) rotate(-6deg)
+      scale(1.05);
+    opacity: 0.38;
+  }
+}
+
+@keyframes hero-reel-glow {
+  0%,
+  100% {
+    transform: translate3d(-50%, -50%, 0) translate3d(-20%, -10%, 0) rotate(-7deg)
+      scale(0.9);
+    opacity: 0.26;
+  }
+  50% {
+    transform: translate3d(-50%, -50%, 0) translate3d(16%, 12%, 0) rotate(6deg)
+      scale(1.04);
+    opacity: 0.4;
   }
 }
 

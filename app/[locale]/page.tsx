@@ -76,15 +76,15 @@ export default async function HomePage({ params }: Props) {
       {/* —— Hero —— */}
       <section className="hero-premium relative min-h-[min(78vh,780px)]">
         <HeroAurora />
+        <HeroServiceReel
+          items={[
+            { title: t("core.gov.title"), meta: t("coreCountGov") },
+            { title: t("core.tech.title"), meta: t("coreCountTech") },
+            { title: t("core.sectors.title"), meta: t("coreCountSectors") },
+          ]}
+        />
 
-        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-16 pt-12 text-center sm:px-8 sm:pb-24 sm:pt-20 lg:px-10 lg:pb-28 lg:pt-24">
-          <HeroServiceReel
-            items={[
-              { title: t("core.gov.title"), meta: t("coreCountGov") },
-              { title: t("core.tech.title"), meta: t("coreCountTech") },
-              { title: t("core.sectors.title"), meta: t("coreCountSectors") },
-            ]}
-          />
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-16 pt-16 text-center sm:px-8 sm:pb-24 sm:pt-20 lg:px-10 lg:pb-28 lg:pt-24">
           <BrandLogo
             lockup
             lockupSize="lg"
