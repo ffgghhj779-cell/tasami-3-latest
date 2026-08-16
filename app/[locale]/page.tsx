@@ -19,6 +19,7 @@ import { Link } from "@/navigation";
 import ServiceCard from "@/components/ServiceCard";
 import BrandLogo from "@/components/BrandLogo";
 import HeroAurora from "@/components/HeroAurora";
+import HeroServiceReel from "@/components/HeroServiceReel";
 import PlatformsShowcase from "@/components/PlatformsShowcase";
 import {
   HOME_CORE_KEYS,
@@ -76,14 +77,21 @@ export default async function HomePage({ params }: Props) {
       <section className="hero-premium relative min-h-[min(78vh,780px)]">
         <HeroAurora />
 
-        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-16 pt-16 text-center sm:px-8 sm:pb-24 sm:pt-20 lg:px-10 lg:pb-28 lg:pt-24">
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-16 pt-12 text-center sm:px-8 sm:pb-24 sm:pt-20 lg:px-10 lg:pb-28 lg:pt-24">
+          <HeroServiceReel
+            items={[
+              { title: t("core.gov.title"), meta: t("coreCountGov") },
+              { title: t("core.tech.title"), meta: t("coreCountTech") },
+              { title: t("core.sectors.title"), meta: t("coreCountSectors") },
+            ]}
+          />
           <BrandLogo
             lockup
             lockupSize="lg"
             priority
             wordmark={tBrand("name")}
             slogan={tBrand("slogan")}
-            className="mb-8 sm:mb-10"
+            className="mb-8 hidden md:inline-flex sm:mb-10"
           />
 
           <h1 className="hero-title-glow font-display max-w-3xl text-[2rem] leading-[1.15] text-white sm:text-5xl lg:text-[3.85rem] lg:leading-[1.08]">

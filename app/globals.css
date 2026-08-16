@@ -253,6 +253,64 @@
     text-shadow: 0 0 42px rgba(255, 255, 255, 0.28);
   }
 
+  .hero-reel {
+    position: relative;
+    width: min(20rem, 90vw);
+    height: 11.75rem;
+    margin-inline: auto;
+    margin-bottom: 1.75rem;
+    pointer-events: none;
+  }
+
+  .hero-reel-card {
+    position: absolute;
+    left: 50%;
+    top: 0.35rem;
+    width: 78%;
+    margin-left: -39%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0.9rem 1rem 1rem;
+    animation: hero-reel-cycle 12s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  .hero-reel-card:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .hero-reel-card:nth-child(2) {
+    animation-delay: -4s;
+  }
+  .hero-reel-card:nth-child(3) {
+    animation-delay: -8s;
+  }
+
+  .hero-reel-title {
+    max-width: 80%;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #fff;
+  }
+
+  .hero-reel-meta {
+    position: absolute;
+    top: 0.85rem;
+    inset-inline-end: 0.85rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .hero-reel .service-card-icon {
+    position: static;
+    margin-bottom: 0.55rem;
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+
   /* —— Cards —— */
   .card-soft {
     background-color: var(--color-card);
@@ -657,8 +715,12 @@
       animation: none !important;
     }
 
-    .hero-premium::after {
-      display: none;
+    .hero-mesh {
+      animation-duration: 9s;
+    }
+
+    .hero-sheen {
+      opacity: 0.85;
     }
 
     /* backdrop-filter is costly on mobile GPUs */
@@ -821,6 +883,7 @@
     .animate-float-soft,
     .hero-mesh,
     .hero-sheen,
+    .hero-reel-card,
     .platform-logo,
     .card-premium {
       animation: none !important;
@@ -829,6 +892,24 @@
 
     html {
       scroll-behavior: auto;
+    }
+
+    .hero-reel-card:nth-child(1) {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 1;
+      z-index: 3;
+    }
+
+    .hero-reel-card:nth-child(2) {
+      transform: translate3d(-26%, 22%, 0) rotate(-8deg) scale(0.84);
+      opacity: 0.55;
+      z-index: 1;
+    }
+
+    .hero-reel-card:nth-child(3) {
+      transform: translate3d(24%, 18%, 0) rotate(7deg) scale(0.86);
+      opacity: 0.62;
+      z-index: 2;
     }
   }
 }
@@ -857,6 +938,33 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes hero-reel-cycle {
+  0%,
+  8% {
+    transform: translate3d(-26%, 22%, 0) rotate(-8deg) scale(0.84);
+    opacity: 0.5;
+    z-index: 1;
+  }
+  24%,
+  41% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+    z-index: 3;
+  }
+  57%,
+  74% {
+    transform: translate3d(24%, 18%, 0) rotate(7deg) scale(0.86);
+    opacity: 0.62;
+    z-index: 2;
+  }
+  90%,
+  100% {
+    transform: translate3d(-26%, 22%, 0) rotate(-8deg) scale(0.84);
+    opacity: 0.5;
+    z-index: 1;
   }
 }
 

@@ -69,10 +69,10 @@ export default function HeroAurora() {
 
         const gx = b.x * w;
         const gy = b.y * h;
-        const radius = Math.max(w, h) * b.r * (coarse ? 0.85 : 1);
+        const radius = Math.max(w, h) * b.r * (coarse ? 1.08 : 1);
         const g = ctx.createRadialGradient(gx, gy, 0, gx, gy, radius);
-        g.addColorStop(0, `rgba(${b.color},0.62)`);
-        g.addColorStop(0.35, `rgba(${b.color},0.28)`);
+        g.addColorStop(0, `rgba(${b.color},${coarse ? 0.78 : 0.62})`);
+        g.addColorStop(0.35, `rgba(${b.color},${coarse ? 0.36 : 0.28})`);
         g.addColorStop(1, `rgba(${b.color},0)`);
         ctx.fillStyle = g;
         ctx.beginPath();
