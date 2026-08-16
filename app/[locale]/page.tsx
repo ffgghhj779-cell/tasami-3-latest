@@ -91,6 +91,7 @@ export default async function HomePage({ params }: Props) {
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-20 pt-14 text-center sm:px-8 sm:pb-32 sm:pt-24 lg:px-10 lg:pb-36 lg:pt-28">
           <BrandLogo
             lockup
+            lockupSize="lg"
             priority
             wordmark={tBrand("name")}
             slogan={tBrand("slogan")}

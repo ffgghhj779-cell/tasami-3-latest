@@ -55,7 +55,12 @@ export default function Footer() {
           {/* About */}
           <div>
             <div className="flex items-center gap-2.5">
-              <BrandLogo lockup wordmark={tBrand("name")} slogan={tBrand("slogan")} />
+              <BrandLogo
+                lockup
+                lockupSize="md"
+                wordmark={tBrand("name")}
+                slogan={tBrand("slogan")}
+              />
             </div>
             <p className="mt-5 text-sm leading-relaxed text-white/65">
               {t("about")}

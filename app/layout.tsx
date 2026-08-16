@@ -12,8 +12,8 @@ export const metadata = {
     locale: "ar",
   }),
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/logo-mark.png",
+    apple: "/logo-mark.png",
   },
 };
 

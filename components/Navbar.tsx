@@ -51,20 +51,20 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 isolate border-b border-white/10 bg-[#1A0845] pt-[env(safe-area-inset-top)] shadow-[0_8px_24px_rgba(12,2,28,0.28)]">
-      <nav className="mx-auto flex h-[4.75rem] max-w-7xl items-center justify-between gap-2 px-4 sm:gap-4 sm:px-8 lg:px-10">
+      <nav className="mx-auto flex h-[5rem] max-w-7xl items-center justify-between gap-2 px-4 sm:h-[5.25rem] sm:gap-4 sm:px-8 lg:h-[5.5rem] lg:px-10">
         <Link
           href="/"
           className="flex min-w-0 shrink items-center gap-2"
           onClick={() => setMobileOpen(false)}
         >
           <BrandLogo
-            size={36}
+            size={44}
             withWordmark
             priority
             wordmark={tBrand("name")}
             slogan={tBrand("slogan")}
             onDark
-            className="max-[360px]:[&_.font-brand]:text-[1.15rem]"
+            className="max-[360px]:[&_.font-brand]:text-[1.15rem] sm:[&_img]:!h-12 sm:[&_img]:!w-12 lg:[&_img]:!h-[52px] lg:[&_img]:!w-[52px]"
           />
         </Link>
 

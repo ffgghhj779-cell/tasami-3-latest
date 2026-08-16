@@ -1,5 +1,14 @@
 import Image from "next/image";
 
+const LOCKUP = { w: 428, h: 388 };
+const MARK = { w: 163, h: 163 };
+
+const LOCKUP_WIDTH: Record<"sm" | "md" | "lg", string> = {
+  sm: "w-[8.75rem] sm:w-[10.5rem]",
+  md: "w-[11rem] sm:w-[13.5rem] lg:w-[15rem]",
+  lg: "w-[13.5rem] sm:w-[17.5rem] lg:w-[21.5rem] xl:w-[24rem]",
+};
+
 type BrandLogoProps = {
   className?: string;
   /** Mark size in pixels (square) */
@@ -13,14 +22,15 @@ type BrandLogoProps = {
   onDark?: boolean;
   /** Official stacked lockup: icon + Arabic + English + tagline */
   lockup?: boolean;
+  /** Lockup width on laptop/desktop */
+  lockupSize?: "sm" | "md" | "lg";
   /** Preload the mark — use in the header/hero only */
   priority?: boolean;
 };
 
 /**
  * Official KHALSANA / خَلْصَانَة identity.
- * Compact header uses the K-checkmark crop + locale wordmark.
- * lockup shows the full stacked official artwork.
+ * Transparent PNG lockup for hero/footer; square K-mark in compact chrome.
  */
 export default function BrandLogo({
   className = "",
@@ -30,6 +40,7 @@ export default function BrandLogo({
   slogan,
   onDark = true,
   lockup = false,
+  lockupSize = "md",
   priority = false,
 }: BrandLogoProps) {
   const label = [wordmark, slogan].filter(Boolean).join(" — ");
@@ -39,36 +50,36 @@ export default function BrandLogo({
   if (lockup) {
     return (
       <span className={`inline-flex ${className}`} aria-label={label}>
-        <span className="overflow-hidden rounded-3xl bg-white shadow-soft">
-          <Image
-            src="/logo.png"
-            alt={wordmark}
-            width={320}
-            height={400}
-            className="h-auto w-[8.5rem] object-contain object-center sm:w-[10.5rem]"
-            priority={priority}
-          />
-        </span>
+        <Image
+          src="/logo.png"
+          alt={wordmark}
+          width={LOCKUP.w}
+          height={LOCKUP.h}
+          unoptimized
+          quality={100}
+          priority={priority}
+          sizes="(min-width:1280px) 384px, (min-width:1024px) 344px, (min-width:640px) 280px, 216px"
+          className={`h-auto ${LOCKUP_WIDTH[lockupSize]} max-w-full object-contain object-center`}
+        />
       </span>
     );
   }
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <span
-        className="relative block shrink-0 overflow-hidden rounded-[14px] bg-white"
+      <Image
+        src="/logo-mark.png"
+        alt=""
+        width={MARK.w}
+        height={MARK.h}
+        unoptimized
+        quality={100}
+        priority={priority}
+        sizes={`${size * 2}px`}
+        className="shrink-0 object-contain object-center"
         style={{ width: size, height: size }}
         aria-hidden
-      >
-        <Image
-          src="/logo.png"
-          alt=""
-          fill
-          sizes={`${size}px`}
-          className="scale-[1.7] object-cover object-[50%_11%]"
-          priority={priority}
-        />
-      </span>
+      />
       {withWordmark && (
         <span className="flex min-w-0 flex-col items-start leading-none">
           <span

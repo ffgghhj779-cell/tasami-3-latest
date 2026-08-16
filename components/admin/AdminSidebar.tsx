@@ -31,7 +31,7 @@ export default function AdminSidebar() {
   return (
     <aside className="flex w-full shrink-0 flex-col bg-[#0C021C] text-white md:sticky md:top-0 md:h-screen md:w-64">
       <div className="flex items-center gap-3 border-b border-white/10 px-6 py-6">
-        <BrandLogo size={40} onDark />
+        <BrandLogo size={48} onDark />
         <div>
           <p className="text-sm font-medium tracking-wide">{t("brand")}</p>
           <p className="text-[11px] text-white/55">{t("secretary")}</p>
