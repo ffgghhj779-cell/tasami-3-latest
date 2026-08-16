@@ -74,7 +74,7 @@ export default async function HomePage({ params }: Props) {
   return (
     <div>
       {/* —— Hero —— */}
-      <section className="hero-premium relative min-h-[min(78vh,780px)]">
+      <section className="hero-premium relative flex min-h-[min(82dvh,820px)] flex-col">
         <HeroAurora />
         <HeroServiceReel
           items={[
@@ -84,7 +84,7 @@ export default async function HomePage({ params }: Props) {
           ]}
         />
 
-        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center px-5 pb-16 pt-16 text-center sm:px-8 sm:pb-24 sm:pt-20 lg:px-10 lg:pb-28 lg:pt-24">
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-5 py-16 text-center sm:px-8 sm:py-24 lg:px-10 lg:py-28">
           <BrandLogo
             lockup
             lockupSize="lg"
@@ -94,7 +94,7 @@ export default async function HomePage({ params }: Props) {
             className="mb-8 hidden md:inline-flex sm:mb-10"
           />
 
-          <h1 className="hero-title-glow font-display max-w-3xl text-[2rem] leading-[1.15] text-white sm:text-5xl lg:text-[3.85rem] lg:leading-[1.08]">
+          <h1 className="hero-title-glow font-display max-w-3xl text-balance text-[2.05rem] leading-[1.25] text-white sm:text-5xl lg:text-[3.85rem] lg:leading-[1.15]">
             {t("title")}
           </h1>
 

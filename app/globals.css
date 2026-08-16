@@ -98,7 +98,7 @@
   }
 
   html[lang="ar"] body {
-    font-family: var(--font-arabic), Cairo, Tahoma, sans-serif;
+    font-family: var(--font-arabic), "Noto Sans Arabic", Tahoma, sans-serif;
     letter-spacing: 0;
   }
 
@@ -121,9 +121,10 @@
   html[lang="ar"] h3,
   html[lang="ar"] h4,
   html[lang="ar"] .font-display {
-    font-family: var(--font-arabic), Cairo, Tahoma, sans-serif;
+    font-family: var(--font-arabic), "Noto Sans Arabic", Tahoma, sans-serif;
     font-weight: 800;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
+    line-height: 1.25;
   }
 
   h1,
@@ -711,13 +712,13 @@
     pointer-events: none;
     backface-visibility: hidden;
     transform: translateZ(0);
-    animation: none;
+    will-change: transform;
+    animation: scroll-left 70s linear infinite;
   }
 
   @media (min-width: 640px) {
     .trust-bar-track {
-      will-change: transform;
-      animation: scroll-left 55s linear infinite;
+      animation-duration: 55s;
     }
 
     .trust-bar-track:hover {
@@ -846,7 +847,7 @@
 
   /* Official KHALSANA wordmark — rounded Arabic / bold Latin caps */
   .font-brand {
-    font-family: var(--font-arabic), Cairo, Tahoma, sans-serif;
+    font-family: var(--font-arabic), "Noto Sans Arabic", Tahoma, sans-serif;
     font-weight: 700;
     letter-spacing: 0;
   }
@@ -867,7 +868,7 @@
 
   /* Slogan under wordmark — small, precise; no uppercase on Arabic */
   .font-brand-slogan {
-    font-family: var(--font-arabic), Cairo, Tahoma, sans-serif;
+    font-family: var(--font-arabic), "Noto Sans Arabic", Tahoma, sans-serif;
     font-weight: 500;
     letter-spacing: 0.02em;
     text-transform: none;

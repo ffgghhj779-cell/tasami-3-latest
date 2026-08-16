@@ -1,14 +1,14 @@
 import {
-  Cairo,
   Manrope,
   Noto_Nastaliq_Urdu,
+  Noto_Sans_Arabic,
   Noto_Sans_Devanagari,
 } from "next/font/google";
 
-/** Khalsana Arabic — rounded geometric, close to the official wordmark */
-export const fontArabic = Cairo({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "500", "600", "700", "800"],
+/** Highest-quality Arabic webfont — full glyphs, sharp on mobile */
+export const fontArabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-arabic",
   display: "swap",
   preload: true,
