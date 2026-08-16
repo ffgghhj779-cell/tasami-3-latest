@@ -6,7 +6,7 @@ import { TRUST_PLATFORM_KEYS } from "@/lib/content-keys";
 
 function TrustItem({ name }: { name: string }) {
   return (
-    <span className="mx-3.5 inline-flex shrink-0 items-center gap-2 rounded-full border border-tasami-pink/12 bg-white px-5 py-2.5 text-sm font-semibold text-tasami-dark sm:mx-5">
+    <span className="mx-3.5 inline-flex shrink-0 items-center gap-2 rounded-full border border-tasami-purple/8 bg-[#f7f5fb] px-5 py-2.5 text-sm font-semibold text-tasami-dark sm:mx-5">
       <SealCheck weight="regular" className="h-4 w-4 shrink-0 text-tasami-gold" />
       {name}
     </span>

@@ -50,7 +50,7 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#1A0845]/92 shadow-soft backdrop-blur-xl">
+    <header className="sticky top-0 z-50 isolate border-b border-white/10 bg-[#1A0845] pt-[env(safe-area-inset-top)] shadow-[0_8px_24px_rgba(12,2,28,0.28)]">
       <nav className="mx-auto flex h-[4.75rem] max-w-7xl items-center justify-between gap-2 px-4 sm:gap-4 sm:px-8 lg:px-10">
         <Link
           href="/"
@@ -77,7 +77,7 @@ export default function Navbar() {
                   className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200 ${
                     active
                       ? "bg-white/12 text-tasami-gold"
-                      : "text-white/80 hover:bg-white/10 hover:text-white"
+                      : "text-white hover:bg-white/10"
                   }`}
                 >
                   <Icon weight="regular" className="h-4 w-4 text-tasami-lilac" />
@@ -95,7 +95,7 @@ export default function Navbar() {
               aria-label={t("changeLanguage")}
               aria-expanded={langOpen}
               onClick={() => setLangOpen((v) => !v)}
-              className="touch-target flex h-11 w-11 items-center justify-center rounded-button text-white/90 transition-colors hover:bg-white/10 hover:text-tasami-pink"
+              className="touch-target flex h-11 w-11 items-center justify-center rounded-button text-white transition-colors hover:bg-white/10"
             >
               <GlobeHemisphereWest weight="regular" className="h-5 w-5" />
             </button>

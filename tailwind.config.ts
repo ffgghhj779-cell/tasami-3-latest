@@ -49,9 +49,9 @@ const config: Config = {
           900: "#0C021C",
         },
         background: {
-          DEFAULT: "#FFFFFF",
-          soft: "#F6F6FB",
-          card: "#FFFFFF",
+          DEFAULT: "#F3F1F8",
+          soft: "#F3F1F8",
+          card: "#FBFAFE",
         },
         foreground: {
           DEFAULT: "#0C021C",
@@ -62,7 +62,7 @@ const config: Config = {
           pink: "#6B53FF",
           gold: "#C4EE87",
           lilac: "#C6A5FF",
-          offwhite: "#F6F6FB",
+          offwhite: "#F3F1F8",
           dark: "#0C021C",
           gray: "#5C5E6B",
         },

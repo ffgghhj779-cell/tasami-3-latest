@@ -8,10 +8,10 @@
   --color-accent: #c6a5ff;
   --color-deep: #280f62;
   --color-ink: #0c021c;
-  --color-background: #ffffff;
+  --color-background: #f3f1f8;
   --color-foreground: #0c021c;
   --color-foreground-muted: #5c5e6b;
-  --color-card: #ffffff;
+  --color-card: #fbfafe;
 
   --radius-card: 20px;
   --radius-button: 9999px;
@@ -56,7 +56,7 @@
     background-image:
       radial-gradient(
         ellipse 90% 40% at 50% -8%,
-        rgba(107, 83, 255, 0.1),
+        rgba(107, 83, 255, 0.06),
         transparent 55%
       ),
       var(--dot-pattern);
@@ -159,13 +159,13 @@
 @layer components {
   /* —— Surfaces —— */
   .surface-dotted {
-    background-color: #fff;
+    background-color: #f3f1f8;
     background-image: var(--dot-pattern);
     background-size: 22px 22px;
   }
 
   .surface-grid {
-    background-color: #fff;
+    background-color: #f3f1f8;
     background-image: var(--grid-pattern);
     background-size: 48px 48px;
   }
@@ -207,6 +207,60 @@
     background-size: 22px 22px;
     mask-image: radial-gradient(ellipse at center, black 18%, transparent 72%);
     opacity: 0.55;
+  }
+
+  .hero-orbs {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .hero-orb-1 {
+    width: min(58vw, 520px);
+    height: min(58vw, 520px);
+    left: -12%;
+    top: -20%;
+    background: radial-gradient(
+      circle,
+      rgba(107, 83, 255, 0.8) 0%,
+      transparent 68%
+    );
+    animation: hero-drift-a 18s ease-in-out infinite;
+  }
+
+  .hero-orb-2 {
+    width: min(50vw, 440px);
+    height: min(50vw, 440px);
+    right: -14%;
+    top: 8%;
+    background: radial-gradient(
+      circle,
+      rgba(83, 24, 235, 0.72) 0%,
+      transparent 68%
+    );
+    animation: hero-drift-b 22s ease-in-out infinite;
+  }
+
+  .hero-orb-3 {
+    width: min(46vw, 380px);
+    height: min(46vw, 380px);
+    left: 28%;
+    bottom: -22%;
+    background: radial-gradient(
+      circle,
+      rgba(198, 165, 255, 0.55) 0%,
+      transparent 70%
+    );
+    animation: hero-drift-c 20s ease-in-out infinite;
   }
 
   .hero-title-glow {
@@ -300,7 +354,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background: #fff;
+    background: var(--color-card);
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
     border: 1px solid rgba(107, 83, 255, 0.08);
@@ -438,7 +492,7 @@
   .feature-card {
     position: relative;
     overflow: hidden;
-    background: #fff;
+    background: var(--color-card);
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
     border: 1px solid rgba(107, 83, 255, 0.08);
@@ -450,6 +504,72 @@
     transform: translateY(-4px);
     box-shadow: var(--shadow-lift);
     border-color: rgba(107, 83, 255, 0.28);
+  }
+
+  .platform-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--color-card);
+    border: 1px solid rgba(107, 83, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .platform-card-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(198, 165, 255, 0.35), transparent 50%),
+      radial-gradient(ellipse at 15% 90%, rgba(107, 83, 255, 0.22), transparent 48%),
+      linear-gradient(160deg, #eceaf4 0%, #f7f5fb 100%);
+  }
+
+  .platform-card-visual::after {
+    content: "";
+    position: absolute;
+    inset: auto 18% -40% 18%;
+    height: 70%;
+    border-radius: 50%;
+    background: rgba(107, 83, 255, 0.12);
+    filter: blur(18px);
+    pointer-events: none;
+  }
+
+  .platform-logo {
+    position: relative;
+    z-index: 1;
+    height: 4.5rem;
+    width: 4.5rem;
+    border-radius: 1.15rem;
+    object-fit: contain;
+    background: #fff;
+    padding: 0.55rem;
+    box-shadow: 0 12px 28px rgba(40, 15, 98, 0.12);
+    animation: platform-logo-bob 3.8s ease-in-out infinite;
+  }
+
+  .platform-card:nth-child(2) .platform-logo {
+    animation-delay: 0.35s;
+  }
+  .platform-card:nth-child(3) .platform-logo {
+    animation-delay: 0.7s;
+  }
+  .platform-card:nth-child(4) .platform-logo {
+    animation-delay: 1.05s;
+  }
+  .platform-card:nth-child(5) .platform-logo {
+    animation-delay: 1.4s;
+  }
+  .platform-card:nth-child(6) .platform-logo {
+    animation-delay: 1.75s;
+  }
+  .platform-card:nth-child(7) .platform-logo {
+    animation-delay: 2.1s;
   }
 
   .feature-card-accent {
@@ -581,8 +701,9 @@
   /* —— Trust bar —— */
   .trust-bar {
     @apply relative overflow-hidden whitespace-nowrap;
-    background-color: rgba(255, 255, 255, 0.96);
-    box-shadow: var(--shadow-soft);
+    background-color: #eceaf4;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(40, 15, 98, 0.06);
   }
 
   @media (min-width: 640px) {
@@ -629,7 +750,7 @@
     .card-premium {
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
-      background: #fff;
+      background: var(--color-card);
     }
 
     .service-card:hover {
@@ -655,8 +776,8 @@
     left: 0;
     background: linear-gradient(
       to right,
-      #fff 10%,
-      rgba(255, 255, 255, 0)
+      #eceaf4 10%,
+      rgba(236, 234, 244, 0)
     );
   }
 
@@ -664,8 +785,8 @@
     right: 0;
     background: linear-gradient(
       to left,
-      #fff 10%,
-      rgba(255, 255, 255, 0)
+      #eceaf4 10%,
+      rgba(236, 234, 244, 0)
     );
   }
 
@@ -674,8 +795,8 @@
     right: 0;
     background: linear-gradient(
       to left,
-      #fff 10%,
-      rgba(255, 255, 255, 0)
+      #eceaf4 10%,
+      rgba(236, 234, 244, 0)
     );
   }
 
@@ -684,8 +805,8 @@
     left: 0;
     background: linear-gradient(
       to right,
-      #fff 10%,
-      rgba(255, 255, 255, 0)
+      #eceaf4 10%,
+      rgba(236, 234, 244, 0)
     );
   }
 
@@ -782,6 +903,8 @@
     .animate-scroll-left,
     .animate-scroll-left-slow,
     .animate-float-soft,
+    .hero-orb,
+    .platform-logo,
     .card-premium {
       animation: none !important;
       transition: none !important;
@@ -802,12 +925,42 @@
   }
 }
 
-@keyframes float-soft {
+@keyframes hero-drift-a {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0) scale(1);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translate3d(10%, 12%, 0) scale(1.12);
+  }
+}
+
+@keyframes hero-drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-12%, 8%, 0) scale(1.08);
+  }
+}
+
+@keyframes hero-drift-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(8%, -10%, 0) scale(1.16);
+  }
+}
+
+@keyframes platform-logo-bob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0) scale(1.05);
   }
 }

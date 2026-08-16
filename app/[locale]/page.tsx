@@ -18,6 +18,7 @@ import {
 import { Link } from "@/navigation";
 import ServiceCard from "@/components/ServiceCard";
 import BrandLogo from "@/components/BrandLogo";
+import HeroAurora from "@/components/HeroAurora";
 import PlatformsShowcase from "@/components/PlatformsShowcase";
 import {
   HOME_CORE_KEYS,
@@ -73,10 +74,7 @@ export default async function HomePage({ params }: Props) {
     <div>
       {/* —— Hero —— */}
       <section className="hero-premium relative min-h-[min(88vh,860px)]">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-hero-glow opacity-80"
-        />
+        <HeroAurora />
         <div className="hero-deck hero-deck-a hidden sm:block" aria-hidden>
           <span>government</span>
           <p>إنجاز حكومي ببساطة</p>
@@ -144,7 +142,7 @@ export default async function HomePage({ params }: Props) {
         {/* Bottom wave fade into content */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-tasami-offwhite/30 to-transparent"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-tasami-offwhite to-transparent"
         />
       </section>
 
@@ -261,7 +259,7 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       {/* —— Languages —— */}
-      <section className="border-y border-tasami-purple/5 bg-white py-16 sm:py-20">
+      <section className="border-y border-tasami-purple/8 bg-tasami-offwhite py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-5 text-center sm:px-8 lg:px-10">
           <h2 className="font-display text-2xl text-tasami-purple sm:text-3xl">
             {t("langsTitle")}
@@ -274,7 +272,7 @@ export default async function HomePage({ params }: Props) {
             {LANG_PILLS.map((l) => (
               <span
                 key={l.code}
-                className="inline-flex min-w-[7.5rem] flex-col items-center rounded-full border border-tasami-pink/15 bg-white px-5 py-4 shadow-soft"
+                className="inline-flex min-w-[7.5rem] flex-col items-center rounded-full border border-tasami-pink/12 bg-[#fbfafe] px-5 py-4 shadow-soft"
               >
                 <span className="text-xs font-semibold tracking-wider text-tasami-pink">
                   {l.code}
@@ -290,7 +288,7 @@ export default async function HomePage({ params }: Props) {
 
       {/* —— CTA band —— */}
       <section className="hero-premium relative overflow-hidden py-20 sm:py-24">
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-hero-glow" />
+        <HeroAurora />
         <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
           <h2 className="font-display text-3xl text-white sm:text-4xl">
             {t("ctaBandTitle")}
