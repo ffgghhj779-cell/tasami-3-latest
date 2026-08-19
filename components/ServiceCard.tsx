@@ -20,6 +20,8 @@ type ServiceCardProps = {
   asButton?: boolean;
   /** Center content (e.g. sector grid) */
   centered?: boolean;
+  /** Larger home-page offering card */
+  featured?: boolean;
 };
 
 const TONES = ["tone-aurora", "tone-deep", "tone-lilac"] as const;
@@ -46,6 +48,7 @@ export default function ServiceCard({
   rtl,
   asButton,
   centered = false,
+  featured = false,
 }: ServiceCardProps) {
   const Arrow = rtl ? ArrowLeft : ArrowRight;
 
@@ -53,7 +56,7 @@ export default function ServiceCard({
     <>
       <div className={`service-card-visual ${visualTone(title)}`} aria-hidden>
         <span className="service-card-icon">
-          <Icon weight="bold" className="h-6 w-6" />
+            <Icon weight="bold" className={featured ? "h-7 w-7" : "h-6 w-6"} />
         </span>
         {meta ? (
           <span className="service-card-meta-pill">{meta}</span>
@@ -65,7 +68,13 @@ export default function ServiceCard({
           centered ? "items-center text-center" : "text-start"
         }`}
       >
-        <h3 className="text-base font-semibold leading-snug text-tasami-dark sm:text-[1.05rem]">
+        <h3
+          className={`font-semibold leading-snug text-tasami-dark ${
+            featured
+              ? "text-xl sm:text-2xl"
+              : "text-base sm:text-[1.05rem]"
+          }`}
+        >
           {title}
         </h3>
         <p className="mt-2 flex-1 text-sm leading-relaxed text-tasami-gray">
@@ -86,8 +95,9 @@ export default function ServiceCard({
     </>
   );
 
-  const className =
-    "service-card group h-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tasami-pink";
+  const className = `service-card group h-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tasami-pink${
+    featured ? " service-card-featured" : ""
+  }`;
 
   if (asButton || onClick) {
     return (

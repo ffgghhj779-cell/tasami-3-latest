@@ -27,6 +27,7 @@
     "message": "We are certified and trusted",
     "messageMobile": "نحن معتمدون وموثوقون · We are certified and trusted",
     "aria": "Trusted Saudi platforms",
+    "viewAll": "View all",
     "platforms": {
       "absher": "Absher",
       "qiwa": "Qiwa",
@@ -97,7 +98,7 @@
     "eyebrow": "Khalsana",
     "title": "We finish your transactions — simply",
     "hero": "Government and tech in one clear path — fast, calm, and in four languages.",
-    "ctaGov": "Browse services",
+    "ctaGov": "Start your transaction now",
     "ctaTech": "WhatsApp direct",
     "ctaWhatsapp": "WhatsApp direct",
     "offerTitle": "What we offer",
@@ -178,6 +179,7 @@
   "footer": {
     "brand": "Khalsana",
     "about": "A premium Saudi platform for government and tech services — absolute simplicity, four languages, and a 24/7 AI assistant.",
+    "affiliation": "Khalsana is a Tasami company and operates under the legal commercial registration of Tasami Al-Wataniya.",
     "whatsapp": "Secretary WhatsApp",
     "tiktok": "TikTok",
     "hours": "Around-the-clock support",
@@ -196,7 +198,8 @@
     "company": {
       "cr": "CR",
       "vat": "VAT No.",
-      "address": "Address"
+      "address": "Address",
+      "parent": "Tasami Al-Wataniya"
     }
   },
   "gov": {

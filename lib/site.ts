@@ -50,8 +50,34 @@ export function getWhatsAppUrl(prefill?: string): string {
   return whatsappUrl(prefill);
 }
 
+const PLACEHOLDER_EMAILS = new Set(["", "hello@tasami.sa"]);
+const PLACEHOLDER_CR = new Set(["", "cr 0000000000", "0000000000"]);
+const PLACEHOLDER_VAT = new Set([
+  "",
+  "vat 000000000000003",
+  "000000000000003",
+]);
+
+function publicValue(
+  value: string | undefined,
+  placeholders: Set<string>
+): string | null {
+  const trimmed = (value || "").trim();
+  if (!trimmed) return null;
+  if (placeholders.has(trimmed.toLowerCase())) return null;
+  const digits = trimmed.replace(/\D/g, "");
+  if (digits.length >= 4 && /^0+$/.test(digits)) return null;
+  return trimmed;
+}
+
+/** Fallback for transactional mail only — not shown on the public site. */
 export function getContactEmail(): string {
-  return process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@tasami.sa";
+  return process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || "hello@tasami.sa";
+}
+
+/** Public email when the real Gmail (or other) address is configured. */
+export function getPublicContactEmail(): string | null {
+  return publicValue(process.env.NEXT_PUBLIC_CONTACT_EMAIL, PLACEHOLDER_EMAILS);
 }
 
 export function getTikTokUrl(): string {
@@ -60,10 +86,10 @@ export function getTikTokUrl(): string {
 
 export function getCompanyInfo() {
   return {
-    cr: process.env.NEXT_PUBLIC_COMPANY_CR || "CR 0000000000",
-    vat: process.env.NEXT_PUBLIC_COMPANY_VAT || "VAT 000000000000003",
+    cr: publicValue(process.env.NEXT_PUBLIC_COMPANY_CR, PLACEHOLDER_CR),
+    vat: publicValue(process.env.NEXT_PUBLIC_COMPANY_VAT, PLACEHOLDER_VAT),
     address:
-      process.env.NEXT_PUBLIC_COMPANY_ADDRESS ||
+      process.env.NEXT_PUBLIC_COMPANY_ADDRESS?.trim() ||
       "Riyadh, Kingdom of Saudi Arabia",
   };
 }

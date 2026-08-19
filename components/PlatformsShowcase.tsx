@@ -6,8 +6,9 @@ export default async function PlatformsShowcase() {
 
   return (
     <section
+      id="platforms"
       aria-labelledby="platforms-heading"
-      className="relative border-y border-tasami-purple/8 bg-tasami-offwhite py-16 sm:py-24 lg:py-28"
+      className="relative scroll-mt-28 border-y border-tasami-purple/8 bg-white py-16 sm:py-24 lg:py-28"
     >
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <div className="section-heading mb-10 max-w-2xl sm:mb-16 sm:mx-auto sm:text-center">

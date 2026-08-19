@@ -19,7 +19,6 @@ import { Link } from "@/navigation";
 import ServiceCard from "@/components/ServiceCard";
 import BrandLogo from "@/components/BrandLogo";
 import HeroAurora from "@/components/HeroAurora";
-import HeroServiceReel from "@/components/HeroServiceReel";
 import PlatformsShowcase from "@/components/PlatformsShowcase";
 import {
   HOME_CORE_KEYS,
@@ -74,27 +73,20 @@ export default async function HomePage({ params }: Props) {
   return (
     <div>
       {/* —— Hero —— */}
-      <section className="hero-premium relative flex min-h-[min(82dvh,820px)] flex-col">
+      <section className="hero-premium relative flex min-h-[min(72dvh,700px)] flex-col">
         <HeroAurora />
-        <HeroServiceReel
-          items={[
-            { title: t("core.gov.title"), meta: t("coreCountGov") },
-            { title: t("core.tech.title"), meta: t("coreCountTech") },
-            { title: t("core.sectors.title"), meta: t("coreCountSectors") },
-          ]}
-        />
 
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-5 py-16 text-center sm:px-8 sm:py-24 lg:px-10 lg:py-28">
           <BrandLogo
             lockup
-            lockupSize="lg"
+            lockupSize="sm"
             priority
             wordmark={tBrand("name")}
             slogan={tBrand("slogan")}
-            className="mb-8 hidden md:inline-flex sm:mb-10"
+            className="mb-6 inline-flex sm:mb-8"
           />
 
-          <h1 className="hero-title-glow font-display max-w-3xl text-balance text-[2.05rem] leading-[1.25] text-white sm:text-5xl lg:text-[3.85rem] lg:leading-[1.15]">
+          <h1 className="hero-title-glow font-display max-w-4xl text-balance text-[2.45rem] leading-[1.22] text-white sm:text-6xl lg:text-[4.35rem] lg:leading-[1.12]">
             {t("title")}
           </h1>
 
@@ -110,19 +102,17 @@ export default async function HomePage({ params }: Props) {
         {/* Bottom wave fade into content */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-tasami-offwhite to-transparent"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent"
         />
       </section>
 
       {/* —— Core offerings —— */}
-      <section className="surface-dotted relative -mt-10 pb-20 pt-4 sm:pb-24 lg:pb-28">
+      <section className="relative -mt-8 bg-white pb-16 pt-6 sm:pb-20 sm:pt-8 lg:pb-24">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="section-heading mb-12 sm:mb-16">
-            <h2>{t("offerTitle")}</h2>
-            <span className="highlight-line mx-auto" />
-            <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-tasami-gray sm:text-base">
-              {t("offerSubtitle")}
-            </p>
+          <div className="mb-7 text-center sm:mb-10">
+            <h2 className="font-display text-xl text-tasami-purple sm:text-2xl">
+              {t("offerTitle")}
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
@@ -144,6 +134,7 @@ export default async function HomePage({ params }: Props) {
                         : t("coreCountSectors")
                   }
                   rtl={isRtl}
+                  featured
                 />
               );
             })}

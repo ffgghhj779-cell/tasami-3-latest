@@ -12,7 +12,7 @@ import { Link } from "@/navigation";
 import BrandLogo from "@/components/BrandLogo";
 import {
   getCompanyInfo,
-  getContactEmail,
+  getPublicContactEmail,
   getPhoneDisplay,
   getTikTokUrl,
   telUrl,
@@ -41,7 +41,7 @@ export default function Footer() {
   const tTech = useTranslations("tech.items");
   const year = new Date().getFullYear();
   const company = getCompanyInfo();
-  const contactEmail = getContactEmail();
+  const contactEmail = getPublicContactEmail();
 
   return (
     <footer className="relative overflow-hidden border-t border-white/10 bg-[#0C021C] text-white">
@@ -64,6 +64,9 @@ export default function Footer() {
             </div>
             <p className="mt-5 text-sm leading-relaxed text-white/65">
               {t("about")}
+            </p>
+            <p className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-3.5 text-sm font-medium leading-relaxed text-white/85">
+              {t("affiliation")}
             </p>
             <div className="mt-6 flex flex-col gap-2.5 text-sm text-white/70">
               <a
@@ -92,25 +95,31 @@ export default function Footer() {
                 <Phone weight="regular" className="h-4 w-4 text-tasami-gold" />
                 {getPhoneDisplay()}
               </a>
-              <a
-                href={`mailto:${contactEmail}`}
-                className="inline-flex items-center gap-2 hover:text-tasami-pink"
-              >
-                <EnvelopeSimple weight="regular" className="h-4 w-4 text-tasami-gold" />
-                {contactEmail}
-              </a>
+              {contactEmail ? (
+                <a
+                  href={`mailto:${contactEmail}`}
+                  className="inline-flex items-center gap-2 hover:text-tasami-pink"
+                >
+                  <EnvelopeSimple weight="regular" className="h-4 w-4 text-tasami-gold" />
+                  {contactEmail}
+                </a>
+              ) : null}
               <span className="inline-flex items-center gap-2">
                 {t("hours")}
               </span>
             </div>
 
             <div className="mt-6 space-y-1.5 border-t border-white/10 pt-5 text-xs text-white/45">
-              <p>
-                {t("company.cr")}: {company.cr}
-              </p>
-              <p>
-                {t("company.vat")}: {company.vat}
-              </p>
+              {company.cr ? (
+                <p>
+                  {t("company.cr")} · {t("company.parent")}: {company.cr}
+                </p>
+              ) : null}
+              {company.vat ? (
+                <p>
+                  {t("company.vat")}: {company.vat}
+                </p>
+              ) : null}
               <p>{company.address}</p>
             </div>
           </div>

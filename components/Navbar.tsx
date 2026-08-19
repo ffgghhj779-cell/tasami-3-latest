@@ -50,7 +50,7 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 isolate border-b border-white/10 bg-[#1A0845] pt-[env(safe-area-inset-top)] shadow-[0_8px_24px_rgba(12,2,28,0.28)]">
+    <header className="sticky top-0 z-50 isolate border-b border-white/10 bg-[#5B47F0] pt-[env(safe-area-inset-top)] shadow-[0_8px_24px_rgba(107,83,255,0.22)]">
       <nav className="mx-auto flex h-[5rem] max-w-7xl items-center justify-between gap-2 px-4 sm:h-[5.25rem] sm:gap-4 sm:px-8 lg:h-[5.5rem] lg:px-10">
         <Link
           href="/"
