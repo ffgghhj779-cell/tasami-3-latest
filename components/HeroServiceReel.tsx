@@ -18,15 +18,6 @@ const ICONS = [
   Headset,
 ] as const;
 
-const TONES = [
-  "tone-aurora",
-  "tone-deep",
-  "tone-lilac",
-  "tone-volt",
-  "tone-aurora",
-  "tone-lilac",
-] as const;
-
 export type HeroReelItem = {
   title: string;
   meta: string;
@@ -44,10 +35,10 @@ export default function HeroServiceReel({
         return (
           <article
             key={`${item.title}-${i}`}
-            className={`hero-reel-card service-card-visual ${TONES[i]}`}
+            className={`hero-reel-card hero-reel-card--${i % 3}`}
           >
-            <span className="service-card-icon">
-              <Icon weight="bold" className="h-5 w-5" />
+            <span className="hero-reel-icon">
+              <Icon weight="bold" className="h-4 w-4 sm:h-5 sm:w-5" />
             </span>
             <p className="hero-reel-title">{item.title}</p>
             <span className="hero-reel-meta">{item.meta}</span>
