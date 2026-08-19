@@ -81,9 +81,6 @@ export default async function HomePage({ params }: Props) {
             { title: t("core.gov.title"), meta: t("coreCountGov") },
             { title: t("core.tech.title"), meta: t("coreCountTech") },
             { title: t("core.sectors.title"), meta: t("coreCountSectors") },
-            { title: t("why.speed.title"), meta: t("badgeLang") },
-            { title: t("why.trust.title"), meta: t("badgeTrusted") },
-            { title: t("why.support.title"), meta: t("badgeAi") },
           ]}
         />
 

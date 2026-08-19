@@ -1,22 +1,8 @@
 "use client";
 
-import {
-  Buildings,
-  Cpu,
-  SquaresFour,
-  Lightning,
-  ShieldCheck,
-  Headset,
-} from "@phosphor-icons/react";
+import { Buildings, Cpu, SquaresFour } from "@phosphor-icons/react";
 
-const ICONS = [
-  Buildings,
-  Cpu,
-  SquaresFour,
-  Lightning,
-  ShieldCheck,
-  Headset,
-] as const;
+const ICONS = [Buildings, Cpu, SquaresFour] as const;
 
 export type HeroReelItem = {
   title: string;
@@ -30,12 +16,12 @@ export default function HeroServiceReel({
 }) {
   return (
     <div className="hero-reel" aria-hidden>
-      {items.slice(0, 6).map((item, i) => {
+      {items.slice(0, 3).map((item, i) => {
         const Icon = ICONS[i];
         return (
           <article
-            key={`${item.title}-${i}`}
-            className={`hero-reel-card hero-reel-card--${i % 3}`}
+            key={item.title}
+            className={`hero-reel-card hero-reel-card--${i}`}
           >
             <span className="hero-reel-icon">
               <Icon weight="bold" className="h-4 w-4 sm:h-5 sm:w-5" />
