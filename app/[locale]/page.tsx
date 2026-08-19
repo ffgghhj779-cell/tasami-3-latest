@@ -83,7 +83,7 @@ export default async function HomePage({ params }: Props) {
             priority
             wordmark={tBrand("name")}
             slogan={tBrand("slogan")}
-            className="mb-6 inline-flex sm:mb-8"
+            className="mb-6 inline-flex drop-shadow-[0_12px_28px_rgba(12,2,28,0.35)] sm:mb-8"
           />
 
           <h1 className="hero-title-glow font-display max-w-4xl text-balance text-[2.45rem] leading-[1.22] text-white sm:text-6xl lg:text-[4.35rem] lg:leading-[1.12]">
@@ -92,7 +92,7 @@ export default async function HomePage({ params }: Props) {
 
           <Link
             href="/services/government"
-            className="btn-primary mt-10 w-full sm:mt-12 sm:w-auto sm:min-w-[200px]"
+            className="btn-hero mt-10 w-full sm:mt-12 sm:w-auto sm:min-w-[220px]"
           >
             {t("ctaGov")}
             <Arrow weight="bold" className="h-4 w-4" />
@@ -109,10 +109,9 @@ export default async function HomePage({ params }: Props) {
       {/* —— Core offerings —— */}
       <section className="relative -mt-8 bg-white pb-16 pt-6 sm:pb-20 sm:pt-8 lg:pb-24">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="mb-7 text-center sm:mb-10">
-            <h2 className="font-display text-xl text-tasami-purple sm:text-2xl">
-              {t("offerTitle")}
-            </h2>
+          <div className="section-heading mb-10 sm:mb-12">
+            <h2>{t("offerTitle")}</h2>
+            <span className="highlight-line mx-auto" />
           </div>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
@@ -231,7 +230,7 @@ export default async function HomePage({ params }: Props) {
             {LANG_PILLS.map((l) => (
               <span
                 key={l.code}
-                className="inline-flex min-w-[7.5rem] flex-col items-center rounded-full border border-tasami-pink/12 bg-[#fbfafe] px-5 py-4 shadow-soft"
+                className="inline-flex min-w-[7.5rem] flex-col items-center rounded-full border border-tasami-gold/25 bg-white px-5 py-4 shadow-soft"
               >
                 <span className="text-xs font-semibold tracking-wider text-tasami-pink">
                   {l.code}
@@ -246,8 +245,7 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       {/* —— CTA band —— */}
-      <section className="hero-premium relative overflow-hidden py-20 sm:py-24">
-        <HeroAurora />
+      <section className="cta-band relative overflow-hidden py-20 sm:py-24">
         <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
           <h2 className="font-display text-3xl text-white sm:text-4xl">
             {t("ctaBandTitle")}
@@ -264,7 +262,7 @@ export default async function HomePage({ params }: Props) {
             >
               {t("ctaBandAction")}
             </a>
-            <Link href="/services/government" className="btn-outline-light min-w-[200px]">
+            <Link href="/services/government" className="btn-hero min-w-[200px]">
               {t("ctaGov")}
             </Link>
           </div>

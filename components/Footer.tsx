@@ -57,7 +57,7 @@ export default function Footer() {
             <div className="flex items-center gap-2.5">
               <BrandLogo
                 lockup
-                lockupSize="md"
+                lockupSize="sm"
                 wordmark={tBrand("name")}
                 slogan={tBrand("slogan")}
               />
@@ -120,7 +120,7 @@ export default function Footer() {
                   {t("company.vat")}: {company.vat}
                 </p>
               ) : null}
-              <p>{company.address}</p>
+              <p>{company.address || t("company.city")}</p>
             </div>
           </div>
 

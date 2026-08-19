@@ -85,11 +85,12 @@ export function getTikTokUrl(): string {
 }
 
 export function getCompanyInfo() {
+  const address = process.env.NEXT_PUBLIC_COMPANY_ADDRESS?.trim() || "";
+  const defaultAddress = "Riyadh, Kingdom of Saudi Arabia";
+
   return {
     cr: publicValue(process.env.NEXT_PUBLIC_COMPANY_CR, PLACEHOLDER_CR),
     vat: publicValue(process.env.NEXT_PUBLIC_COMPANY_VAT, PLACEHOLDER_VAT),
-    address:
-      process.env.NEXT_PUBLIC_COMPANY_ADDRESS?.trim() ||
-      "Riyadh, Kingdom of Saudi Arabia",
+    address: address && address !== defaultAddress ? address : null,
   };
 }

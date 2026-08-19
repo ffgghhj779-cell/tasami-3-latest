@@ -64,7 +64,7 @@ export default function ServiceCard({
       </div>
 
       <div
-        className={`mt-4 flex flex-1 flex-col ${
+        className={`mt-4 flex flex-1 flex-col px-2 ${
           centered ? "items-center text-center" : "text-start"
         }`}
       >

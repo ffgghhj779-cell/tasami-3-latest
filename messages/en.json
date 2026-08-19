@@ -199,7 +199,8 @@
       "cr": "CR",
       "vat": "VAT No.",
       "address": "Address",
-      "parent": "Tasami Al-Wataniya"
+      "parent": "Tasami Al-Wataniya",
+      "city": "Riyadh, Kingdom of Saudi Arabia"
     }
   },
   "gov": {
