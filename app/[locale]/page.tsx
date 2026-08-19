@@ -87,7 +87,7 @@ export default async function HomePage({ params }: Props) {
           ]}
         />
 
-        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-5 py-16 text-center sm:px-8 sm:py-24 lg:px-10 lg:py-28">
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-5 py-12 text-center sm:px-8 sm:py-24 lg:px-10 lg:py-28">
           <BrandLogo
             lockup
             lockupSize="sm"
@@ -97,7 +97,7 @@ export default async function HomePage({ params }: Props) {
             className="mb-6 inline-flex drop-shadow-[0_12px_28px_rgba(12,2,28,0.35)] sm:mb-8"
           />
 
-          <h1 className="hero-title-glow font-display max-w-4xl text-balance text-[2.45rem] leading-[1.22] text-white sm:text-6xl lg:text-[4.35rem] lg:leading-[1.12]">
+          <h1 className="hero-title-glow font-display max-w-4xl text-balance text-[1.85rem] leading-[1.28] text-white sm:text-6xl lg:text-[4.35rem] lg:leading-[1.12]">
             {t("title")}
           </h1>
 
@@ -269,11 +269,14 @@ export default async function HomePage({ params }: Props) {
               href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-whatsapp min-w-[200px]"
+              className="btn-whatsapp w-full min-w-0 sm:w-auto sm:min-w-[200px]"
             >
               {t("ctaBandAction")}
             </a>
-            <Link href="/services/government" className="btn-hero min-w-[200px]">
+            <Link
+              href="/services/government"
+              className="btn-hero w-full min-w-0 sm:w-auto sm:min-w-[200px]"
+            >
               {t("ctaGov")}
             </Link>
           </div>

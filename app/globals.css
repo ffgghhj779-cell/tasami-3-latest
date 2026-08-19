@@ -282,105 +282,117 @@
     position: absolute;
     left: 50%;
     top: 46%;
-    width: min(16.5rem, 68vw);
+    width: min(9.5rem, 42vw);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0.9rem 1rem 1rem;
-    opacity: 0.34;
+    padding: 0.55rem 0.65rem 0.65rem;
+    opacity: 0.42;
     filter: saturate(1.15);
-    box-shadow: 0 0 56px rgba(107, 83, 255, 0.38);
-    animation: hero-reel-glow 18s ease-in-out infinite;
+    box-shadow: 0 0 32px rgba(107, 83, 255, 0.3);
+    animation: hero-reel-glow 16s ease-in-out infinite;
     will-change: transform, opacity;
   }
 
   .hero-reel-card:nth-child(1) {
-    left: 14%;
-    top: 22%;
+    left: 18%;
+    top: 13%;
     animation-delay: 0s;
   }
   .hero-reel-card:nth-child(2) {
-    left: 88%;
-    top: 28%;
+    left: 82%;
+    top: 13%;
     animation-name: hero-reel-glow-b;
     animation-delay: -4s;
   }
   .hero-reel-card:nth-child(3) {
     left: 10%;
-    top: 68%;
+    top: 42%;
     animation-delay: -8s;
   }
   .hero-reel-card:nth-child(4) {
     left: 90%;
-    top: 72%;
+    top: 44%;
     animation-name: hero-reel-glow-b;
     animation-delay: -12s;
   }
   .hero-reel-card:nth-child(5) {
-    left: 22%;
-    top: 88%;
+    left: 20%;
+    top: 86%;
     animation-name: hero-reel-glow-c;
     animation-delay: -6s;
   }
   .hero-reel-card:nth-child(6) {
-    left: 78%;
-    top: 12%;
+    left: 80%;
+    top: 86%;
     animation-name: hero-reel-glow-c;
     animation-delay: -10s;
   }
 
   @media (min-width: 768px) {
     .hero-reel-card {
-      width: 14.5rem;
-      opacity: 0.32;
+      width: 12.75rem;
+      opacity: 0.44;
     }
 
     .hero-reel-card:nth-child(1) {
-      left: 11%;
-      top: 24%;
+      left: 18%;
+      top: 22%;
     }
 
     .hero-reel-card:nth-child(2) {
-      left: 90%;
-      top: 30%;
+      left: 82%;
+      top: 20%;
     }
 
     .hero-reel-card:nth-child(3) {
-      left: 8%;
-      top: 64%;
+      left: 14%;
+      top: 55%;
     }
 
     .hero-reel-card:nth-child(4) {
-      left: 92%;
-      top: 70%;
+      left: 86%;
+      top: 58%;
     }
 
     .hero-reel-card:nth-child(5) {
-      left: 24%;
-      top: 86%;
+      left: 26%;
+      top: 80%;
     }
 
     .hero-reel-card:nth-child(6) {
-      left: 76%;
-      top: 14%;
+      left: 74%;
+      top: 78%;
     }
   }
 
   .hero-reel-title {
     max-width: 80%;
-    font-size: 0.88rem;
+    font-size: 0.72rem;
     font-weight: 700;
     line-height: 1.25;
-    color: rgba(255, 255, 255, 0.78);
+    color: rgba(255, 255, 255, 0.86);
   }
 
   .hero-reel-meta {
     position: absolute;
-    top: 0.85rem;
-    inset-inline-end: 0.85rem;
-    font-size: 0.65rem;
+    top: 0.5rem;
+    inset-inline-end: 0.55rem;
+    font-size: 0.58rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  @media (min-width: 768px) {
+    .hero-reel-title {
+      font-size: 0.88rem;
+    }
+
+    .hero-reel-meta {
+      top: 0.85rem;
+      inset-inline-end: 0.85rem;
+      font-size: 0.65rem;
+    }
   }
 
   .hero-reel .service-card-icon {
@@ -393,6 +405,8 @@
 
   .hero-reel .service-card-visual {
     box-shadow: none;
+    aspect-ratio: 5 / 3;
+    min-height: 0;
   }
 
   /* —— Cards —— */
@@ -547,7 +561,13 @@
 
   .service-card-featured .service-card-visual {
     aspect-ratio: 16 / 9;
-    min-height: 10.25rem;
+    min-height: 8.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .service-card-featured .service-card-visual {
+      min-height: 10.25rem;
+    }
   }
 
   .service-card-featured .service-card-icon {
@@ -826,12 +846,20 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    height: 3.45rem;
-    padding: 0.45rem 1.1rem;
+    height: 2.75rem;
+    padding: 0.3rem 0.75rem;
     background: #ffffff;
     border: 1px solid rgba(107, 83, 255, 0.1);
-    border-radius: 16px;
+    border-radius: 14px;
     box-shadow: 0 4px 14px rgba(12, 2, 28, 0.04);
+  }
+
+  @media (min-width: 640px) {
+    .trust-logo-chip {
+      height: 3.45rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: 16px;
+    }
   }
 
   .trust-view-all {
@@ -1110,42 +1138,42 @@
 @keyframes hero-reel-glow {
   0%,
   100% {
-    transform: translate3d(-50%, -50%, 0) translate3d(-20%, -10%, 0) rotate(-7deg)
-      scale(0.9);
-    opacity: 0.26;
+    transform: translate3d(-50%, -50%, 0) translate3d(-8%, -6%, 0) rotate(-5deg)
+      scale(0.94);
+    opacity: 0.38;
   }
   50% {
-    transform: translate3d(-50%, -50%, 0) translate3d(16%, 12%, 0) rotate(6deg)
-      scale(1.04);
-    opacity: 0.4;
+    transform: translate3d(-50%, -50%, 0) translate3d(7%, 6%, 0) rotate(4deg)
+      scale(1.03);
+    opacity: 0.52;
   }
 }
 
 @keyframes hero-reel-glow-b {
   0%,
   100% {
-    transform: translate3d(-50%, -50%, 0) translate3d(18%, 8%, 0) rotate(5deg)
-      scale(0.92);
-    opacity: 0.24;
+    transform: translate3d(-50%, -50%, 0) translate3d(8%, 5%, 0) rotate(4deg)
+      scale(0.95);
+    opacity: 0.36;
   }
   50% {
-    transform: translate3d(-50%, -50%, 0) translate3d(-14%, -12%, 0) rotate(-6deg)
-      scale(1.05);
-    opacity: 0.38;
+    transform: translate3d(-50%, -50%, 0) translate3d(-7%, -6%, 0) rotate(-4deg)
+      scale(1.04);
+    opacity: 0.5;
   }
 }
 
 @keyframes hero-reel-glow-c {
   0%,
   100% {
-    transform: translate3d(-50%, -50%, 0) translate3d(10%, -14%, 0) rotate(4deg)
-      scale(0.91);
-    opacity: 0.24;
+    transform: translate3d(-50%, -50%, 0) translate3d(5%, -7%, 0) rotate(3deg)
+      scale(0.94);
+    opacity: 0.36;
   }
   50% {
-    transform: translate3d(-50%, -50%, 0) translate3d(-12%, 10%, 0) rotate(-5deg)
+    transform: translate3d(-50%, -50%, 0) translate3d(-6%, 5%, 0) rotate(-3deg)
       scale(1.03);
-    opacity: 0.36;
+    opacity: 0.48;
   }
 }
 
