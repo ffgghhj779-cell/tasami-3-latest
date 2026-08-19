@@ -19,6 +19,7 @@ import { Link } from "@/navigation";
 import ServiceCard from "@/components/ServiceCard";
 import BrandLogo from "@/components/BrandLogo";
 import HeroAurora from "@/components/HeroAurora";
+import HeroServiceReel from "@/components/HeroServiceReel";
 import PlatformsShowcase from "@/components/PlatformsShowcase";
 import {
   HOME_CORE_KEYS,
@@ -75,6 +76,13 @@ export default async function HomePage({ params }: Props) {
       {/* —— Hero —— */}
       <section className="hero-premium relative flex min-h-[min(72dvh,700px)] flex-col">
         <HeroAurora />
+        <HeroServiceReel
+          items={[
+            { title: t("core.gov.title"), meta: t("coreCountGov") },
+            { title: t("core.tech.title"), meta: t("coreCountTech") },
+            { title: t("core.sectors.title"), meta: t("coreCountSectors") },
+          ]}
+        />
 
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-5 py-16 text-center sm:px-8 sm:py-24 lg:px-10 lg:py-28">
           <BrandLogo

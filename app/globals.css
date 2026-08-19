@@ -53,7 +53,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-latin), Manrope, system-ui, sans-serif;
+    font-family: var(--font-latin), "Plus Jakarta Sans", system-ui, sans-serif;
     background-color: var(--color-background);
     background-image:
       radial-gradient(
@@ -100,12 +100,14 @@
   }
 
   html[lang="ar"] body {
-    font-family: var(--font-arabic), "Noto Sans Arabic", Tahoma, sans-serif;
+    font-family: var(--font-arabic), "IBM Plex Sans Arabic", Tahoma, sans-serif;
     letter-spacing: 0;
   }
 
   html[lang="en"] body {
-    font-family: var(--font-latin), Manrope, system-ui, sans-serif;
+    font-family: var(--font-latin), "Plus Jakarta Sans", system-ui, sans-serif;
+    letter-spacing: -0.011em;
+    font-feature-settings: "ss01", "cv11";
   }
 
   html[lang="hi"] body {
@@ -123,10 +125,10 @@
   html[lang="ar"] h3,
   html[lang="ar"] h4,
   html[lang="ar"] .font-display {
-    font-family: var(--font-arabic), "Noto Sans Arabic", Tahoma, sans-serif;
-    font-weight: 800;
+    font-family: var(--font-arabic), "IBM Plex Sans Arabic", Tahoma, sans-serif;
+    font-weight: 700;
     letter-spacing: 0;
-    line-height: 1.25;
+    line-height: 1.28;
   }
 
   h1,
@@ -304,6 +306,28 @@
   .hero-reel-card:nth-child(3) {
     top: 58%;
     animation-delay: -12s;
+  }
+
+  @media (min-width: 768px) {
+    .hero-reel-card {
+      width: 15.5rem;
+      opacity: 0.3;
+    }
+
+    .hero-reel-card:nth-child(1) {
+      left: 16%;
+      top: 36%;
+    }
+
+    .hero-reel-card:nth-child(2) {
+      left: 86%;
+      top: 48%;
+    }
+
+    .hero-reel-card:nth-child(3) {
+      left: 18%;
+      top: 66%;
+    }
   }
 
   .hero-reel-title {
@@ -912,21 +936,21 @@
   }
 
   html[lang="en"] .font-display {
-    font-family: var(--font-latin), Manrope, system-ui, sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.04em;
+    font-family: var(--font-latin), "Plus Jakarta Sans", system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.035em;
   }
 
   /* Official KHALSANA wordmark — rounded Arabic / bold Latin caps */
   .font-brand {
-    font-family: var(--font-arabic), "Noto Sans Arabic", Tahoma, sans-serif;
+    font-family: var(--font-arabic), "IBM Plex Sans Arabic", Tahoma, sans-serif;
     font-weight: 700;
     letter-spacing: 0;
   }
 
   html[lang="en"] .font-brand,
   html[lang="hi"] .font-brand {
-    font-family: var(--font-latin), Manrope, system-ui, sans-serif;
+    font-family: var(--font-latin), "Plus Jakarta Sans", system-ui, sans-serif;
     font-weight: 700;
     font-style: normal;
     letter-spacing: 0.14em;
@@ -940,7 +964,7 @@
 
   /* Slogan under wordmark — small, precise; no uppercase on Arabic */
   .font-brand-slogan {
-    font-family: var(--font-arabic), "Noto Sans Arabic", Tahoma, sans-serif;
+    font-family: var(--font-arabic), "IBM Plex Sans Arabic", Tahoma, sans-serif;
     font-weight: 500;
     letter-spacing: 0.02em;
     text-transform: none;
@@ -948,7 +972,7 @@
 
   html[lang="en"] .font-brand-slogan,
   html[lang="hi"] .font-brand-slogan {
-    font-family: var(--font-latin), Manrope, system-ui, sans-serif;
+    font-family: var(--font-latin), "Plus Jakarta Sans", system-ui, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.16em;
     font-weight: 500;

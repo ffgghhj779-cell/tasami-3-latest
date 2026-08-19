@@ -69,13 +69,13 @@ const config: Config = {
         },
       },
       fontFamily: {
-        arabic: ["var(--font-arabic)", "Noto Sans Arabic", "Tahoma", "sans-serif"],
-        latin: ["var(--font-latin)", "Manrope", "sans-serif"],
-        display: ["var(--font-arabic)", "Noto Sans Arabic", "Tahoma", "sans-serif"],
-        brand: ["var(--font-arabic)", "Noto Sans Arabic", "Tahoma", "sans-serif"],
+        arabic: ["var(--font-arabic)", "IBM Plex Sans Arabic", "Tahoma", "sans-serif"],
+        latin: ["var(--font-latin)", "Plus Jakarta Sans", "sans-serif"],
+        display: ["var(--font-arabic)", "IBM Plex Sans Arabic", "Tahoma", "sans-serif"],
+        brand: ["var(--font-arabic)", "IBM Plex Sans Arabic", "Tahoma", "sans-serif"],
         hindi: ["var(--font-noto-devanagari)", "Noto Sans Devanagari", "sans-serif"],
         urdu: ["var(--font-noto-nastaliq)", "Noto Nastaliq Urdu", "serif"],
-        sans: ["var(--font-arabic)", "Noto Sans Arabic", "var(--font-latin)", "Manrope", "sans-serif"],
+        sans: ["var(--font-arabic)", "IBM Plex Sans Arabic", "var(--font-latin)", "Plus Jakarta Sans", "sans-serif"],
       },
       borderRadius: {
         card: "20px",
