@@ -4,10 +4,28 @@ import {
   Buildings,
   Cpu,
   SquaresFour,
+  Lightning,
+  ShieldCheck,
+  Headset,
 } from "@phosphor-icons/react";
 
-const ICONS = [Buildings, Cpu, SquaresFour] as const;
-const TONES = ["tone-aurora", "tone-deep", "tone-lilac"] as const;
+const ICONS = [
+  Buildings,
+  Cpu,
+  SquaresFour,
+  Lightning,
+  ShieldCheck,
+  Headset,
+] as const;
+
+const TONES = [
+  "tone-aurora",
+  "tone-deep",
+  "tone-lilac",
+  "tone-volt",
+  "tone-aurora",
+  "tone-lilac",
+] as const;
 
 export type HeroReelItem = {
   title: string;
@@ -21,11 +39,11 @@ export default function HeroServiceReel({
 }) {
   return (
     <div className="hero-reel" aria-hidden>
-      {items.slice(0, 3).map((item, i) => {
+      {items.slice(0, 6).map((item, i) => {
         const Icon = ICONS[i];
         return (
           <article
-            key={item.title}
+            key={`${item.title}-${i}`}
             className={`hero-reel-card service-card-visual ${TONES[i]}`}
           >
             <span className="service-card-icon">
