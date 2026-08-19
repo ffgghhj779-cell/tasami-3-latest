@@ -13,6 +13,7 @@ type Blob = {
 
 /**
  * Living purple glow behind the hero — canvas mesh that reads like a looping video.
+ * Mobile: lower backing-store, capped FPS, ignore URL-bar resize jitter, pause off-screen.
  */
 export default function HeroAurora() {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -20,7 +21,10 @@ export default function HeroAurora() {
   useEffect(() => {
     const canvas = ref.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d", { alpha: true });
+    const ctx = canvas.getContext("2d", {
+      alpha: true,
+      desynchronized: true,
+    });
     if (!ctx) return;
 
     const reduce = window.matchMedia(
@@ -32,6 +36,11 @@ export default function HeroAurora() {
     let w = 0;
     let h = 0;
     let running = true;
+    let pageVisible = true;
+    let inView = true;
+    let lastFrame = 0;
+    const frameMs = coarse ? 1000 / 24 : 1000 / 30;
+    const canRun = () => running && pageVisible && inView;
 
     const blobs: Blob[] = [
       { x: 0.32, y: 0.28, vx: 0.0022, vy: 0.0015, r: 0.56, color: "107,83,255" },
@@ -44,18 +53,32 @@ export default function HeroAurora() {
     const resize = () => {
       const parent = canvas.parentElement;
       if (!parent) return;
-      w = parent.clientWidth;
-      h = parent.clientHeight;
-      const dpr = Math.min(window.devicePixelRatio || 1, coarse ? 1.15 : 1.4);
-      canvas.width = Math.max(1, Math.floor(w * dpr));
-      canvas.height = Math.max(1, Math.floor(h * dpr));
+      const nextW = parent.clientWidth;
+      const nextH = parent.clientHeight;
+      // Mobile chrome show/hide changes height ~40–80px and reallocating the
+      // canvas every frame is a major hitch. Keep the buffer until width or
+      // a real orientation/layout change.
+      if (
+        coarse &&
+        w > 0 &&
+        Math.abs(nextW - w) < 2 &&
+        Math.abs(nextH - h) < 96
+      ) {
+        return;
+      }
+      w = nextW;
+      h = nextH;
+      const quality = coarse ? 0.48 : 0.82;
+      const dpr = Math.min(window.devicePixelRatio || 1, coarse ? 1 : 1.25);
+      const scale = dpr * quality;
+      canvas.width = Math.max(1, Math.floor(w * scale));
+      canvas.height = Math.max(1, Math.floor(h * scale));
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.setTransform(scale, 0, 0, scale, 0, 0);
     };
 
     const draw = () => {
-      if (!running) return;
       ctx.clearRect(0, 0, w, h);
       ctx.globalCompositeOperation = "lighter";
 
@@ -81,22 +104,67 @@ export default function HeroAurora() {
       }
 
       ctx.globalCompositeOperation = "source-over";
-      if (!reduce) raf = requestAnimationFrame(draw);
+    };
+
+    const loop = (now: number) => {
+      if (!canRun()) return;
+      raf = requestAnimationFrame(loop);
+      if (reduce) {
+        draw();
+        running = false;
+        cancelAnimationFrame(raf);
+        return;
+      }
+      if (now - lastFrame < frameMs) return;
+      lastFrame = now;
+      draw();
+    };
+
+    const startLoop = () => {
+      if (!canRun()) return;
+      if (reduce) {
+        draw();
+        return;
+      }
+      cancelAnimationFrame(raf);
+      lastFrame = 0;
+      raf = requestAnimationFrame(loop);
     };
 
     resize();
     draw();
 
+    const kickoff = () => {
+      if (!running) return;
+      startLoop();
+    };
+    const useIdle = "requestIdleCallback" in window;
+    const idle = useIdle
+      ? window.requestIdleCallback(kickoff, { timeout: 280 })
+      : window.setTimeout(kickoff, 1);
+
     const ro = new ResizeObserver(resize);
     if (canvas.parentElement) ro.observe(canvas.parentElement);
 
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        inView = Boolean(entry?.isIntersecting && entry.intersectionRatio > 0.08);
+        if (!inView) {
+          cancelAnimationFrame(raf);
+        } else {
+          startLoop();
+        }
+      },
+      { threshold: [0, 0.08, 0.2] }
+    );
+    io.observe(canvas);
+
     const onVis = () => {
-      if (document.visibilityState === "hidden") {
-        running = false;
+      pageVisible = document.visibilityState !== "hidden";
+      if (!pageVisible) {
         cancelAnimationFrame(raf);
-      } else if (!reduce) {
-        running = true;
-        raf = requestAnimationFrame(draw);
+      } else {
+        startLoop();
       }
     };
     document.addEventListener("visibilitychange", onVis);
@@ -104,7 +172,10 @@ export default function HeroAurora() {
     return () => {
       running = false;
       cancelAnimationFrame(raf);
+      if (useIdle) window.cancelIdleCallback(idle);
+      else window.clearTimeout(idle);
       ro.disconnect();
+      io.disconnect();
       document.removeEventListener("visibilitychange", onVis);
     };
   }, []);

@@ -29,6 +29,7 @@ export default function TrustBar() {
                 alt={tPlat(`${platform.key}.title`)}
                 width={120}
                 height={40}
+                decoding="async"
                 className="h-8 w-auto max-w-[7.5rem] object-contain object-center sm:h-10 sm:max-w-[8.5rem]"
               />
             </span>
