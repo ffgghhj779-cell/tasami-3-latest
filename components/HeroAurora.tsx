@@ -34,11 +34,11 @@ export default function HeroAurora() {
     let running = true;
 
     const blobs: Blob[] = [
-      { x: 0.32, y: 0.28, vx: 0.0016, vy: 0.0011, r: 0.52, color: "107,83,255" },
-      { x: 0.78, y: 0.22, vx: -0.0013, vy: 0.0014, r: 0.46, color: "157,136,255" },
-      { x: 0.55, y: 0.72, vx: 0.0011, vy: -0.0015, r: 0.55, color: "198,165,255" },
-      { x: 0.16, y: 0.68, vx: 0.0015, vy: 0.0009, r: 0.4, color: "255,255,255" },
-      { x: 0.88, y: 0.62, vx: -0.0012, vy: -0.0011, r: 0.38, color: "126,104,255" },
+      { x: 0.32, y: 0.28, vx: 0.0022, vy: 0.0015, r: 0.56, color: "107,83,255" },
+      { x: 0.78, y: 0.22, vx: -0.0018, vy: 0.002, r: 0.5, color: "83,24,235" },
+      { x: 0.55, y: 0.72, vx: 0.0016, vy: -0.0021, r: 0.58, color: "120,70,255" },
+      { x: 0.16, y: 0.68, vx: 0.002, vy: 0.0013, r: 0.44, color: "198,165,255" },
+      { x: 0.88, y: 0.62, vx: -0.0017, vy: -0.0016, r: 0.42, color: "70,40,220" },
     ];
 
     const resize = () => {
@@ -71,8 +71,8 @@ export default function HeroAurora() {
         const gy = b.y * h;
         const radius = Math.max(w, h) * b.r * (coarse ? 1.08 : 1);
         const g = ctx.createRadialGradient(gx, gy, 0, gx, gy, radius);
-        g.addColorStop(0, `rgba(${b.color},${coarse ? 0.78 : 0.62})`);
-        g.addColorStop(0.35, `rgba(${b.color},${coarse ? 0.36 : 0.28})`);
+        g.addColorStop(0, `rgba(${b.color},${coarse ? 0.88 : 0.72})`);
+        g.addColorStop(0.35, `rgba(${b.color},${coarse ? 0.42 : 0.34})`);
         g.addColorStop(1, `rgba(${b.color},0)`);
         ctx.fillStyle = g;
         ctx.beginPath();
