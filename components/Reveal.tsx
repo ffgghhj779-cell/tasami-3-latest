@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 type RevealProps = {
@@ -14,25 +15,45 @@ type RevealProps = {
 
 export default function Reveal({
   children,
-  className,
+  className = "",
   delay = 0,
   index,
   columns = 3,
   y = 28,
 }: RevealProps) {
   const reduce = useReducedMotion();
+  const [lite, setLite] = useState(true);
   const stagger =
     typeof index === "number" ? (index % columns) * 0.08 : delay;
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1023px), (pointer: coarse)");
+    const sync = () => setLite(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  if (reduce || lite) {
+    return (
+      <div
+        className={`reveal-lite ${className}`}
+        style={{ animationDelay: `${stagger}s` }}
+      >
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div
       className={className}
-      initial={reduce ? false : { opacity: 0, y, scale: 0.97 }}
+      initial={{ opacity: 0, y, scale: 0.97 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, amount: 0.2, margin: "0px 0px -10% 0px" }}
       transition={{
         duration: 0.65,
-        delay: reduce ? 0 : stagger,
+        delay: stagger,
         ease: [0.22, 1, 0.36, 1],
       }}
     >

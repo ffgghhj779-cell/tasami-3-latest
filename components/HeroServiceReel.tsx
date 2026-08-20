@@ -40,15 +40,25 @@ type Props = {
 export default function HeroServiceReel({ items }: Props) {
   const reduce = useReducedMotion();
   const [float, setFloat] = useState(false);
+  const [lite, setLite] = useState(true);
 
   useEffect(() => {
-    const mq = window.matchMedia(
+    const mqFloat = window.matchMedia(
       "(min-width: 1024px) and (prefers-reduced-motion: no-preference)"
     );
-    const sync = () => setFloat(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
+    const syncFloat = () => setFloat(mqFloat.matches);
+    syncFloat();
+    mqFloat.addEventListener("change", syncFloat);
+
+    const mqLite = window.matchMedia("(max-width: 1023px), (pointer: coarse)");
+    const syncLite = () => setLite(mqLite.matches);
+    syncLite();
+    mqLite.addEventListener("change", syncLite);
+
+    return () => {
+      mqFloat.removeEventListener("change", syncFloat);
+      mqLite.removeEventListener("change", syncLite);
+    };
   }, []);
 
   return (
@@ -56,11 +66,45 @@ export default function HeroServiceReel({ items }: Props) {
       {items.slice(0, 3).map((item, i) => {
         const cfg = CONFIG[i];
         const Icon = cfg.icon;
+        const card = (
+          <Link href={cfg.href} className="hero-orbit-link group">
+            <div className="hero-orbit-visual">
+              <Image
+                src={cfg.visual}
+                alt=""
+                fill
+                sizes="(max-width: 1023px) 78vw, 280px"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <span className="hero-orbit-wash" />
+              <span className="hero-orbit-icon">
+                <Icon weight="bold" className="h-4 w-4" />
+              </span>
+            </div>
+            <div className="hero-orbit-body">
+              <p className="hero-orbit-title">{item.title}</p>
+              <span className="hero-orbit-meta">{item.meta}</span>
+            </div>
+          </Link>
+        );
+
+        if (reduce || lite) {
+          return (
+            <div
+              key={item.title}
+              className={`hero-orbit-card hero-orbit-card--in ${cfg.layout}`}
+              style={{ animationDelay: `${0.08 + i * 0.08}s` }}
+            >
+              {card}
+            </div>
+          );
+        }
+
         return (
           <motion.div
             key={item.title}
             className={`hero-orbit-card ${cfg.layout}`}
-            initial={reduce ? false : { opacity: 0, y: 24, scale: 0.96 }}
+            initial={{ opacity: 0, y: 24, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{
               duration: 0.7,
@@ -71,7 +115,7 @@ export default function HeroServiceReel({ items }: Props) {
             <motion.div
               className="hero-orbit-float"
               animate={
-                float && !reduce
+                float
                   ? {
                       y: [0, -14, 0],
                       rotate: [0, i === 1 ? -1.2 : 1.2, 0],
@@ -85,25 +129,7 @@ export default function HeroServiceReel({ items }: Props) {
                 delay: i * 0.4,
               }}
             >
-              <Link href={cfg.href} className="hero-orbit-link group">
-                <div className="hero-orbit-visual">
-                  <Image
-                    src={cfg.visual}
-                    alt=""
-                    fill
-                    sizes="(max-width: 1023px) 78vw, 280px"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <span className="hero-orbit-wash" />
-                  <span className="hero-orbit-icon">
-                    <Icon weight="bold" className="h-4 w-4" />
-                  </span>
-                </div>
-                <div className="hero-orbit-body">
-                  <p className="hero-orbit-title">{item.title}</p>
-                  <span className="hero-orbit-meta">{item.meta}</span>
-                </div>
-              </Link>
+              {card}
             </motion.div>
           </motion.div>
         );

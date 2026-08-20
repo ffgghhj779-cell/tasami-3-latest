@@ -28,6 +28,15 @@ export default function FloatingWidgets() {
   const pathname = usePathname();
   const [waOpen, setWaOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
+  const [coarse, setCoarse] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1023px), (pointer: coarse)");
+    const sync = () => setCoarse(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
   useEffect(() => {
     setWaOpen(false);
@@ -93,6 +102,25 @@ export default function FloatingWidgets() {
           </div>
         ) : null}
 
+        {coarse ? (
+          <button
+            type="button"
+            aria-label={t("openWhatsapp")}
+            onClick={() => {
+              setWaOpen((v) => !v);
+              setChatOpen(false);
+            }}
+            className={`pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#128C4A] text-white shadow-soft active:scale-95 ${
+              chatOpen ? "max-sm:hidden" : ""
+            }`}
+          >
+            {waOpen ? (
+              <X weight="bold" className="h-6 w-6" />
+            ) : (
+              <WhatsappLogo weight="fill" className="h-7 w-7" />
+            )}
+          </button>
+        ) : (
         <motion.button
           type="button"
           aria-label={t("openWhatsapp")}
@@ -112,6 +140,7 @@ export default function FloatingWidgets() {
             <WhatsappLogo weight="fill" className="h-7 w-7" />
           )}
         </motion.button>
+        )}
       </div>
     </>
   );

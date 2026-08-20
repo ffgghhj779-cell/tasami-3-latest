@@ -36,6 +36,7 @@ export default function Navbar() {
   const [langOpen, setLangOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [coarse, setCoarse] = useState(false);
   const isHome = pathname === "/";
   const onHero = isHome && !scrolled && !mobileOpen;
   const ink = onHero
@@ -59,9 +60,64 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1023px), (pointer: coarse)");
+    const sync = () => setCoarse(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  const mobileMenu = (
+    <ul className="flex flex-col gap-1 px-4 py-4">
+      {NAV_LINKS.map(({ href, key, icon: Icon }) => {
+        const active = pathname.includes(href);
+        return (
+          <li key={href}>
+            <Link
+              href={href}
+              onClick={() => setMobileOpen(false)}
+              className={`flex min-h-[48px] items-center gap-3 rounded-button px-3 py-3 text-sm font-medium ${
+                active
+                  ? "bg-tasami-offwhite text-tasami-dark"
+                  : "text-tasami-dark/80"
+              }`}
+            >
+              <Icon weight="regular" className="h-5 w-5 text-[#007AFF]" />
+              {t(key)}
+            </Link>
+          </li>
+        );
+      })}
+      <li>
+        <Link
+          href={loggedIn ? "/my-requests" : "/login"}
+          onClick={() => setMobileOpen(false)}
+          className="flex min-h-[48px] items-center gap-3 rounded-button px-3 py-3 text-sm font-medium text-tasami-dark"
+        >
+          <UserCircle weight="regular" className="h-5 w-5 text-[#007AFF]" />
+          {loggedIn ? t("account") : t("login")}
+        </Link>
+      </li>
+      {!loggedIn && (
+        <li>
+          <Link
+            href="/register"
+            onClick={() => setMobileOpen(false)}
+            className="mt-1 flex min-h-[48px] items-center justify-center rounded-button bg-[#007AFF] px-3 py-3 text-sm font-semibold text-white"
+          >
+            {t("register")}
+          </Link>
+        </li>
+      )}
+    </ul>
+  );
+
   return (
     <header
       className={`sticky top-0 z-50 isolate border-b pt-[env(safe-area-inset-top)] transition-colors duration-300 ${
+        coarse ? "nav-mobile-lite" : ""
+      } ${coarse && onHero && !mobileOpen ? "nav-on-hero" : ""} ${
         mobileOpen
           ? "border-[rgba(26,53,80,0.08)] bg-white"
           : onHero
@@ -195,59 +251,23 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={springSoft}
-            className="overflow-hidden border-t border-[rgba(26,53,80,0.08)] bg-white md:hidden"
-          >
-            <ul className="flex flex-col gap-1 px-4 py-4">
-              {NAV_LINKS.map(({ href, key, icon: Icon }) => {
-                const active = pathname.includes(href);
-                return (
-                  <li key={href}>
-                    <Link
-                      href={href}
-                      onClick={() => setMobileOpen(false)}
-                      className={`flex min-h-[48px] items-center gap-3 rounded-button px-3 py-3 text-sm font-medium ${
-                        active
-                          ? "bg-tasami-offwhite text-tasami-dark"
-                          : "text-tasami-dark/80"
-                      }`}
-                    >
-                      <Icon weight="regular" className="h-5 w-5 text-[#007AFF]" />
-                      {t(key)}
-                    </Link>
-                  </li>
-                );
-              })}
-              <li>
-                <Link
-                  href={loggedIn ? "/my-requests" : "/login"}
-                  onClick={() => setMobileOpen(false)}
-                  className="flex min-h-[48px] items-center gap-3 rounded-button px-3 py-3 text-sm font-medium text-tasami-dark"
-                >
-                  <UserCircle weight="regular" className="h-5 w-5 text-[#007AFF]" />
-                  {loggedIn ? t("account") : t("login")}
-                </Link>
-              </li>
-              {!loggedIn && (
-                <li>
-                  <Link
-                    href="/register"
-                    onClick={() => setMobileOpen(false)}
-                    className="mt-1 flex min-h-[48px] items-center justify-center rounded-button bg-[#007AFF] px-3 py-3 text-sm font-semibold text-white"
-                  >
-                    {t("register")}
-                  </Link>
-                </li>
-              )}
-            </ul>
-          </motion.div>
-        )}
+      <AnimatePresence initial={false}>
+        {mobileOpen &&
+          (coarse ? (
+            <div className="overflow-hidden border-t border-[rgba(26,53,80,0.08)] bg-white md:hidden">
+              {mobileMenu}
+            </div>
+          ) : (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={springSoft}
+              className="overflow-hidden border-t border-[rgba(26,53,80,0.08)] bg-white md:hidden"
+            >
+              {mobileMenu}
+            </motion.div>
+          ))}
       </AnimatePresence>
     </header>
   );
