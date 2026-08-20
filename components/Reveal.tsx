@@ -22,15 +22,22 @@ export default function Reveal({
   y = 28,
 }: RevealProps) {
   const reduce = useReducedMotion();
-  const [lite, setLite] = useState(true);
-  const stagger =
-    typeof index === "number" ? (index % columns) * 0.08 : delay;
+  // true = mobile/coarse → lightweight animation
+  // false = desktop/fine pointer → full premium 3D blur animation
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
-    // Only reduce motion if the user explicitly requested it in OS settings
-    // Otherwise, we allow the premium 3D blur fade on mobile!
+    const mq = window.matchMedia("(pointer: coarse), (max-width: 1023px)");
+    const sync = () => setIsMobile(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
   }, []);
 
+  const stagger =
+    typeof index === "number" ? (index % columns) * 0.06 : delay;
+
+  // Accessibility: respect OS-level reduced motion
   if (reduce) {
     return (
       <div
@@ -42,23 +49,45 @@ export default function Reveal({
     );
   }
 
+  // ─── Mobile: ultra-light — opacity + translateY only ─────────────────────
+  // blur() & rotateX are GPU-heavy on phones → causes lag
+  if (isMobile) {
+    return (
+      <motion.div
+        className={className}
+        initial={{ opacity: 0, y: y * 0.6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.12, margin: "0px 0px -8% 0px" }}
+        transition={{
+          duration: 0.45,
+          delay: stagger,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        style={{ willChange: "transform, opacity" }}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
+  // ─── Desktop: full premium 3D blur-fade with spring physics ──────────────
   return (
     <motion.div
       className={className}
-      initial={{ 
-        opacity: 0, 
-        y, 
+      initial={{
+        opacity: 0,
+        y,
         scale: 0.95,
         filter: "blur(10px)",
         rotateX: 12,
-        transformPerspective: 1000
+        transformPerspective: 1000,
       }}
-      whileInView={{ 
-        opacity: 1, 
-        y: 0, 
+      whileInView={{
+        opacity: 1,
+        y: 0,
         scale: 1,
         filter: "blur(0px)",
-        rotateX: 0
+        rotateX: 0,
       }}
       viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
       transition={{
@@ -68,9 +97,7 @@ export default function Reveal({
         mass: 1.2,
         delay: stagger,
       }}
-      style={{
-        willChange: "transform, opacity, filter",
-      }}
+      style={{ willChange: "transform, opacity, filter" }}
     >
       {children}
     </motion.div>
