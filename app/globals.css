@@ -243,6 +243,8 @@
 
   .hero-plate-video {
     z-index: 1;
+    /* Cinematic Color Grading */
+    filter: saturate(1.15) contrast(1.05) brightness(0.95);
   }
 
   .hero-plate-img--poster,
@@ -291,8 +293,9 @@
     inset: 0;
     z-index: 2;
     background:
-      radial-gradient(ellipse 70% 58% at 50% 42%, rgba(26, 53, 80, 0.55), transparent 66%),
-      linear-gradient(180deg, rgba(26, 53, 80, 0.48) 0%, rgba(26, 53, 80, 0.22) 55%, #f7f8fa 100%);
+      radial-gradient(ellipse 70% 58% at 50% 42%, rgba(10, 48, 92, 0.45), transparent 70%),
+      linear-gradient(180deg, rgba(10, 48, 92, 0.65) 0%, rgba(10, 48, 92, 0.15) 55%, var(--color-background) 100%);
+    mix-blend-mode: multiply;
   }
 
   .hero-plate-glow {
@@ -301,10 +304,11 @@
     z-index: 2;
     pointer-events: none;
     background: radial-gradient(
-      ellipse 55% 45% at 50% 35%,
-      rgba(90, 200, 250, 0.28),
-      transparent 68%
+      ellipse 60% 50% at 50% 30%,
+      rgba(200, 168, 75, 0.15),
+      transparent 70%
     );
+    mix-blend-mode: screen;
   }
 
   .scroll-progress {
