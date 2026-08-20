@@ -27,14 +27,11 @@ export default function Reveal({
     typeof index === "number" ? (index % columns) * 0.08 : delay;
 
   useEffect(() => {
-    const mq = window.matchMedia("(max-width: 1023px), (pointer: coarse)");
-    const sync = () => setLite(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
+    // Only reduce motion if the user explicitly requested it in OS settings
+    // Otherwise, we allow the premium 3D blur fade on mobile!
   }, []);
 
-  if (reduce || lite) {
+  if (reduce) {
     return (
       <div
         className={`reveal-lite ${className}`}
