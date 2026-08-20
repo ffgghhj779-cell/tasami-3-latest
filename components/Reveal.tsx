@@ -49,21 +49,24 @@ export default function Reveal({
     );
   }
 
-  // ─── Mobile: ultra-light — opacity + translateY only ─────────────────────
-  // blur() & rotateX are GPU-heavy on phones → causes lag
+  // ─── Mobile: GPU-safe premium animation — scale + opacity + y ───────────
+  // scale & translateY are free GPU composite layers — zero lag on mobile
+  // blur() & rotateX are expensive (causes repaint) → kept desktop-only
   if (isMobile) {
     return (
       <motion.div
         className={className}
-        initial={{ opacity: 0, y: y * 0.6 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: y * 0.7, scale: 0.88 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, amount: 0.12, margin: "0px 0px -8% 0px" }}
         transition={{
-          duration: 0.45,
+          type: "spring",
+          stiffness: 90,
+          damping: 20,
+          mass: 0.9,
           delay: stagger,
-          ease: [0.22, 1, 0.36, 1],
         }}
-        style={{ willChange: "transform, opacity" }}
+        style={{ willChange: "transform, opacity", transformOrigin: "center bottom" }}
       >
         {children}
       </motion.div>

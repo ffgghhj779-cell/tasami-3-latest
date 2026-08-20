@@ -1,0 +1,19 @@
+{
+  "name": "Tasami",
+  "short_name": "Tasami",
+  "description": "Saudi government and tech services — finished simply.",
+  "start_url": "/ar",
+  "display": "standalone",
+  "background_color": "#F7F8FA",
+  "theme_color": "#007AFF",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "/logo-mark.png",
+      "sizes": "259x259",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

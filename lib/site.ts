@@ -50,7 +50,11 @@ export function getWhatsAppUrl(prefill?: string): string {
   return whatsappUrl(prefill);
 }
 
-const PLACEHOLDER_EMAILS = new Set(["", "hello@tasami.sa"]);
+const PLACEHOLDER_EMAILS = new Set([
+  "",
+  "hello@tasami.sa",
+  "hello@tasamiservices.com",
+]);
 const PLACEHOLDER_CR = new Set(["", "cr 0000000000", "0000000000"]);
 const PLACEHOLDER_VAT = new Set([
   "",
@@ -72,7 +76,9 @@ function publicValue(
 
 /** Fallback for transactional mail only — not shown on the public site. */
 export function getContactEmail(): string {
-  return process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || "hello@tasami.sa";
+  return (
+    process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || "hello@tasamiservices.com"
+  );
 }
 
 /** Public email when the real Gmail (or other) address is configured. */

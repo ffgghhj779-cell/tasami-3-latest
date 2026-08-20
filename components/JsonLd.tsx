@@ -1,8 +1,8 @@
-import { organizationJsonLd } from "@/lib/seo";
+import { seoGraphJsonLd } from "@/lib/seo";
 
-/** Injects Organization Schema Markup into the document. */
+/** Injects Organization + WebSite + ProfessionalService Schema Markup. */
 export default function JsonLd() {
-  const data = organizationJsonLd();
+  const data = seoGraphJsonLd();
 
   return (
     <script

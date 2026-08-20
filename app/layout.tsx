@@ -7,7 +7,9 @@ import { fontVariables } from "@/lib/fonts";
 
 export const metadata = {
   ...buildPageMetadata({
-    title: "خدمات حكومية وتقنية بسيطة وسريعة",
+    title: "خدمات حكومية وتقنية بسيطة وسريعة في السعودية",
+    description:
+      "تَسَامِي — أنجز معاملاتك الحكومية والتقنية ببساطة. سجل تجاري، إقامات، ناجز، مواقع وتطبيقات — بأربع لغات ودعم واتساب.",
     path: "",
     locale: "ar",
   }),
@@ -15,6 +17,7 @@ export const metadata = {
     icon: "/logo-mark.png",
     apple: "/logo-mark.png",
   },
+  manifest: "/site.webmanifest",
 };
 
 export const viewport = {

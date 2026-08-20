@@ -16,6 +16,7 @@ import {
 } from "@/lib/content-keys";
 import { rtlLocales, type Locale } from "@/i18n";
 import { getWhatsAppUrl } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/seo";
 
 const CORE_HREF = {
   gov: "/services/government",
@@ -33,6 +34,19 @@ const LANG_PILLS = [
 type Props = {
   params: { locale: string };
 };
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = params;
+  const t = await getTranslations({ locale, namespace: "home" });
+  const tBrand = await getTranslations({ locale, namespace: "brand" });
+
+  return buildPageMetadata({
+    title: t("title"),
+    description: `${t("hero")} ${tBrand("slogan")}.`,
+    path: "",
+    locale,
+  });
+}
 
 export default async function HomePage({ params }: Props) {
   const { locale } = params;

@@ -63,7 +63,8 @@ export async function POST(req: NextRequest) {
       const apiKey = process.env.RESEND_API_KEY?.trim();
       if (apiKey && user.email) {
         const siteUrl =
-          process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://tasami.sa";
+          process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+          "https://www.tasamiservices.com";
         const resetLink = `${siteUrl}/${locale}/reset-password?token=${rawToken}`;
         const from =
           process.env.RESEND_FROM_EMAIL?.trim() ||
