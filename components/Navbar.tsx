@@ -14,7 +14,7 @@ import {
 } from "@phosphor-icons/react";
 import { Link, usePathname } from "@/navigation";
 import { locales, type Locale } from "@/i18n";
-import BrandLogo from "@/components/BrandLogo";
+import BrandHeader from "@/components/BrandHeader";
 import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
 
 const NAV_LINKS = [
@@ -131,10 +131,11 @@ export default function Navbar() {
           className="flex min-w-0 shrink items-center gap-2 overflow-visible"
           onClick={() => setMobileOpen(false)}
         >
-          <BrandLogo
-            lockupSize="xs"
+          <BrandHeader
+            name={tBrand("name")}
+            slogan={tBrand("slogan")}
+            onDark={onHero && !mobileOpen}
             priority
-            wordmark={tBrand("name")}
           />
         </Link>
 

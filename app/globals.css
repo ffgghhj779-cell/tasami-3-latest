@@ -2397,6 +2397,55 @@
     letter-spacing: 0;
   }
 
+  .brand-header-copy {
+    gap: 0.15rem;
+  }
+
+  .brand-header-name {
+    font-size: 1.05rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-header-slogan {
+    font-family: var(--font-arabic), "Tajawal", Tahoma, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+  }
+
+  html[lang="en"] .brand-header-name {
+    font-size: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  html[lang="en"] .brand-header-slogan {
+    font-family: var(--font-latin), Montserrat, system-ui, sans-serif;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 640px) {
+    .brand-header-name {
+      font-size: 1.2rem;
+    }
+
+    html[lang="en"] .brand-header-name {
+      font-size: 1.125rem;
+    }
+
+    .brand-header-slogan {
+      font-size: 0.72rem;
+    }
+
+    html[lang="en"] .brand-header-slogan {
+      font-size: 0.62rem;
+    }
+  }
+
   html[lang="en"] .font-brand,
   html[lang="hi"] .font-brand {
     font-family: var(--font-latin), Montserrat, system-ui, sans-serif;
