@@ -19,6 +19,12 @@ const ICONS = {
   sectors: SquaresFour,
 } as const;
 
+const OBJECT_POS: Record<keyof typeof ICONS, string> = {
+  gov: "object-center",
+  tech: "object-center",
+  sectors: "object-[center_28%]",
+};
+
 export type TheaterItem = {
   key: keyof typeof ICONS;
   href: string;
@@ -64,7 +70,7 @@ function OfferingCard({
               ? "(max-width: 1023px) 100vw, 58vw"
               : "(max-width: 1023px) 100vw, 28vw"
           }
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+          className={`object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06] ${OBJECT_POS[item.key]}`}
         />
         <span className="offering-premium-wash" />
         <span className="offering-premium-icon">

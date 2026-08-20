@@ -649,6 +649,18 @@
   }
 
   @media (pointer: coarse) {
+    .hover-spot::after {
+      display: none;
+    }
+
+    .offering-premium-card {
+      transition: none;
+    }
+
+    .offering-premium-card .object-cover {
+      transition: none;
+    }
+
     .hero-mesh,
     .hero-sheen {
       animation: none;
@@ -1199,19 +1211,20 @@
     }
 
     .offering-premium-card--compact {
-      flex-direction: row;
-      min-height: 7.75rem;
+      flex-direction: column;
+      min-height: auto;
     }
 
     .offering-premium-card--compact .offering-premium-visual {
-      width: 38%;
-      min-width: 7.4rem;
+      width: 100%;
+      min-width: 0;
       height: auto;
-      align-self: stretch;
+      aspect-ratio: 16 / 10;
+      align-self: auto;
     }
 
     .offering-premium-card--compact .offering-premium-body {
-      padding: 0.95rem 1rem 1rem;
+      padding: 1rem 1.05rem 1.1rem;
     }
 
     .offering-premium-card--compact h3 {

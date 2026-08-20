@@ -10,8 +10,13 @@ export default function HoverSpot({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const coarseRef = useRef(
+    typeof window !== "undefined" &&
+      window.matchMedia("(pointer: coarse)").matches
+  );
 
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (coarseRef.current) return;
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
