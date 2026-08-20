@@ -125,6 +125,8 @@ export default function Navbar() {
             : "border-[rgba(26,53,80,0.08)] bg-white/95 backdrop-blur-md"
       }`}
     >
+      {/* Government identity accent strip */}
+      <div className="nav-gov-strip" aria-hidden />
       <nav className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between gap-2 px-4 sm:h-[4.75rem] sm:gap-4 sm:px-8 lg:px-10">
         <Link
           href="/"

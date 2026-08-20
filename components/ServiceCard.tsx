@@ -1,5 +1,5 @@
 import type { ComponentType, ReactNode, SVGProps } from "react";
-import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { ArrowLeft, ArrowRight, Seal } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "@/navigation";
 
 type PhosphorIcon = ComponentType<
@@ -10,6 +10,7 @@ type PhosphorIcon = ComponentType<
 
 const CARD_TONES = ["gold", "teal", "coral", "sky", "violet"] as const;
 export type CardTone = (typeof CARD_TONES)[number];
+export type CardVariant = "gov" | "tech" | "default";
 
 type ServiceCardProps = {
   href?: string;
@@ -25,6 +26,8 @@ type ServiceCardProps = {
   featured?: boolean;
   tone?: CardTone;
   toneIndex?: number;
+  /** Visual variant: "gov" = warm paper/stamp, "tech" = dark digital, "default" = standard */
+  variant?: CardVariant;
 };
 
 export default function ServiceCard({
@@ -41,6 +44,7 @@ export default function ServiceCard({
   featured = false,
   tone,
   toneIndex,
+  variant = "default",
 }: ServiceCardProps) {
   const Arrow = rtl ? ArrowLeft : ArrowRight;
   const resolvedTone =
@@ -68,13 +72,25 @@ export default function ServiceCard({
         }`}
       >
         <h3
-          className={`font-semibold leading-snug text-tasami-dark ${
-            featured ? "text-xl sm:text-2xl" : "text-base sm:text-[1.05rem]"
-          }`}
+          className={`font-semibold leading-snug ${
+            variant === "gov"
+              ? "text-[#3d2b1f]"
+              : variant === "tech"
+                ? "text-[#f1f5f9]"
+                : "text-tasami-dark"
+          } ${featured ? "text-xl sm:text-2xl" : "text-base sm:text-[1.05rem]"}`}
         >
           {title}
         </h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-tasami-gray">
+        <p
+          className={`mt-2 flex-1 text-sm leading-relaxed ${
+            variant === "gov"
+              ? "text-[#6b5740]"
+              : variant === "tech"
+                ? "text-[#94a3b8]"
+                : "text-tasami-gray"
+          }`}
+        >
           {description}
         </p>
 
@@ -85,10 +101,18 @@ export default function ServiceCard({
           </span>
         ) : null}
       </div>
+
+      {/* Gov stamp corner decoration */}
+      {variant === "gov" && (
+        <span className="gov-stamp-corner" aria-hidden>
+          <Seal weight="light" className="h-3.5 w-3.5" />
+        </span>
+      )}
     </>
   );
 
-  const className = `service-card tone-${resolvedTone} group h-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tasami-gold${
+  const variantClass = variant !== "default" ? ` variant-${variant}` : "";
+  const className = `service-card tone-${resolvedTone}${variantClass} group h-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tasami-gold${
     featured ? " service-card-featured" : ""
   }`;
 

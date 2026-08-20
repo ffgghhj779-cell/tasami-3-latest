@@ -58,20 +58,32 @@ const config: Config = {
           muted: "#8E8E93",
         },
         tasami: {
-          purple: "#007AFF",
-          pink: "#007AFF",
-          gold: "#007AFF",
+          // Brand blues (unchanged)
+          purple: "#5856D6",
+          pink: "#FF375F",
           lilac: "#5AC8FA",
+          sky: "#5AC8FA",
+          // Government identity — real gold
+          gold: "#C8A84B",
+          heritage: "#8B6914",
+          "gov-cream": "#F8F4EA",
+          paper: "#EDE8D5",
+          "gold-light": "#F5E9C4",
+          "gold-glow": "rgba(200,168,75,0.22)",
+          // Other brand colors
           teal: "#2BB8B3",
           coral: "#FF8B73",
-          sky: "#5AC8FA",
           cream: "#F4F6F8",
           green: "#006C35",
           offwhite: "#F7F8FA",
           dark: "#1A3550",
           gray: "#8E8E93",
-          night: "#1A3550",
-          heritage: "#007AFF",
+          night: "#0D1117",
+          // Tech identity — dark mode style
+          "tech-dark": "#0D1117",
+          "tech-surface": "#111827",
+          "tech-border": "#1E3A5F",
+          indigo: "#5856D6",
         },
       },
       fontFamily: {

@@ -25,6 +25,13 @@ const OBJECT_POS: Record<keyof typeof ICONS, string> = {
   sectors: "object-[center_40%]",
 };
 
+/** Maps offering key to card visual variant */
+const CARD_VARIANT: Record<keyof typeof ICONS, "gov" | "tech" | "default"> = {
+  gov: "gov",
+  tech: "tech",
+  sectors: "default",
+};
+
 export type TheaterItem = {
   key: keyof typeof ICONS;
   href: string;
@@ -54,11 +61,34 @@ function OfferingCard({
   const Arrow = rtl ? ArrowLeft : ArrowRight;
   const Icon = ICONS[item.key];
   const isHero = size === "hero";
+  const variant = CARD_VARIANT[item.key];
+
+  // Gov-specific body text colors
+  const titleClass =
+    variant === "gov"
+      ? "font-display text-[#3d2b1f]"
+      : variant === "tech"
+        ? "font-display text-[#f1f5f9]"
+        : `font-display ${isHero ? "text-2xl text-tasami-dark sm:text-3xl" : "text-xl text-tasami-dark sm:text-2xl"}`;
+
+  const descClass =
+    variant === "gov"
+      ? `mt-2.5 flex-1 leading-relaxed text-[#6b5740] ${isHero ? "text-sm sm:text-base" : "text-sm offering-premium-desc--compact"}`
+      : variant === "tech"
+        ? `mt-2.5 flex-1 leading-relaxed text-[#94a3b8] ${isHero ? "text-sm sm:text-base" : "text-sm offering-premium-desc--compact"}`
+        : `mt-2.5 flex-1 leading-relaxed ${isHero ? "text-sm text-tasami-gray sm:text-base" : "text-sm text-tasami-gray offering-premium-desc--compact"}`;
+
+  const ctaClass =
+    variant === "gov"
+      ? "offering-premium-cta text-[#8b6914]"
+      : variant === "tech"
+        ? "offering-premium-cta text-[#5ac8fa]"
+        : "offering-premium-cta";
 
   return (
     <Link
       href={item.href}
-      className={`offering-premium-card group offering-premium-card--${size} ${isHero ? "offering-premium-card--featured" : ""}`}
+      className={`offering-premium-card group offering-premium-card--${size}${isHero ? " offering-premium-card--featured" : ""}${variant !== "default" ? ` variant-${variant}` : ""}`}
     >
       <div className="offering-premium-visual">
         <Image
@@ -79,17 +109,13 @@ function OfferingCard({
         <span className="offering-premium-meta">{item.meta}</span>
       </div>
       <div className="offering-premium-body">
-        <h3
-          className={`font-display ${isHero ? "text-2xl text-tasami-dark sm:text-3xl" : "text-xl text-tasami-dark sm:text-2xl"}`}
-        >
+        <h3 className={titleClass}>
           {item.title}
         </h3>
-        <p
-          className={`mt-2.5 flex-1 leading-relaxed ${isHero ? "text-sm text-tasami-gray sm:text-base" : "text-sm text-tasami-gray offering-premium-desc--compact"}`}
-        >
+        <p className={descClass}>
           {item.description}
         </p>
-        <span className="offering-premium-cta">
+        <span className={ctaClass}>
           {item.cta}
           <Arrow
             weight="regular"

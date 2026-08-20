@@ -79,6 +79,7 @@ export default async function GovernmentServicesPage({ params }: Props) {
             return (
               <Reveal key={key} index={i} className="h-full">
               <ServiceCard
+                variant="gov"
                 toneIndex={i}
                 href={`/services/government/${GOV_SLUGS[key]}`}
                 icon={GOV_ICONS[key]}

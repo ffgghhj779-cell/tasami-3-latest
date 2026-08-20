@@ -68,6 +68,7 @@ export default async function TechServicesPage({ params }: Props) {
           {TECH_KEYS.map((key, i) => (
             <Reveal key={key} index={i} className="h-full">
             <ServiceCard
+              variant="tech"
               toneIndex={i}
               href={`/services/tech/${TECH_SLUGS[key]}`}
               icon={TECH_ICONS[key]}

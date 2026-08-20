@@ -8,27 +8,48 @@
   --color-accent: #5ac8fa;
   --color-deep: #0066d6;
   --color-ink: #1a3550;
-  --color-night: #007aff;
+  --color-night: #0d1117;
   --color-background: #f7f8fa;
   --color-foreground: #1a3550;
   --color-foreground-muted: #8e8e93;
   --color-card: #ffffff;
-  --color-gold: #007aff;
+
+  /* Government identity — real gold, not blue */
+  --color-gold: #c8a84b;
+  --color-gold-light: #f5e9c4;
+  --color-gold-glow: rgba(200, 168, 75, 0.22);
+  --color-heritage: #8b6914;
+  --color-gov-cream: #f8f4ea;
+  --color-paper: #ede8d5;
+  --color-saudi: #006c35;
+
+  /* Shared accents */
   --color-lilac: #5ac8fa;
   --color-teal: #2bb8b3;
   --color-coral: #ff8b73;
   --color-sky: #5ac8fa;
   --color-cream: #f4f6f8;
-  --color-heritage: #007aff;
-  --color-saudi: #006c35;
+
+  /* Tech identity */
+  --color-tech-dark: #0d1117;
+  --color-tech-surface: #111827;
+  --color-tech-border: #1e3a5f;
+  --color-indigo: #5856d6;
+
   --color-line: rgba(26, 53, 80, 0.1);
-  --color-line-gold: rgba(0, 122, 255, 0.28);
+  --color-line-gold: rgba(200, 168, 75, 0.35);
+  --color-line-gov: rgba(200, 168, 75, 0.3);
+  --color-line-tech: rgba(0, 122, 255, 0.28);
 
   --radius-card: 14px;
   --radius-button: 10px;
   --shadow-soft: 0 12px 40px rgba(0, 122, 255, 0.1);
   --shadow-lift: 0 24px 60px rgba(0, 122, 255, 0.16);
   --shadow-glow: 0 0 70px rgba(90, 200, 250, 0.4);
+  --shadow-gov: 0 12px 40px rgba(200, 168, 75, 0.18);
+  --shadow-gov-lift: 0 24px 56px rgba(200, 168, 75, 0.26);
+  --shadow-tech: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-tech-lift: 0 24px 56px rgba(0, 122, 255, 0.28);
 
   --leading-body: 1.75;
   --leading-display: 1.18;
@@ -594,27 +615,17 @@
 
   @media (max-width: 1023px) {
     .hero-orbit-shell {
-      margin-inline: -0.35rem;
+      margin-inline: 0;
+      margin-top: 2rem;
     }
 
     .hero-orbit {
       position: relative;
       inset: auto;
       display: flex;
-      gap: 0.75rem;
-      overflow-x: auto;
-      overscroll-behavior-x: contain;
-      scroll-snap-type: x mandatory;
-      scroll-padding-inline: 0.35rem;
-      padding-inline: 0.35rem;
-      padding-bottom: 0.35rem;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
+      flex-direction: column;
+      gap: 0.65rem;
       pointer-events: auto;
-    }
-
-    .hero-orbit::-webkit-scrollbar {
-      display: none;
     }
 
     .hero-orbit-card,
@@ -625,27 +636,55 @@
       inset: auto;
       top: auto;
       bottom: auto;
-      flex: 0 0 min(78vw, 18rem);
-      width: min(78vw, 18rem);
-      scroll-snap-align: start;
+      width: 100%;
+    }
+
+    .hero-orbit-link {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      padding: 0.5rem;
+      padding-inline-end: 1.2rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .hero-orbit-visual {
-      height: auto;
-      aspect-ratio: 16 / 10;
+      width: 4.8rem;
+      height: 4.8rem;
+      flex-shrink: 0;
+      border-radius: 12px;
+      aspect-ratio: auto;
     }
 
-    .hero-orbit-title {
-      font-size: 1rem;
-      font-weight: 700;
+    .hero-orbit-icon {
+      top: 0.45rem;
+      inset-inline-start: 0.45rem;
+      width: 1.6rem;
+      height: 1.6rem;
     }
 
-    .hero-orbit-meta {
-      font-size: 0.75rem;
+    .hero-orbit-icon svg {
+      width: 14px;
+      height: 14px;
     }
 
     .hero-orbit-body {
-      padding: 0.9rem 1rem 1rem;
+      padding: 0;
+      flex: 1;
+    }
+
+    .hero-orbit-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .hero-orbit-meta {
+      font-size: 0.72rem;
+      margin-top: 0.2rem;
+      color: rgba(255, 255, 255, 0.7);
     }
   }
 
@@ -812,9 +851,9 @@
     justify-content: center;
     width: 2.75rem;
     height: 2.75rem;
-    color: var(--color-gold);
-    background: rgba(90, 200, 250, 0.14);
-    border: 1px solid rgba(90, 200, 250, 0.45);
+    color: var(--color-heritage);
+    background: rgba(200, 168, 75, 0.13);
+    border: 1px solid rgba(200, 168, 75, 0.42);
     border-radius: 9999px;
   }
 
@@ -1837,7 +1876,7 @@
   }
 
   .point-card--gold:hover {
-    border-color: rgba(90, 200, 250, 0.65);
+    border-color: rgba(200, 168, 75, 0.65);
   }
 
   .point-card--teal:hover {
@@ -1908,12 +1947,12 @@
   }
 
   .lang-card--2 {
-    background: #eef7ff;
-    border-color: rgba(90, 200, 250, 0.55);
+    background: var(--color-gold-light);
+    border-color: rgba(200, 168, 75, 0.45);
   }
 
   .lang-card--2 .lang-card-code {
-    color: #007aff;
+    color: var(--color-heritage);
   }
 
   .lang-card--3 {
@@ -2143,9 +2182,9 @@
   .icon-gold,
   .icon-gold-lg,
   .icon-tone-gold {
-    color: var(--color-gold);
-    background: rgba(90, 200, 250, 0.16);
-    border: 1px solid rgba(90, 200, 250, 0.5);
+    color: var(--color-heritage);
+    background: rgba(200, 168, 75, 0.14);
+    border: 1px solid rgba(200, 168, 75, 0.42);
   }
 
   .icon-tone-teal {
@@ -2206,9 +2245,9 @@
   }
 
   .lang-pill--2 {
-    color: #0066d6;
-    background: rgba(90, 200, 250, 0.22);
-    border: 1px solid rgba(90, 200, 250, 0.5);
+    color: var(--color-heritage);
+    background: rgba(200, 168, 75, 0.16);
+    border: 1px solid rgba(200, 168, 75, 0.42);
   }
 
   .lang-pill--3 {
@@ -2371,21 +2410,417 @@
     @apply font-display text-2xl text-tasami-dark sm:text-3xl lg:text-[2.15rem];
   }
 
-  @media (hover: none) {
-    .why-premium-card:hover,
-    .offering-premium-card:hover,
-    .process-premium-card:hover,
-    .lang-tile:hover,
-    .hero-orbit-link:hover,
-    .platform-card:hover,
-    .service-card:hover,
-    .card-premium:hover,
-    .feature-card:hover {
-      transform: none;
-      box-shadow: none;
+  /* ============================================================
+     NAVBAR TOP STRIP — Government identity accent
+     ============================================================ */
+  .nav-gov-strip {
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      #006c35 0%,
+      #008c46 18%,
+      #c8a84b 38%,
+      #e8c96a 50%,
+      #c8a84b 62%,
+      #007aff 80%,
+      #5ac8fa 100%
+    );
+    flex-shrink: 0;
+  }
+
+  /* ============================================================
+     GOVERNMENT SERVICE CARDS — Warm paper / official stamp feel
+     ============================================================ */
+
+  /* Gov watermark pattern (inline SVG background) */
+  .gov-watermark-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='26' fill='none' stroke='%23c8a84b' stroke-width='0.6' stroke-opacity='0.18'/%3E%3Ccircle cx='30' cy='30' r='18' fill='none' stroke='%23c8a84b' stroke-width='0.4' stroke-opacity='0.12'/%3E%3Cline x1='4' y1='30' x2='56' y2='30' stroke='%23c8a84b' stroke-width='0.4' stroke-opacity='0.1'/%3E%3Cline x1='30' y1='4' x2='30' y2='56' stroke='%23c8a84b' stroke-width='0.4' stroke-opacity='0.1'/%3E%3Cline x1='11' y1='11' x2='49' y2='49' stroke='%23c8a84b' stroke-width='0.3' stroke-opacity='0.08'/%3E%3Cline x1='49' y1='11' x2='11' y2='49' stroke='%23c8a84b' stroke-width='0.3' stroke-opacity='0.08'/%3E%3C/svg%3E");
+    background-size: 60px 60px;
+    background-repeat: repeat;
+  }
+
+  .service-card.variant-gov {
+    background: var(--color-gov-cream);
+    border-color: rgba(200, 168, 75, 0.32);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card.variant-gov::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='26' fill='none' stroke='%23c8a84b' stroke-width='0.6' stroke-opacity='0.15'/%3E%3Ccircle cx='30' cy='30' r='18' fill='none' stroke='%23c8a84b' stroke-width='0.4' stroke-opacity='0.1'/%3E%3Cline x1='4' y1='30' x2='56' y2='30' stroke='%23c8a84b' stroke-width='0.4' stroke-opacity='0.08'/%3E%3Cline x1='30' y1='4' x2='30' y2='56' stroke='%23c8a84b' stroke-width='0.4' stroke-opacity='0.08'/%3E%3C/svg%3E");
+    background-size: 60px 60px;
+    background-repeat: repeat;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .service-card.variant-gov > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .service-card.variant-gov::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, #c8a84b, #8b6914);
+    border-radius: 9999px 0 0 9999px;
+    z-index: 2;
+  }
+
+  [dir="rtl"] .service-card.variant-gov::after {
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+    border-radius: 0 9999px 9999px 0;
+  }
+
+  .service-card.variant-gov .service-card-icon {
+    color: var(--color-heritage);
+    background: rgba(200, 168, 75, 0.14);
+    border-color: rgba(200, 168, 75, 0.45);
+  }
+
+  .service-card.variant-gov .service-card-cta,
+  .service-card.variant-gov .service-card-meta-pill {
+    color: var(--color-heritage);
+  }
+
+  .service-card.variant-gov h3 {
+    color: #3d2b1f;
+  }
+
+  .service-card.variant-gov p {
+    color: #6b5740;
+  }
+
+  .service-card.variant-gov:hover {
+    border-color: rgba(200, 168, 75, 0.6);
+    box-shadow: var(--shadow-gov);
+    background: #f9f5eb;
+    transform: translateY(-4px);
+  }
+
+  /* Gov stamp badge in top-right corner */
+  .gov-stamp-corner {
+    position: absolute;
+    top: 0.9rem;
+    inset-inline-end: 0.9rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 9999px;
+    border: 1.5px solid rgba(200, 168, 75, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(200, 168, 75, 0.55);
+    background: rgba(200, 168, 75, 0.06);
+    font-size: 0.55rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+  }
+
+  /* ============================================================
+     TECH SERVICE CARDS — Dark surface / digital glow style
+     ============================================================ */
+
+  .service-card.variant-tech {
+    background: var(--color-tech-surface);
+    border-color: rgba(30, 58, 95, 0.85);
+    color: #e2e8f0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card.variant-tech::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='none'/%3E%3Cpath d='M0 20h40M20 0v40' stroke='%23007aff' stroke-width='0.4' stroke-opacity='0.1'/%3E%3C/svg%3E");
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Top glow accent */
+  .service-card.variant-tech::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      #007aff 0%,
+      #5ac8fa 50%,
+      #5856d6 100%
+    );
+    z-index: 2;
+  }
+
+  .service-card.variant-tech > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .service-card.variant-tech .service-card-icon {
+    color: #5ac8fa;
+    background: rgba(90, 200, 250, 0.1);
+    border-color: rgba(90, 200, 250, 0.25);
+  }
+
+  .service-card.variant-tech.tone-teal .service-card-icon {
+    color: #2bb8b3;
+    background: rgba(43, 184, 179, 0.12);
+    border-color: rgba(43, 184, 179, 0.3);
+  }
+
+  .service-card.variant-tech.tone-violet .service-card-icon,
+  .service-card.variant-tech.tone-sky .service-card-icon {
+    color: #7c73e6;
+    background: rgba(88, 86, 214, 0.12);
+    border-color: rgba(88, 86, 214, 0.3);
+  }
+
+  .service-card.variant-tech .service-card-cta,
+  .service-card.variant-tech .service-card-meta-pill {
+    color: #5ac8fa;
+  }
+
+  .service-card.variant-tech.tone-teal .service-card-cta {
+    color: #2bb8b3;
+  }
+
+  .service-card.variant-tech.tone-violet .service-card-cta,
+  .service-card.variant-tech.tone-sky .service-card-cta {
+    color: #7c73e6;
+  }
+
+  .service-card.variant-tech h3 {
+    color: #f1f5f9;
+  }
+
+  .service-card.variant-tech p {
+    color: #94a3b8;
+  }
+
+  .service-card.variant-tech:hover {
+    border-color: rgba(0, 122, 255, 0.55);
+    box-shadow: var(--shadow-tech-lift);
+    transform: translateY(-4px);
+  }
+
+  /* ============================================================
+     OFFERING THEATER — variant-specific card tones
+     ============================================================ */
+
+  .offering-premium-card.variant-gov {
+    background: var(--color-gov-cream);
+    border-color: rgba(200, 168, 75, 0.32);
+  }
+
+  .offering-premium-card.variant-gov .offering-premium-cta {
+    color: var(--color-heritage);
+  }
+
+  .offering-premium-card.variant-gov h3 {
+    color: #3d2b1f;
+  }
+
+  .offering-premium-card.variant-gov:hover {
+    border-color: rgba(200, 168, 75, 0.55);
+    box-shadow: var(--shadow-gov-lift);
+  }
+
+  .offering-premium-card.variant-tech {
+    background: var(--color-tech-surface);
+    border-color: rgba(30, 58, 95, 0.85);
+  }
+
+  .offering-premium-card.variant-tech h3 {
+    color: #f1f5f9;
+  }
+
+  .offering-premium-card.variant-tech p {
+    color: #94a3b8;
+  }
+
+  .offering-premium-card.variant-tech .offering-premium-cta {
+    color: #5ac8fa;
+  }
+
+  .offering-premium-card.variant-tech:hover {
+    border-color: rgba(0, 122, 255, 0.55);
+    box-shadow: var(--shadow-tech-lift);
+  }
+
+  /* ============================================================
+     GOLD ICON TONES — fixed to use real gold
+     ============================================================ */
+
+  .icon-gold,
+  .icon-gold-lg,
+  .icon-tone-gold {
+    color: var(--color-heritage);
+    background: rgba(200, 168, 75, 0.14);
+    border: 1px solid rgba(200, 168, 75, 0.42);
+  }
+
+  /* ============================================================
+     HIGHLIGHT LINE — gov version
+     ============================================================ */
+
+  .highlight-line.gov {
+    background: linear-gradient(90deg, #c8a84b, #e8c96a, #8b6914);
+  }
+
+  /* ============================================================
+     MOBILE IMPROVEMENTS
+     ============================================================ */
+
+  @media (max-width: 639px) {
+    /* Hero section mobile — better breathing */
+    .hero-premium-inner {
+      padding-top: 5rem !important;
+      padding-bottom: 2.5rem !important;
+    }
+
+    .hero-title-glow {
+      font-size: clamp(1.75rem, 7vw, 2.25rem) !important;
+      line-height: 1.22 !important;
+    }
+
+    /* CTA buttons mobile — full width, comfortable */
+    .btn-hero,
+    .btn-outline-light {
+      min-height: 54px;
+      font-size: 0.95rem;
+    }
+
+    /* Section padding mobile */
+    .section-pad {
+      padding-left: 1.1rem;
+      padding-right: 1.1rem;
+      padding-top: 2.75rem;
+      padding-bottom: 2.75rem;
+    }
+
+    /* Offering bento on mobile — better gap */
+    .offering-bento {
+      gap: 0.85rem;
+    }
+
+    /* Why mosaic mobile — prevent overflow */
+    .why-premium-card--tile p {
+      font-size: 0.8rem;
+    }
+
+    /* Service cards mobile — consistent height */
+    .service-card {
+      min-height: 0;
+    }
+
+    /* Lang band on mobile — tighter */
+    .lang-band {
+      padding: 2.25rem 0 2.5rem;
+    }
+
+    /* Process rail mobile — better spacing */
+    .process-premium-body h3 {
+      font-size: 1rem;
+    }
+
+    /* CTA band mobile — center properly */
+    .cta-band {
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    /* Navbar mobile — ensure strip shows */
+    .nav-gov-strip {
+      height: 3px;
+    }
+
+    /* Gov variant mobile */
+    .service-card.variant-gov::before {
+      background-size: 40px 40px;
     }
   }
+
+  /* Tablet improvements */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .offering-bento {
+      gap: 1rem;
+    }
+
+    .service-card.variant-gov::before {
+      background-size: 50px 50px;
+    }
+  }
+
+  /* Pointer coarse — disable gov tech animations */
+  @media (pointer: coarse) {
+    .service-card.variant-gov:hover,
+    .service-card.variant-tech:hover,
+    .offering-premium-card.variant-gov:hover,
+    .offering-premium-card.variant-tech:hover {
+      transform: none;
+    }
+  }
+
+  /* ============================================================
+     TRUST BAR — fix gold color usage
+     ============================================================ */
+
+  .trust-view-all {
+    border-bottom-color: var(--color-gold);
+  }
+
+  .trust-view-all:hover {
+    color: var(--color-heritage);
+  }
+
+  /* ============================================================
+     INPUT — fix gold focus border
+     ============================================================ */
+  .input-soft:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(200, 168, 75, 0.12);
+  }
+
+  /* ============================================================
+     BADGE GOLD — fix with real gold
+     ============================================================ */
+  .badge-gold {
+    color: var(--color-heritage);
+    border-color: rgba(200, 168, 75, 0.4);
+  }
+
+  /* ============================================================
+     SECTION HEADING highlight line — keep brand blue
+     ============================================================ */
+  .highlight-line {
+    background: linear-gradient(90deg, #5ac8fa, #2b9aef, #007aff);
+  }
+
+  /* ============================================================
+     PAGE MAST + CTA BAND eyebrow
+     ============================================================ */
+  .page-mast .eyebrow,
+  .cta-band .eyebrow,
+  .hero-premium .eyebrow {
+    color: rgba(200, 168, 75, 0.9);
+  }
+
 }
+
 
 @layer utilities {
   .text-balance {
