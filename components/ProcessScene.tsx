@@ -50,7 +50,7 @@ export default function ProcessScene({ title, subtitle, steps }: Props) {
                       alt=""
                       fill
                       sizes="(max-width: 640px) 96px, 33vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="object-cover object-center"
                     />
                     <span className={`process-premium-step process-num-${i}`}>
                       {String(i + 1).padStart(2, "0")}

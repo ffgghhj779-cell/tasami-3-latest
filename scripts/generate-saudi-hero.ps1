@@ -1,4 +1,4 @@
-# Build Tasami hero from Saudi (thobe/shemagh) story frames.
+# Static frames + crossfade only — no zoompan (avoids vibration).
 $ErrorActionPreference = "Stop"
 $root = Split-Path $PSScriptRoot -Parent
 $public = Join-Path $root "public\visuals"
@@ -24,8 +24,11 @@ $frames = @(
 foreach ($f in $frames) {
   $src = Join-Path $assets $f.name
   $dst = Join-Path $reel $f.name
-  if (-not (Test-Path $src)) { throw "Missing $src" }
-  [System.IO.File]::Copy("\\?\$src", "\\?\$dst", $true)
+  if (Test-Path $src) {
+    [System.IO.File]::Copy("\\?\$src", "\\?\$dst", $true)
+  } elseif (-not (Test-Path $dst)) {
+    throw "Missing $($f.name) in $assets or $reel"
+  }
 }
 
 Copy-Item (Join-Path $reel "saudi-02-arrive.png") (Join-Path $public "hero-plate.png") -Force
@@ -36,9 +39,7 @@ for ($i = 0; $i -lt $frames.Count; $i++) {
   $f = $frames[$i]
   $src = Join-Path $reel $f.name
   $dst = Join-Path $tmp ("clip-{0:d2}.mp4" -f $i)
-  $framesN = [int]($f.sec * 25)
-  # Slow cinematic push-in — same person, continuous motion, not a slideshow cut.
-  $vf = "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,zoompan=z='min(zoom+0.00055,1.08)':d=${framesN}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1920x1080:fps=25,format=yuv420p"
+  $vf = "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,format=yuv420p"
   & ffmpeg -y -loop 1 -i $src -t $f.sec -vf $vf -r 25 -an -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p $dst
   if ($LASTEXITCODE -ne 0) { throw "clip $i failed" }
   $clips += $dst
@@ -67,7 +68,7 @@ $mobile = Join-Path $public "hero-mobile.mp4"
 $webm = Join-Path $public "hero.webm"
 Copy-Item $merged $hero -Force
 
-& ffmpeg -y -i $hero -vf "scale=854:480:force_original_aspect_ratio=increase,crop=854:480" -c:v libx264 -preset veryfast -crf 24 -an -movflags +faststart $mobile
+& ffmpeg -y -i $hero -vf "scale=720:1280:force_original_aspect_ratio=increase,crop=720:1280" -c:v libx264 -preset veryfast -crf 24 -an -movflags +faststart $mobile
 if ($LASTEXITCODE -ne 0) { throw "mobile failed" }
 
 & ffmpeg -y -i $hero -c:v libvpx-vp9 -b:v 1.0M -deadline realtime -cpu-used 8 -an $webm

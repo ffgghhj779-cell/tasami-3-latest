@@ -22,7 +22,7 @@ const ICONS = {
 const OBJECT_POS: Record<keyof typeof ICONS, string> = {
   gov: "object-center",
   tech: "object-center",
-  sectors: "object-[center_28%]",
+  sectors: "object-[center_40%]",
 };
 
 export type TheaterItem = {
@@ -70,7 +70,7 @@ function OfferingCard({
               ? "(max-width: 1023px) 100vw, 58vw"
               : "(max-width: 1023px) 100vw, 28vw"
           }
-          className={`object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06] ${OBJECT_POS[item.key]}`}
+          className={`object-cover ${OBJECT_POS[item.key]}`}
         />
         <span className="offering-premium-wash" />
         <span className="offering-premium-icon">
@@ -80,16 +80,16 @@ function OfferingCard({
       </div>
       <div className="offering-premium-body">
         <h3
-          className={`font-display ${isHero ? "text-2xl text-white lg:text-tasami-dark sm:text-3xl" : "text-xl text-tasami-dark sm:text-2xl"}`}
+          className={`font-display ${isHero ? "text-2xl text-tasami-dark sm:text-3xl" : "text-xl text-tasami-dark sm:text-2xl"}`}
         >
           {item.title}
         </h3>
         <p
-          className={`mt-2.5 flex-1 leading-relaxed ${isHero ? "text-sm text-white/90 lg:text-tasami-gray sm:text-base" : "text-sm text-tasami-gray offering-premium-desc--compact"}`}
+          className={`mt-2.5 flex-1 leading-relaxed ${isHero ? "text-sm text-tasami-gray sm:text-base" : "text-sm text-tasami-gray offering-premium-desc--compact"}`}
         >
           {item.description}
         </p>
-        <span className={`offering-premium-cta ${isHero ? "text-white lg:text-[var(--color-primary)]" : ""}`}>
+        <span className="offering-premium-cta">
           {item.cta}
           <Arrow
             weight="regular"

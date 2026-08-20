@@ -85,7 +85,7 @@ export default function WhyScene({ title, subtitle, items }: Props) {
                           alt=""
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                          className="object-cover object-center"
                         />
                         <span className="why-premium-shot-wash" />
                         <span className={`why-premium-num why-num--${tone}`}>
@@ -99,7 +99,7 @@ export default function WhyScene({ title, subtitle, items }: Props) {
                           alt=""
                           fill
                           sizes="(max-width: 1024px) 50vw, 33vw"
-                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                          className="object-cover object-center"
                         />
                         <span className="why-premium-shot-wash" />
                         <span className={`why-premium-num why-num--${tone}`}>

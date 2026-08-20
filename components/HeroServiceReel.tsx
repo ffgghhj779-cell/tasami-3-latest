@@ -74,7 +74,7 @@ export default function HeroServiceReel({ items }: Props) {
                 alt=""
                 fill
                 sizes="(max-width: 1023px) 78vw, 280px"
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover object-center"
               />
               <span className="hero-orbit-wash" />
               <span className="hero-orbit-icon">
