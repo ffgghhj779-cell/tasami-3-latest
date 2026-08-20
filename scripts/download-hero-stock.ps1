@@ -1,4 +1,5 @@
-# Build Tasami hero story video — real stock footage montage (office narrative).
+# Build Tasami hero story video — prefers Saudi brand reel frames (see generate-hero-reel.ps1).
+# This stock montage script is kept for optional B-roll; run generate-hero-reel.ps1 for Saudi people.
 $ErrorActionPreference = "Stop"
 $root = Split-Path $PSScriptRoot -Parent
 $public = Join-Path $root "public\visuals"

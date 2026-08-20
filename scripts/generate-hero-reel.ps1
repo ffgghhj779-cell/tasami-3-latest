@@ -1,4 +1,4 @@
-# Build Tasami hero story — static frames only (no zoom/pan shake).
+# Build Tasami hero story — Saudi client narrative from brand reel frames (real MP4, crossfade only).
 $ErrorActionPreference = "Stop"
 $root = Split-Path $PSScriptRoot -Parent
 $public = Join-Path $root "public\visuals"
@@ -10,25 +10,26 @@ New-Item -ItemType Directory -Force -Path $reel | Out-Null
 if (Test-Path $tmp) { Remove-Item $tmp -Recurse -Force }
 New-Item -ItemType Directory -Force -Path $tmp | Out-Null
 
+# Story: Riyadh office exterior → Saudi client arrives → enters → consult → signs → handshake
 $frames = @(
-  @{ name = "reel-01-exterior.png"; sec = 3.8 },
-  @{ name = "reel-02-arrive.png";   sec = 3.4 },
-  @{ name = "reel-03-enter.png";    sec = 3.4 },
-  @{ name = "reel-04-consult.png";  sec = 3.6 },
-  @{ name = "reel-05-complete.png"; sec = 3.2 },
-  @{ name = "reel-06-done.png";     sec = 3.4 }
+  @{ name = "reel-01-exterior.png"; sec = 3.6 },
+  @{ name = "reel-02-arrive.png";   sec = 3.2 },
+  @{ name = "reel-03-enter.png";    sec = 3.2 },
+  @{ name = "reel-04-consult.png";  sec = 3.4 },
+  @{ name = "reel-05-complete.png"; sec = 3.0 },
+  @{ name = "reel-06-done.png";     sec = 3.2 }
 )
 
 foreach ($f in $frames) {
   $src = Join-Path $reel $f.name
   if (-not (Test-Path $src)) {
-    $found = Get-ChildItem $assets -Filter $f.name | Select-Object -First 1
-    if (-not $found) { throw "Missing $($f.name)" }
+    $found = Get-ChildItem $assets -Filter $f.name -ErrorAction SilentlyContinue | Select-Object -First 1
+    if (-not $found) { throw "Missing $($f.name) in $reel or $assets" }
     [System.IO.File]::Copy("\\?\$($found.FullName)", "\\?\$src", $true)
   }
 }
 
-Copy-Item (Join-Path $reel "reel-01-exterior.png") (Join-Path $public "hero-plate.png") -Force
+Copy-Item (Join-Path $reel "reel-02-arrive.png") (Join-Path $public "hero-plate.png") -Force
 
 $vf = "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,format=yuv420p"
 $clips = @()
@@ -41,7 +42,7 @@ for ($i = 0; $i -lt $frames.Count; $i++) {
   $clips += $dst
 }
 
-$fade = 0.55
+$fade = 0.5
 $ffArgs = @("-y")
 foreach ($c in $clips) { $ffArgs += @("-i", $c) }
 $parts = @()
@@ -53,15 +54,21 @@ for ($j = 1; $j -lt $clips.Count; $j++) {
   $prev = $out
   $offset += $frames[$j].sec - $fade
 }
+
 $merged = Join-Path $tmp "merged.mp4"
 & ffmpeg @ffArgs -filter_complex ($parts -join ";") -map "[vout]" -an -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -movflags +faststart $merged
 if ($LASTEXITCODE -ne 0) { throw "merge failed" }
 
-$mp4 = Join-Path $public "hero.mp4"
+$hero = Join-Path $public "hero.mp4"
+$mobile = Join-Path $public "hero-mobile.mp4"
 $webm = Join-Path $public "hero.webm"
-Copy-Item $merged $mp4 -Force
-& ffmpeg -y -i $mp4 -c:v libvpx-vp9 -b:v 1.4M -deadline realtime -cpu-used 8 -row-mt 1 -an $webm
+Copy-Item $merged $hero -Force
+
+& ffmpeg -y -i $hero -vf "scale=854:480:force_original_aspect_ratio=increase,crop=854:480" -c:v libx264 -preset veryfast -crf 24 -an -movflags +faststart $mobile
+if ($LASTEXITCODE -ne 0) { throw "mobile failed" }
+
+& ffmpeg -y -i $hero -c:v libvpx-vp9 -b:v 1.2M -deadline realtime -cpu-used 8 -an $webm
 if ($LASTEXITCODE -ne 0) { throw "webm failed" }
 
 Remove-Item $tmp -Recurse -Force -ErrorAction SilentlyContinue
-Write-Host ("Done mp4={0} webm={1}" -f (Get-Item $mp4).Length, (Get-Item $webm).Length)
+Write-Host "hero=$((Get-Item $hero).Length) mobile=$((Get-Item $mobile).Length) webm=$((Get-Item $webm).Length)"
