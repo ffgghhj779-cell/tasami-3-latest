@@ -48,13 +48,28 @@ export default function Reveal({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y, scale: 0.97 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.2, margin: "0px 0px -10% 0px" }}
+      initial={{ 
+        opacity: 0, 
+        y, 
+        scale: 0.95,
+        filter: "blur(10px)",
+        rotateX: 12,
+        transformPerspective: 1000
+      }}
+      whileInView={{ 
+        opacity: 1, 
+        y: 0, 
+        scale: 1,
+        filter: "blur(0px)",
+        rotateX: 0
+      }}
+      viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
       transition={{
-        duration: 0.65,
+        type: "spring",
+        stiffness: 70,
+        damping: 18,
+        mass: 1.2,
         delay: stagger,
-        ease: [0.22, 1, 0.36, 1],
       }}
     >
       {children}
