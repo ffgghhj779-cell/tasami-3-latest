@@ -1,6 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
-import { Link } from "@/navigation";
+import PageHeader from "@/components/PageHeader";
 import { buildPageMetadata } from "@/lib/seo";
 import { getPublicContactEmail, getPhoneDisplay, getWhatsAppUrl, telUrl } from "@/lib/site";
 
@@ -38,34 +37,24 @@ export default async function PrivacyPage({ params }: Props) {
   });
 
   return (
-    <div className="surface-dotted min-h-screen">
-      <div className="mx-auto max-w-3xl px-5 py-14 sm:px-8 sm:py-18 lg:px-10 lg:py-20">
-        <Link
-          href="/"
-          className="mb-10 inline-flex min-h-[44px] items-center gap-1.5 text-sm font-medium text-tasami-gray transition-colors hover:text-tasami-pink"
-        >
-          <ArrowLeft weight="bold" className="h-4 w-4 rtl:rotate-180" />
-          {t("back")}
-        </Link>
+    <div className="min-h-screen">
+      <PageHeader
+        backHref="/"
+        backLabel={t("back")}
+        eyebrow={tp("eyebrow")}
+        title={tp("title")}
+        subtitle={tp("subtitle")}
+      >
+        <p className="mt-4 text-xs text-white/40">{updated}</p>
+      </PageHeader>
 
-        <header className="mb-12">
-          <p className="text-sm font-medium text-tasami-pink">{tp("eyebrow")}</p>
-          <h1 className="font-display mt-3 text-2xl text-tasami-purple sm:text-4xl">
-            {tp("title")}
-          </h1>
-          <span className="highlight-line" />
-          <p className="mt-5 text-base leading-relaxed text-tasami-gray">
-            {tp("subtitle")}
-          </p>
-          <p className="mt-4 text-xs text-tasami-gray/80">{updated}</p>
-        </header>
-
+      <div className="mx-auto max-w-3xl px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
         <div className="card-premium space-y-10 p-7 sm:p-10">
           <p className="text-sm leading-[1.9] text-tasami-dark">{tp("intro")}</p>
 
           {SECTION_KEYS.map((key) => (
             <section key={key}>
-              <h2 className="text-base font-medium text-tasami-purple sm:text-lg">
+              <h2 className="text-base font-medium text-tasami-dark sm:text-lg">
                 {tp(`sections.${key}.title`)}
               </h2>
               <p className="mt-3 text-sm leading-[1.9] text-tasami-gray">
@@ -74,12 +63,12 @@ export default async function PrivacyPage({ params }: Props) {
             </section>
           ))}
 
-          <div className="border-t border-tasami-purple/8 pt-6 text-sm text-tasami-gray">
+          <div className="border-t border-[rgba(0,122,255,0.12)] pt-6 text-sm text-tasami-gray">
             <a
               href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-tasami-pink hover:underline"
+              className="font-medium text-tasami-purple hover:underline"
             >
               WhatsApp
             </a>
@@ -87,7 +76,7 @@ export default async function PrivacyPage({ params }: Props) {
             <a
               href={telUrl()}
               dir="ltr"
-              className="font-medium text-tasami-pink hover:underline"
+              className="font-medium text-tasami-purple hover:underline"
             >
               {phoneDisplay}
             </a>
@@ -96,7 +85,7 @@ export default async function PrivacyPage({ params }: Props) {
                 {" · "}
                 <a
                   href={`mailto:${contactEmail}`}
-                  className="font-medium text-tasami-pink hover:underline"
+                  className="font-medium text-tasami-purple hover:underline"
                 >
                   {contactEmail}
                 </a>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter } from "@/navigation";
+import BrandLogo from "@/components/BrandLogo";
 
 type Mode = "login" | "register";
 
@@ -56,17 +57,14 @@ export default function AuthForm({ mode }: { mode: Mode }) {
   }
 
   return (
-    <div className="surface-dotted min-h-screen">
+    <div className="min-h-screen bg-background">
       <div className="mx-auto flex max-w-md flex-col px-5 py-14 sm:px-8 lg:py-20">
-        <Link
-          href="/"
-          className="mb-8 text-sm font-medium text-tasami-gray hover:text-tasami-pink"
-        >
-          ← {t("backHome")}
+        <Link href="/" className="mb-8 inline-flex self-center" aria-label={t("backHome")}>
+          <BrandLogo lockupSize="md" priority wordmark="تَسَامِي" />
         </Link>
 
         <header className="mb-8">
-          <h1 className="font-display text-2xl text-tasami-purple sm:text-3xl">
+          <h1 className="font-display text-2xl text-tasami-dark sm:text-3xl">
             {mode === "login" ? t("loginTitle") : t("registerTitle")}
           </h1>
           <span className="highlight-line" />
@@ -77,7 +75,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
 
         <form onSubmit={submit} className="card-premium space-y-3.5 p-6">
           {mode === "register" && (
-            <label className="block text-xs font-medium text-tasami-purple">
+            <label className="block text-xs font-medium text-tasami-dark">
               {t("name")}
               <input
                 required
@@ -89,7 +87,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
             </label>
           )}
 
-          <label className="block text-xs font-medium text-tasami-purple">
+          <label className="block text-xs font-medium text-tasami-dark">
             {t("phone")}
             <input
               required
@@ -103,7 +101,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
           </label>
 
           {mode === "register" && (
-            <label className="block text-xs font-medium text-tasami-purple">
+            <label className="block text-xs font-medium text-tasami-dark">
               {t("email")}
               <input
                 type="email"
@@ -118,7 +116,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
             </label>
           )}
 
-          <label className="block text-xs font-medium text-tasami-purple">
+          <label className="block text-xs font-medium text-tasami-dark">
             {t("password")}
             <input
               required
@@ -134,12 +132,12 @@ export default function AuthForm({ mode }: { mode: Mode }) {
             />
           </label>
 
-          {error && <p className="text-sm text-tasami-purple">{error}</p>}
+          {error && <p className="text-sm text-tasami-dark">{error}</p>}
 
           <button
             type="submit"
             disabled={loading}
-            className="btn-secondary w-full text-sm disabled:opacity-50"
+            className="btn-primary w-full text-sm disabled:opacity-50"
           >
             {loading
               ? t("loading")
@@ -162,7 +160,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
           {mode === "login" ? t("noAccount") : t("hasAccount")}{" "}
           <Link
             href={mode === "login" ? "/register" : "/login"}
-            className="font-medium text-tasami-pink hover:text-tasami-purple"
+            className="font-medium text-tasami-purple hover:underline"
           >
             {mode === "login" ? t("registerLink") : t("loginLink")}
           </Link>

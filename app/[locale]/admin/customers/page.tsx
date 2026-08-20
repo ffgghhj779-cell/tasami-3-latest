@@ -30,7 +30,7 @@ export default async function AdminCustomersPage({ params }: Props) {
   return (
     <div className="space-y-8">
       <header>
-        <h1 className="font-display text-2xl text-tasami-purple sm:text-3xl">
+        <h1 className="font-display text-2xl text-tasami-dark sm:text-3xl">
           {t("customers.title")}
         </h1>
         <p className="mt-2 text-sm leading-relaxed text-tasami-gray">

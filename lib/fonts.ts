@@ -1,21 +1,31 @@
 import {
-  IBM_Plex_Sans_Arabic,
+  El_Messiri,
+  Montserrat,
   Noto_Nastaliq_Urdu,
   Noto_Sans_Devanagari,
-  Plus_Jakarta_Sans,
+  Tajawal,
 } from "next/font/google";
 
-/** Premium Arabic UI face — IBM Plex, sharp marks, institutional quality */
-export const fontArabic = IBM_Plex_Sans_Arabic({
+/** Arabic body — clean UI text, buttons, paragraphs. */
+export const fontArabic = Tajawal({
   subsets: ["arabic", "latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "700"],
   variable: "--font-arabic",
   display: "swap",
   preload: true,
 });
 
-/** Premium Latin face — Plus Jakarta Sans, high-end geometric */
-export const fontLatin = Plus_Jakarta_Sans({
+/** Arabic headings — elegant display serif for titles & brand. */
+export const fontHeadingAr = El_Messiri({
+  subsets: ["arabic", "latin"],
+  weight: ["600", "700"],
+  variable: "--font-heading-ar",
+  display: "swap",
+  preload: true,
+});
+
+/** English — geometric sans like TASAMI / MODERN TECH & SERVICES. */
+export const fontLatin = Montserrat({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-latin",
@@ -41,6 +51,7 @@ export const fontUrdu = Noto_Nastaliq_Urdu({
 
 export const fontVariables = [
   fontArabic.variable,
+  fontHeadingAr.variable,
   fontLatin.variable,
   fontHindi.variable,
   fontUrdu.variable,

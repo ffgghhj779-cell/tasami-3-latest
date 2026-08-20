@@ -29,13 +29,10 @@ export default function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex w-full shrink-0 flex-col bg-[#0C021C] text-white md:sticky md:top-0 md:h-screen md:w-64">
-      <div className="flex items-center gap-3 border-b border-white/10 px-6 py-6">
-        <BrandLogo size={48} onDark />
-        <div>
-          <p className="text-sm font-medium tracking-wide">{t("brand")}</p>
-          <p className="text-[11px] text-white/55">{t("secretary")}</p>
-        </div>
+    <aside className="flex w-full shrink-0 flex-col bg-[#007AFF] text-white md:sticky md:top-0 md:h-screen md:w-64">
+      <div className="border-b border-white/10 px-6 py-5">
+        <BrandLogo lockupSize="sm" wordmark="تَسَامِي" />
+        <p className="mt-2 text-[11px] text-white/55">{t("secretary")}</p>
       </div>
 
       <nav className="flex flex-1 flex-col gap-1 px-3 py-5">
@@ -49,13 +46,13 @@ export default function AdminSidebar() {
               href={href}
               className={`flex min-h-[44px] items-center gap-3 rounded-button px-3.5 py-2.5 text-sm transition-colors ${
                 active
-                  ? "bg-white/10 text-tasami-gold"
-                  : "text-white/75 hover:bg-white/8 hover:text-white"
+                  ? "bg-white/15 text-white"
+                  : "text-white/75 hover:bg-white/10 hover:text-white"
               }`}
             >
               <Icon
                 weight="regular"
-                className={`h-5 w-5 ${active ? "text-tasami-gold" : "text-tasami-lilac/80"}`}
+                className={`h-5 w-5 ${active ? "text-white" : "text-tasami-lilac"}`}
               />
               {t(`nav.${key}`)}
             </Link>

@@ -234,7 +234,7 @@ export default function ServiceRequestActions({
 
     if (field.type === "select" && field.options) {
       return (
-        <label key={field.id} className="block text-xs font-medium text-tasami-purple">
+        <label key={field.id} className="block text-xs font-medium text-tasami-dark">
           {label}
           <select
             required={field.required}
@@ -255,7 +255,7 @@ export default function ServiceRequestActions({
 
     if (field.type === "textarea") {
       return (
-        <label key={field.id} className="block text-xs font-medium text-tasami-purple">
+        <label key={field.id} className="block text-xs font-medium text-tasami-dark">
           {label}
           <textarea
             required={field.required}
@@ -270,7 +270,7 @@ export default function ServiceRequestActions({
     }
 
     return (
-      <label key={field.id} className="block text-xs font-medium text-tasami-purple">
+      <label key={field.id} className="block text-xs font-medium text-tasami-dark">
         {label}
         <input
           required={field.required}
@@ -311,7 +311,7 @@ export default function ServiceRequestActions({
     <>
       {formDef.docs.length > 0 && (
         <div className="mt-5">
-          <p className="text-xs font-medium text-tasami-gold">{t("requiredDocs")}</p>
+          <p className="text-xs font-medium text-tasami-heritage">{t("requiredDocs")}</p>
           <ul className="mt-2 list-inside list-disc text-sm text-tasami-gray">
             {formDef.docs.map((doc) => (
               <li key={doc}>{t(`docs.${doc}`)}</li>
@@ -348,7 +348,7 @@ export default function ServiceRequestActions({
             <button
               type="button"
               aria-label={t("close")}
-              className="absolute inset-0 bg-[#0C021C]/55"
+              className="absolute inset-0 bg-[#007AFF]/40"
               onClick={close}
             />
 
@@ -357,9 +357,9 @@ export default function ServiceRequestActions({
               aria-modal="true"
               className="sheet-panel relative z-10 flex h-[min(100dvh,100%)] max-h-[100dvh] w-full flex-col overflow-hidden rounded-none bg-white shadow-soft touch-manipulation sm:h-auto sm:max-h-[min(90vh,720px)] sm:rounded-card"
             >
-              <div className="flex shrink-0 items-start justify-between gap-3 bg-[#1A0845] px-5 py-4 pt-[max(1rem,env(safe-area-inset-top))]">
+              <div className="flex shrink-0 items-start justify-between gap-3 bg-[#007AFF] px-5 py-4 pt-[max(1rem,env(safe-area-inset-top))]">
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs font-semibold text-tasami-gold">
+                  <p className="text-xs font-semibold text-tasami-heritage">
                     {t("modalEyebrow")}
                   </p>
                   <h2 className="mt-1 truncate text-lg font-semibold text-white">
@@ -380,7 +380,7 @@ export default function ServiceRequestActions({
                 <div className="scroll-touch flex-1 space-y-4 overflow-y-auto p-6 text-center pb-[max(1.5rem,env(safe-area-inset-bottom))]">
                   <CheckCircle
                     weight="fill"
-                    className="mx-auto h-12 w-12 text-tasami-gold"
+                    className="mx-auto h-12 w-12 text-tasami-heritage"
                   />
                   <h3 className="text-base font-medium text-tasami-purple">
                     {t("successTitle")}
@@ -418,7 +418,7 @@ export default function ServiceRequestActions({
                       {t("modalIntro")}
                     </p>
 
-                    <label className="block text-xs font-medium text-tasami-purple">
+                    <label className="block text-xs font-medium text-tasami-dark">
                       {t("name")}
                       <input
                         required
@@ -431,7 +431,7 @@ export default function ServiceRequestActions({
                       />
                     </label>
 
-                    <label className="block text-xs font-medium text-tasami-purple">
+                    <label className="block text-xs font-medium text-tasami-dark">
                       {t("phone")}
                       <input
                         required
@@ -447,7 +447,7 @@ export default function ServiceRequestActions({
                       />
                     </label>
 
-                    <label className="block text-xs font-medium text-tasami-purple">
+                    <label className="block text-xs font-medium text-tasami-dark">
                       {t("email")}
                       <input
                         type="email"
@@ -463,7 +463,7 @@ export default function ServiceRequestActions({
                     </label>
 
                     <div className="border-t border-tasami-purple/8 pt-3">
-                      <p className="mb-3 text-xs font-medium text-tasami-gold">
+                      <p className="mb-3 text-xs font-medium text-tasami-heritage">
                         {t("serviceDetails")}
                       </p>
                       <div className="space-y-3.5">
@@ -472,7 +472,7 @@ export default function ServiceRequestActions({
                     </div>
 
                     <div className="border-t border-tasami-purple/8 pt-3">
-                      <label className="block text-xs font-medium text-tasami-purple">
+                      <label className="block text-xs font-medium text-tasami-dark">
                         {t("attachments")}
                         <input
                           type="file"
@@ -563,7 +563,7 @@ export function MonjezHint() {
   const t = useTranslations("request");
   return (
     <p className="mt-3 flex items-center justify-center gap-1.5 text-[11px] text-tasami-gray sm:justify-start">
-      <ChatCircleDots weight="regular" className="h-3.5 w-3.5 text-tasami-gold" />
+      <ChatCircleDots weight="regular" className="h-3.5 w-3.5 text-tasami-heritage" />
       {t("monjezHint")}
     </p>
   );

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import {
-  ArrowLeft,
   X,
   ForkKnife,
   Heartbeat,
@@ -24,8 +23,11 @@ import {
 import type { ComponentType, SVGProps } from "react";
 import { Link } from "@/navigation";
 import ServiceCard from "@/components/ServiceCard";
+import PageHeader from "@/components/PageHeader";
+import Reveal from "@/components/Reveal";
 import ServiceRequestActions from "@/components/ServiceRequestActions";
 import { SECTOR_KEYS, type SectorKey } from "@/lib/content-keys";
+import { VISUALS } from "@/lib/visuals";
 import { SECTOR_PRICE_FROM, formatPriceFrom } from "@/lib/service-pricing";
 import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
 import { rtlLocales, type Locale } from "@/i18n";
@@ -61,31 +63,22 @@ export default function SectorsPage() {
   const [active, setActive] = useState<SectorKey | null>(null);
 
   return (
-    <div className="surface-dotted min-h-screen">
-      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-18 lg:px-10 lg:py-20">
-        <Link
-          href="/"
-          className="mb-10 inline-flex min-h-[44px] items-center gap-1.5 text-sm font-medium text-tasami-gray transition-colors hover:text-tasami-pink"
-        >
-          <ArrowLeft weight="bold" className="h-4 w-4 rtl:rotate-180" />
-          {t("back")}
-        </Link>
+    <div className="min-h-screen">
+      <PageHeader
+        backHref="/"
+        backLabel={t("back")}
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        subtitle={t("subtitle")}
+        visual={VISUALS.offerings.sectors}
+      />
 
-        <header className="mb-14 max-w-2xl">
-          <p className="text-sm font-medium text-tasami-pink">{t("eyebrow")}</p>
-          <h1 className="font-display mt-3 text-2xl text-tasami-purple sm:text-4xl">
-            {t("title")}
-          </h1>
-          <span className="highlight-line" />
-          <p className="mt-5 text-base leading-relaxed text-tasami-gray">
-            {t("subtitle")}
-          </p>
-        </header>
-
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
-          {SECTOR_KEYS.map((key) => (
+      <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16 lg:px-10">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          {SECTOR_KEYS.map((key, i) => (
+            <Reveal key={key} index={i} className="h-full">
             <ServiceCard
-              key={key}
+              toneIndex={i}
               icon={SECTOR_ICONS[key]}
               title={t(`items.${key}.title`)}
               description={t(`items.${key}.desc`)}
@@ -95,6 +88,7 @@ export default function SectorsPage() {
               asButton
               rtl={isRtl}
             />
+            </Reveal>
           ))}
         </div>
 
@@ -124,7 +118,7 @@ function SectorModal({
       <button
         type="button"
         aria-label={t("close")}
-        className="absolute inset-0 bg-[#0C021C]/55"
+        className="absolute inset-0 bg-[#007AFF]/40"
         onClick={onClose}
       />
 
@@ -134,12 +128,12 @@ function SectorModal({
         aria-labelledby="sector-modal-title"
         className="sheet-panel relative z-10 flex h-[min(100dvh,100%)] max-h-[100dvh] w-full flex-col overflow-hidden rounded-none bg-white shadow-soft touch-manipulation sm:h-auto sm:max-h-[min(90vh,720px)] sm:rounded-card"
       >
-        <div className="flex shrink-0 items-start justify-between gap-4 bg-[#1A0845] px-5 py-4 pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:py-5">
+        <div className="flex shrink-0 items-start justify-between gap-4 bg-[#007AFF] px-5 py-4 pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:py-5">
           <div className="flex min-w-0 flex-1 items-center gap-3">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-tasami-lilac">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/45">
               <ActiveIcon
-                weight="bold"
-                className="h-6 w-6 text-tasami-dark"
+                weight="regular"
+                className="h-6 w-6 text-tasami-lilac"
               />
             </span>
             <div className="min-w-0">
@@ -149,7 +143,7 @@ function SectorModal({
               >
                 {title}
               </h2>
-              <p className="mt-1 text-xs text-tasami-gold">
+              <p className="mt-1 text-xs text-tasami-lilac">
                 {formatPriceFrom(SECTOR_PRICE_FROM[sectorKey], locale)}
               </p>
             </div>

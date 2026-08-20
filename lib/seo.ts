@@ -4,16 +4,16 @@ import { getTikTokUrl, getWhatsAppNumber, getWhatsAppUrl } from "@/lib/site";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://tasami.sa";
 
-export const SITE_NAME = "خَلْصَانَة";
-export const SITE_NAME_EN = "KHALSANA";
+export const SITE_NAME = "تَسَامِي";
+export const SITE_NAME_EN = "TASAMI";
 
 const DEFAULT_DESCRIPTION_AR =
-  "خَلْصَانَة — منصة سعودية للخدمات الحكومية والتقنية. بسيطة. سريعة. بأربع لغات. دعم عبر واتساب ومُنجز على مدار الساعة.";
+  "تَسَامِي — منصة سعودية للخدمات الحكومية والتقنية. بسيطة. سريعة. بأربع لغات. دعم عبر واتساب ومُنجز على مدار الساعة.";
 
 const DEFAULT_KEYWORDS = [
-  "خلصانة",
-  "خَلْصَانَة",
-  "KHALSANA",
+  "تسامي",
+  "تَسَامِي",
+  "TASAMI",
   "خدمات حكومية سعودية",
   "تجديد إقامة",
   "سجل تجاري",
@@ -22,7 +22,7 @@ const DEFAULT_KEYWORDS = [
   "خدمات تقنية",
   "تصميم مواقع",
   "تطبيقات جوال",
-  "Khalsana",
+  "Tasami",
   "Saudi government services",
 ];
 

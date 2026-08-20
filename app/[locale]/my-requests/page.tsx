@@ -87,7 +87,7 @@ export default function MyRequestsPage() {
 
   if (!authChecked) {
     return (
-      <div className="surface-dotted flex min-h-screen items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center">
         <p className="text-sm text-tasami-gray">{tAuth("loading")}</p>
       </div>
     );
@@ -95,9 +95,9 @@ export default function MyRequestsPage() {
 
   if (!user) {
     return (
-      <div className="surface-dotted min-h-screen">
+      <div className="min-h-screen">
         <div className="mx-auto max-w-md px-5 py-20 text-center">
-          <h1 className="font-display text-2xl text-tasami-purple">
+          <h1 className="font-display text-2xl text-tasami-dark">
             {t("myTitle")}
           </h1>
           <span className="highlight-line mx-auto" />
@@ -116,7 +116,7 @@ export default function MyRequestsPage() {
   }
 
   return (
-    <div className="surface-dotted min-h-screen">
+    <div className="min-h-screen">
       <div className="mx-auto max-w-3xl px-5 py-14 sm:px-8 lg:py-20">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
           <Link
@@ -135,7 +135,7 @@ export default function MyRequestsPage() {
         </div>
 
         <header className="mb-10">
-          <h1 className="font-display text-2xl text-tasami-purple sm:text-3xl">
+          <h1 className="font-display text-2xl text-tasami-dark sm:text-3xl">
             {t("myTitle")}
           </h1>
           <span className="highlight-line" />
@@ -148,7 +148,7 @@ export default function MyRequestsPage() {
           <p className="mb-4 text-sm text-tasami-gray">{tAuth("loading")}</p>
         )}
         {error && (
-          <p className="mb-4 text-sm text-tasami-purple/80">{error}</p>
+          <p className="mb-4 text-sm text-tasami-dark/80">{error}</p>
         )}
 
         {!loading && !error && (
@@ -156,7 +156,7 @@ export default function MyRequestsPage() {
             {(name || user) && (
               <p className="text-sm text-tasami-gray">
                 {t("hello")}{" "}
-                <span className="font-medium text-tasami-purple">
+                <span className="font-medium text-tasami-dark">
                   {name || user.name}
                 </span>
               </p>
@@ -170,7 +170,7 @@ export default function MyRequestsPage() {
                 <article key={row.id} className="card-premium p-5">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
-                      <h2 className="text-sm font-medium text-tasami-purple">
+                      <h2 className="text-sm font-medium text-tasami-dark">
                         {locale === "ar"
                           ? row.service?.name_ar
                           : row.service?.name_en || row.service?.name_ar}

@@ -1,5 +1,5 @@
 /**
- * Official Saudi platforms Khalsana operates through.
+ * Official Saudi platforms Tasami operates through.
  * Logos live in /public/platforms/{key}.svg
  */
 export const PLATFORM_KEYS = [

@@ -9,11 +9,12 @@ import {
   Brain,
   ChartBar,
   Cloud,
-  ArrowLeft,
 } from "@phosphor-icons/react/dist/ssr";
-import { Link } from "@/navigation";
 import ServiceCard from "@/components/ServiceCard";
+import PageHeader from "@/components/PageHeader";
+import Reveal from "@/components/Reveal";
 import { TECH_KEYS, TECH_SLUGS, type TechKey } from "@/lib/content-keys";
+import { VISUALS } from "@/lib/visuals";
 import { TECH_PRICE_FROM, formatPriceFrom } from "@/lib/service-pricing";
 import { rtlLocales, type Locale } from "@/i18n";
 import { buildPageMetadata } from "@/lib/seo";
@@ -52,31 +53,22 @@ export default async function TechServicesPage({ params }: Props) {
   const isRtl = rtlLocales.includes(locale as Locale);
 
   return (
-    <div className="surface-dotted min-h-screen">
-      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-18 lg:px-10 lg:py-20">
-        <Link
-          href="/"
-          className="mb-10 inline-flex min-h-[44px] items-center gap-1.5 text-sm font-medium text-tasami-gray transition-colors hover:text-tasami-pink"
-        >
-          <ArrowLeft weight="bold" className="h-4 w-4 rtl:rotate-180" />
-          {t("back")}
-        </Link>
+    <div className="min-h-screen">
+      <PageHeader
+        backHref="/"
+        backLabel={t("back")}
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        subtitle={t("subtitle")}
+        visual={VISUALS.offerings.tech}
+      />
 
-        <header className="mb-14 max-w-2xl">
-          <p className="text-sm font-medium text-tasami-pink">{t("eyebrow")}</p>
-          <h1 className="font-display mt-3 text-2xl text-tasami-purple sm:text-4xl">
-            {t("title")}
-          </h1>
-          <span className="highlight-line" />
-          <p className="mt-5 text-base leading-relaxed text-tasami-gray">
-            {t("subtitle")}
-          </p>
-        </header>
-
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
-          {TECH_KEYS.map((key) => (
+      <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16 lg:px-10">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          {TECH_KEYS.map((key, i) => (
+            <Reveal key={key} index={i} className="h-full">
             <ServiceCard
-              key={key}
+              toneIndex={i}
               href={`/services/tech/${TECH_SLUGS[key]}`}
               icon={TECH_ICONS[key]}
               title={t(`items.${key}.title`)}
@@ -85,6 +77,7 @@ export default async function TechServicesPage({ params }: Props) {
               meta={formatPriceFrom(TECH_PRICE_FROM[key], locale)}
               rtl={isRtl}
             />
+            </Reveal>
           ))}
         </div>
       </div>

@@ -76,7 +76,7 @@ export default function AdminRequestsClient({ locale }: { locale: string }) {
     <div className="space-y-8">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-display text-2xl text-tasami-purple sm:text-3xl">
+          <h1 className="font-display text-2xl text-tasami-dark sm:text-3xl">
             {t("requests.title")}
           </h1>
           <p className="mt-2 text-sm text-tasami-gray">{t("requests.subtitle")}</p>

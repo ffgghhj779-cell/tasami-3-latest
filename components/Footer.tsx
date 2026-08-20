@@ -20,19 +20,8 @@ import {
 } from "@/lib/site";
 import { GOV_SLUGS, TECH_SLUGS } from "@/lib/content-keys";
 
-const GOV_LINKS = [
-  "passports",
-  "commerce",
-  "zakat",
-  "najiz",
-] as const;
-
-const TECH_LINKS = [
-  "websites",
-  "mobile",
-  "ai",
-  "cloud",
-] as const;
+const GOV_LINKS = ["passports", "commerce", "zakat", "najiz"] as const;
+const TECH_LINKS = ["websites", "mobile", "ai", "cloud"] as const;
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -44,72 +33,57 @@ export default function Footer() {
   const contactEmail = getPublicContactEmail();
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-[#0C021C] text-white">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-hero-glow opacity-40"
-      />
-
-      <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+    <footer className="relative overflow-hidden border-t border-white/20 bg-[#007AFF] text-white">
+      <div className="relative mx-auto max-w-7xl px-5 py-14 pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))] sm:px-8 sm:pb-16 lg:px-10 lg:py-20">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
-          {/* About */}
           <div>
-            <div className="flex items-center gap-2.5">
-              <BrandLogo
-                lockup
-                lockupSize="sm"
-                wordmark={tBrand("name")}
-                slogan={tBrand("slogan")}
-              />
-            </div>
-            <p className="mt-5 text-sm leading-relaxed text-white/65">
+            <BrandLogo lockupSize="md" wordmark={tBrand("name")} />
+            <p className="mt-5 text-sm leading-relaxed text-white/90">
               {t("about")}
             </p>
-            <p className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-3.5 text-sm font-medium leading-relaxed text-white/85">
+            <p className="mt-4 border border-white/10 bg-white/[0.03] p-3.5 text-sm font-medium leading-relaxed text-white/80">
               {t("affiliation")}
             </p>
-            <div className="mt-6 flex flex-col gap-2.5 text-sm text-white/70">
+            <div className="mt-6 flex flex-col gap-2.5 text-sm text-white/90">
               <a
                 href={whatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 hover:text-tasami-pink"
+                className="inline-flex items-center gap-2 hover:text-white"
               >
-                <WhatsappLogo weight="fill" className="h-4 w-4 text-tasami-gold" />
+                <WhatsappLogo weight="regular" className="h-4 w-4 text-tasami-lilac" />
                 {t("whatsapp")}
               </a>
               <a
                 href={getTikTokUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 hover:text-tasami-pink"
+                className="inline-flex items-center gap-2 hover:text-white"
               >
-                <TikTokMark className="h-4 w-4 text-tasami-gold" />
+                <TikTokMark className="h-4 w-4 text-tasami-lilac" />
                 {t("tiktok")}
               </a>
               <a
                 href={telUrl()}
                 dir="ltr"
-                className="inline-flex items-center gap-2 hover:text-tasami-pink"
+                className="inline-flex items-center gap-2 hover:text-white"
               >
-                <Phone weight="regular" className="h-4 w-4 text-tasami-gold" />
+                <Phone weight="regular" className="h-4 w-4 text-tasami-lilac" />
                 {getPhoneDisplay()}
               </a>
               {contactEmail ? (
                 <a
                   href={`mailto:${contactEmail}`}
-                  className="inline-flex items-center gap-2 hover:text-tasami-pink"
+                  className="inline-flex items-center gap-2 hover:text-white"
                 >
-                  <EnvelopeSimple weight="regular" className="h-4 w-4 text-tasami-gold" />
+                  <EnvelopeSimple weight="regular" className="h-4 w-4 text-tasami-lilac" />
                   {contactEmail}
                 </a>
               ) : null}
-              <span className="inline-flex items-center gap-2">
-                {t("hours")}
-              </span>
+              <span>{t("hours")}</span>
             </div>
 
-            <div className="mt-6 space-y-1.5 border-t border-white/10 pt-5 text-xs text-white/45">
+            <div className="mt-6 space-y-1.5 border-t border-white/10 pt-5 text-xs text-white/40">
               {company.cr ? (
                 <p>
                   {t("company.cr")} · {t("company.parent")}: {company.cr}
@@ -124,10 +98,9 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Government */}
           <div>
             <div className="mb-5 flex items-center gap-2">
-              <Buildings weight="regular" className="h-4 w-4 text-tasami-gold" />
+              <Buildings weight="regular" className="h-4 w-4 text-tasami-lilac" />
               <h3 className="text-sm font-medium text-white">{t("govTitle")}</h3>
             </div>
             <ul className="space-y-3">
@@ -135,7 +108,7 @@ export default function Footer() {
                 <li key={key}>
                   <Link
                     href={`/services/government/${GOV_SLUGS[key]}`}
-                    className="text-sm text-white/60 transition-colors hover:text-tasami-pink"
+                    className="text-sm text-white/90 transition-colors hover:text-white"
                   >
                     {tGov(`${key}.title`)}
                   </Link>
@@ -144,7 +117,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/government"
-                  className="text-sm font-medium text-tasami-gold hover:text-tasami-pink"
+                  className="text-sm font-medium text-tasami-lilac hover:text-white"
                 >
                   {t("viewAll")}
                 </Link>
@@ -152,10 +125,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Tech */}
           <div>
             <div className="mb-5 flex items-center gap-2">
-              <Cpu weight="regular" className="h-4 w-4 text-tasami-gold" />
+              <Cpu weight="regular" className="h-4 w-4 text-tasami-teal" />
               <h3 className="text-sm font-medium text-white">{t("techTitle")}</h3>
             </div>
             <ul className="space-y-3">
@@ -163,7 +135,7 @@ export default function Footer() {
                 <li key={key}>
                   <Link
                     href={`/services/tech/${TECH_SLUGS[key]}`}
-                    className="text-sm text-white/60 transition-colors hover:text-tasami-pink"
+                    className="text-sm text-white/90 transition-colors hover:text-white"
                   >
                     {tTech(`${key}.title`)}
                   </Link>
@@ -172,7 +144,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/tech"
-                  className="text-sm font-medium text-tasami-gold hover:text-tasami-pink"
+                  className="text-sm font-medium text-tasami-teal hover:text-white"
                 >
                   {t("viewAll")}
                 </Link>
@@ -180,16 +152,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal / Contact */}
           <div>
-            <h3 className="mb-5 text-sm font-medium text-white">
-              {t("legalTitle")}
-            </h3>
+            <h3 className="mb-5 text-sm font-medium text-white">{t("legalTitle")}</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/sectors"
-                  className="text-sm text-white/60 transition-colors hover:text-tasami-pink"
+                  className="text-sm text-white/90 transition-colors hover:text-white"
                 >
                   {t("sectors")}
                 </Link>
@@ -197,7 +166,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/my-requests"
-                  className="text-sm text-white/60 transition-colors hover:text-tasami-pink"
+                  className="text-sm text-white/90 transition-colors hover:text-white"
                 >
                   {t("myRequests")}
                 </Link>
@@ -205,7 +174,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/privacy"
-                  className="text-sm text-white/60 transition-colors hover:text-tasami-pink"
+                  className="text-sm text-white/90 transition-colors hover:text-white"
                 >
                   {t("privacy")}
                 </Link>
@@ -213,15 +182,15 @@ export default function Footer() {
               <li>
                 <Link
                   href="/terms"
-                  className="text-sm text-white/60 transition-colors hover:text-tasami-pink"
+                  className="text-sm text-white/90 transition-colors hover:text-white"
                 >
                   {t("terms")}
                 </Link>
               </li>
-              <li>
+              <li className="pt-2">
                 <a
                   href={whatsappUrl()}
-                  className="inline-flex min-h-[44px] items-center rounded-full bg-tasami-pink px-4 py-2.5 text-sm font-semibold text-white shadow-soft transition-opacity hover:opacity-90"
+                  className="inline-flex min-h-[44px] items-center rounded-button border border-white/50 bg-white px-4 py-2.5 text-sm font-semibold text-tasami-purple transition-colors hover:bg-tasami-lilac hover:text-tasami-purple"
                 >
                   {t("contactCta")}
                 </a>
@@ -231,14 +200,14 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center sm:flex-row sm:text-start">
-          <p className="text-xs text-white/45">
+          <p className="text-xs text-white/40">
             © {year} {t("brand")}. {t("rights")}
           </p>
-          <p className="max-w-md text-[10px] leading-relaxed text-white/40 sm:text-end">
+          <p className="max-w-md text-[10px] leading-relaxed text-white/35 sm:text-end">
             {t("legalDisclaimer")}
           </p>
         </div>
-        <p className="mt-4 text-center text-xs text-white/35">{t("built")}</p>
+        <p className="mt-4 text-center text-xs text-white/30">{t("built")}</p>
       </div>
     </footer>
   );

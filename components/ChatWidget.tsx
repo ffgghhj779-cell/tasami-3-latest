@@ -177,20 +177,20 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
             role="dialog"
             aria-label={t("monjezTitle")}
           >
-            <div className="relative flex shrink-0 items-center justify-between bg-[#1A0845] px-4 py-3.5">
+            <div className="relative flex shrink-0 items-center justify-between bg-[#007AFF] px-4 py-3.5">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-tasami-gold text-base font-semibold text-tasami-dark">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/40 text-base font-semibold text-white">
                     م
                   </span>
-                  <span className="absolute bottom-0 end-0 h-3 w-3 rounded-full border-2 border-[#1A0845] bg-[#6B53FF]" />
+                  <span className="absolute bottom-0 end-0 h-3 w-3 rounded-full border-2 border-[#007AFF] bg-[#5AC8FA]" />
                 </div>
                 <div>
                   <p className="text-[15px] font-medium tracking-wide text-white">
                     {t("monjezTitle")}
                   </p>
                   <p className="flex items-center gap-1.5 text-[11px] text-white/65">
-                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-tasami-gold" />
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-tasami-lilac" />
                     {t("monjezOnline")}
                   </p>
                 </div>
@@ -205,7 +205,7 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
               </button>
             </div>
 
-            <div className="scroll-touch flex-1 space-y-3 overflow-y-auto bg-[#F6F6FB] px-3.5 py-4">
+            <div className="scroll-touch flex-1 space-y-3 overflow-y-auto bg-[#EEF7FF] px-3.5 py-4">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
@@ -216,7 +216,7 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
                   <div
                     className={`max-w-[82%] px-3.5 py-2.5 text-[14px] leading-[1.55] ${
                       msg.sender === "user"
-                        ? "rounded-[18px] rounded-ee-md bg-tasami-pink text-white"
+                        ? "rounded-[14px] rounded-ee-md bg-[#007AFF] text-white"
                         : "rounded-[18px] rounded-es-md bg-white text-tasami-dark shadow-soft"
                     }`}
                   >
@@ -246,13 +246,13 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
                 placeholder={t("monjezPlaceholder")}
                 disabled={sending}
                 enterKeyHint="send"
-                className="min-h-[44px] flex-1 rounded-full bg-[#F6F6FB] px-4 py-2.5 text-sm text-tasami-dark placeholder:text-tasami-gray focus:outline-none focus:ring-2 focus:ring-tasami-pink/30 disabled:opacity-60"
+                className="min-h-[44px] flex-1 rounded-button bg-[#EEF7FF] px-4 py-2.5 text-sm text-tasami-dark placeholder:text-tasami-gray focus:outline-none focus:ring-1 focus:ring-tasami-pink/50 disabled:opacity-60"
               />
               <button
                 type="submit"
                 disabled={sending || !input.trim()}
                 aria-label={t("send")}
-                className="touch-target flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-tasami-pink text-white shadow-soft active:opacity-90 disabled:opacity-35"
+                className="touch-target flex h-11 w-11 shrink-0 items-center justify-center rounded-button bg-[#007AFF] text-white active:opacity-90 disabled:opacity-35"
               >
                 <PaperPlaneTilt weight="fill" className="h-[18px] w-[18px]" />
               </button>
@@ -267,7 +267,7 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
         onClick={() => setOpenSafe(!open)}
         whileTap={{ scale: 0.94 }}
         transition={spring}
-        className={`pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-tasami-pink text-white shadow-lift ${
+        className={`pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#007AFF] text-white shadow-soft ${
           open ? "max-sm:hidden" : ""
         }`}
       >

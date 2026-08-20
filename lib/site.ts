@@ -5,11 +5,11 @@
  * server components, client components, and route handlers.
  */
 
-/** Official Khalsana WhatsApp / phone — used across the site. */
+/** Official Tasami WhatsApp / phone — used across the site. */
 export const OFFICIAL_PHONE_E164 = "966559962847";
 export const OFFICIAL_PHONE_DISPLAY = "+966 55 996 2847";
 
-/** Official Khalsana TikTok profile. */
+/** Official Tasami TikTok profile. */
 export const TIKTOK_URL = "https://vt.tiktok.com/ZSVNHcDfP/";
 
 const PLACEHOLDER_NUMBERS = new Set(["", "966500000000"]);

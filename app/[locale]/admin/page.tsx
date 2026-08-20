@@ -106,7 +106,7 @@ export default async function AdminDashboardPage({ params }: Props) {
   return (
     <div className="space-y-10">
       <header>
-        <h1 className="font-display text-2xl text-tasami-purple sm:text-3xl">
+        <h1 className="font-display text-2xl text-tasami-dark sm:text-3xl">
           {t("dashboard.title")}
         </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-tasami-gray">

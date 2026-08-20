@@ -1,33 +1,111 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { Buildings, Cpu, SquaresFour } from "@phosphor-icons/react";
+import { Link } from "@/navigation";
+import { VISUALS } from "@/lib/visuals";
 
-const ICONS = [Buildings, Cpu, SquaresFour] as const;
+const CONFIG = [
+  {
+    icon: Buildings,
+    visual: VISUALS.offerings.gov,
+    href: "/services/government" as const,
+    layout: "hero-orbit-card--a",
+  },
+  {
+    icon: Cpu,
+    visual: VISUALS.offerings.tech,
+    href: "/services/tech" as const,
+    layout: "hero-orbit-card--b",
+  },
+  {
+    icon: SquaresFour,
+    visual: VISUALS.offerings.sectors,
+    href: "/sectors" as const,
+    layout: "hero-orbit-card--c",
+  },
+] as const;
 
 export type HeroReelItem = {
   title: string;
   meta: string;
 };
 
-export default function HeroServiceReel({
-  items,
-}: {
+type Props = {
   items: HeroReelItem[];
-}) {
+};
+
+export default function HeroServiceReel({ items }: Props) {
+  const reduce = useReducedMotion();
+  const [float, setFloat] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia(
+      "(min-width: 1024px) and (prefers-reduced-motion: no-preference)"
+    );
+    const sync = () => setFloat(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
   return (
-    <div className="hero-reel" aria-hidden>
+    <div className="hero-orbit">
       {items.slice(0, 3).map((item, i) => {
-        const Icon = ICONS[i];
+        const cfg = CONFIG[i];
+        const Icon = cfg.icon;
         return (
-          <article key={item.title} className="hero-reel-card">
-            <div className={`hero-reel-face hero-reel-card--${i}`}>
-              <span className="hero-reel-icon">
-                <Icon weight="bold" className="h-4 w-4 sm:h-5 sm:w-5" />
-              </span>
-              <p className="hero-reel-title">{item.title}</p>
-              <span className="hero-reel-meta">{item.meta}</span>
-            </div>
-          </article>
+          <motion.div
+            key={item.title}
+            className={`hero-orbit-card ${cfg.layout}`}
+            initial={reduce ? false : { opacity: 0, y: 24, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{
+              duration: 0.7,
+              delay: 0.08 + i * 0.08,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <motion.div
+              className="hero-orbit-float"
+              animate={
+                float && !reduce
+                  ? {
+                      y: [0, -14, 0],
+                      rotate: [0, i === 1 ? -1.2 : 1.2, 0],
+                    }
+                  : undefined
+              }
+              transition={{
+                duration: 5.5 + i * 0.8,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.4,
+              }}
+            >
+              <Link href={cfg.href} className="hero-orbit-link group">
+                <div className="hero-orbit-visual">
+                  <Image
+                    src={cfg.visual}
+                    alt=""
+                    fill
+                    sizes="(max-width: 1023px) 78vw, 280px"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <span className="hero-orbit-wash" />
+                  <span className="hero-orbit-icon">
+                    <Icon weight="bold" className="h-4 w-4" />
+                  </span>
+                </div>
+                <div className="hero-orbit-body">
+                  <p className="hero-orbit-title">{item.title}</p>
+                  <span className="hero-orbit-meta">{item.meta}</span>
+                </div>
+              </Link>
+            </motion.div>
+          </motion.div>
         );
       })}
     </div>

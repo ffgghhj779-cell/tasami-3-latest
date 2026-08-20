@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import TrustBar from "@/components/TrustBar";
 import Footer from "@/components/Footer";
 import SkipToContent from "@/components/SkipToContent";
+import ScrollProgress from "@/components/ScrollProgress";
 import { forceUnlockBody, isBodyScrollLocked } from "@/lib/useBodyScrollLock";
 
 /** Defer chat/WhatsApp widgets — keeps first paint lighter on mobile */
@@ -59,6 +60,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const t = useTranslations("a11y");
   const isAdmin = pathname.includes("/admin");
+  const isHome = pathname === "/";
 
   if (isAdmin) {
     return (
@@ -73,8 +75,9 @@ export default function SiteShell({ children }: { children: ReactNode }) {
     <>
       <BodyLockSafety />
       <SkipToContent label={t("skip")} />
+      <ScrollProgress />
       <Navbar />
-      <TrustBar />
+      {!isHome ? <TrustBar /> : null}
       <main id="main-content" className="min-h-[50vh] min-h-[50dvh]">
         {children}
       </main>

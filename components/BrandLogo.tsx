@@ -1,103 +1,78 @@
 import Image from "next/image";
 
-const LOCKUP = { w: 428, h: 388 };
-const MARK = { w: 163, h: 163 };
+/** Official Tasami lockup dimensions (trimmed transparent PNG). */
+export const LOGO_LOCKUP = { w: 266, h: 340 } as const;
+export const LOGO_MARK = { w: 259, h: 259 } as const;
 
-const LOCKUP_WIDTH: Record<"sm" | "md" | "lg", string> = {
-  sm: "w-[8.75rem] sm:w-[10.5rem]",
-  md: "w-[11rem] sm:w-[13.5rem] lg:w-[15rem]",
-  lg: "w-[13.5rem] sm:w-[17.5rem] lg:w-[21.5rem] xl:w-[24rem]",
+const LOCKUP_WIDTH: Record<"xs" | "sm" | "md" | "lg", string> = {
+  xs: "h-9 w-auto sm:h-10",
+  sm: "h-10 w-auto sm:h-11",
+  md: "h-12 w-auto sm:h-14",
+  lg: "h-16 w-auto sm:h-[4.5rem] lg:h-20",
+};
+
+const MARK_SIZE: Record<"sm" | "md" | "lg", number> = {
+  sm: 36,
+  md: 44,
+  lg: 52,
 };
 
 type BrandLogoProps = {
   className?: string;
-  /** Mark size in pixels (square) */
-  size?: number;
-  /** Show locale wordmark next to the mark */
-  withWordmark?: boolean;
+  /** Icon-only mark for compact chrome (favicon-sized slots). */
+  mark?: boolean;
+  markSize?: keyof typeof MARK_SIZE;
+  /** Full official lockup (icon + Arabic + TASAMI + tagline). */
+  lockupSize?: keyof typeof LOCKUP_WIDTH;
   wordmark?: string;
-  /** Short line under the brand name — always visible when set */
-  slogan?: string;
-  /** Prefer light wordmark for dark purple backgrounds */
   onDark?: boolean;
-  /** Official stacked lockup: icon + Arabic + English + tagline */
-  lockup?: boolean;
-  /** Lockup width on laptop/desktop */
-  lockupSize?: "sm" | "md" | "lg";
-  /** Preload the mark — use in the header/hero only */
   priority?: boolean;
 };
 
 /**
- * Official KHALSANA / خَلْصَانَة identity.
- * Transparent PNG lockup for hero/footer; square K-mark in compact chrome.
+ * Official Tasami identity — always the provided transparent PNG assets.
  */
 export default function BrandLogo({
   className = "",
-  size = 40,
-  withWordmark = false,
-  wordmark = "خَلْصَانَة",
-  slogan,
-  onDark = true,
-  lockup = false,
-  lockupSize = "md",
+  mark = false,
+  markSize = "md",
+  lockupSize = "sm",
+  wordmark = "تَسَامِي",
   priority = false,
 }: BrandLogoProps) {
-  const label = [wordmark, slogan].filter(Boolean).join(" — ");
-  const wordColor = onDark ? "#FFFFFF" : "#0C021C";
-  const sloganColor = onDark ? "rgba(198,165,255,0.95)" : "#5C5E6B";
-
-  if (lockup) {
+  if (mark) {
+    const px = MARK_SIZE[markSize];
     return (
-      <span className={`inline-flex ${className}`} aria-label={label}>
+      <span className={`inline-flex shrink-0 ${className}`} aria-label={wordmark}>
         <Image
-          src="/logo.png"
-          alt={wordmark}
-          width={LOCKUP.w}
-          height={LOCKUP.h}
+          src="/logo-mark.png"
+          alt=""
+          width={LOGO_MARK.w}
+          height={LOGO_MARK.h}
           unoptimized
-          quality={100}
           priority={priority}
-          sizes="(min-width:1280px) 384px, (min-width:1024px) 344px, (min-width:640px) 280px, 216px"
-          className={`h-auto ${LOCKUP_WIDTH[lockupSize]} max-w-full object-contain object-center`}
+          sizes={`${px * 2}px`}
+          className="h-auto w-auto bg-transparent object-contain object-center"
+          style={{ width: px, height: px }}
+          aria-hidden
         />
       </span>
     );
   }
 
   return (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
+    <span className={`inline-flex shrink-0 ${className}`} aria-label={wordmark}>
       <Image
-        src="/logo-mark.png"
-        alt=""
-        width={MARK.w}
-        height={MARK.h}
+        src="/logo.png"
+        alt={wordmark}
+        width={LOGO_LOCKUP.w}
+        height={LOGO_LOCKUP.h}
         unoptimized
         quality={100}
         priority={priority}
-        sizes={`${size * 2}px`}
-        className="shrink-0 object-contain object-center"
-        style={{ width: size, height: size }}
-        aria-hidden
+        sizes="(min-width:1024px) 220px, (min-width:640px) 180px, 140px"
+        className={`bg-transparent object-contain object-center ${LOCKUP_WIDTH[lockupSize]}`}
       />
-      {withWordmark && (
-        <span className="flex min-w-0 flex-col items-start leading-none">
-          <span
-            className="font-brand text-[1.35rem] font-normal sm:text-[1.45rem]"
-            style={{ color: wordColor }}
-          >
-            {wordmark}
-          </span>
-          {slogan ? (
-            <span
-              className="font-brand-slogan mt-1.5 text-[0.65rem] leading-snug sm:text-[0.7rem]"
-              style={{ color: sloganColor }}
-            >
-              {slogan}
-            </span>
-          ) : null}
-        </span>
-      )}
     </span>
   );
 }

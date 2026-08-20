@@ -1,14 +1,14 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "@/navigation";
+import PageHeader from "@/components/PageHeader";
 import { GOV_SLUGS, type GovKey } from "@/lib/content-keys";
+import { VISUALS } from "@/lib/visuals";
 import {
   findOffering,
   GOV_OFFERINGS,
   offeringsByCategory,
 } from "@/lib/gov-offerings";
-import { getOfferingIcon } from "@/lib/gov-offering-icons";
 import { formatOfferingPrice } from "@/lib/service-pricing";
 import { getServiceForm } from "@/lib/service-forms";
 import { buildPageMetadata } from "@/lib/seo";
@@ -91,7 +91,6 @@ export default async function GovernmentOfferingPage({ params }: Props) {
   const tAr = await getTranslations({ locale: "ar", namespace: "gov" });
   const tEn = await getTranslations({ locale: "en", namespace: "gov" });
 
-  const Icon = getOfferingIcon(offering.key);
   const title = t(`offerings.${offering.key}.title`);
   const titleAr = tAr(`offerings.${offering.key}.title`);
   const titleEn = tEn(`offerings.${offering.key}.title`);
@@ -102,33 +101,24 @@ export default async function GovernmentOfferingPage({ params }: Props) {
   const CategoryIcon = GOV_ICONS[categoryKey];
 
   return (
-    <div className="surface-dotted min-h-screen">
-      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10 lg:py-20">
-        <Link
-          href={`/services/government/${slug}`}
-          className="mb-10 inline-flex min-h-[44px] items-center gap-1.5 text-sm font-medium text-tasami-gray hover:text-tasami-pink"
-        >
-          <ArrowLeft weight="bold" className="h-4 w-4 rtl:rotate-180" />
-          {t("backToCategory")}
-        </Link>
+    <div className="min-h-screen">
+      <PageHeader
+        backHref={`/services/government/${slug}`}
+        backLabel={t("backToCategory")}
+        eyebrow={t(`items.${categoryKey}.title`)}
+        title={title}
+        subtitle={t(`offerings.${offering.key}.desc`)}
+        visual={VISUALS.offerings.gov}
+      />
 
+      <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
-            <span className="icon-gold-lg mb-5">
-              <Icon weight="regular" className="h-7 w-7" />
-            </span>
-            <p className="inline-flex items-center gap-2 text-sm font-medium text-tasami-pink">
+            <p className="inline-flex items-center gap-2 text-sm font-medium text-tasami-dark">
               <CategoryIcon weight="regular" className="h-4 w-4" />
               {t(`items.${categoryKey}.title`)}
             </p>
-            <h1 className="font-display mt-2 text-2xl text-tasami-purple sm:text-4xl">
-              {title}
-            </h1>
-            <span className="highlight-line" />
-            <p className="mt-5 text-base leading-relaxed text-tasami-gray">
-              {t(`offerings.${offering.key}.desc`)}
-            </p>
-            <p className="mt-4 text-base font-medium text-tasami-gold">
+            <p className="mt-4 text-base font-medium text-tasami-dark">
               {formatOfferingPrice(
                 offering.priceFrom,
                 offering.priceTo,
@@ -141,7 +131,7 @@ export default async function GovernmentOfferingPage({ params }: Props) {
 
             {form.docs.length > 0 ? (
               <div className="mt-8 rounded-card border border-tasami-purple/8 bg-white/80 p-5">
-                <p className="text-xs font-medium text-tasami-gold">
+                <p className="text-xs font-medium text-tasami-dark">
                   {tReq("requiredDocs")}
                 </p>
                 <ul className="mt-3 space-y-2 text-sm text-tasami-gray">
@@ -157,7 +147,7 @@ export default async function GovernmentOfferingPage({ params }: Props) {
 
             {siblings.length > 0 ? (
               <div className="mt-8">
-                <p className="text-xs font-medium text-tasami-purple">
+                <p className="text-xs font-medium text-tasami-dark">
                   {t("offeringsTitle")}
                 </p>
                 <ul className="mt-3 space-y-2">
@@ -178,7 +168,7 @@ export default async function GovernmentOfferingPage({ params }: Props) {
 
           <div className="lg:col-span-7">
             <article className="card-premium p-6 sm:p-8">
-              <h2 className="text-base font-medium text-tasami-purple sm:text-lg">
+              <h2 className="text-base font-medium text-tasami-dark sm:text-lg">
                 {t("askService")}
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-tasami-gray">

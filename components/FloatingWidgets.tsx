@@ -10,10 +10,10 @@ import { whatsappUrl } from "@/lib/site";
 import { usePathname } from "@/navigation";
 
 const WHATSAPP_SECRETARY = whatsappUrl(
-  "مرحباً، أرغب بالتواصل مع سكرتير خلصانة"
+  "مرحباً، أرغب بالتواصل مع سكرتير تسامي"
 );
 const WHATSAPP_DIRECT = whatsappUrl(
-  "مرحباً، أريد الاستفسار عن خدمات خلصانة مباشرة"
+  "مرحباً، أريد الاستفسار عن خدمات تسامي مباشرة"
 );
 
 const spring = {
@@ -52,7 +52,7 @@ export default function FloatingWidgets() {
             role="dialog"
             aria-label={t("waTitle")}
           >
-            <div className="flex items-center justify-between bg-[#25D366] px-4 py-3.5">
+            <div className="flex items-center justify-between bg-[#007AFF] px-4 py-3.5">
               <div className="flex items-center gap-2">
                 <WhatsappLogo weight="fill" className="h-6 w-6 text-white" />
                 <p className="text-sm font-medium text-white">{t("waTitle")}</p>
@@ -75,7 +75,7 @@ export default function FloatingWidgets() {
                 href={WHATSAPP_SECRETARY}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-tasami-pink px-4 py-3 text-sm font-semibold text-white shadow-soft active:opacity-90"
+                className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button bg-[#007AFF] px-4 py-3 text-sm font-semibold text-white active:opacity-90"
               >
                 <WhatsappLogo weight="fill" className="h-5 w-5" />
                 {t("waSecretary")}
@@ -84,7 +84,7 @@ export default function FloatingWidgets() {
                 href={WHATSAPP_DIRECT}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-[#1A0845] px-4 py-3 text-sm font-semibold text-white shadow-soft active:opacity-90"
+                className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button border border-[rgba(90,200,250,0.8)] bg-[#5AC8FA] px-4 py-3 text-sm font-semibold text-tasami-purple active:opacity-90"
               >
                 <WhatsappLogo weight="regular" className="h-5 w-5" />
                 {t("waDirect")}
@@ -102,7 +102,7 @@ export default function FloatingWidgets() {
           }}
           whileTap={{ scale: 0.94 }}
           transition={spring}
-          className={`pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-soft ${
+          className={`pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#128C4A] text-white shadow-soft ${
             chatOpen ? "max-sm:hidden" : ""
           }`}
         >

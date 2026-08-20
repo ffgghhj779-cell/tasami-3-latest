@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { PLATFORMS } from "@/lib/platforms";
+import Reveal from "@/components/Reveal";
 
 export default async function PlatformsShowcase() {
   const t = await getTranslations("platformsShowcase");
@@ -8,23 +9,26 @@ export default async function PlatformsShowcase() {
     <section
       id="platforms"
       aria-labelledby="platforms-heading"
-      className="relative scroll-mt-28 border-y border-tasami-purple/8 bg-white py-16 sm:py-24 lg:py-28"
+      className="relative scroll-mt-28 border-y border-[rgba(0,122,255,0.12)] bg-tasami-cream py-12 sm:py-24 lg:py-28"
     >
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-        <div className="section-heading mb-10 max-w-2xl sm:mb-16 sm:mx-auto sm:text-center">
-          <p className="text-sm font-medium text-tasami-pink">{t("eyebrow")}</p>
-          <h2 id="platforms-heading" className="mt-2">
-            {t("title")}
-          </h2>
-          <span className="highlight-line sm:mx-auto" />
-          <p className="mt-5 text-sm leading-relaxed text-tasami-gray sm:text-base">
-            {t("subtitle")}
-          </p>
-        </div>
+        <Reveal>
+          <div className="section-heading mb-10 sm:mb-16">
+            <p className="eyebrow">{t("eyebrow")}</p>
+            <h2 id="platforms-heading" className="mt-2">
+              {t("title")}
+            </h2>
+            <span className="highlight-line" />
+            <p className="mt-5 text-sm leading-relaxed text-tasami-gray sm:text-base">
+              {t("subtitle")}
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-          {PLATFORMS.map((platform) => (
-            <article key={platform.key} className="platform-card">
+        <div className="platform-grid">
+          {PLATFORMS.map((platform, i) => (
+            <Reveal key={platform.key} index={i} className="h-full">
+              <article className="platform-card h-full">
               <div className="platform-card-visual" aria-hidden>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -37,18 +41,19 @@ export default async function PlatformsShowcase() {
                   decoding="async"
                 />
               </div>
-              <div className="flex flex-1 flex-col px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
-                <h3 className="text-base font-semibold leading-snug text-tasami-purple sm:text-lg">
+              <div className="flex flex-1 flex-col px-3.5 py-3.5 sm:px-6 sm:pb-6 sm:pt-4">
+                <h3 className="text-base font-semibold leading-snug text-tasami-dark sm:text-lg">
                   {t(`items.${platform.key}.title`)}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-tasami-gray">
                   {t(`items.${platform.key}.desc`)}
                 </p>
-                <p className="mt-auto border-t border-tasami-purple/8 pt-3 text-xs font-medium leading-relaxed text-tasami-purple/80">
+                <p className="mt-auto border-t border-[rgba(0,122,255,0.12)] pt-3 text-xs font-medium leading-relaxed text-tasami-gray">
                   {t(`items.${platform.key}.use`)}
                 </p>
               </div>
             </article>
+            </Reveal>
           ))}
         </div>
 

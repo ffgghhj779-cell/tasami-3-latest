@@ -44,7 +44,7 @@ export default async function AdminCustomerDetailPage({ params }: Props) {
             <p className="text-xs font-medium text-tasami-pink">
               {t("customers.detailTitle")}
             </p>
-            <h1 className="font-display mt-2 text-2xl text-tasami-purple sm:text-3xl">
+            <h1 className="font-display mt-2 text-2xl text-tasami-dark sm:text-3xl">
               {customer.name}
             </h1>
             <p className="mt-2 text-sm tabular-nums text-tasami-gray" dir="ltr">

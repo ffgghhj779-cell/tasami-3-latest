@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/navigation";
+import BrandLogo from "@/components/BrandLogo";
 
 export default function ForgotPasswordForm() {
   const t = useTranslations("auth");
@@ -42,17 +43,14 @@ export default function ForgotPasswordForm() {
   }
 
   return (
-    <div className="surface-dotted min-h-screen">
+    <div className="min-h-screen">
       <div className="mx-auto flex max-w-md flex-col px-5 py-14 sm:px-8 lg:py-20">
-        <Link
-          href="/login"
-          className="mb-8 text-sm font-medium text-tasami-gray hover:text-tasami-pink"
-        >
-          ← {t("loginLink")}
+        <Link href="/login" className="mb-8 inline-flex self-center" aria-label={t("loginLink")}>
+          <BrandLogo lockupSize="md" wordmark="تَسَامِي" />
         </Link>
 
         <header className="mb-8">
-          <h1 className="font-display text-2xl text-tasami-purple sm:text-3xl">
+          <h1 className="font-display text-2xl text-tasami-dark sm:text-3xl">
             {t("forgotTitle")}
           </h1>
           <span className="highlight-line" />
@@ -72,7 +70,7 @@ export default function ForgotPasswordForm() {
           </div>
         ) : (
           <form onSubmit={submit} className="card-premium space-y-3.5 p-6">
-            <label className="block text-xs font-medium text-tasami-purple">
+            <label className="block text-xs font-medium text-tasami-dark">
               {t("forgotIdentifier")}
               <input
                 required
@@ -84,12 +82,12 @@ export default function ForgotPasswordForm() {
               />
             </label>
 
-            {error && <p className="text-sm text-tasami-purple">{error}</p>}
+            {error && <p className="text-sm text-tasami-dark">{error}</p>}
 
             <button
               type="submit"
               disabled={loading}
-              className="btn-secondary w-full text-sm disabled:opacity-50"
+              className="btn-primary w-full text-sm disabled:opacity-50"
             >
               {loading ? t("loading") : t("forgotCta")}
             </button>
@@ -100,7 +98,7 @@ export default function ForgotPasswordForm() {
           {t("hasAccount")}{" "}
           <Link
             href="/login"
-            className="font-medium text-tasami-pink hover:text-tasami-purple"
+            className="font-medium text-tasami-purple hover:underline"
           >
             {t("loginLink")}
           </Link>

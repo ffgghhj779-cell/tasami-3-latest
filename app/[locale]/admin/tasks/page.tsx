@@ -40,7 +40,7 @@ export default async function AdminTasksPage({ params }: Props) {
   return (
     <div className="space-y-8">
       <header>
-        <h1 className="font-display text-2xl text-tasami-purple sm:text-3xl">
+        <h1 className="font-display text-2xl text-tasami-dark sm:text-3xl">
           {t("tasks.title")}
         </h1>
         <p className="mt-2 text-sm text-tasami-gray">{t("tasks.subtitle")}</p>

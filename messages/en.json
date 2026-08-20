@@ -1,7 +1,7 @@
 {
   "brand": {
-    "name": "KHALSANA",
-    "letter": "K",
+    "name": "TASAMI",
+    "letter": "T",
     "slogan": "Modern tech & services"
   },
   "nav": {
@@ -54,8 +54,8 @@
   "platformsShowcase": {
     "eyebrow": "Official platforms",
     "title": "We operate on certified platforms",
-    "subtitle": "We complete your transactions through official Saudi platforms — you stay with Khalsana from request to delivery.",
-    "disclaimer": "Logos and names belong to their respective owners. Khalsana is an operational services platform working through these official channels and does not claim an undeclared official partnership.",
+    "subtitle": "We complete your transactions through official Saudi platforms — you stay with Tasami from request to delivery.",
+    "disclaimer": "Logos and names belong to their respective owners. Tasami is an operational services platform working through these official channels and does not claim an undeclared official partnership.",
     "items": {
       "absher": {
         "title": "Absher",
@@ -95,9 +95,10 @@
     }
   },
   "home": {
-    "eyebrow": "Khalsana",
+    "eyebrow": "Tasami",
     "title": "We finish your transactions — simply",
     "hero": "Government and tech in one clear path — fast, calm, and in four languages.",
+    "heroVideoLabel": "Tasami — modern office, government and tech services made easy",
     "ctaGov": "Start your transaction now",
     "ctaTech": "WhatsApp direct",
     "ctaWhatsapp": "WhatsApp direct",
@@ -106,7 +107,7 @@
     "coreCountTech": "9 services",
     "coreCountSectors": "15 sectors",
     "offerSubtitle": "Three clear paths — pick what your business needs and we handle the rest.",
-    "whyTitle": "Why Khalsana?",
+    "whyTitle": "Why Tasami?",
     "whySubtitle": "Built to feel simple for clients, and operate with elite precision behind the scenes.",
     "badgeTrusted": "Trusted by Saudi businesses",
     "badgeLang": "4 languages",
@@ -130,7 +131,7 @@
     "langsTitle": "We speak your language",
     "langsSubtitle": "Interface and support in four languages for your whole team.",
     "ctaBandTitle": "Ready to start?",
-    "ctaBandSubtitle": "Khalsana’s team and Monjez are here — absolute simplicity, premium quality.",
+    "ctaBandSubtitle": "Tasami’s team and Monjez are here — absolute simplicity, premium quality.",
     "ctaBandAction": "Talk to the Secretary",
     "core": {
       "gov": {
@@ -177,9 +178,9 @@
     }
   },
   "footer": {
-    "brand": "Khalsana",
+    "brand": "Tasami",
     "about": "A premium Saudi platform for government and tech services — absolute simplicity, four languages, and a 24/7 AI assistant.",
-    "affiliation": "Khalsana is a Tasami company and operates under the legal commercial registration of Tasami Al-Wataniya.",
+    "affiliation": "Tasami operates under the legal commercial registration of Tasami Al-Wataniya.",
     "whatsapp": "Secretary WhatsApp",
     "tiktok": "TikTok",
     "hours": "Around-the-clock support",
@@ -219,7 +220,7 @@
     "backToCategory": "Back to category",
     "generalRequest": "General request for this category",
     "generalRequestHint": "If you don't see your service by name, send a general request and we'll follow up.",
-    "priceNote": "Khalsana service fees (government fees not included).",
+    "priceNote": "Tasami service fees (government fees not included).",
     "items": {
       "passports": {
         "title": "Passports & Residency",
@@ -541,13 +542,13 @@
   "widgets": {
     "monjezTitle": "Monjez",
     "monjezOnline": "Online · 24/7",
-    "monjezWelcome": "Welcome to Khalsana 👋 I’m Monjez, your round-the-clock AI assistant. How can I help?",
+    "monjezWelcome": "Welcome to Tasami 👋 I’m Monjez, your round-the-clock AI assistant. How can I help?",
     "monjezTyping": "Monjez is typing…",
     "monjezPlaceholder": "Type your message…",
-    "monjezFallback": "Thanks for reaching out. The Khalsana team will follow up soon. You can also use WhatsApp for a faster reply.",
+    "monjezFallback": "Thanks for reaching out. The Tasami team will follow up soon. You can also use WhatsApp for a faster reply.",
     "monjezError": "Connection issue. Please try again later or contact us on WhatsApp.",
-    "waTitle": "Khalsana WhatsApp",
-    "waIntro": "Choose how to reach the Khalsana team:",
+    "waTitle": "Tasami WhatsApp",
+    "waIntro": "Choose how to reach the Tasami team:",
     "waSecretary": "Talk to the Secretary",
     "waDirect": "Direct WhatsApp",
     "openChat": "Open Monjez chat",
@@ -626,7 +627,7 @@
     "close": "Close",
     "error": "Could not send the request. Please try again.",
     "successTitle": "Request received",
-    "successBody": "The Khalsana team will follow up soon. Track status from My Requests.",
+    "successBody": "The Tasami team will follow up soon. Track status from My Requests.",
     "refLabel": "Reference",
     "viewMyRequests": "View my requests",
     "preferWhatsapp": "Prefer WhatsApp instead",
@@ -900,8 +901,8 @@
     "privacy": {
       "eyebrow": "Legal",
       "title": "Privacy Policy",
-      "subtitle": "How Khalsana collects, uses, and protects your information.",
-      "intro": "Khalsana (\"we\", \"us\", \"our\") provides government and technology services to businesses and individuals in Saudi Arabia. This Privacy Policy explains what information we collect, why we collect it, and how we handle it when you use our website, WhatsApp channels, or Monjez assistant.",
+      "subtitle": "How Tasami collects, uses, and protects your information.",
+      "intro": "Tasami (\"we\", \"us\", \"our\") provides government and technology services to businesses and individuals in Saudi Arabia. This Privacy Policy explains what information we collect, why we collect it, and how we handle it when you use our website, WhatsApp channels, or Monjez assistant.",
       "sections": {
         "s1": {
           "title": "1. Information We Collect",
@@ -928,16 +929,16 @@
     "terms": {
       "eyebrow": "Legal",
       "title": "Terms of Service",
-      "subtitle": "The terms that govern your use of Khalsana's services.",
-      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the Khalsana website, WhatsApp channels, and Monjez assistant. By requesting a service or using our platform, you agree to these Terms.",
+      "subtitle": "The terms that govern your use of Tasami's services.",
+      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the Tasami website, WhatsApp channels, and Monjez assistant. By requesting a service or using our platform, you agree to these Terms.",
       "sections": {
         "s1": {
           "title": "1. Scope of Services",
-          "body": "Khalsana facilitates government transactions and technology solutions on your behalf, either directly or through licensed authorized agents and official Saudi platforms. Availability, processing time, and requirements for each service depend on the relevant government or technical authority and may change without prior notice."
+          "body": "Tasami facilitates government transactions and technology solutions on your behalf, either directly or through licensed authorized agents and official Saudi platforms. Availability, processing time, and requirements for each service depend on the relevant government or technical authority and may change without prior notice."
         },
         "s2": {
           "title": "2. Client Responsibilities",
-          "body": "You are responsible for providing accurate, complete, and up-to-date information and documents. Delays, rejections, or additional fees resulting from incorrect or incomplete information provided by you are not the responsibility of Khalsana."
+          "body": "You are responsible for providing accurate, complete, and up-to-date information and documents. Delays, rejections, or additional fees resulting from incorrect or incomplete information provided by you are not the responsibility of Tasami."
         },
         "s3": {
           "title": "3. Fees & Payment",
@@ -949,13 +950,13 @@
         },
         "s5": {
           "title": "5. Limitation of Liability & Governing Law",
-          "body": "Khalsana is not liable for delays, losses, or damages arising from circumstances beyond our reasonable control, including outages or changes at official government platforms. These Terms are governed by the laws of the Kingdom of Saudi Arabia, and any dispute shall be subject to the exclusive jurisdiction of its competent courts."
+          "body": "Tasami is not liable for delays, losses, or damages arising from circumstances beyond our reasonable control, including outages or changes at official government platforms. These Terms are governed by the laws of the Kingdom of Saudi Arabia, and any dispute shall be subject to the exclusive jurisdiction of its competent courts."
         }
       }
     }
   },
   "admin": {
-    "brand": "Khalsana",
+    "brand": "Tasami",
     "secretary": "Secretary Panel",
     "mockAuth": "Protected access · Admins only",
     "backSite": "Back to site",
