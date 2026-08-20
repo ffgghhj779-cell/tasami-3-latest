@@ -68,6 +68,9 @@ export default function Reveal({
         mass: 1.2,
         delay: stagger,
       }}
+      style={{
+        willChange: "transform, opacity, filter",
+      }}
     >
       {children}
     </motion.div>
