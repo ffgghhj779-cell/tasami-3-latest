@@ -1,6 +1,7 @@
 import type { ComponentType, ReactNode, SVGProps } from "react";
 import { ArrowLeft, ArrowRight, Seal } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "@/navigation";
+import HoverSpot from "@/components/HoverSpot";
 
 type PhosphorIcon = ComponentType<
   SVGProps<SVGSVGElement> & {
@@ -116,21 +117,27 @@ export default function ServiceCard({
     featured ? " service-card-featured" : ""
   }`;
 
+  let el: ReactNode;
+
   if (asButton || onClick) {
-    return (
-      <button type="button" onClick={onClick} className={`${className} w-full`}>
+    el = (
+      <button type="button" onClick={onClick} className={`${className} w-full text-start`}>
         {inner}
       </button>
     );
-  }
-
-  if (href) {
-    return (
+  } else if (href) {
+    el = (
       <Link href={href} className={className}>
         {inner}
       </Link>
     );
+  } else {
+    el = <article className={className}>{inner}</article>;
   }
 
-  return <article className={className}>{inner}</article>;
+  if (variant === "tech") {
+    return <HoverSpot className="h-full block">{el}</HoverSpot>;
+  }
+
+  return el;
 }

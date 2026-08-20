@@ -41,32 +41,38 @@ export default function ProcessScene({ title, subtitle, steps }: Props) {
 
         <div className="process-rail">
           {steps.map((item, i) => (
-            <Reveal key={item.key} index={i} columns={3} className="h-full" y={18}>
-              <HoverSpot>
-                <article className="process-premium-card group h-full">
-                  <div className="process-premium-frame">
-                    <Image
-                      src={PLATES[i]}
-                      alt=""
-                      fill
-                      sizes="(max-width: 640px) 96px, 33vw"
-                      className="object-cover object-center"
-                    />
-                    <span className={`process-premium-step process-num-${i}`}>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <div className="process-premium-body">
-                    <h3 className="font-display text-lg text-tasami-dark sm:text-xl">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2.5 text-sm leading-relaxed text-tasami-gray">
-                      {item.description}
-                    </p>
-                  </div>
-                </article>
-              </HoverSpot>
-            </Reveal>
+            <div
+              key={item.key}
+              className="process-premium-card-wrapper"
+              style={{ top: `calc(7rem + ${i * 1.5}rem)` }}
+            >
+              <Reveal delay={0.1} y={40}>
+                <HoverSpot>
+                  <article className="process-premium-card group">
+                    <div className="process-premium-frame">
+                      <Image
+                        src={PLATES[i]}
+                        alt=""
+                        fill
+                        sizes="(max-width: 767px) 100vw, 45vw"
+                        className="object-cover object-center"
+                      />
+                      <span className={`process-premium-step process-num-${i}`}>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <div className="process-premium-body">
+                      <h3 className="font-display text-lg text-tasami-dark sm:text-xl md:text-2xl">
+                        {item.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-tasami-gray md:text-base">
+                        {item.description}
+                      </p>
+                    </div>
+                  </article>
+                </HoverSpot>
+              </Reveal>
+            </div>
           ))}
         </div>
       </div>

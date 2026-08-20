@@ -1422,48 +1422,73 @@
   .process-premium-card {
     list-style: none;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 24px;
     border: 1px solid var(--color-line);
     background: #ffffff;
-    box-shadow: 0 14px 36px rgba(26, 53, 80, 0.06);
+    box-shadow: 0 14px 48px rgba(10, 48, 92, 0.08);
     transition:
       transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
       box-shadow 0.45s ease,
       border-color 0.35s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 768px) {
+    .process-premium-card {
+      flex-direction: row;
+      align-items: center;
+      height: 18rem;
+    }
   }
 
   .process-premium-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(0, 122, 255, 0.22);
-    box-shadow: 0 24px 48px rgba(26, 53, 80, 0.12);
+    border-color: rgba(18, 81, 150, 0.3);
+    box-shadow: 0 24px 64px rgba(10, 48, 92, 0.15);
   }
 
   .process-premium-frame {
     position: relative;
-    height: 12rem;
+    height: 14rem;
     overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 768px) {
+    .process-premium-frame {
+      width: 45%;
+      height: 100%;
+    }
   }
 
   .process-premium-step {
     position: absolute;
-    top: 0.85rem;
-    inset-inline-start: 0.85rem;
+    top: 1rem;
+    inset-inline-start: 1rem;
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 2.5rem;
+    width: 2.5rem;
     height: 2.5rem;
-    padding-inline: 0.55rem;
-    border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.92);
-    font-size: 0.82rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    font-size: 1.1rem;
     font-weight: 800;
-    color: var(--color-ink);
+    color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   .process-premium-body {
-    padding: 1.2rem 1.25rem 1.4rem;
+    padding: 1.5rem;
+    flex: 1;
+  }
+
+  @media (min-width: 768px) {
+    .process-premium-body {
+      padding: 3rem;
+    }
   }
 
   .process-num-0 {
@@ -1477,15 +1502,22 @@
   }
 
   .process-rail {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem; /* Spacing between cards before they stack */
+    padding-bottom: 4rem;
+  }
+
+  .process-premium-card-wrapper {
+    position: sticky;
+    top: 7rem; /* Sticks under the navbar */
+    height: 100%;
   }
 
   @media (min-width: 640px) {
     .process-rail {
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1.75rem;
+      gap: 5rem;
+      padding-bottom: 6rem;
     }
   }
 
