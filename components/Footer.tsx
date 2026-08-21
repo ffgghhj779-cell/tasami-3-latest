@@ -15,6 +15,7 @@ import {
   getPublicContactEmail,
   getPhoneDisplay,
   getTikTokUrl,
+  getWhatsAppDisplay,
   telUrl,
   whatsappUrl,
 } from "@/lib/site";
@@ -52,7 +53,12 @@ export default function Footer() {
                 className="inline-flex items-center gap-2 hover:text-white"
               >
                 <WhatsappLogo weight="regular" className="h-4 w-4 text-tasami-lilac" />
-                {t("whatsapp")}
+                <span>
+                  {t("whatsapp")}
+                  <span className="ms-1.5" dir="ltr">
+                    {getWhatsAppDisplay()}
+                  </span>
+                </span>
               </a>
               <a
                 href={getTikTokUrl()}

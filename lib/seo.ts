@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTikTokUrl, getWhatsAppNumber, getWhatsAppUrl } from "@/lib/site";
+import { getTikTokUrl, getPhoneNumber, getWhatsAppNumber, getWhatsAppUrl } from "@/lib/site";
 
 /** Canonical production domain (Cloudflare + www). */
 export const SITE_URL =
@@ -170,6 +170,13 @@ export function organizationJsonLd() {
       {
         "@type": "ContactPoint",
         contactType: "customer service",
+        telephone: `+${getPhoneNumber()}`,
+        availableLanguage: ["ar", "en", "ur", "hi"],
+        areaServed: "SA",
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
         telephone: `+${getWhatsAppNumber()}`,
         availableLanguage: ["ar", "en", "ur", "hi"],
         areaServed: "SA",

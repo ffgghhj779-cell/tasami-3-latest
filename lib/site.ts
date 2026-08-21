@@ -5,9 +5,13 @@
  * server components, client components, and route handlers.
  */
 
-/** Official Tasami WhatsApp / phone — used across the site. */
-export const OFFICIAL_PHONE_E164 = "966559962847";
-export const OFFICIAL_PHONE_DISPLAY = "+966 55 996 2847";
+/** Official WhatsApp number (unchanged). */
+export const WHATSAPP_PHONE_E164 = "966559962847";
+export const WHATSAPP_PHONE_DISPLAY = "+966 55 996 2847";
+
+/** Main public phone number (calls) — shown next to WhatsApp. */
+export const OFFICIAL_PHONE_E164 = "966542289575";
+export const OFFICIAL_PHONE_DISPLAY = "054 228 9575";
 
 /** Official Tasami TikTok profile. */
 export const TIKTOK_URL = "https://vt.tiktok.com/ZSVNHcDfP/";
@@ -21,6 +25,12 @@ function digitsOnly(value: string): string {
 function resolveWhatsAppNumber(): string {
   const fromEnv = digitsOnly(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "");
   if (fromEnv && !PLACEHOLDER_NUMBERS.has(fromEnv)) return fromEnv;
+  return WHATSAPP_PHONE_E164;
+}
+
+function resolvePhoneNumber(): string {
+  const fromEnv = digitsOnly(process.env.NEXT_PUBLIC_PHONE_NUMBER || "");
+  if (fromEnv && !PLACEHOLDER_NUMBERS.has(fromEnv)) return fromEnv;
   return OFFICIAL_PHONE_E164;
 }
 
@@ -30,12 +40,20 @@ export function getWhatsAppNumber(): string {
   return resolveWhatsAppNumber();
 }
 
+export function getPhoneNumber(): string {
+  return resolvePhoneNumber();
+}
+
 export function getPhoneDisplay(): string {
   return OFFICIAL_PHONE_DISPLAY;
 }
 
+export function getWhatsAppDisplay(): string {
+  return WHATSAPP_PHONE_DISPLAY;
+}
+
 export function telUrl(): string {
-  return `tel:+${getWhatsAppNumber()}`;
+  return `tel:+${getPhoneNumber()}`;
 }
 
 export function whatsappUrl(text?: string): string {
