@@ -24,7 +24,6 @@ type Props = {
   serviceNameEn: string;
   category?: "government" | "tech" | "sector";
   subcategory?: string;
-  priceFrom?: number;
 };
 
 const MAX_FILES = 3;
@@ -55,7 +54,6 @@ export default function ServiceRequestActions({
   serviceNameEn,
   category = "government",
   subcategory,
-  priceFrom,
 }: Props) {
   const t = useTranslations("request");
   const locale = useLocale();
@@ -166,7 +164,6 @@ export default function ServiceRequestActions({
           serviceNameEn,
           category,
           subcategory,
-          priceFrom,
           attachments,
         }),
       });

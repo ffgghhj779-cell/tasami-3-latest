@@ -121,7 +121,7 @@
       },
       "two": {
         "title": "We map the path",
-        "desc": "Government, tech, or sector-specific — with a clear plan and transparent pricing."
+        "desc": "Government, tech, or sector-specific — with a clear plan and defined path."
       },
       "three": {
         "title": "We deliver & update you",
@@ -165,7 +165,7 @@
       },
       "clarity": {
         "title": "Full Transparency",
-        "desc": "Clear pricing and scope from day one. No surprises, no jargon."
+        "desc": "Clear scope from day one. No surprises, no jargon."
       },
       "multilang": {
         "title": "Four Languages",
@@ -220,7 +220,6 @@
     "backToCategory": "Back to category",
     "generalRequest": "General request for this category",
     "generalRequestHint": "If you don't see your service by name, send a general request and we'll follow up.",
-    "priceNote": "Tasami service fees (government fees not included).",
     "items": {
       "passports": {
         "title": "Passports & Residency",

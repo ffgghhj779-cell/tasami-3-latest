@@ -41,7 +41,6 @@ type CreateBody = {
   category?: "government" | "tech" | "sector";
   subcategory?: string;
   attachments?: AttachmentIn[];
-  priceFrom?: number;
 };
 
 const MAX_FILES = 3;
@@ -142,13 +141,12 @@ export async function POST(req: NextRequest) {
         subcategory: body.subcategory || null,
         description: serviceNameAr,
         slug: serviceSlug,
-        price_from: body.priceFrom ?? null,
+        price_from: null,
       },
       update: {
         name_ar: serviceNameAr,
         name_en: serviceNameEn || serviceNameAr,
         subcategory: body.subcategory || undefined,
-        price_from: body.priceFrom ?? undefined,
       },
     });
 

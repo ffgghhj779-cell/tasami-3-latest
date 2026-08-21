@@ -3,7 +3,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import PageHeader from "@/components/PageHeader";
 import { TECH_KEYS, TECH_SLUGS, type TechKey } from "@/lib/content-keys";
 import { VISUALS } from "@/lib/visuals";
-import { TECH_PRICE_FROM } from "@/lib/service-pricing";
 import { buildPageMetadata } from "@/lib/seo";
 import ServiceRequestActions, {
   MonjezHint,
@@ -73,7 +72,6 @@ export default async function TechServicePage({ params }: Props) {
               serviceNameEn={titleEn}
               category="tech"
               subcategory={key}
-              priceFrom={TECH_PRICE_FROM[key]}
             />
             <MonjezHint />
           </article>

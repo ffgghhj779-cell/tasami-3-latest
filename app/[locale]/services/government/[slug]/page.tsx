@@ -5,7 +5,6 @@ import { GOV_KEYS, GOV_SLUGS, type GovKey } from "@/lib/content-keys";
 import { VISUALS } from "@/lib/visuals";
 import { offeringsByCategory } from "@/lib/gov-offerings";
 import { getOfferingIcon } from "@/lib/gov-offering-icons";
-import { GOV_PRICE_FROM, formatOfferingPrice } from "@/lib/service-pricing";
 import { buildPageMetadata } from "@/lib/seo";
 import { rtlLocales, type Locale } from "@/i18n";
 import ServiceCard from "@/components/ServiceCard";
@@ -89,11 +88,6 @@ export default async function GovernmentCategoryPage({ params }: Props) {
                   title={t(`offerings.${offering.key}.title`)}
                   description={t(`offerings.${offering.key}.desc`)}
                   cta={t("askService")}
-                  meta={formatOfferingPrice(
-                    offering.priceFrom,
-                    offering.priceTo,
-                    locale
-                  )}
                   rtl={isRtl}
                 />
                 </Reveal>
@@ -117,11 +111,6 @@ export default async function GovernmentCategoryPage({ params }: Props) {
               serviceNameEn={titleEn}
               category="government"
               subcategory={key}
-              priceFrom={
-                offerings.length > 0
-                  ? Math.min(...offerings.map((o) => o.priceFrom))
-                  : GOV_PRICE_FROM[key]
-              }
             />
             <MonjezHint />
           </article>

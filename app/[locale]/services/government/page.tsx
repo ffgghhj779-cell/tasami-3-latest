@@ -20,7 +20,6 @@ import Reveal from "@/components/Reveal";
 import { GOV_KEYS, GOV_SLUGS, type GovKey } from "@/lib/content-keys";
 import { VISUALS } from "@/lib/visuals";
 import { offeringsByCategory } from "@/lib/gov-offerings";
-import { GOV_PRICE_FROM, formatPriceFrom } from "@/lib/service-pricing";
 import { rtlLocales, type Locale } from "@/i18n";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -87,9 +86,7 @@ export default async function GovernmentServicesPage({ params }: Props) {
                 description={t(`items.${key}.desc`)}
                 cta={t("viewServices")}
                 meta={
-                  count > 0
-                    ? t("offeringCount", { count })
-                    : formatPriceFrom(GOV_PRICE_FROM[key], locale)
+                  count > 0 ? t("offeringCount", { count }) : undefined
                 }
                 rtl={isRtl}
               />

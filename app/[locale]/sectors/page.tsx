@@ -28,7 +28,6 @@ import Reveal from "@/components/Reveal";
 import ServiceRequestActions from "@/components/ServiceRequestActions";
 import { SECTOR_KEYS, type SectorKey } from "@/lib/content-keys";
 import { VISUALS } from "@/lib/visuals";
-import { SECTOR_PRICE_FROM, formatPriceFrom } from "@/lib/service-pricing";
 import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
 import { rtlLocales, type Locale } from "@/i18n";
 
@@ -82,7 +81,6 @@ export default function SectorsPage() {
               icon={SECTOR_ICONS[key]}
               title={t(`items.${key}.title`)}
               description={t(`items.${key}.desc`)}
-              meta={formatPriceFrom(SECTOR_PRICE_FROM[key], locale)}
               cta={t("openSector")}
               onClick={() => setActive(key)}
               asButton
@@ -108,7 +106,6 @@ function SectorModal({
   onClose: () => void;
 }) {
   const t = useTranslations("sectors");
-  const locale = useLocale();
   const ActiveIcon = SECTOR_ICONS[sectorKey];
   useBodyScrollLock(true);
   const title = t(`items.${sectorKey}.title`);
@@ -143,9 +140,6 @@ function SectorModal({
               >
                 {title}
               </h2>
-              <p className="mt-1 text-xs text-tasami-lilac">
-                {formatPriceFrom(SECTOR_PRICE_FROM[sectorKey], locale)}
-              </p>
             </div>
           </div>
           <button
@@ -169,7 +163,6 @@ function SectorModal({
             serviceNameEn={title}
             category="sector"
             subcategory={sectorKey}
-            priceFrom={SECTOR_PRICE_FROM[sectorKey]}
           />
 
           <div className="flex flex-col gap-3 border-t border-tasami-purple/8 pt-4 sm:flex-row">

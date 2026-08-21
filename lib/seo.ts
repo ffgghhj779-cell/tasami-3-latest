@@ -228,7 +228,6 @@ export function professionalServiceJsonLd() {
       "Digital marketing",
     ],
     availableLanguage: ["ar", "en", "ur", "hi"],
-    priceRange: "$$",
   };
 }
 

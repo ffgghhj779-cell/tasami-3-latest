@@ -9,7 +9,6 @@ import {
   GOV_OFFERINGS,
   offeringsByCategory,
 } from "@/lib/gov-offerings";
-import { formatOfferingPrice } from "@/lib/service-pricing";
 import { getServiceForm } from "@/lib/service-forms";
 import { buildPageMetadata } from "@/lib/seo";
 import ServiceRequestActions, {
@@ -118,16 +117,6 @@ export default async function GovernmentOfferingPage({ params }: Props) {
               <CategoryIcon weight="regular" className="h-4 w-4" />
               {t(`items.${categoryKey}.title`)}
             </p>
-            <p className="mt-4 text-base font-medium text-tasami-dark">
-              {formatOfferingPrice(
-                offering.priceFrom,
-                offering.priceTo,
-                locale
-              )}
-            </p>
-            <p className="mt-1.5 text-[11px] leading-relaxed text-tasami-gray">
-              {t("priceNote")}
-            </p>
 
             {form.docs.length > 0 ? (
               <div className="mt-8 rounded-card border border-tasami-purple/8 bg-white/80 p-5">
@@ -181,7 +170,6 @@ export default async function GovernmentOfferingPage({ params }: Props) {
                 serviceNameEn={titleEn}
                 category="government"
                 subcategory={offering.key}
-                priceFrom={offering.priceFrom}
               />
               <MonjezHint />
             </article>
