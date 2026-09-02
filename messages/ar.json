@@ -966,7 +966,8 @@
       "conversations": "المحادثات",
       "tasks": "المهام",
       "campaigns": "الحملات",
-      "reminders": "التذكيرات"
+      "reminders": "التذكيرات",
+      "whatsapp": "واتساب البوت"
     },
     "requests": {
       "title": "طلبات الخدمات",
@@ -992,7 +993,11 @@
       "viewAll": "عرض الكل",
       "emptyConversations": "لا توجد محادثات بعد.",
       "emptyTasks": "لا توجد مهام بعد.",
-      "dbHint": "تعذر الاتصال بقاعدة البيانات. تأكد من DATABASE_URL ثم نفّذ prisma db push."
+      "dbHint": "تعذر الاتصال بقاعدة البيانات. تأكد من DATABASE_URL ثم نفّذ prisma db push.",
+      "whatsappCard": "بوت واتساب تسامي",
+      "whatsappCardDesc": "طلبات العملاء، إرسال رسائل، ومتابعة حالة البوت.",
+      "whatsappOrdersToday": "طلبات اليوم (واتساب)",
+      "openWhatsApp": "فتح لوحة الواتساب"
     },
     "customers": {
       "title": "العملاء",
@@ -1085,6 +1090,52 @@
       "empty": "لا توجد تذكيرات بعد.",
       "delete": "حذف",
       "confirmDelete": "هل تريد حذف هذا التذكير؟"
+    },
+    "whatsapp": {
+      "title": "بوت واتساب تسامي الوطنية",
+      "subtitle": "متابعة طلبات العملاء، إرسال رسائل مباشرة، وإدارة حالة البوت — كل شيء من مكان واحد.",
+      "live": "متصل",
+      "refresh": "تحديث",
+      "dbError": "تعذر تحميل بيانات الواتساب. تأكد من DATABASE_URL.",
+      "ordersToday": "طلبات اليوم",
+      "ordersWeek": "طلبات الأسبوع",
+      "ordersTotal": "إجمالي الطلبات",
+      "botPaused": "بوت متوقف مؤقتاً",
+      "ordersTitle": "طلبات واتساب",
+      "ordersCount": "طلب",
+      "emptyOrders": "لا توجد طلبات واتساب بعد.",
+      "colCustomer": "العميل",
+      "colPhone": "الجوال",
+      "colStatus": "الحالة",
+      "colDate": "التاريخ",
+      "colActions": "إجراءات",
+      "unknownCustomer": "عميل",
+      "details": "تفاصيل",
+      "hide": "إخفاء",
+      "reply": "رد",
+      "customerMessage": "رسالة العميل",
+      "saraReply": "رد سارة",
+      "sendTitle": "إرسال رسالة واتساب",
+      "sendSubtitle": "تُرسل عبر Romanh وتوقف البوت 4 ساعات تلقائياً.",
+      "sendPhone": "رقم الجوال",
+      "sendPhonePh": "9665xxxxxxxx",
+      "sendMessage": "نص الرسالة",
+      "sendMessagePh": "اكتب رسالتك للعميل…",
+      "sendBtn": "إرسال عبر واتساب",
+      "sending": "جارٍ الإرسال…",
+      "sendSuccess": "تم إرسال الرسالة بنجاح.",
+      "sendError": "تعذر الإرسال. تحقق من إعدادات n8n.",
+      "pausesTitle": "عملاء البوت متوقف",
+      "pausesSubtitle": "توقف مؤقت بعد تدخل موظف أو رد سكرتير.",
+      "emptyPauses": "لا يوجد عملاء متوقفين حالياً.",
+      "pauseUntil": "حتى",
+      "orderStatus": {
+        "received": "مستلم",
+        "processing": "قيد التجهيز",
+        "shipped": "تم الشحن",
+        "delivered": "تم التسليم",
+        "cancelled": "ملغى"
+      }
     },
     "tasks": {
       "title": "المهام",

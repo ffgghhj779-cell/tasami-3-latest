@@ -9,7 +9,13 @@
     "lint": "next lint",
     "postinstall": "prisma generate",
     "db:generate": "prisma generate",
-    "db:push": "prisma db push"
+    "db:push": "prisma db push",
+    "deploy:bot": "node scripts/tasami-deploy.js",
+    "deploy:bot:phase1": "node scripts/tasami-deploy.js phase1",
+    "deploy:bot:phase2": "node scripts/tasami-deploy.js phase2",
+    "deploy:bot:phase3": "node scripts/tasami-deploy.js phase3",
+    "deploy:bot:phase4": "node scripts/tasami-deploy.js phase4",
+    "deploy:bot:manager": "node scripts/deploy-manager-whatsapp.js"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.7",

@@ -9,6 +9,7 @@ import {
   ClipboardText,
   Megaphone,
   BellRinging,
+  WhatsappLogo,
   ArrowLeft,
 } from "@phosphor-icons/react";
 import { Link, usePathname } from "@/navigation";
@@ -16,6 +17,7 @@ import BrandLogo from "@/components/BrandLogo";
 
 const NAV = [
   { href: "/admin", key: "dashboard" as const, icon: ChartPieSlice, exact: true },
+  { href: "/admin/whatsapp", key: "whatsapp" as const, icon: WhatsappLogo, exact: false },
   { href: "/admin/requests", key: "requests" as const, icon: ClipboardText, exact: false },
   { href: "/admin/customers", key: "customers" as const, icon: Users, exact: false },
   { href: "/admin/conversations", key: "conversations" as const, icon: ChatCircleDots, exact: false },

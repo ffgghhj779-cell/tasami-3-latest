@@ -4,8 +4,11 @@ import {
   CheckSquare,
   ChatCircleDots,
   UserPlus,
+  WhatsappLogo,
+  ArrowRight,
 } from "@phosphor-icons/react/dist/ssr";
 import { prisma } from "@/lib/prisma";
+import { getWhatsAppStats } from "@/lib/whatsapp-admin";
 import { Link } from "@/navigation";
 import {
   StatusBadge,
@@ -75,6 +78,7 @@ export default async function AdminDashboardPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations("admin");
   const data = await safeMetrics();
+  const waStats = await getWhatsAppStats();
 
   const cards = [
     {
@@ -118,6 +122,34 @@ export default async function AdminDashboardPage({ params }: Props) {
           </p>
         )}
       </header>
+
+      <Link
+        href="/admin/whatsapp"
+        className="group relative block overflow-hidden rounded-2xl bg-gradient-to-br from-[#075E54] via-[#128C7E] to-[#25D366] p-6 text-white shadow-lg transition-transform hover:-translate-y-0.5"
+      >
+        <div className="absolute -end-6 -top-6 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
+        <div className="relative flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/15">
+              <WhatsappLogo weight="fill" className="h-7 w-7" />
+            </span>
+            <div>
+              <h2 className="font-display text-lg sm:text-xl">{t("dashboard.whatsappCard")}</h2>
+              <p className="mt-1 text-sm text-white/80">{t("dashboard.whatsappCardDesc")}</p>
+              {waStats.ok && (
+                <p className="mt-2 text-xs text-white/70">
+                  {t("dashboard.whatsappOrdersToday")}:{" "}
+                  <span className="font-semibold text-white">{waStats.ordersToday}</span>
+                </p>
+              )}
+            </div>
+          </div>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-4 py-2 text-sm font-medium">
+            {t("dashboard.openWhatsApp")}
+            <ArrowRight weight="bold" className="h-4 w-4 rtl:rotate-180" />
+          </span>
+        </div>
+      </Link>
 
       <section className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {cards.map(({ key, value, icon: Icon, href }) => (
