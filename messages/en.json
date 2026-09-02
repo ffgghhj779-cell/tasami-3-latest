@@ -966,8 +966,7 @@
       "conversations": "Conversations",
       "tasks": "Tasks",
       "campaigns": "Campaigns",
-      "reminders": "Reminders",
-      "whatsapp": "WhatsApp Bot"
+      "reminders": "Reminders"
     },
     "requests": {
       "title": "Service Requests",
@@ -993,11 +992,7 @@
       "viewAll": "View all",
       "emptyConversations": "No conversations yet.",
       "emptyTasks": "No tasks yet.",
-      "dbHint": "Could not reach the database. Set DATABASE_URL and run prisma db push.",
-      "whatsappCard": "Tasami WhatsApp Bot",
-      "whatsappCardDesc": "Customer orders, send messages, and bot status — all in one place.",
-      "whatsappOrdersToday": "WhatsApp orders today",
-      "openWhatsApp": "Open WhatsApp panel"
+      "dbHint": "Could not reach the database. Set DATABASE_URL and run prisma db push."
     },
     "customers": {
       "title": "Customers",
@@ -1090,52 +1085,6 @@
       "empty": "No reminders yet.",
       "delete": "Delete",
       "confirmDelete": "Delete this reminder?"
-    },
-    "whatsapp": {
-      "title": "Tasami WhatsApp Bot",
-      "subtitle": "Track customer orders, send messages directly, and manage bot status — all in one place.",
-      "live": "Live",
-      "refresh": "Refresh",
-      "dbError": "Could not load WhatsApp data. Check DATABASE_URL.",
-      "ordersToday": "Orders today",
-      "ordersWeek": "Orders this week",
-      "ordersTotal": "Total orders",
-      "botPaused": "Bot paused",
-      "ordersTitle": "WhatsApp orders",
-      "ordersCount": "orders",
-      "emptyOrders": "No WhatsApp orders yet.",
-      "colCustomer": "Customer",
-      "colPhone": "Phone",
-      "colStatus": "Status",
-      "colDate": "Date",
-      "colActions": "Actions",
-      "unknownCustomer": "Customer",
-      "details": "Details",
-      "hide": "Hide",
-      "reply": "Reply",
-      "customerMessage": "Customer message",
-      "saraReply": "Sara reply",
-      "sendTitle": "Send WhatsApp message",
-      "sendSubtitle": "Sent via Romanh; bot pauses 4 hours automatically.",
-      "sendPhone": "Phone number",
-      "sendPhonePh": "9665xxxxxxxx",
-      "sendMessage": "Message",
-      "sendMessagePh": "Type your message to the customer…",
-      "sendBtn": "Send via WhatsApp",
-      "sending": "Sending…",
-      "sendSuccess": "Message sent successfully.",
-      "sendError": "Send failed. Check n8n configuration.",
-      "pausesTitle": "Paused customers",
-      "pausesSubtitle": "Temporary pause after human handoff or secretary reply.",
-      "emptyPauses": "No paused customers right now.",
-      "pauseUntil": "Until",
-      "orderStatus": {
-        "received": "Received",
-        "processing": "Processing",
-        "shipped": "Shipped",
-        "delivered": "Delivered",
-        "cancelled": "Cancelled"
-      }
     },
     "tasks": {
       "title": "Tasks",
