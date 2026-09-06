@@ -6,11 +6,12 @@ import { motion } from "framer-motion";
 import { WhatsappLogo, X } from "@phosphor-icons/react";
 import ChatWidget from "@/components/ChatWidget";
 import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
-import { whatsappDirectUrl, whatsappUrl } from "@/lib/site";
+import { whatsappDirectUrl, whatsappUrl, getWhatsAppDirectNumber } from "@/lib/site";
 import {
   taqeebWhatsAppMessage,
   techWhatsAppMessage,
 } from "@/lib/whatsapp-templates";
+import { trackWhatsAppClick } from "@/lib/analytics";
 import { usePathname } from "@/navigation";
 
 const spring = {
@@ -62,6 +63,11 @@ export default function FloatingWidgets() {
       return;
     }
     // Government / default: open Ibrahim (taqeeb) directly — less friction
+    trackWhatsAppClick({
+      line: "taqeeb",
+      location: "floating_fab",
+      number: getWhatsAppDirectNumber(),
+    });
     window.open(waTaqeeb, "_blank", "noopener,noreferrer");
   };
 
@@ -101,6 +107,7 @@ export default function FloatingWidgets() {
                 href={waTech}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-wa-location="floating_menu"
                 className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button bg-[#128C4A] px-4 py-3 text-sm font-semibold text-white active:opacity-90"
               >
                 <WhatsappLogo weight="fill" className="h-5 w-5" />
@@ -110,6 +117,7 @@ export default function FloatingWidgets() {
                 href={waTaqeeb}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-wa-location="floating_menu"
                 className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button border border-[#128C4A]/30 bg-[#128C4A]/10 px-4 py-3 text-sm font-semibold text-[#0B6B38] active:opacity-90"
               >
                 <WhatsappLogo weight="regular" className="h-5 w-5" />

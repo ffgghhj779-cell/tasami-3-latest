@@ -325,6 +325,7 @@ export default function ServiceRequestActions({
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
+          data-wa-location="service_page"
           className="inline-flex min-h-[52px] flex-1 items-center justify-center gap-2 rounded-button bg-[#128C4A] px-4 py-3 text-sm font-semibold text-white shadow-soft transition-opacity hover:opacity-95"
         >
           <WhatsappLogo weight="fill" className="h-5 w-5" />
@@ -534,6 +535,7 @@ export default function ServiceRequestActions({
                       href={waUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      data-wa-location="service_modal"
                       className="flex min-h-[44px] w-full items-center justify-center gap-2 text-sm font-medium text-tasami-gray hover:text-[#25D366]"
                     >
                       <WhatsappLogo weight="fill" className="h-4 w-4" />

@@ -110,6 +110,7 @@ export default async function HomePage({ params }: Props) {
                 href={waTaqeeb}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-wa-location="home_hero"
                 className="btn-hero inline-flex w-full items-center justify-center gap-2 sm:w-auto sm:min-w-[210px]"
               >
                 <WhatsappLogo weight="fill" className="h-5 w-5" />
@@ -119,6 +120,7 @@ export default async function HomePage({ params }: Props) {
                 href={waTech}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-wa-location="home_hero"
                 className="btn-outline-light inline-flex w-full items-center justify-center gap-2 sm:w-auto sm:min-w-[210px] max-lg:order-3 lg:order-none"
               >
                 <WhatsappLogo weight="regular" className="h-5 w-5" />
@@ -228,6 +230,7 @@ export default async function HomePage({ params }: Props) {
                 href={waTaqeeb}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-wa-location="home_cta_band"
                 className="btn-hero inline-flex w-full min-w-0 items-center justify-center gap-2 sm:w-auto sm:min-w-[200px]"
               >
                 <WhatsappLogo weight="fill" className="h-5 w-5" />

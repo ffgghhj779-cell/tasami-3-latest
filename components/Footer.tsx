@@ -55,6 +55,7 @@ export default function Footer() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-wa-location="footer"
                 className="inline-flex items-center gap-2 hover:text-white"
               >
                 <WhatsappLogo weight="regular" className="h-4 w-4 text-tasami-lilac" />
@@ -69,6 +70,7 @@ export default function Footer() {
                 href={whatsappUrl(techWhatsAppMessage("استفسار من الفوتر"))}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-wa-location="footer"
                 className="inline-flex items-center gap-2 hover:text-white"
               >
                 <WhatsappLogo weight="regular" className="h-4 w-4 text-tasami-lilac" />
@@ -219,6 +221,7 @@ export default function Footer() {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-wa-location="footer_cta"
                   className="inline-flex min-h-[44px] items-center rounded-button border border-white/50 bg-white px-4 py-2.5 text-sm font-semibold text-tasami-purple transition-colors hover:bg-tasami-lilac hover:text-tasami-purple"
                 >
                   {t("contactCta")}

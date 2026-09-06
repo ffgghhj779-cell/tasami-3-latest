@@ -271,6 +271,7 @@ export default function SearchRouter({
                       href={wa}
                       target="_blank"
                       rel="noopener noreferrer"
+                      data-wa-location="search"
                       className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-button border border-[#128C4A]/25 bg-[#128C4A]/8 px-4 text-sm font-semibold text-[#0B6B38]"
                     >
                       <WhatsappLogo weight="fill" className="h-4 w-4" />
