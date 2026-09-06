@@ -6,15 +6,12 @@ import { motion } from "framer-motion";
 import { WhatsappLogo, X } from "@phosphor-icons/react";
 import ChatWidget from "@/components/ChatWidget";
 import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
-import { whatsappUrl } from "@/lib/site";
+import { whatsappDirectUrl, whatsappUrl } from "@/lib/site";
+import {
+  taqeebWhatsAppMessage,
+  techWhatsAppMessage,
+} from "@/lib/whatsapp-templates";
 import { usePathname } from "@/navigation";
-
-const WHATSAPP_SECRETARY = whatsappUrl(
-  "مرحباً، أرغب بالتواصل مع سكرتير تسامي"
-);
-const WHATSAPP_DIRECT = whatsappUrl(
-  "مرحباً، أريد الاستفسار عن خدمات تسامي مباشرة"
-);
 
 const spring = {
   type: "spring" as const,
@@ -29,6 +26,14 @@ export default function FloatingWidgets() {
   const [waOpen, setWaOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
   const [coarse, setCoarse] = useState(false);
+
+  const onTechPath = pathname.includes("/services/tech");
+  const showChatFab = onTechPath; // reduce clash with WhatsApp on gov paths
+
+  const waTaqeeb = whatsappDirectUrl(
+    taqeebWhatsAppMessage("استفسار من الموقع")
+  );
+  const waTech = whatsappUrl(techWhatsAppMessage("استفسار من الموقع"));
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 1023px), (pointer: coarse)");
@@ -50,18 +55,30 @@ export default function FloatingWidgets() {
     if (open) setWaOpen(false);
   }, []);
 
+  const openWhatsAppMenu = () => {
+    if (onTechPath) {
+      setWaOpen((v) => !v);
+      setChatOpen(false);
+      return;
+    }
+    // Government / default: open Ibrahim (taqeeb) directly — less friction
+    window.open(waTaqeeb, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <>
-      <ChatWidget forceClose={waOpen} onOpenChange={onChatOpenChange} />
+      {showChatFab ? (
+        <ChatWidget forceClose={waOpen} onOpenChange={onChatOpenChange} />
+      ) : null}
 
       <div className="fab-shell pointer-events-none fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] end-3 z-50 flex flex-col items-end gap-3 sm:bottom-8 sm:end-6">
-        {waOpen ? (
+        {waOpen && onTechPath ? (
           <div
             className="pointer-events-auto mb-1 w-[min(300px,calc(100vw-5rem))] overflow-hidden rounded-card bg-white shadow-soft"
             role="dialog"
             aria-label={t("waTitle")}
           >
-            <div className="flex items-center justify-between bg-[#007AFF] px-4 py-3.5">
+            <div className="flex items-center justify-between bg-[#128C4A] px-4 py-3.5">
               <div className="flex items-center gap-2">
                 <WhatsappLogo weight="fill" className="h-6 w-6 text-white" />
                 <p className="text-sm font-medium text-white">{t("waTitle")}</p>
@@ -81,19 +98,19 @@ export default function FloatingWidgets() {
                 {t("waIntro")}
               </p>
               <a
-                href={WHATSAPP_SECRETARY}
+                href={waTech}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button bg-[#007AFF] px-4 py-3 text-sm font-semibold text-white active:opacity-90"
+                className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button bg-[#128C4A] px-4 py-3 text-sm font-semibold text-white active:opacity-90"
               >
                 <WhatsappLogo weight="fill" className="h-5 w-5" />
                 {t("waSecretary")}
               </a>
               <a
-                href={WHATSAPP_DIRECT}
+                href={waTaqeeb}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button border border-[rgba(90,200,250,0.8)] bg-[#5AC8FA] px-4 py-3 text-sm font-semibold text-tasami-purple active:opacity-90"
+                className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-button border border-[#128C4A]/30 bg-[#128C4A]/10 px-4 py-3 text-sm font-semibold text-[#0B6B38] active:opacity-90"
               >
                 <WhatsappLogo weight="regular" className="h-5 w-5" />
                 {t("waDirect")}
@@ -106,11 +123,8 @@ export default function FloatingWidgets() {
           <button
             type="button"
             aria-label={t("openWhatsapp")}
-            onClick={() => {
-              setWaOpen((v) => !v);
-              setChatOpen(false);
-            }}
-            className={`pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#128C4A] text-white shadow-soft active:scale-95 ${
+            onClick={openWhatsAppMenu}
+            className={`pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#128C4A] text-white shadow-soft active:scale-95 ${
               chatOpen ? "max-sm:hidden" : ""
             }`}
           >
@@ -121,25 +135,22 @@ export default function FloatingWidgets() {
             )}
           </button>
         ) : (
-        <motion.button
-          type="button"
-          aria-label={t("openWhatsapp")}
-          onClick={() => {
-            setWaOpen((v) => !v);
-            setChatOpen(false);
-          }}
-          whileTap={{ scale: 0.94 }}
-          transition={spring}
-          className={`pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#128C4A] text-white shadow-soft ${
-            chatOpen ? "max-sm:hidden" : ""
-          }`}
-        >
-          {waOpen ? (
-            <X weight="bold" className="h-6 w-6" />
-          ) : (
-            <WhatsappLogo weight="fill" className="h-7 w-7" />
-          )}
-        </motion.button>
+          <motion.button
+            type="button"
+            aria-label={t("openWhatsapp")}
+            onClick={openWhatsAppMenu}
+            whileTap={{ scale: 0.94 }}
+            transition={spring}
+            className={`pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#128C4A] text-white shadow-soft ${
+              chatOpen ? "max-sm:hidden" : ""
+            }`}
+          >
+            {waOpen ? (
+              <X weight="bold" className="h-6 w-6" />
+            ) : (
+              <WhatsappLogo weight="fill" className="h-7 w-7" />
+            )}
+          </motion.button>
         )}
       </div>
     </>

@@ -491,6 +491,16 @@ export const SERVICE_FORMS: Record<string, ServiceFormDef> = {
       { id: "details", type: "textarea", required: true },
     ],
   },
+  transferSponsorship: {
+    docs: ["idIqama", "crCopy", "qiwaAccess", "contractCopy"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text" },
+      { id: "workersCount", type: "number", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
   changeProfession: {
     docs: ["idIqama", "crCopy", "qiwaAccess", "qualification"],
     fields: [

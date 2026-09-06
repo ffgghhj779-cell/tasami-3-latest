@@ -24,7 +24,7 @@ export const fontHeadingAr = El_Messiri({
   preload: true,
 });
 
-/** English — geometric sans like TASAMI / MODERN TECH & SERVICES. */
+/** English — geometric sans aligned with TASAMI wordmark. */
 export const fontLatin = Montserrat({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700", "800"],

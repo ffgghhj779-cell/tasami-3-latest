@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import PageHeader from "@/components/PageHeader";
+import ServiceBriefPanel from "@/components/ServiceBriefPanel";
 import { TECH_KEYS, TECH_SLUGS, type TechKey } from "@/lib/content-keys";
 import { VISUALS } from "@/lib/visuals";
 import { buildPageMetadata } from "@/lib/seo";
@@ -58,23 +59,35 @@ export default async function TechServicePage({ params }: Props) {
       />
 
       <div className="mx-auto max-w-xl px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
-          <article className="card-premium p-7 sm:p-8">
-            <h2 className="text-base font-medium text-tasami-dark sm:text-lg">
-              {title}
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-tasami-gray">
-              {t(`items.${key}.desc`)}
-            </p>
+        <article className="card-premium p-7 sm:p-8">
+          <h2 className="text-base font-medium text-tasami-dark sm:text-lg">
+            {title}
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-tasami-gray">
+            {t(`items.${key}.desc`)}
+          </p>
 
-            <ServiceRequestActions
-              serviceSlug={`tech-${slug}`}
-              serviceNameAr={titleAr}
-              serviceNameEn={titleEn}
-              category="tech"
-              subcategory={key}
-            />
-            <MonjezHint />
-          </article>
+          <ServiceBriefPanel
+            serviceKey={key}
+            kind="tech"
+            labels={{
+              whatTitle: t("briefWhat"),
+              platformTitle: t("briefPlatform"),
+              needsTitle: t("briefNeeds"),
+              durationTitle: t("briefDuration"),
+              disclaimer: t("briefDisclaimer"),
+            }}
+          />
+
+          <ServiceRequestActions
+            serviceSlug={`tech-${slug}`}
+            serviceNameAr={titleAr}
+            serviceNameEn={titleEn}
+            category="tech"
+            subcategory={key}
+          />
+          <MonjezHint />
+        </article>
       </div>
     </div>
   );

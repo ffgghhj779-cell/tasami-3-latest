@@ -2,7 +2,7 @@
   "brand": {
     "name": "تسامی",
     "letter": "ت",
-    "slogan": "اپنی خدمات انجام دیں"
+    "slogan": "حکومتی تعقیب اور ٹیک حل"
   },
   "nav": {
     "government": "حکومتی",
@@ -13,6 +13,7 @@
     "login": "لاگ ان",
     "register": "سائن اپ",
     "account": "میرا اکاؤنٹ",
+    "search": "تلاش",
     "changeLanguage": "زبان تبدیل کریں",
     "openMenu": "مینو کھولیں",
     "closeMenu": "مینو بند کریں"
@@ -175,13 +176,15 @@
         "title": "خیال سے عملی نفاذ تک",
         "desc": "ہم حکومتی اور تکنیکی خدمات کو ایک راستے پر یکجا کرتے ہیں — قیام، تعمیل، پھر ڈیجیٹل ترقی۔"
       }
-    }
+    },
+    "ctaBandTech": "Tech WhatsApp",
+    "trustLine": "We work through official platforms and are not a government entity."
   },
   "footer": {
     "brand": "تسامی",
     "about": "حکومتی اور تکنیکی خدمات کے لیے ایک اعلیٰ درجے کا سعودی پلیٹ فارم — مکمل سادگی، چار زبانیں، اور 24/7 مصنوعی ذہانت اسسٹنٹ۔",
-    "affiliation": "تسامی تسامی الوطنیہ کے قانونی تجارتی رجسٹریشن کے تحت کام کرتی ہے۔",
-    "whatsapp": "سیکرٹری واٹس ایپ",
+    "affiliation": "تسامی الوطنیہ کی خدمات میں سے ایک۔",
+    "whatsapp": "ٹیک واٹس ایپ (مصطفیٰ)",
     "tiktok": "ٹک ٹاک",
     "hours": "چوبیس گھنٹے معاونت",
     "govTitle": "حکومتی خدمات",
@@ -195,14 +198,15 @@
     "viewAll": "سب دیکھیں ←",
     "rights": "جملہ حقوق محفوظ ہیں۔",
     "built": "وژن 2030 کے لیے ڈیجیٹل انداز میں تیار کیا گیا۔",
-    "legalDisclaimer": "ہماری تمام خدمات متعلقہ ضوابط کے تحت سرکاری پورٹلز یا لائسنس یافتہ مجاز ایجنٹس کے ذریعے فراہم کی جاتی ہیں۔",
+    "legalDisclaimer": "کاغذات اور لائسنس تسامی کے نام پر۔ ہم سرکاری پلیٹ فارمز کے ذریعے کام کرتے ہیں اور سرکاری ادارہ نہیں ہیں۔",
     "company": {
       "cr": "سی آر نمبر",
       "vat": "ویٹ نمبر",
       "address": "پتہ",
       "parent": "تسامی الوطنیہ",
       "city": "الریاض، مملکت سعودی عرب"
-    }
+    },
+    "whatsappGov": "تعقیب واٹس ایپ (ابراہیم)"
   },
   "gov": {
     "eyebrow": "خدمات",
@@ -310,6 +314,10 @@
       "consulateAppointment": {
         "title": "قونصلیٹ اپائنٹمنٹ",
         "desc": "کسی سرکاری معاملے کے لیے قونصلیٹ یا سفارت خانے میں اپائنٹمنٹ بک کریں۔"
+      },
+      "transferSponsorship": {
+        "title": "کفالت / خدمات کی منتقلی",
+        "desc": "قوی اور سرکاری چینلز کے ذریعے کارکن کی خدمات نئی تنصیب یا کفیل کو منتقل کریں۔"
       },
       "workVisaPermanent": {
         "title": "مستقل ورک ویزا",
@@ -419,7 +427,14 @@
         "title": "ویٹ فائلنگ",
         "desc": "اپنی تنصیب کا ویٹ ریٹرن تیار اور جمع کروائیں۔"
       }
-    }
+    },
+    "briefWhat": "What we deliver",
+    "briefPlatform": "Platform",
+    "briefNeeds": "What we need from you",
+    "briefDuration": "Approximate timing",
+    "briefDisclaimer": "We work through official platforms and are not a government entity. No prices on the site — details on WhatsApp.",
+    "waTaqeeb": "Taqeeb WhatsApp",
+    "waTech": "Tech WhatsApp"
   },
   "tech": {
     "eyebrow": "خدمات",
@@ -464,7 +479,13 @@
         "title": "کلاؤڈ خدمات",
         "desc": "ہوسٹنگ، منتقلی، اور محفوظ کلاؤڈ آپریشنز۔"
       }
-    }
+    },
+    "briefWhat": "What we deliver",
+    "briefNeeds": "What we need from you",
+    "briefDuration": "Approximate timing",
+    "briefDisclaimer": "We work through official platforms and are not a government entity. No prices on the site — details on WhatsApp.",
+    "waTech": "Tech WhatsApp",
+    "briefPlatform": "Platform"
   },
   "sectors": {
     "eyebrow": "شعبے",
@@ -547,9 +568,9 @@
     "monjezFallback": "رابطہ کرنے کا شکریہ۔ تسامی ٹیم جلد آپ سے رابطہ کرے گی۔ تیز جواب کے لیے آپ واٹس ایپ بھی استعمال کر سکتے ہیں۔",
     "monjezError": "کنکشن میں مسئلہ ہے۔ براہِ کرم بعد میں دوبارہ کوشش کریں یا واٹس ایپ پر رابطہ کریں۔",
     "waTitle": "تسامی واٹس ایپ",
-    "waIntro": "تسامی ٹیم سے رابطے کا طریقہ منتخب کریں:",
-    "waSecretary": "سیکرٹری سے بات کریں",
-    "waDirect": "براہ راست واٹس ایپ",
+    "waIntro": "حکومتی → براہ راست · ٹیک → سیکرٹری",
+    "waSecretary": "ٹیک / سیکرٹری",
+    "waDirect": "حکومتی — براہ راست واٹس ایپ",
     "openChat": "منجز چیٹ کھولیں",
     "openWhatsapp": "واٹس ایپ کھولیں",
     "close": "بند کریں",
@@ -892,7 +913,8 @@
         "days90": "90 دن",
         "other": "دیگر"
       }
-    }
+    },
+    "ctaWhatsappTech": "ٹیک واٹس ایپ"
   },
   "legal": {
     "back": "ہوم پیج پر واپس",
@@ -1157,5 +1179,50 @@
       "RENEWAL": "تجدید",
       "CUSTOM": "حسبِ ضرورت"
     }
+  },
+  "search": {
+    "title": "اپنی سروس تلاش کریں",
+    "subtitle": "اپنی ضرورت کسی بھی انداز میں لکھیں — ہم بہترین سروس کی طرف رہنمائی کریں گے۔",
+    "placeholder": "مثال: نقل کفالت / تجدید اقامہ / تجارتی رجسٹر",
+    "submit": "تلاش",
+    "clear": "صاف",
+    "eyebrow": "تسامی سرچ انٹیلی جنس",
+    "results": "بہترین نتائج",
+    "related": "متعلقہ خدمات",
+    "noResults": "براہِ راست میچ نہیں ملا — واضح جملہ آزمائیں یا رابطہ کریں۔",
+    "clarify": "وضاحت درکار",
+    "suggestions": "فوری تجاویز",
+    "matchScore": "میچ",
+    "openService": "سروس کھولیں",
+    "whatsappCta": "اس سروس کے لیے واٹس ایپ",
+    "hubs": "دریافت شدہ ہبز",
+    "intents": "تلاش کی نیت",
+    "emptyHint": "ایک لفظ سے شروع کریں: کفالت، اقامہ، رجسٹر، لائسنس",
+    "kind": {
+      "offering": "سروس",
+      "category": "زمرہ",
+      "tech": "ٹیک",
+      "sector": "شعبہ",
+      "pillar": "راستہ"
+    },
+    "strength": {
+      "direct": "براہ راست",
+      "strong": "مضبوط",
+      "medium": "درمیانہ",
+      "weak": "کمزور",
+      "contextual": "سیاقی"
+    },
+    "disambiguate": {
+      "transferSponsorship": "نقل کفالت / نقل خدمات",
+      "transferCr": "تجارتی رجسٹر کی ملکیت منتقل",
+      "transferLicense": "سرگرمی لائسنس منتقل",
+      "traffic": "ٹریفک اور گاڑیاں",
+      "labor": "مزدور اور کفالت",
+      "iqama": "اقامہ تجدید",
+      "exit": "خروج و عودہ / حتمی خروج",
+      "profession": "پیشہ تبدیل"
+    },
+    "faqTitle": "عمومی سوالات",
+    "relatedServices": "آپ کو یہ بھی درکار ہو سکتا ہے"
   }
 }

@@ -11,6 +11,7 @@ import {
   SquaresFour,
   GlobeHemisphereWest,
   UserCircle,
+  MagnifyingGlass,
 } from "@phosphor-icons/react";
 import { Link, usePathname } from "@/navigation";
 import { locales, type Locale } from "@/i18n";
@@ -70,6 +71,20 @@ export default function Navbar() {
 
   const mobileMenu = (
     <ul className="flex flex-col gap-1 px-4 py-4">
+      <li>
+        <Link
+          href="/search"
+          onClick={() => setMobileOpen(false)}
+          className={`flex min-h-[48px] items-center gap-3 rounded-button px-3 py-3 text-sm font-medium ${
+            pathname.includes("/search")
+              ? "bg-tasami-offwhite text-tasami-dark"
+              : "text-tasami-dark/80"
+          }`}
+        >
+          <MagnifyingGlass weight="regular" className="h-5 w-5 text-[#007AFF]" />
+          {t("search")}
+        </Link>
+      </li>
       {NAV_LINKS.map(({ href, key, icon: Icon }) => {
         const active = pathname.includes(href);
         return (
@@ -142,6 +157,21 @@ export default function Navbar() {
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
+          <li>
+            <Link
+              href="/search"
+              className={`relative flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium transition-colors duration-200 ${
+                pathname.includes("/search") ? inkActive : ink
+              }`}
+              aria-label={t("search")}
+            >
+              <MagnifyingGlass weight="regular" className="h-4 w-4" />
+              <span className="hidden lg:inline">{t("search")}</span>
+              {pathname.includes("/search") ? (
+                <span className="absolute inset-x-3.5 -bottom-0.5 h-px bg-tasami-purple" />
+              ) : null}
+            </Link>
+          </li>
           {NAV_LINKS.map(({ href, key }) => {
             const active = pathname.includes(href);
             return (

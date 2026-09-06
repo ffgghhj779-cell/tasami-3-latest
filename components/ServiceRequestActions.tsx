@@ -16,7 +16,8 @@ import {
   type ServiceField,
 } from "@/lib/service-forms";
 import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
-import { whatsappUrl } from "@/lib/site";
+import { whatsappForService } from "@/lib/site";
+import { whatsappPrefillFor } from "@/lib/whatsapp-templates";
 
 type Props = {
   serviceSlug: string;
@@ -73,10 +74,12 @@ export default function ServiceRequestActions({
 
   useBodyScrollLock(open);
 
-  const waUrl = whatsappUrl(
-    locale === "ar"
-      ? `مرحباً، أرغب بطلب خدمة: ${serviceNameAr}`
-      : `Hello, I would like to request: ${serviceNameEn}`
+  const waUrl = whatsappForService(
+    category,
+    whatsappPrefillFor(
+      category === "tech" ? "tech" : "government",
+      locale === "ar" ? serviceNameAr : serviceNameEn
+    )
   );
 
   function fieldLabel(id: string) {
@@ -318,6 +321,15 @@ export default function ServiceRequestActions({
       )}
 
       <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-[52px] flex-1 items-center justify-center gap-2 rounded-button bg-[#128C4A] px-4 py-3 text-sm font-semibold text-white shadow-soft transition-opacity hover:opacity-95"
+        >
+          <WhatsappLogo weight="fill" className="h-5 w-5" />
+          {category === "tech" ? t("ctaWhatsappTech") : t("ctaWhatsapp")}
+        </a>
         <button
           type="button"
           onClick={openModal}
@@ -326,15 +338,6 @@ export default function ServiceRequestActions({
           <PaperPlaneTilt weight="fill" className="h-4 w-4" />
           {t("ctaSite")}
         </button>
-        <a
-          href={waUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-button border border-[#25D366]/40 bg-[#25D366]/10 px-4 py-3 text-sm font-medium text-tasami-purple transition-opacity hover:opacity-90"
-        >
-          <WhatsappLogo weight="fill" className="h-4 w-4 text-[#25D366]" />
-          {t("ctaWhatsapp")}
-        </a>
       </div>
       <p className="mt-2 text-center text-[11px] text-tasami-gray sm:text-start">
         {t("hint")}

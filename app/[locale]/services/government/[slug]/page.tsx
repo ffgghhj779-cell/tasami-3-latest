@@ -9,9 +9,7 @@ import { buildPageMetadata } from "@/lib/seo";
 import { rtlLocales, type Locale } from "@/i18n";
 import ServiceCard from "@/components/ServiceCard";
 import Reveal from "@/components/Reveal";
-import ServiceRequestActions, {
-  MonjezHint,
-} from "@/components/ServiceRequestActions";
+import ServiceRequestActions from "@/components/ServiceRequestActions";
 
 const SLUG_TO_KEY = Object.fromEntries(
   (Object.entries(GOV_SLUGS) as [GovKey, string][]).map(([k, slug]) => [slug, k])
@@ -112,7 +110,6 @@ export default async function GovernmentCategoryPage({ params }: Props) {
               category="government"
               subcategory={key}
             />
-            <MonjezHint />
           </article>
         </section>
       </div>

@@ -3,18 +3,38 @@
  *
  * Only reads NEXT_PUBLIC_* env vars so this file works identically in
  * server components, client components, and route handlers.
+ *
+ * WhatsApp routing (product rule):
+ * - Government taqeeb (Ibrahim) → +966 54 228 9575
+ * - Tech solutions (Mustafa) → +966 55 996 2847
  */
 
-/** Official WhatsApp number (unchanged). */
-export const WHATSAPP_PHONE_E164 = "966559962847";
-export const WHATSAPP_PHONE_DISPLAY = "+966 55 996 2847";
+/** Secretary / Mustafa — tech WhatsApp. */
+export const WHATSAPP_SECRETARY_E164 = "966559962847";
+export const WHATSAPP_SECRETARY_DISPLAY = "+966 55 996 2847";
 
-/** Main public phone number (calls) — shown next to WhatsApp. */
-export const OFFICIAL_PHONE_E164 = "966542289575";
+/** @deprecated Use WHATSAPP_SECRETARY_E164 */
+export const WHATSAPP_PHONE_E164 = WHATSAPP_SECRETARY_E164;
+/** @deprecated Use WHATSAPP_SECRETARY_DISPLAY */
+export const WHATSAPP_PHONE_DISPLAY = WHATSAPP_SECRETARY_DISPLAY;
+
+/** Direct / Ibrahim — government taqeeb WhatsApp (+ main call line). */
+export const WHATSAPP_DIRECT_E164 = "966542289575";
+export const WHATSAPP_DIRECT_DISPLAY = "+966 54 228 9575";
+
+/** Main public phone number (calls) — same digits as direct WhatsApp. */
+export const OFFICIAL_PHONE_E164 = WHATSAPP_DIRECT_E164;
 export const OFFICIAL_PHONE_DISPLAY = "054 228 9575";
 
 /** Official Tasami TikTok profile. */
 export const TIKTOK_URL = "https://vt.tiktok.com/ZSVNHcDfP/";
+
+export type WhatsAppChannel =
+  | "government"
+  | "tech"
+  | "sector"
+  | "secretary"
+  | "direct";
 
 const PLACEHOLDER_NUMBERS = new Set(["", "966500000000"]);
 
@@ -22,10 +42,20 @@ function digitsOnly(value: string): string {
   return value.replace(/\D/g, "");
 }
 
-function resolveWhatsAppNumber(): string {
+function resolveSecretaryNumber(): string {
   const fromEnv = digitsOnly(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "");
   if (fromEnv && !PLACEHOLDER_NUMBERS.has(fromEnv)) return fromEnv;
-  return WHATSAPP_PHONE_E164;
+  return WHATSAPP_SECRETARY_E164;
+}
+
+function resolveDirectNumber(): string {
+  const fromEnv = digitsOnly(
+    process.env.NEXT_PUBLIC_WHATSAPP_DIRECT_NUMBER ||
+      process.env.NEXT_PUBLIC_PHONE_NUMBER ||
+      ""
+  );
+  if (fromEnv && !PLACEHOLDER_NUMBERS.has(fromEnv)) return fromEnv;
+  return WHATSAPP_DIRECT_E164;
 }
 
 function resolvePhoneNumber(): string {
@@ -34,10 +64,16 @@ function resolvePhoneNumber(): string {
   return OFFICIAL_PHONE_E164;
 }
 
-export const WHATSAPP_NUMBER = resolveWhatsAppNumber();
+export const WHATSAPP_NUMBER = resolveSecretaryNumber();
 
+/** Secretary / tech WhatsApp digits. */
 export function getWhatsAppNumber(): string {
-  return resolveWhatsAppNumber();
+  return resolveSecretaryNumber();
+}
+
+/** Government / direct WhatsApp digits. */
+export function getWhatsAppDirectNumber(): string {
+  return resolveDirectNumber();
 }
 
 export function getPhoneNumber(): string {
@@ -49,23 +85,73 @@ export function getPhoneDisplay(): string {
 }
 
 export function getWhatsAppDisplay(): string {
-  return WHATSAPP_PHONE_DISPLAY;
+  return WHATSAPP_SECRETARY_DISPLAY;
+}
+
+export function getWhatsAppDirectDisplay(): string {
+  return WHATSAPP_DIRECT_DISPLAY;
 }
 
 export function telUrl(): string {
   return `tel:+${getPhoneNumber()}`;
 }
 
-export function whatsappUrl(text?: string): string {
-  const number = getWhatsAppNumber();
+function waMeUrl(number: string, text?: string): string {
   if (!number) return "#";
   const query = text ? `?text=${encodeURIComponent(text)}` : "";
   return `https://wa.me/${number}${query}`;
 }
 
-/** Alias of {@link whatsappUrl} kept for readability at call sites. */
+/**
+ * Pick the WhatsApp line from service channel.
+ * government + sector → direct (54)
+ * tech + secretary → secretary (55)
+ */
+export function resolveWhatsAppChannel(
+  channel?: WhatsAppChannel | null
+): "direct" | "secretary" {
+  if (channel === "tech" || channel === "secretary") return "secretary";
+  if (channel === "government" || channel === "sector" || channel === "direct") {
+    return "direct";
+  }
+  return "direct";
+}
+
+/** Secretary WhatsApp (tech / secretary desk). */
+export function whatsappUrl(text?: string): string {
+  return waMeUrl(getWhatsAppNumber(), text);
+}
+
+/** Alias of {@link whatsappUrl}. */
 export function getWhatsAppUrl(prefill?: string): string {
   return whatsappUrl(prefill);
+}
+
+/** Direct WhatsApp (government transactions). */
+export function whatsappDirectUrl(text?: string): string {
+  return waMeUrl(getWhatsAppDirectNumber(), text);
+}
+
+export function getWhatsAppDirectUrl(prefill?: string): string {
+  return whatsappDirectUrl(prefill);
+}
+
+/** Channel-aware WhatsApp deep link for service CTAs. */
+export function whatsappForService(
+  channel: WhatsAppChannel | null | undefined,
+  text?: string
+): string {
+  return resolveWhatsAppChannel(channel) === "secretary"
+    ? whatsappUrl(text)
+    : whatsappDirectUrl(text);
+}
+
+export function getWhatsAppDisplayFor(
+  channel: WhatsAppChannel | null | undefined
+): string {
+  return resolveWhatsAppChannel(channel) === "secretary"
+    ? WHATSAPP_SECRETARY_DISPLAY
+    : WHATSAPP_DIRECT_DISPLAY;
 }
 
 const PLACEHOLDER_EMAILS = new Set([

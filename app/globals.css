@@ -403,7 +403,7 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(135deg, rgba(26, 53, 80, 0.72) 0%, rgba(26, 53, 80, 0.58) 52%, rgba(26, 53, 80, 0.5) 100%);
+      linear-gradient(135deg, rgba(15, 32, 48, 0.82) 0%, rgba(26, 53, 80, 0.72) 45%, rgba(26, 53, 80, 0.58) 100%);
   }
 
   .surface-cream {
@@ -760,26 +760,26 @@
 
   .hero-premium--split .hero-plate-wash {
     background:
-      radial-gradient(ellipse 58% 52% at 68% 38%, rgba(0, 122, 255, 0.16), transparent 68%),
-      radial-gradient(ellipse 70% 58% at 50% 42%, rgba(26, 53, 80, 0.45), transparent 66%),
+      radial-gradient(ellipse 58% 52% at 68% 38%, rgba(0, 122, 255, 0.14), transparent 68%),
+      radial-gradient(ellipse 70% 58% at 50% 42%, rgba(26, 53, 80, 0.5), transparent 66%),
       linear-gradient(
         105deg,
-        rgba(26, 53, 80, 0.78) 0%,
-        rgba(26, 53, 80, 0.42) 38%,
-        rgba(26, 53, 80, 0.14) 58%,
+        rgba(15, 32, 48, 0.88) 0%,
+        rgba(26, 53, 80, 0.62) 36%,
+        rgba(26, 53, 80, 0.28) 58%,
         #f7f8fa 100%
       );
   }
 
   [dir="rtl"] .hero-premium--split .hero-plate-wash {
     background:
-      radial-gradient(ellipse 58% 52% at 32% 38%, rgba(0, 122, 255, 0.16), transparent 68%),
-      radial-gradient(ellipse 70% 58% at 50% 42%, rgba(26, 53, 80, 0.45), transparent 66%),
+      radial-gradient(ellipse 58% 52% at 32% 38%, rgba(0, 122, 255, 0.14), transparent 68%),
+      radial-gradient(ellipse 70% 58% at 50% 42%, rgba(26, 53, 80, 0.5), transparent 66%),
       linear-gradient(
         255deg,
-        rgba(26, 53, 80, 0.78) 0%,
-        rgba(26, 53, 80, 0.42) 38%,
-        rgba(26, 53, 80, 0.14) 58%,
+        rgba(15, 32, 48, 0.88) 0%,
+        rgba(26, 53, 80, 0.62) 36%,
+        rgba(26, 53, 80, 0.28) 58%,
         #f7f8fa 100%
       );
   }
@@ -2730,6 +2730,38 @@
      MOBILE IMPROVEMENTS
      ============================================================ */
 
+  @media (max-width: 1023px) {
+    .hero-premium--split .hero-plate-wash,
+    [dir="rtl"] .hero-premium--split .hero-plate-wash {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(15, 32, 48, 0.78) 0%,
+          rgba(26, 53, 80, 0.55) 42%,
+          rgba(26, 53, 80, 0.35) 70%,
+          #f7f8fa 100%
+        );
+    }
+
+    .hero-orbit-shell {
+      margin-top: 0.5rem;
+    }
+
+    .hero-orbit-link {
+      background: rgba(255, 255, 255, 0.92) !important;
+      color: #1a3550;
+      border: 1px solid rgba(26, 53, 80, 0.1);
+    }
+
+    .hero-orbit-title {
+      color: #1a3550 !important;
+    }
+
+    .hero-orbit-meta {
+      color: #5a6b7d !important;
+    }
+  }
+
   @media (max-width: 639px) {
     /* Hero section mobile — better breathing */
     .hero-premium-inner {
@@ -2738,8 +2770,8 @@
     }
 
     .hero-title-glow {
-      font-size: clamp(1.75rem, 7vw, 2.25rem) !important;
-      line-height: 1.22 !important;
+      font-size: clamp(1.45rem, 6.2vw, 1.95rem) !important;
+      line-height: 1.28 !important;
     }
 
     /* CTA buttons mobile — full width, comfortable */

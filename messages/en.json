@@ -2,7 +2,7 @@
   "brand": {
     "name": "TASAMI",
     "letter": "T",
-    "slogan": "Complete your services"
+    "slogan": "Government follow-up & tech solutions"
   },
   "nav": {
     "government": "Government",
@@ -13,6 +13,7 @@
     "login": "Log in",
     "register": "Sign up",
     "account": "My account",
+    "search": "Search",
     "changeLanguage": "Change language",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
@@ -96,12 +97,12 @@
   },
   "home": {
     "eyebrow": "Tasami",
-    "title": "We finish your transactions — simply",
-    "hero": "Government and tech in one clear path — fast, calm, and in four languages.",
+    "title": "From Absher, Najiz and Qiwa to your website — start on WhatsApp",
+    "hero": "Government follow-up and tech solutions in one path — clear, fast, four languages. The site is the front door; details and pricing are on WhatsApp.",
     "heroVideoLabel": "Tasami — modern office, government and tech services made easy",
-    "ctaGov": "Start your transaction now",
-    "ctaTech": "WhatsApp direct",
-    "ctaWhatsapp": "WhatsApp direct",
+    "ctaGov": "Taqeeb WhatsApp",
+    "ctaTech": "Tech WhatsApp",
+    "ctaWhatsapp": "Taqeeb WhatsApp",
     "offerTitle": "What we offer",
     "coreCountGov": "13 services",
     "coreCountTech": "9 services",
@@ -117,11 +118,11 @@
     "process": {
       "one": {
         "title": "Tell us what you need",
-        "desc": "Via WhatsApp or Monjez — in Arabic, English, Urdu, or Hindi."
+        "desc": "Via WhatsApp — in Arabic, English, Urdu, or Hindi."
       },
       "two": {
         "title": "We map the path",
-        "desc": "Government, tech, or sector-specific — with a clear plan and defined path."
+        "desc": "Government follow-up or a tech solution — with a clear plan."
       },
       "three": {
         "title": "We deliver & update you",
@@ -131,8 +132,8 @@
     "langsTitle": "We speak your language",
     "langsSubtitle": "Interface and support in four languages for your whole team.",
     "ctaBandTitle": "Ready to start?",
-    "ctaBandSubtitle": "Tasami’s team and Monjez are here — absolute simplicity, premium quality.",
-    "ctaBandAction": "Talk to the Secretary",
+    "ctaBandSubtitle": "Taqeeb and tech desks are ready on WhatsApp — no prices on the site.",
+    "ctaBandAction": "Taqeeb WhatsApp",
     "core": {
       "gov": {
         "title": "Government Services",
@@ -175,13 +176,16 @@
         "title": "Idea to Operations",
         "desc": "We unite gov and tech in one path — formation, compliance, then digital growth."
       }
-    }
+    },
+    "ctaBandTech": "Tech WhatsApp",
+    "trustLine": "We work through official platforms and are not a government entity."
   },
   "footer": {
     "brand": "Tasami",
-    "about": "A premium Saudi platform for government and tech services — absolute simplicity, four languages, and a 24/7 AI assistant.",
-    "affiliation": "Tasami operates under the legal commercial registration of Tasami Al-Wataniya.",
-    "whatsapp": "Secretary WhatsApp",
+    "about": "Tasami government follow-up and tech solutions — simple front door, delivery via WhatsApp.",
+    "affiliation": "One of Tasami Al-Wataniya services.",
+    "whatsapp": "Tech WhatsApp (Mustafa)",
+    "whatsappGov": "Taqeeb WhatsApp (Ibrahim)",
     "tiktok": "TikTok",
     "hours": "Around-the-clock support",
     "govTitle": "Government Services",
@@ -191,11 +195,11 @@
     "myRequests": "My requests",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "contactCta": "Contact now",
+    "contactCta": "Taqeeb WhatsApp",
     "viewAll": "View all →",
     "rights": "All rights reserved.",
     "built": "Designed for Vision 2030, digitally.",
-    "legalDisclaimer": "All our services are delivered via official portals or licensed authorized agents under applicable regulations.",
+    "legalDisclaimer": "Legal papers and licenses are under Tasami. We deliver via official platforms and are not a government entity.",
     "company": {
       "cr": "CR",
       "vat": "VAT No.",
@@ -219,7 +223,7 @@
     "offeringCount": "{count} services",
     "backToCategory": "Back to category",
     "generalRequest": "General request for this category",
-    "generalRequestHint": "If you don't see your service by name, send a general request and we'll follow up.",
+    "generalRequestHint": "If you do not find your service by name, message Taqeeb WhatsApp and we will guide you.",
     "items": {
       "passports": {
         "title": "Passports & Residency",
@@ -310,6 +314,10 @@
       "consulateAppointment": {
         "title": "Consulate Appointment",
         "desc": "Book an appointment at a consulate or embassy for an official matter."
+      },
+      "transferSponsorship": {
+        "title": "Sponsorship / Services Transfer",
+        "desc": "Transfer a worker’s services to a new establishment or sponsor via Qiwa and official channels."
       },
       "workVisaPermanent": {
         "title": "Permanent Work Visa",
@@ -419,7 +427,14 @@
         "title": "VAT Filing",
         "desc": "Prepare and submit your facility's VAT return."
       }
-    }
+    },
+    "briefWhat": "What we deliver",
+    "briefPlatform": "Platform",
+    "briefNeeds": "What we need from you",
+    "briefDuration": "Approximate timing",
+    "briefDisclaimer": "We work through official platforms and are not a government entity. No prices on the site — details on WhatsApp.",
+    "waTaqeeb": "Taqeeb WhatsApp",
+    "waTech": "Tech WhatsApp"
   },
   "tech": {
     "eyebrow": "Services",
@@ -464,7 +479,13 @@
         "title": "Cloud Services",
         "desc": "Hosting, migration, and secure cloud operations."
       }
-    }
+    },
+    "briefWhat": "What we deliver",
+    "briefPlatform": "Platform",
+    "briefNeeds": "What we need from you",
+    "briefDuration": "Approximate timing",
+    "briefDisclaimer": "We work through official platforms and are not a government entity. No prices on the site — details on WhatsApp.",
+    "waTech": "Tech WhatsApp"
   },
   "sectors": {
     "eyebrow": "Sectors",
@@ -547,13 +568,58 @@
     "monjezFallback": "Thanks for reaching out. The Tasami team will follow up soon. You can also use WhatsApp for a faster reply.",
     "monjezError": "Connection issue. Please try again later or contact us on WhatsApp.",
     "waTitle": "Tasami WhatsApp",
-    "waIntro": "Choose how to reach the Tasami team:",
-    "waSecretary": "Talk to the Secretary",
-    "waDirect": "Direct WhatsApp",
+    "waIntro": "Taqeeb (Ibrahim) · Tech (Mustafa)",
+    "waSecretary": "Tech solutions — Mustafa",
+    "waDirect": "Government taqeeb — Ibrahim",
     "openChat": "Open Monjez chat",
     "openWhatsapp": "Open WhatsApp",
     "close": "Close",
     "send": "Send"
+  },
+  "search": {
+    "title": "Find your service",
+    "subtitle": "Describe your need in any form — dialect, typo, Arabic or English — and we’ll route you to the best match.",
+    "placeholder": "e.g. transfer worker / renew iqama / open CR",
+    "submit": "Search",
+    "clear": "Clear",
+    "eyebrow": "Tasami Search Intelligence",
+    "results": "Best matches",
+    "related": "Related services",
+    "noResults": "No direct match — try a clearer phrase or contact us.",
+    "clarify": "Needs clarification",
+    "suggestions": "Quick suggestions",
+    "matchScore": "Match",
+    "openService": "Open service",
+    "whatsappCta": "WhatsApp for this service",
+    "hubs": "Detected hubs",
+    "intents": "Search intent",
+    "emptyHint": "Start with one word: kafala, iqama, CR, license",
+    "kind": {
+      "offering": "Service",
+      "category": "Category",
+      "tech": "Tech",
+      "sector": "Sector",
+      "pillar": "Path"
+    },
+    "strength": {
+      "direct": "Direct",
+      "strong": "Strong",
+      "medium": "Medium",
+      "weak": "Weak",
+      "contextual": "Contextual"
+    },
+    "disambiguate": {
+      "transferSponsorship": "Sponsorship / services transfer",
+      "transferCr": "CR ownership transfer",
+      "transferLicense": "Activity license transfer",
+      "traffic": "Traffic & vehicles",
+      "labor": "Labor & sponsorship",
+      "iqama": "Iqama renewal",
+      "exit": "Exit re-entry / final exit",
+      "profession": "Change profession"
+    },
+    "faqTitle": "FAQ",
+    "relatedServices": "You may also need"
   },
   "common": {
     "backHome": "Back to home"
@@ -604,9 +670,9 @@
     "resetMismatch": "Passwords do not match."
   },
   "request": {
-    "ctaSite": "Request service",
-    "ctaWhatsapp": "WhatsApp",
-    "hint": "Submit inside the site so the secretary gets it instantly — or use WhatsApp.",
+    "ctaSite": "Request on site",
+    "ctaWhatsapp": "Taqeeb WhatsApp",
+    "hint": "WhatsApp is fastest for pricing and delivery — or leave a site request for follow-up.",
     "modalEyebrow": "In-site service request",
     "modalIntro": "Enter your details, then complete the fields specific to this service.",
     "name": "Full name",
@@ -892,7 +958,8 @@
         "days90": "90 days",
         "other": "Other"
       }
-    }
+    },
+    "ctaWhatsappTech": "Tech WhatsApp"
   },
   "legal": {
     "back": "Back to home",

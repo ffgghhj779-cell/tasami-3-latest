@@ -16,9 +16,12 @@ import {
   getPhoneDisplay,
   getTikTokUrl,
   getWhatsAppDisplay,
+  getWhatsAppDirectDisplay,
   telUrl,
   whatsappUrl,
+  whatsappDirectUrl,
 } from "@/lib/site";
+import { taqeebWhatsAppMessage, techWhatsAppMessage } from "@/lib/whatsapp-templates";
 import { GOV_SLUGS, TECH_SLUGS } from "@/lib/content-keys";
 
 const GOV_LINKS = ["passports", "commerce", "zakat", "najiz"] as const;
@@ -47,7 +50,23 @@ export default function Footer() {
             </p>
             <div className="mt-6 flex flex-col gap-2.5 text-sm text-white/90">
               <a
-                href={whatsappUrl()}
+                href={whatsappDirectUrl(
+                  taqeebWhatsAppMessage("استفسار من الفوتر")
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 hover:text-white"
+              >
+                <WhatsappLogo weight="regular" className="h-4 w-4 text-tasami-lilac" />
+                <span>
+                  {t("whatsappGov")}
+                  <span className="ms-1.5" dir="ltr">
+                    {getWhatsAppDirectDisplay()}
+                  </span>
+                </span>
+              </a>
+              <a
+                href={whatsappUrl(techWhatsAppMessage("استفسار من الفوتر"))}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 hover:text-white"
@@ -195,7 +214,11 @@ export default function Footer() {
               </li>
               <li className="pt-2">
                 <a
-                  href={whatsappUrl()}
+                  href={whatsappDirectUrl(
+                    taqeebWhatsAppMessage("تواصل من الفوتر")
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex min-h-[44px] items-center rounded-button border border-white/50 bg-white px-4 py-2.5 text-sm font-semibold text-tasami-purple transition-colors hover:bg-tasami-lilac hover:text-tasami-purple"
                 >
                   {t("contactCta")}

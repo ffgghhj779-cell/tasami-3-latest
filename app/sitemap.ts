@@ -6,6 +6,7 @@ import { SITE_URL } from "@/lib/seo";
 
 const STATIC: { path: string; priority: number; changeFrequency: "weekly" | "monthly" }[] = [
   { path: "", priority: 1, changeFrequency: "weekly" },
+  { path: "/search", priority: 0.95, changeFrequency: "weekly" },
   { path: "/services/government", priority: 0.9, changeFrequency: "weekly" },
   { path: "/services/tech", priority: 0.9, changeFrequency: "weekly" },
   { path: "/sectors", priority: 0.85, changeFrequency: "weekly" },

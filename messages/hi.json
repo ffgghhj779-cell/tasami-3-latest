@@ -2,7 +2,7 @@
   "brand": {
     "name": "तसामी",
     "letter": "त",
-    "slogan": "अपनी सेवाएं पूरी करें"
+    "slogan": "सरकारी फॉलो-अप और टेक समाधान"
   },
   "nav": {
     "government": "सरकारी",
@@ -13,6 +13,7 @@
     "login": "लॉग इन",
     "register": "साइन अप",
     "account": "मेरा खाता",
+    "search": "खोज",
     "changeLanguage": "भाषा बदलें",
     "openMenu": "मेनू खोलें",
     "closeMenu": "मेनू बंद करें"
@@ -175,13 +176,15 @@
         "title": "विचार से संचालन तक",
         "desc": "हम सरकारी और तकनीकी सेवाओं को एक राह पर जोड़ते हैं — स्थापना, अनुपालन, फिर डिजिटल विकास।"
       }
-    }
+    },
+    "ctaBandTech": "Tech WhatsApp",
+    "trustLine": "We work through official platforms and are not a government entity."
   },
   "footer": {
     "brand": "तसामी",
     "about": "सरकारी और तकनीकी सेवाओं के लिए एक प्रीमियम सऊदी प्लेटफ़ॉर्म — पूरी सरलता, चार भाषाएं, और 24/7 AI सहायक।",
-    "affiliation": "तसामी तसामी अल-वतनिया के वैध वाणिज्यिक पंजीकरण के अंतर्गत कार्य करती है।",
-    "whatsapp": "सेक्रेटरी व्हाट्सएप",
+    "affiliation": "तसामी अल-वतनीया की सेवाओं में से एक।",
+    "whatsapp": "टेक व्हाट्सएप (मुस्तफा)",
     "tiktok": "टिकटॉक",
     "hours": "चौबीसों घंटे सहायता",
     "govTitle": "सरकारी सेवाएं",
@@ -195,14 +198,15 @@
     "viewAll": "सभी देखें →",
     "rights": "सर्वाधिकार सुरक्षित।",
     "built": "विज़न 2030 के लिए डिजिटल रूप से डिज़ाइन किया गया।",
-    "legalDisclaimer": "हमारी सभी सेवाएं लागू नियमों के तहत आधिकारिक पोर्टल या लाइसेंस प्राप्त अधिकृत एजेंटों के ज़रिए प्रदान की जाती हैं।",
+    "legalDisclaimer": "कागज़ात और लाइसेंस तसामी नाम पर। हम आधिकारिक प्लेटफ़ॉर्म से काम करते हैं और सरकारी निकाय नहीं हैं।",
     "company": {
       "cr": "सीआर नंबर",
       "vat": "वैट नंबर",
       "address": "पता",
       "parent": "तसामी अल-वतनिया",
       "city": "रियाद, सऊदी अरब साम्राज्य"
-    }
+    },
+    "whatsappGov": "तकीब व्हाट्सएप (इब्राहिम)"
   },
   "gov": {
     "eyebrow": "सेवाएं",
@@ -310,6 +314,10 @@
       "consulateAppointment": {
         "title": "क़ॉन्सुलेट अपॉइंटमेंट",
         "desc": "किसी आधिकारिक मामले के लिए क़ॉन्सुलेट या दूतावास में अपॉइंटमेंट बुक करें।"
+      },
+      "transferSponsorship": {
+        "title": "स्पॉन्सरशिप / सेवा ट्रांसफर",
+        "desc": "Qiwa और आधिकारिक चैनलों के माध्यम से कर्मचारी की सेवाएँ नए प्रतिष्ठान या प्रायोजक को स्थानांतरित करें।"
       },
       "workVisaPermanent": {
         "title": "स्थायी वर्क वीज़ा",
@@ -419,7 +427,14 @@
         "title": "VAT फाइलिंग",
         "desc": "अपनी सुविधा का VAT रिटर्न तैयार और सबमिट करें।"
       }
-    }
+    },
+    "briefWhat": "What we deliver",
+    "briefPlatform": "Platform",
+    "briefNeeds": "What we need from you",
+    "briefDuration": "Approximate timing",
+    "briefDisclaimer": "We work through official platforms and are not a government entity. No prices on the site — details on WhatsApp.",
+    "waTaqeeb": "Taqeeb WhatsApp",
+    "waTech": "Tech WhatsApp"
   },
   "tech": {
     "eyebrow": "सेवाएं",
@@ -464,7 +479,13 @@
         "title": "क्लाउड सेवाएं",
         "desc": "होस्टिंग, माइग्रेशन, और सुरक्षित क्लाउड संचालन।"
       }
-    }
+    },
+    "briefWhat": "What we deliver",
+    "briefNeeds": "What we need from you",
+    "briefDuration": "Approximate timing",
+    "briefDisclaimer": "We work through official platforms and are not a government entity. No prices on the site — details on WhatsApp.",
+    "waTech": "Tech WhatsApp",
+    "briefPlatform": "Platform"
   },
   "sectors": {
     "eyebrow": "क्षेत्र",
@@ -547,9 +568,9 @@
     "monjezFallback": "संपर्क करने के लिए धन्यवाद। तसामी टीम जल्द ही आपसे संपर्क करेगी। तेज़ जवाब के लिए आप व्हाट्सएप भी इस्तेमाल कर सकते हैं।",
     "monjezError": "कनेक्शन में समस्या है। कृपया बाद में फिर कोशिश करें या व्हाट्सएप पर संपर्क करें।",
     "waTitle": "तसामी व्हाट्सएप",
-    "waIntro": "तसामी टीम से संपर्क करने का तरीक़ा चुनें:",
-    "waSecretary": "सेक्रेटरी से बात करें",
-    "waDirect": "सीधा व्हाट्सएप",
+    "waIntro": "सरकारी → डायरेक्ट · टेक → सचिव",
+    "waSecretary": "टेक / सचिव",
+    "waDirect": "सरकारी — डायरेक्ट व्हाट्सएप",
     "openChat": "मुंजिज़ चैट खोलें",
     "openWhatsapp": "व्हाट्सएप खोलें",
     "close": "बंद करें",
@@ -892,7 +913,8 @@
         "days90": "90 दिन",
         "other": "अन्य"
       }
-    }
+    },
+    "ctaWhatsappTech": "टेक व्हाट्सएप"
   },
   "legal": {
     "back": "होम पेज पर वापस",
@@ -1157,5 +1179,50 @@
       "RENEWAL": "नवीनीकरण",
       "CUSTOM": "कस्टम"
     }
+  },
+  "search": {
+    "title": "अपनी सेवा खोजें",
+    "subtitle": "अपनी ज़रूरत किसी भी रूप में लिखें — हम सही सेवा तक पहुँचाएँगे।",
+    "placeholder": "उदा.: स्पॉन्सरशिप ट्रांसफर / इकामा रिन्यू / CR खोलें",
+    "submit": "खोजें",
+    "clear": "साफ़",
+    "eyebrow": "तसामी सर्च इंटेलिजेंस",
+    "results": "सर्वोत्तम मिलान",
+    "related": "संबंधित सेवाएँ",
+    "noResults": "सीधा मिलान नहीं मिला — साफ़ वाक्य आज़माएँ या संपर्क करें।",
+    "clarify": "स्पष्टीकरण आवश्यक",
+    "suggestions": "त्वरित सुझाव",
+    "matchScore": "मिलान",
+    "openService": "सेवा खोलें",
+    "whatsappCta": "इस सेवा के लिए व्हाट्सएप",
+    "hubs": "पाए गए हब",
+    "intents": "खोज आशय",
+    "emptyHint": "एक शब्द से शुरू करें: kafala, iqama, CR, license",
+    "kind": {
+      "offering": "सेवा",
+      "category": "श्रेणी",
+      "tech": "टेक",
+      "sector": "क्षेत्र",
+      "pillar": "मार्ग"
+    },
+    "strength": {
+      "direct": "सीधा",
+      "strong": "मज़बूत",
+      "medium": "मध्यम",
+      "weak": "कमज़ोर",
+      "contextual": "संदर्भीय"
+    },
+    "disambiguate": {
+      "transferSponsorship": "स्पॉन्सरशिप / सेवा ट्रांसफर",
+      "transferCr": "CR स्वामित्व ट्रांसफर",
+      "transferLicense": "गतिविधि लाइसेंस ट्रांसफर",
+      "traffic": "ट्रैफ़िक और वाहन",
+      "labor": "श्रम और स्पॉन्सरशिप",
+      "iqama": "इकामा रिन्यूअल",
+      "exit": "एग्ज़िट री-एंट्री / फाइनल एग्ज़िट",
+      "profession": "पेशा बदलें"
+    },
+    "faqTitle": "अक्सर पूछे जाने वाले प्रश्न",
+    "relatedServices": "आपको यह भी चाहिए हो सकता है"
   }
 }

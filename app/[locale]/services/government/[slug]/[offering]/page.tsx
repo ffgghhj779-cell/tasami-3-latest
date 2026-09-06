@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/navigation";
 import PageHeader from "@/components/PageHeader";
+import ServiceBriefPanel from "@/components/ServiceBriefPanel";
+import ServiceFaq, { faqJsonLd, serviceJsonLd } from "@/components/ServiceFaq";
 import { GOV_SLUGS, type GovKey } from "@/lib/content-keys";
 import { VISUALS } from "@/lib/visuals";
 import {
@@ -10,10 +12,13 @@ import {
   offeringsByCategory,
 } from "@/lib/gov-offerings";
 import { getServiceForm } from "@/lib/service-forms";
-import { buildPageMetadata } from "@/lib/seo";
-import ServiceRequestActions, {
-  MonjezHint,
-} from "@/components/ServiceRequestActions";
+import { buildPageMetadata, SITE_URL } from "@/lib/seo";
+import {
+  getNodeById,
+  getSeoPack,
+  keywordsForOffering,
+} from "@/lib/search-intelligence";
+import ServiceRequestActions from "@/components/ServiceRequestActions";
 import {
   IdentificationCard,
   Briefcase,
@@ -67,11 +72,14 @@ export async function generateMetadata({ params }: Props) {
   const offering = findOffering(params.slug, params.offering, categoryKey);
   if (!offering) return {};
   const t = await getTranslations({ locale: params.locale, namespace: "gov" });
+  const title = t(`offerings.${offering.key}.title`);
+  const desc = t(`offerings.${offering.key}.desc`);
   return buildPageMetadata({
-    title: t(`offerings.${offering.key}.title`),
-    description: t(`offerings.${offering.key}.desc`),
+    title,
+    description: desc,
     path: `/services/government/${params.slug}/${params.offering}`,
     locale: params.locale,
+    keywords: keywordsForOffering(offering.key, title),
   });
 }
 
@@ -87,26 +95,49 @@ export default async function GovernmentOfferingPage({ params }: Props) {
 
   const t = await getTranslations("gov");
   const tReq = await getTranslations("request");
+  const tSearch = await getTranslations("search");
   const tAr = await getTranslations({ locale: "ar", namespace: "gov" });
   const tEn = await getTranslations({ locale: "en", namespace: "gov" });
 
   const title = t(`offerings.${offering.key}.title`);
   const titleAr = tAr(`offerings.${offering.key}.title`);
   const titleEn = tEn(`offerings.${offering.key}.title`);
+  const desc = t(`offerings.${offering.key}.desc`);
   const form = getServiceForm(offering.key);
   const siblings = offeringsByCategory(categoryKey).filter(
     (o) => o.key !== offering.key
   );
   const CategoryIcon = GOV_ICONS[categoryKey];
+  const seoPack = getSeoPack(offering.key);
+  const catalogNode = getNodeById(`offering-${offering.key}`);
+  const crossRelated = (catalogNode?.related || [])
+    .map((r) => getNodeById(r.id))
+    .filter((n): n is NonNullable<typeof n> => Boolean(n && n.kind === "offering"))
+    .filter((n) => n.i18nKey !== offering.key)
+    .slice(0, 4);
+
+  const pageUrl = `${SITE_URL}/${locale}/services/government/${slug}/${offering.slug}`;
+  const structured = [
+    serviceJsonLd({ name: title, description: desc, url: pageUrl }),
+    ...(seoPack?.faqs?.length ? [faqJsonLd(seoPack.faqs)] : []),
+  ];
 
   return (
     <div className="min-h-screen">
+      {structured.map((data, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
+      ))}
+
       <PageHeader
         backHref={`/services/government/${slug}`}
         backLabel={t("backToCategory")}
         eyebrow={t(`items.${categoryKey}.title`)}
         title={title}
-        subtitle={t(`offerings.${offering.key}.desc`)}
+        subtitle={desc}
         visual={VISUALS.offerings.gov}
       />
 
@@ -117,6 +148,29 @@ export default async function GovernmentOfferingPage({ params }: Props) {
               <CategoryIcon weight="regular" className="h-4 w-4" />
               {t(`items.${categoryKey}.title`)}
             </p>
+
+            <ServiceBriefPanel
+              serviceKey={offering.key}
+              kind="government"
+              labels={{
+                whatTitle: t("briefWhat"),
+                platformTitle: t("briefPlatform"),
+                needsTitle: t("briefNeeds"),
+                durationTitle: t("briefDuration"),
+                disclaimer: t("briefDisclaimer"),
+              }}
+              platformNames={{
+                absher: "أبشر",
+                qiwa: "قوى",
+                muqeem: "مقيم",
+                commerce: "وزارة التجارة",
+                businessCenter: "المركز السعودي للأعمال",
+                balady: "بلدي",
+                zakat: "الزكاة والضريبة",
+                najiz: "ناجز",
+                gosi: "التأمينات",
+              }}
+            />
 
             {form.docs.length > 0 ? (
               <div className="mt-8 rounded-card border border-tasami-purple/8 bg-white/80 p-5">
@@ -153,6 +207,30 @@ export default async function GovernmentOfferingPage({ params }: Props) {
                 </ul>
               </div>
             ) : null}
+
+            {crossRelated.length > 0 ? (
+              <div className="mt-8">
+                <p className="text-xs font-medium text-tasami-dark">
+                  {tSearch("relatedServices")}
+                </p>
+                <ul className="mt-3 space-y-2">
+                  {crossRelated.map((rel) => (
+                    <li key={rel.id}>
+                      <Link
+                        href={rel.href as "/"}
+                        className="text-sm text-tasami-gray transition-colors hover:text-tasami-pink"
+                      >
+                        {t(`offerings.${rel.i18nKey}.title`)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            {seoPack?.faqs?.length ? (
+              <ServiceFaq title={tSearch("faqTitle")} items={seoPack.faqs} />
+            ) : null}
           </div>
 
           <div className="lg:col-span-7">
@@ -171,7 +249,6 @@ export default async function GovernmentOfferingPage({ params }: Props) {
                 category="government"
                 subcategory={offering.key}
               />
-              <MonjezHint />
             </article>
           </div>
         </div>

@@ -22,6 +22,7 @@ export const GOV_OFFERINGS: GovOfferingDef[] = [
   { key: "consulateAppointment", slug: "mawid-qunsuliya", category: "passports" },
 
   // —— العمالة ——
+  { key: "transferSponsorship", slug: "naql-kafala", category: "labor" },
   { key: "workVisaPermanent", slug: "tashirat-amal-daim", category: "labor" },
   { key: "workVisaTemporary", slug: "tashirat-amal-muwaqqat", category: "labor" },
   { key: "dropAbscondedWorker", slug: "isqat-amil-kharaj", category: "labor" },

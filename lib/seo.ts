@@ -10,11 +10,26 @@ export const SITE_NAME = "تَسَامِي";
 export const SITE_NAME_EN = "Tasami";
 export const SITE_DOMAIN = "tasamiservices.com";
 
+/** Open Graph share image — Tasami only (new filename busts WhatsApp/FB cache). */
+export const OG_IMAGE_PATH = "/og-tasami.jpg";
+export const OG_IMAGE_URL = `${SITE_URL}${OG_IMAGE_PATH}`;
+
 const DEFAULT_DESCRIPTION_AR =
-  "تَسَامِي — منصة سعودية لإنجاز الخدمات الحكومية والتقنية بسرعة ووضوح. سجل تجاري، إقامات، ناجز، مواقع وتطبيقات — بأربع لغات ودعم واتساب على مدار الساعة.";
+  "تسامي — تعقيب حكومي وحلول تقنية. ننجز عبر المنصات الرسمية ولسنا جهة حكومية. ابدأ من واتساب.";
 
 const DEFAULT_DESCRIPTION_EN =
-  "Tasami — a Saudi platform that finishes government and tech services simply and fast. Commercial registration, iqama, Najiz, websites and apps — in four languages with 24/7 WhatsApp support.";
+  "Tasami — government follow-up and tech solutions. We work through official platforms and are not a government entity. Start on WhatsApp.";
+
+/** Share / browser title without pipe (client request). */
+export function formatPageTitle(title: string, locale = "ar"): string {
+  const brand = locale === "ar" ? SITE_NAME : SITE_NAME_EN;
+  if (!title || title === brand || title === SITE_NAME_EN) {
+    return locale === "ar"
+      ? "تسامي — تعقيب حكومي وحلول تقنية"
+      : "Tasami — Government follow-up & tech solutions";
+  }
+  return `${title} — ${brand}`;
+}
 
 const DEFAULT_KEYWORDS = [
   "تسامي",
@@ -64,7 +79,7 @@ export function buildPageMetadata({
 }): Metadata {
   const cleanPath = path.startsWith("/") || path === "" ? path : `/${path}`;
   const url = `${SITE_URL}/${locale}${cleanPath}`;
-  const fullTitle = `${title} | ${SITE_NAME_EN}`;
+  const fullTitle = formatPageTitle(title, locale);
   const desc =
     description ||
     (locale === "en" ? DEFAULT_DESCRIPTION_EN : DEFAULT_DESCRIPTION_AR);
@@ -104,10 +119,10 @@ export function buildPageMetadata({
       description: desc,
       images: [
         {
-          url: `${SITE_URL}/og-image.jpg`,
+          url: OG_IMAGE_URL,
           width: 1200,
           height: 630,
-          alt: `${SITE_NAME_EN} — Government & Tech Services`,
+          alt: `${SITE_NAME_EN} — ${SITE_NAME} | Government & Tech Services`,
         },
       ],
     },
@@ -115,7 +130,7 @@ export function buildPageMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description: desc,
-      images: [`${SITE_URL}/og-image.jpg`],
+      images: [OG_IMAGE_URL],
     },
     robots: index
       ? {
@@ -162,7 +177,7 @@ export function organizationJsonLd() {
       width: 266,
       height: 340,
     },
-    image: `${SITE_URL}/og-image.jpg`,
+    image: OG_IMAGE_URL,
     description: DEFAULT_DESCRIPTION_AR,
     slogan: "انجز خدماتك",
     sameAs: [getTikTokUrl(), ...(waUrl === "#" ? [] : [waUrl])],
@@ -205,10 +220,20 @@ export function websiteJsonLd() {
     url: SITE_URL,
     inLanguage: ["ar", "en", "ur", "hi"],
     publisher: { "@id": `${SITE_URL}/#organization` },
-    potentialAction: {
-      "@type": "CommunicateAction",
-      target: getWhatsAppUrl("مرحباً، أريد الاستفسار عن خدمات تسامي"),
-    },
+    potentialAction: [
+      {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE_URL}/ar/search?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
+      {
+        "@type": "CommunicateAction",
+        target: getWhatsAppUrl("مرحباً، أريد الاستفسار عن خدمات تسامي"),
+      },
+    ],
   };
 }
 
@@ -220,7 +245,7 @@ export function professionalServiceJsonLd() {
     name: `${SITE_NAME_EN} Services`,
     alternateName: SITE_NAME,
     url: SITE_URL,
-    image: `${SITE_URL}/og-image.jpg`,
+    image: OG_IMAGE_URL,
     description: DEFAULT_DESCRIPTION_EN,
     provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: {

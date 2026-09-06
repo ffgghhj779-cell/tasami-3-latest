@@ -29,8 +29,14 @@ export default function HeroPlate() {
       (navigator as Navigator & { connection?: { saveData?: boolean } }).connection
         ?.saveData
     );
-    setPlayVideo(!saveData);
-  }, [reduce]);
+    if (saveData) {
+      setPlayVideo(false);
+      return;
+    }
+    // Defer video until after first paint / poster (LCP)
+    const id = window.setTimeout(() => setPlayVideo(true), mobile ? 1800 : 900);
+    return () => window.clearTimeout(id);
+  }, [reduce, mobile]);
 
   useEffect(() => {
     const video = videoRef.current;
