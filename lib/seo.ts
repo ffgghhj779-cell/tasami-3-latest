@@ -15,10 +15,10 @@ export const OG_IMAGE_PATH = "/og-tasami.jpg";
 export const OG_IMAGE_URL = `${SITE_URL}${OG_IMAGE_PATH}`;
 
 const DEFAULT_DESCRIPTION_AR =
-  "تسامي — تعقيب حكومي وحلول تقنية. ننجز عبر المنصات الرسمية ولسنا جهة حكومية. ابدأ من واتساب.";
+  "تسامي — ننجز معاملاتك ببساطة. تعقيب حكومي وحلول تقنية عبر المنصات الرسمية. لسنا جهة حكومية — ابدأ من واتساب.";
 
 const DEFAULT_DESCRIPTION_EN =
-  "Tasami — government follow-up and tech solutions. We work through official platforms and are not a government entity. Start on WhatsApp.";
+  "Tasami — we finish your transactions simply. Government follow-up and tech solutions via official platforms. Not a government entity — start on WhatsApp.";
 
 /** Share / browser title without pipe (client request). */
 export function formatPageTitle(title: string, locale = "ar"): string {

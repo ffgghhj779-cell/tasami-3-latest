@@ -47,8 +47,8 @@ export async function generateMetadata({ params }: Props) {
   const tBrand = await getTranslations({ locale, namespace: "brand" });
 
   return buildPageMetadata({
-    title: tBrand("name"),
-    description: `${t("title")} ${t("hero")}`,
+    title: t("title"),
+    description: `${t("hero")} ${tBrand("slogan")}. ${t("trustLine")}`,
     path: "",
     locale,
   });
@@ -96,7 +96,7 @@ export default async function HomePage({ params }: Props) {
             <p className="mt-1 text-sm font-medium text-white/75 sm:text-base">
               {tBrand("slogan")}
             </p>
-            <h1 className="hero-title-glow font-display mt-3 text-balance text-[1.85rem] leading-[1.25] text-white sm:text-5xl lg:text-[3.35rem] lg:leading-[1.12] xl:text-[3.75rem]">
+            <h1 className="hero-title-glow font-display mt-3 text-balance text-[2rem] leading-[1.22] text-white sm:text-6xl lg:text-[4rem] lg:leading-[1.08] xl:text-[4.35rem]">
               {t("title")}
             </h1>
             <p className="mt-5 max-w-xl text-[0.98rem] leading-relaxed text-white/90 sm:mt-6 sm:text-lg">
