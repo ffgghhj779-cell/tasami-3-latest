@@ -25,6 +25,8 @@ const nextConfig = {
       "font-src 'self' https://fonts.gstatic.com data:",
       "img-src 'self' data: blob: https:",
       "connect-src 'self' https: wss: https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com",
+      "frame-src 'self' https://www.google.com https://maps.google.com https://www.openstreetmap.org",
+      "child-src 'self' https://www.google.com https://maps.google.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self' https://wa.me https://api.whatsapp.com",
