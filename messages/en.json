@@ -248,8 +248,18 @@
       "vat": "VAT No.",
       "address": "Address",
       "parent": "Tasami Al-Wataniya",
-      "city": "Riyadh, Kingdom of Saudi Arabia"
+      "city": "Sheikh Muhammad St, Al Naseem, Al Awali — Makkah 24251"
     }
+  },
+  "location": {
+    "eyebrow": "Our location",
+    "title": "Find us on the map",
+    "subtitle": "Tasami’s office in Makkah — get directions or open the full map in one tap.",
+    "placeName": "Tasami Services",
+    "address": "Sheikh Muhammad Street, Al Naseem, Al Awali — Makkah 24251, Saudi Arabia",
+    "directions": "Directions",
+    "enlarge": "Larger map",
+    "mapTitle": "Tasami office map in Makkah"
   },
   "gov": {
     "eyebrow": "Services",

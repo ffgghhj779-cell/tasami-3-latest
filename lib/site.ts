@@ -29,6 +29,32 @@ export const OFFICIAL_PHONE_DISPLAY = "054 228 9575";
 /** Official Tasami TikTok profile. */
 export const TIKTOK_URL = "https://vt.tiktok.com/ZSVNHcDfP/";
 
+/**
+ * Makkah office pin (GBP / client Maps link).
+ * Swap NEXT_PUBLIC_MAPS_EMBED_URL for the Place embed once the listing is verified.
+ */
+export const OFFICE_COORDS = {
+  lat: 21.3622838,
+  lng: 39.8904982,
+} as const;
+
+export function getOfficeMapsEmbedUrl(hl: string = "ar"): string {
+  const fromEnv = process.env.NEXT_PUBLIC_MAPS_EMBED_URL?.trim();
+  if (fromEnv) return fromEnv;
+  const { lat, lng } = OFFICE_COORDS;
+  return `https://www.google.com/maps?q=${lat},${lng}&hl=${encodeURIComponent(hl)}&z=16&output=embed`;
+}
+
+export function getOfficeMapsUrl(): string {
+  const { lat, lng } = OFFICE_COORDS;
+  return `https://www.google.com/maps?q=${lat},${lng}&z=16`;
+}
+
+export function getOfficeDirectionsUrl(): string {
+  const { lat, lng } = OFFICE_COORDS;
+  return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+}
+
 export type WhatsAppChannel =
   | "government"
   | "tech"
@@ -196,11 +222,15 @@ export function getTikTokUrl(): string {
 
 export function getCompanyInfo() {
   const address = process.env.NEXT_PUBLIC_COMPANY_ADDRESS?.trim() || "";
-  const defaultAddress = "Riyadh, Kingdom of Saudi Arabia";
+  const placeholders = new Set([
+    "",
+    "Riyadh, Kingdom of Saudi Arabia",
+    "الرياض، المملكة العربية السعودية",
+  ]);
 
   return {
     cr: publicValue(process.env.NEXT_PUBLIC_COMPANY_CR, PLACEHOLDER_CR),
     vat: publicValue(process.env.NEXT_PUBLIC_COMPANY_VAT, PLACEHOLDER_VAT),
-    address: address && address !== defaultAddress ? address : null,
+    address: address && !placeholders.has(address) ? address : null,
   };
 }

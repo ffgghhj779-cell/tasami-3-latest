@@ -204,7 +204,9 @@ export function organizationJsonLd() {
     },
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Riyadh",
+      streetAddress: "Sheikh Muhammad Street, Al Naseem, Al Awali",
+      addressLocality: "Makkah",
+      postalCode: "24251",
       addressCountry: "SA",
     },
   };

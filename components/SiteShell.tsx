@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { usePathname } from "@/navigation";
 import Navbar from "@/components/Navbar";
 import TrustBar from "@/components/TrustBar";
+import LocationMap from "@/components/LocationMap";
 import Footer from "@/components/Footer";
 import SkipToContent from "@/components/SkipToContent";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -81,6 +82,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
       <main id="main-content" className="min-h-[50vh] min-h-[50dvh]">
         {children}
       </main>
+      <LocationMap />
       <Footer />
       <FloatingWidgets />
     </>
