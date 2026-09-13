@@ -56,22 +56,45 @@
     "eyebrow": "Official platforms",
     "title": "We operate on certified platforms",
     "subtitle": "We complete your transactions through official Saudi platforms — you stay with Tasami from request to delivery.",
-    "disclaimer": "Logos and names belong to their respective owners. Tasami is an operational services platform working through these official channels and does not claim an undeclared official partnership.",
+    "disclaimer": "Papers and licenses are under Tasami. We work through official platforms and are not a government entity.",
+    "ctaWhatsapp": "Request on WhatsApp",
+    "ctaMore": "Related services",
+    "ctaPortal": "Official portal",
     "items": {
       "absher": {
         "title": "Absher",
         "desc": "Ministry of Interior digital platform for individuals and businesses: iqama, visas, and passports.",
         "use": "We handle: iqama renewals, exit/re-entry, and visas."
       },
+      "jawazat": {
+        "title": "Passports (Jawazat)",
+        "desc": "General Directorate of Passports — residency, passports, and visas for residents and establishments.",
+        "use": "We handle: iqama, visas, final exit, and exit/re-entry."
+      },
       "qiwa": {
         "title": "Qiwa",
         "desc": "HRSD platform for employment contracts, Saudization, and establishment services.",
-        "use": "We handle: work contracts, profession changes, and labor services."
+        "use": "We handle: work contracts, profession changes, and sponsorship transfer."
       },
       "muqeem": {
         "title": "Muqeem",
         "desc": "Resident data management system for establishments, integrated with Passports.",
         "use": "We handle: resident status tracking and workforce data updates."
+      },
+      "mudad": {
+        "title": "Mudad",
+        "desc": "Wage protection platform for payroll compliance of private-sector establishments.",
+        "use": "We handle: wage-file uploads and Wage Protection System compliance."
+      },
+      "musaned": {
+        "title": "Musaned",
+        "desc": "Official platform for domestic labor recruitment and related services.",
+        "use": "We handle: domestic labor visas and application follow-up."
+      },
+      "commerce": {
+        "title": "Ministry of Commerce",
+        "desc": "Authority for commercial registration, trade names, and commercial oversight.",
+        "use": "We handle: opening, renewing, and transferring commercial registrations."
       },
       "businessCenter": {
         "title": "Saudi Business Center",
@@ -83,15 +106,35 @@
         "desc": "Municipal services platform for establishments: licenses and municipal requirements.",
         "use": "We handle: municipal licenses, waste contracts, and local requirements."
       },
-      "sehhaty": {
-        "title": "Sehhaty",
-        "desc": "Ministry of Health digital platform for appointments and health services.",
-        "use": "We handle: health requirements linked to business and individual files when needed."
+      "zatca": {
+        "title": "ZATCA",
+        "desc": "Zakat, Tax and Customs Authority — tax/zakat filings and customs.",
+        "use": "We handle: VAT, zakat, and tax compliance."
       },
       "gosi": {
         "title": "Social Insurance (GOSI)",
         "desc": "General Organization for Social Insurance for establishment and contributor registration.",
         "use": "We handle: registration, contributions, and insurance file follow-up."
+      },
+      "sehhaty": {
+        "title": "Sehhaty",
+        "desc": "Ministry of Health digital platform for appointments and health services.",
+        "use": "We handle: health requirements linked to business and individual files."
+      },
+      "nelc": {
+        "title": "National eLearning Center",
+        "desc": "Saudi regulator for e-learning and digital training (FutureX).",
+        "use": "We handle: e-learning compliance needs for institutes and establishments."
+      },
+      "saudiGreen": {
+        "title": "Saudi Green Initiative",
+        "desc": "National sustainability and vegetation-cover initiative.",
+        "use": "We handle: environment-related compliance tied to licenses for establishments."
+      },
+      "sabic": {
+        "title": "SABIC",
+        "desc": "Major industrial ecosystem — we support establishments in industrial supply chains.",
+        "use": "We handle for industrial firms: CR, licenses, labor, and government follow-up."
       }
     }
   },
