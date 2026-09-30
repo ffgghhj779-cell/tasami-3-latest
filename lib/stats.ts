@@ -16,7 +16,7 @@ const DONE_STATUSES = [TaskStatus.COMPLETED, TaskStatus.DONE];
  */
 function baseline(): number {
   const n = Number.parseInt(
-    process.env.COMPLETED_TRANSACTIONS_BASELINE || "0",
+    process.env.COMPLETED_TRANSACTIONS_BASELINE || "148",
     10
   );
   return Number.isFinite(n) && n > 0 ? n : 0;
