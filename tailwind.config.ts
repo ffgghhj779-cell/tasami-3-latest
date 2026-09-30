@@ -54,8 +54,8 @@ const config: Config = {
           card: "#FFFFFF",
         },
         foreground: {
-          DEFAULT: "#1A3550",
-          muted: "#8E8E93",
+          DEFAULT: "#1A1A1A",
+          muted: "#5F6672",
         },
         tasami: {
           // Brand blues (unchanged)
@@ -76,8 +76,8 @@ const config: Config = {
           cream: "#F4F6F8",
           green: "#006C35",
           offwhite: "#F7F8FA",
-          dark: "#1A3550",
-          gray: "#8E8E93",
+          dark: "#1A1A1A",
+          gray: "#5F6672",
           night: "#0D1117",
           // Tech identity — dark mode style
           "tech-dark": "#0D1117",
@@ -88,12 +88,12 @@ const config: Config = {
       },
       fontFamily: {
         arabic: ["var(--font-arabic)", "Tajawal", "Tahoma", "sans-serif"],
-        display: ["var(--font-heading-ar)", "El Messiri", "serif"],
-        heading: ["var(--font-heading-ar)", "El Messiri", "serif"],
-        naskh: ["var(--font-heading-ar)", "El Messiri", "serif"],
+        display: ["var(--font-heading-ar)", "Tajawal", "Tahoma", "sans-serif"],
+        heading: ["var(--font-heading-ar)", "Tajawal", "Tahoma", "sans-serif"],
+        naskh: ["var(--font-heading-ar)", "Tajawal", "Tahoma", "sans-serif"],
         latin: ["var(--font-latin)", "Montserrat", "sans-serif"],
-        serif: ["var(--font-heading-ar)", "El Messiri", "serif"],
-        brand: ["var(--font-heading-ar)", "El Messiri", "serif"],
+        serif: ["var(--font-heading-ar)", "Tajawal", "Tahoma", "sans-serif"],
+        brand: ["var(--font-heading-ar)", "Tajawal", "Tahoma", "sans-serif"],
         hindi: ["var(--font-noto-devanagari)", "Noto Sans Devanagari", "sans-serif"],
         urdu: ["var(--font-noto-nastaliq)", "Noto Nastaliq Urdu", "serif"],
         sans: [

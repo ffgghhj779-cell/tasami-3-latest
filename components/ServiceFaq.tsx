@@ -66,7 +66,7 @@ export function serviceJsonLd({
     url,
     provider: {
       "@type": "Organization",
-      name: "تَسَامِي",
+      name: "تسامي",
       url: "https://www.tasamiservices.com",
     },
     areaServed: {

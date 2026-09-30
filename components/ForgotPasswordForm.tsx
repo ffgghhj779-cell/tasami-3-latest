@@ -46,7 +46,7 @@ export default function ForgotPasswordForm() {
     <div className="min-h-screen">
       <div className="mx-auto flex max-w-md flex-col px-5 py-14 sm:px-8 lg:py-20">
         <Link href="/login" className="mb-8 inline-flex self-center" aria-label={t("loginLink")}>
-          <BrandLogo lockupSize="md" wordmark="تَسَامِي" />
+          <BrandLogo lockupSize="md" wordmark="تسامي" />
         </Link>
 
         <header className="mb-8">

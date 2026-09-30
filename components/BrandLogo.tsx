@@ -37,7 +37,7 @@ export default function BrandLogo({
   mark = false,
   markSize = "md",
   lockupSize = "sm",
-  wordmark = "تَسَامِي",
+  wordmark = "تسامي",
   priority = false,
 }: BrandLogoProps) {
   if (mark) {

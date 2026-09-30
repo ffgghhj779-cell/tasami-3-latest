@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { getTikTokUrl, getPhoneNumber, getWhatsAppNumber, getWhatsAppUrl } from "@/lib/site";
+import {
+  COMPANY_LEGAL,
+  getTikTokUrl,
+  getPhoneNumber,
+  getWhatsAppNumber,
+  getWhatsAppUrl,
+} from "@/lib/site";
 
 /** Canonical production domain (Cloudflare + www). */
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "https://www.tasamiservices.com";
 
-export const SITE_NAME = "تَسَامِي";
+export const SITE_NAME = "تسامي";
 export const SITE_NAME_EN = "Tasami";
 export const SITE_DOMAIN = "tasamiservices.com";
 
@@ -33,7 +39,7 @@ export function formatPageTitle(title: string, locale = "ar"): string {
 
 const DEFAULT_KEYWORDS = [
   "تسامي",
-  "تَسَامِي",
+  "تسامي",
   "Tasami",
   "tasamiservices",
   "خدمات حكومية سعودية",
@@ -169,6 +175,22 @@ export function organizationJsonLd() {
     "@type": "Organization",
     "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
+    legalName: COMPANY_LEGAL.nameAr,
+    vatID: COMPANY_LEGAL.vat,
+    identifier: {
+      "@type": "PropertyValue",
+      propertyID: "Commercial Registration",
+      value: COMPANY_LEGAL.cr,
+    },
+    foundingDate: String(COMPANY_LEGAL.foundedYear),
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        opens: "09:00",
+        closes: "21:00",
+      },
+    ],
     alternateName: [SITE_NAME_EN, "Tasami Services"],
     url: SITE_URL,
     logo: {

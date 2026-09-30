@@ -222,6 +222,26 @@ export function getTikTokUrl(): string {
   return TIKTOK_URL;
 }
 
+/** From the Ministry of Commerce CR certificate and ZATCA VAT certificate. */
+export const COMPANY_LEGAL = {
+  nameAr: "مؤسسة تسامي الوطنية",
+  nameEn: "Tasami Alwataniyah Establishment",
+  cr: "7051037930",
+  vat: "314091043600003",
+  foundedYear: 2025,
+} as const;
+
+/**
+ * Real working hours: daily 09:00–21:00 Riyadh time, closed Friday.
+ * Days use JS getDay() numbering (0 = Sunday … 5 = Friday).
+ */
+export const WORKING_HOURS = {
+  timeZone: "Asia/Riyadh",
+  openHour: 9,
+  closeHour: 21,
+  closedDays: [5] as readonly number[],
+} as const;
+
 export function getCompanyInfo() {
   const address = process.env.NEXT_PUBLIC_COMPANY_ADDRESS?.trim() || "";
   const placeholders = new Set([
@@ -231,8 +251,12 @@ export function getCompanyInfo() {
   ]);
 
   return {
-    cr: publicValue(process.env.NEXT_PUBLIC_COMPANY_CR, PLACEHOLDER_CR),
-    vat: publicValue(process.env.NEXT_PUBLIC_COMPANY_VAT, PLACEHOLDER_VAT),
+    cr:
+      publicValue(process.env.NEXT_PUBLIC_COMPANY_CR, PLACEHOLDER_CR) ||
+      COMPANY_LEGAL.cr,
+    vat:
+      publicValue(process.env.NEXT_PUBLIC_COMPANY_VAT, PLACEHOLDER_VAT) ||
+      COMPANY_LEGAL.vat,
     address: address && !placeholders.has(address) ? address : null,
   };
 }

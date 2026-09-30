@@ -1,27 +1,18 @@
 import {
-  El_Messiri,
   Montserrat,
   Noto_Nastaliq_Urdu,
   Noto_Sans_Devanagari,
   Tajawal,
 } from "next/font/google";
 
-/** Arabic body — clean UI text, buttons, paragraphs. */
+/** Single Arabic family for body and headings — two weights only. */
 export const fontArabic = Tajawal({
   subsets: ["arabic", "latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "700"],
   variable: "--font-arabic",
   display: "swap",
   preload: true,
-});
-
-/** Arabic headings — elegant display serif for titles & brand. */
-export const fontHeadingAr = El_Messiri({
-  subsets: ["arabic", "latin"],
-  weight: ["600", "700"],
-  variable: "--font-heading-ar",
-  display: "swap",
-  preload: true,
+  fallback: ["Tahoma", "system-ui", "sans-serif"],
 });
 
 /** English — geometric sans aligned with TASAMI wordmark. */
@@ -51,7 +42,6 @@ export const fontUrdu = Noto_Nastaliq_Urdu({
 
 export const fontVariables = [
   fontArabic.variable,
-  fontHeadingAr.variable,
   fontLatin.variable,
   fontHindi.variable,
   fontUrdu.variable,

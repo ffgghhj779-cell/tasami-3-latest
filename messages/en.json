@@ -25,8 +25,8 @@
     "hi": "हिन्दी"
   },
   "trust": {
-    "message": "We are certified and trusted",
-    "messageMobile": "نحن معتمدون وموثوقون · We are certified and trusted",
+    "message": "We work through official platforms",
+    "messageMobile": "We work through official platforms",
     "aria": "Trusted Saudi platforms",
     "viewAll": "View all",
     "platforms": {
@@ -54,9 +54,9 @@
   },
   "platformsShowcase": {
     "eyebrow": "Official platforms",
-    "title": "We operate on certified platforms",
+    "title": "We work through official platforms",
     "subtitle": "We complete your transactions through official Saudi platforms — you stay with Tasami from request to delivery.",
-    "disclaimer": "Papers and licenses are under Tasami. We work through official platforms and are not a government entity.",
+    "disclaimer": "We complete transactions through official platforms and are not a government entity. Logos and names belong to their owners.",
     "ctaWhatsapp": "Request on WhatsApp",
     "ctaMore": "Related services",
     "ctaPortal": "Official portal",
@@ -120,32 +120,17 @@
         "title": "Sehhaty",
         "desc": "Ministry of Health digital platform for appointments and health services.",
         "use": "We handle: health requirements linked to business and individual files."
-      },
-      "nelc": {
-        "title": "National eLearning Center",
-        "desc": "Saudi regulator for e-learning and digital training (FutureX).",
-        "use": "We handle: e-learning compliance needs for institutes and establishments."
-      },
-      "saudiGreen": {
-        "title": "Saudi Green Initiative",
-        "desc": "National sustainability and vegetation-cover initiative.",
-        "use": "We handle: environment-related compliance tied to licenses for establishments."
-      },
-      "sabic": {
-        "title": "SABIC",
-        "desc": "Major industrial ecosystem — we support establishments in industrial supply chains.",
-        "use": "We handle for industrial firms: CR, licenses, labor, and government follow-up."
       }
     }
   },
   "home": {
     "eyebrow": "Tasami",
-    "title": "We finish your transactions simply",
-    "hero": "From Absher, Najiz and Qiwa to your website — start on WhatsApp",
+    "title": "We handle your government paperwork and build your digital presence",
+    "hero": "From setting up your business to running it online — in one place",
     "heroVideoLabel": "Tasami — modern office, government and tech services made easy",
-    "ctaGov": "Taqeeb WhatsApp",
-    "ctaTech": "Tech WhatsApp",
-    "ctaWhatsapp": "Taqeeb WhatsApp",
+    "ctaGov": "Government services request",
+    "ctaTech": "Tech solution request",
+    "ctaWhatsapp": "Government services request",
     "offerTitle": "What we offer",
     "coreCountGov": "13 services",
     "coreCountTech": "9 services",
@@ -153,9 +138,9 @@
     "offerSubtitle": "Three clear paths — pick what your business needs and we handle the rest.",
     "whyTitle": "Why Tasami?",
     "whySubtitle": "Built to feel simple for clients, and operate with elite precision behind the scenes.",
-    "badgeTrusted": "Trusted by Saudi businesses",
+    "badgeTrusted": "Officially registered",
     "badgeLang": "4 languages",
-    "badgeAi": "Monjez 24/7",
+    "badgeAi": "Automated assistant for enquiries",
     "processTitle": "How it works",
     "processSubtitle": "Just three steps from request to delivery.",
     "process": {
@@ -174,9 +159,9 @@
     },
     "langsTitle": "We speak your language",
     "langsSubtitle": "Interface and support in four languages for your whole team.",
-    "ctaBandTitle": "Ready to start?",
-    "ctaBandSubtitle": "Taqeeb and tech desks are ready on WhatsApp — no prices on the site.",
-    "ctaBandAction": "Taqeeb WhatsApp",
+    "ctaBandTitle": "Ready to start? Quote within one hour",
+    "ctaBandSubtitle": "Send your request on WhatsApp and get a quote within one hour during working hours (daily 9 AM – 9 PM, closed Friday).",
+    "ctaBandAction": "Government services request",
     "core": {
       "gov": {
         "title": "Government Services",
@@ -200,12 +185,12 @@
         "desc": "Clear paths and complexity-free execution. We shorten procedures and keep you informed at every stage."
       },
       "trust": {
-        "title": "Official Trust",
-        "desc": "Deep expertise across Saudi government platforms and certified digital ecosystems."
+        "title": "Officially registered",
+        "desc": "Tasami Alwataniyah Establishment — CR 7051037930, VAT registered."
       },
       "support": {
-        "title": "24/7 Support",
-        "desc": "Monjez and WhatsApp assistants always on call — fast replies with human follow-up when needed."
+        "title": "Clear working hours",
+        "desc": "Daily 9 AM – 9 PM except Friday, with a quote within one hour during working hours."
       },
       "clarity": {
         "title": "Full Transparency",
@@ -220,17 +205,17 @@
         "desc": "We unite gov and tech in one path — formation, compliance, then digital growth."
       }
     },
-    "ctaBandTech": "Tech WhatsApp",
+    "ctaBandTech": "Tech solution request",
     "trustLine": "We work through official platforms and are not a government entity."
   },
   "footer": {
     "brand": "Tasami",
     "about": "Tasami government follow-up and tech solutions — simple front door, delivery via WhatsApp.",
     "affiliation": "One of Tasami Al-Wataniya services.",
-    "whatsapp": "Tech WhatsApp (Mustafa)",
-    "whatsappGov": "Taqeeb WhatsApp (Ibrahim)",
+    "whatsapp": "Tech department WhatsApp",
+    "whatsappGov": "Taqeeb department WhatsApp",
     "tiktok": "TikTok",
-    "hours": "Around-the-clock support",
+    "hours": "Daily 9 AM – 9 PM, closed Friday",
     "govTitle": "Government Services",
     "techTitle": "Tech Solutions",
     "legalTitle": "Quick links",
@@ -241,7 +226,6 @@
     "contactCta": "Taqeeb WhatsApp",
     "viewAll": "View all →",
     "rights": "All rights reserved.",
-    "built": "Designed for Vision 2030, digitally.",
     "legalDisclaimer": "Legal papers and licenses are under Tasami. We deliver via official platforms and are not a government entity.",
     "company": {
       "cr": "CR",
@@ -259,7 +243,8 @@
     "address": "Sheikh Muhammad Street, Al Naseem, Al Awali — Makkah 24251, Saudi Arabia",
     "directions": "Directions",
     "enlarge": "Larger map",
-    "mapTitle": "Tasami office map in Makkah"
+    "mapTitle": "Tasami office map in Makkah",
+    "servingNote": "Our office is in Makkah, and we serve every region of the Kingdom online."
   },
   "gov": {
     "eyebrow": "Services",
@@ -614,16 +599,16 @@
   },
   "widgets": {
     "monjezTitle": "Monjez",
-    "monjezOnline": "Online · 24/7",
-    "monjezWelcome": "Welcome to Tasami 👋 I’m Monjez, your round-the-clock AI assistant. How can I help?",
+    "monjezOnline": "Automated assistant",
+    "monjezWelcome": "Welcome to Tasami 👋 I'm Monjez, Tasami's automated assistant. How can I help?",
     "monjezTyping": "Monjez is typing…",
     "monjezPlaceholder": "Type your message…",
     "monjezFallback": "Thanks for reaching out. The Tasami team will follow up soon. You can also use WhatsApp for a faster reply.",
     "monjezError": "Connection issue. Please try again later or contact us on WhatsApp.",
     "waTitle": "Tasami WhatsApp",
-    "waIntro": "Taqeeb (Ibrahim) · Tech (Mustafa)",
-    "waSecretary": "Tech solutions — Mustafa",
-    "waDirect": "Government taqeeb — Ibrahim",
+    "waIntro": "Taqeeb department · Tech department",
+    "waSecretary": "Tech department",
+    "waDirect": "Taqeeb department",
     "openChat": "Open Monjez chat",
     "openWhatsapp": "Open WhatsApp",
     "close": "Close",
@@ -1277,5 +1262,21 @@
       "RENEWAL": "Renewal",
       "CUSTOM": "Custom"
     }
+  },
+  "trustStats": {
+    "heading": "Business details",
+    "completedLabel": "Completed transactions",
+    "thisMonth": "+{count} this month",
+    "completedNote": "Updated automatically from our request log · {date}",
+    "crLabel": "Commercial registration",
+    "crNote": "Ministry of Commerce · {name}",
+    "vatLabel": "VAT number",
+    "vatNote": "Registered for VAT",
+    "hoursLabel": "Working hours",
+    "hoursValue": "9 AM – 9 PM",
+    "hoursDays": "Daily except Friday",
+    "openNow": "Open now",
+    "closedNow": "Closed now",
+    "quoteNote": "Quote within one hour during working hours"
   }
 }

@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
               subject: "إعادة تعيين كلمة المرور — تسامي",
               html: `
                 <div dir="rtl" style="font-family:Tahoma,sans-serif;line-height:1.7;color:#212529">
-                  <h2 style="color:#007AFF">تَسَامِي</h2>
+                  <h2 style="color:#007AFF">تسامي</h2>
                   <p>مرحباً ${escapeHtml(user.name)}،</p>
                   <p>وصلنا طلب لإعادة تعيين كلمة المرور الخاصة بحسابك. اضغط على الرابط أدناه لإنشاء كلمة مرور جديدة (صالح لمدة ساعة واحدة):</p>
                   <p><a href="${resetLink}" style="color:#007AFF">إعادة تعيين كلمة المرور</a></p>

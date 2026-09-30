@@ -9,7 +9,7 @@ import PlatformsShowcase from "@/components/PlatformsShowcase";
 import ProcessScene from "@/components/ProcessScene";
 import WhyScene from "@/components/WhyScene";
 import Reveal from "@/components/Reveal";
-import SearchRouter from "@/components/SearchRouter";
+import TrustStats from "@/components/TrustStats";
 import {
   HOME_CORE_KEYS,
   HOME_WHY_KEYS,
@@ -30,12 +30,7 @@ const CORE_HREF = {
   sectors: "/sectors",
 } as const;
 
-const LANG_PILLS = [
-  { code: "AR", label: "العربية" },
-  { code: "EN", label: "English" },
-  { code: "UR", label: "اردو" },
-  { code: "HI", label: "हिन्दी" },
-] as const;
+export const revalidate = 1800;
 
 type Props = {
   params: { locale: string };
@@ -60,7 +55,6 @@ export default async function HomePage({ params }: Props) {
 
   const t = await getTranslations("home");
   const tBrand = await getTranslations("brand");
-  const tSearch = await getTranslations("search");
   const isRtl = rtlLocales.includes(locale as Locale);
   const Arrow = isRtl ? ArrowLeft : ArrowRight;
   const waTaqeeb = getWhatsAppDirectUrl(
@@ -96,22 +90,19 @@ export default async function HomePage({ params }: Props) {
             <p className="mt-1 text-sm font-medium text-white/75 sm:text-base">
               {tBrand("slogan")}
             </p>
-            <h1 className="hero-title-glow font-display mt-3 text-balance text-[2rem] leading-[1.22] text-white sm:text-6xl lg:text-[4rem] lg:leading-[1.08] xl:text-[4.35rem]">
+            <h1 className="font-display mt-3 max-w-[18ch] text-balance text-[1.9rem] leading-[1.3] text-white sm:text-5xl lg:text-[3.25rem]">
               {t("title")}
             </h1>
-            <p className="mt-5 max-w-xl text-[0.98rem] leading-relaxed text-white/90 sm:mt-6 sm:text-lg">
+            <p className="mt-5 max-w-xl text-[1.0625rem] leading-[1.8] text-white/90 sm:mt-6 sm:text-lg">
               {t("hero")}
             </p>
-            <p className="mt-3 max-w-xl text-xs leading-relaxed text-white/70 sm:text-sm">
-              {t("trustLine")}
-            </p>
-            <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:items-center lg:justify-start">
+            <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:mt-10 sm:w-auto sm:grid-cols-2">
               <a
                 href={waTaqeeb}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-wa-location="home_hero"
-                className="btn-hero inline-flex w-full items-center justify-center gap-2 sm:w-auto sm:min-w-[210px]"
+                className="btn-hero inline-flex min-h-[48px] w-full items-center justify-center gap-2 text-base sm:min-w-[220px]"
               >
                 <WhatsappLogo weight="fill" className="h-5 w-5" />
                 {t("ctaWhatsapp")}
@@ -121,12 +112,15 @@ export default async function HomePage({ params }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-wa-location="home_hero"
-                className="btn-outline-light inline-flex w-full items-center justify-center gap-2 sm:w-auto sm:min-w-[210px] max-lg:order-3 lg:order-none"
+                className="btn-hero inline-flex min-h-[48px] w-full items-center justify-center gap-2 text-base sm:min-w-[220px]"
               >
-                <WhatsappLogo weight="regular" className="h-5 w-5" />
+                <WhatsappLogo weight="fill" className="h-5 w-5" />
                 {t("ctaTech")}
               </a>
             </div>
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/80">
+              {t("trustLine")}
+            </p>
           </div>
 
           <div className="hero-orbit-shell relative min-h-0 max-lg:order-last lg:min-h-[26rem]">
@@ -141,27 +135,7 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      <section className="border-b border-tasami-purple/6 bg-white/70 py-10 sm:py-14">
-        <div className="mx-auto max-w-3xl px-5 sm:px-8 lg:px-10">
-          <Reveal>
-            <p className="eyebrow text-[#007AFF]">{tSearch("eyebrow")}</p>
-            <h2 className="font-display mt-2 text-2xl text-tasami-dark sm:text-3xl">
-              {tSearch("title")}
-            </h2>
-            <p className="mt-2 text-sm text-tasami-gray sm:text-base">
-              {tSearch("subtitle")}
-            </p>
-          </Reveal>
-          <div className="mt-6">
-            <SearchRouter compact />
-          </div>
-          <p className="mt-4 text-center text-xs text-tasami-gray">
-            <Link href="/search" className="font-medium text-[#007AFF] hover:underline">
-              {tSearch("title")}
-            </Link>
-          </p>
-        </div>
-      </section>
+      <TrustStats />
 
       <OfferingTheater
         title={t("offerTitle")}
@@ -191,29 +165,6 @@ export default async function HomePage({ params }: Props) {
       />
 
       <PlatformsShowcase />
-
-      <section className="lang-band">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <Reveal>
-            <div className="mb-10 max-w-xl">
-              <h2 className="font-display text-2xl text-tasami-dark sm:text-3xl">
-                {t("langsTitle")}
-              </h2>
-              <p className="mt-3 text-sm text-tasami-gray">{t("langsSubtitle")}</p>
-            </div>
-          </Reveal>
-          <div className="lang-grid">
-            {LANG_PILLS.map((l, i) => (
-              <Reveal key={l.code} index={i} columns={4} className="h-full">
-                <article className={`lang-tile lang-tile--${i}`}>
-                  <span>{l.code}</span>
-                  <h3>{l.label}</h3>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="cta-band relative py-16 sm:py-24">
         <Reveal y={20}>

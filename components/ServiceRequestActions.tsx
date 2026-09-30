@@ -18,6 +18,7 @@ import {
 import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
 import { whatsappForService } from "@/lib/site";
 import { whatsappPrefillFor } from "@/lib/whatsapp-templates";
+import { trackFormLead } from "@/lib/analytics";
 
 type Props = {
   serviceSlug: string;
@@ -183,6 +184,7 @@ export default function ServiceRequestActions({
 
       localStorage.setItem("tasami_last_phone", contact.phone.trim());
       localStorage.setItem("tasami_last_request", data.requestId);
+      trackFormLead({ category, service: serviceNameAr });
       setDoneId(data.requestId);
     } catch {
       setError(t("error"));

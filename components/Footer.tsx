@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   Buildings,
   Cpu,
@@ -11,6 +11,7 @@ import {
 import { Link } from "@/navigation";
 import BrandLogo from "@/components/BrandLogo";
 import {
+  COMPANY_LEGAL,
   getCompanyInfo,
   getPublicContactEmail,
   getPhoneDisplay,
@@ -32,6 +33,7 @@ export default function Footer() {
   const tBrand = useTranslations("brand");
   const tGov = useTranslations("gov.items");
   const tTech = useTranslations("tech.items");
+  const locale = useLocale();
   const year = new Date().getFullYear();
   const company = getCompanyInfo();
   const contactEmail = getPublicContactEmail();
@@ -59,9 +61,9 @@ export default function Footer() {
                 className="inline-flex items-center gap-2 hover:text-white"
               >
                 <WhatsappLogo weight="regular" className="h-4 w-4 text-tasami-lilac" />
-                <span>
+                <span className="inline-flex flex-wrap gap-x-1.5">
                   {t("whatsappGov")}
-                  <span className="ms-1.5" dir="ltr">
+                  <span dir="ltr">
                     {getWhatsAppDirectDisplay()}
                   </span>
                 </span>
@@ -74,9 +76,9 @@ export default function Footer() {
                 className="inline-flex items-center gap-2 hover:text-white"
               >
                 <WhatsappLogo weight="regular" className="h-4 w-4 text-tasami-lilac" />
-                <span>
+                <span className="inline-flex flex-wrap gap-x-1.5">
                   {t("whatsapp")}
-                  <span className="ms-1.5" dir="ltr">
+                  <span dir="ltr">
                     {getWhatsAppDisplay()}
                   </span>
                 </span>
@@ -110,15 +112,18 @@ export default function Footer() {
               <span>{t("hours")}</span>
             </div>
 
-            <div className="mt-6 space-y-1.5 border-t border-white/10 pt-5 text-xs text-white/40">
+            <div className="mt-6 space-y-1.5 border-t border-white/15 pt-5 text-sm leading-relaxed text-white/80">
+              <p className="font-semibold text-white">
+                {locale === "ar" ? COMPANY_LEGAL.nameAr : COMPANY_LEGAL.nameEn}
+              </p>
               {company.cr ? (
                 <p>
-                  {t("company.cr")} · {t("company.parent")}: {company.cr}
+                  {t("company.cr")}: <span dir="ltr">{company.cr}</span>
                 </p>
               ) : null}
               {company.vat ? (
                 <p>
-                  {t("company.vat")}: {company.vat}
+                  {t("company.vat")}: <span dir="ltr">{company.vat}</span>
                 </p>
               ) : null}
               <p>{company.address || t("company.city")}</p>
@@ -232,14 +237,13 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center sm:flex-row sm:text-start">
-          <p className="text-xs text-white/40">
+          <p className="text-xs text-white/70">
             © {year} {t("brand")}. {t("rights")}
           </p>
-          <p className="max-w-md text-[10px] leading-relaxed text-white/35 sm:text-end">
+          <p className="max-w-md text-sm font-medium leading-relaxed text-white/85 sm:text-end">
             {t("legalDisclaimer")}
           </p>
         </div>
-        <p className="mt-4 text-center text-xs text-white/30">{t("built")}</p>
       </div>
     </footer>
   );

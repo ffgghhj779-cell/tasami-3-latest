@@ -15,9 +15,6 @@ export const PLATFORM_KEYS = [
   "zatca",
   "gosi",
   "sehhaty",
-  "nelc",
-  "saudiGreen",
-  "sabic",
 ] as const;
 
 export type PlatformKey = (typeof PLATFORM_KEYS)[number];
@@ -105,23 +102,5 @@ export const PLATFORMS: PlatformDef[] = [
     logo: "/platforms/sehhaty.svg",
     href: "https://www.seha.sa",
     govSlug: "sehha",
-  },
-  {
-    key: "nelc",
-    logo: "/platforms/nelc.png",
-    href: "https://nelc.gov.sa",
-    sectorKey: "institutes",
-  },
-  {
-    key: "saudiGreen",
-    logo: "/platforms/saudiGreen.png",
-    href: "https://www.saudigreeninitiative.org",
-    govSlug: "baladiya",
-  },
-  {
-    key: "sabic",
-    logo: "/platforms/sabic.png",
-    href: "https://www.sabic.com",
-    sectorKey: "factories",
   },
 ];

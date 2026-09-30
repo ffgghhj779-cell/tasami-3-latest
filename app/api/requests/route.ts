@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import {
   Channel,
   Language,
@@ -360,6 +361,7 @@ export async function PATCH(req: NextRequest) {
     });
 
     if (prev.status !== body.status) {
+      revalidateTag("completed-transactions");
       const notify = await notifyRequestStatusChange({
         customerName: task.customer.name,
         customerPhone: task.customer.phone,
