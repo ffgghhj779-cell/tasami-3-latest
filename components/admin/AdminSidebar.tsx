@@ -9,6 +9,7 @@ import {
   ClipboardText,
   Megaphone,
   BellRinging,
+  Star,
   ArrowLeft,
 } from "@phosphor-icons/react";
 import { Link, usePathname } from "@/navigation";
@@ -19,6 +20,7 @@ const NAV = [
   { href: "/admin/requests", key: "requests" as const, icon: ClipboardText, exact: false },
   { href: "/admin/customers", key: "customers" as const, icon: Users, exact: false },
   { href: "/admin/conversations", key: "conversations" as const, icon: ChatCircleDots, exact: false },
+  { href: "/admin/reviews", key: "reviews" as const, icon: Star, exact: false },
   { href: "/admin/tasks", key: "tasks" as const, icon: CheckSquare, exact: false },
   { href: "/admin/campaigns", key: "campaigns" as const, icon: Megaphone, exact: false },
   { href: "/admin/reminders", key: "reminders" as const, icon: BellRinging, exact: false },

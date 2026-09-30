@@ -20,6 +20,7 @@ import WaLink from "@/components/WaLink";
 import WaChooserButton from "@/components/WaChooserButton";
 import FaqList, { type FaqEntry } from "@/components/FaqList";
 import BlogCard from "@/components/BlogCard";
+import CustomerReviews from "@/components/CustomerReviews";
 import { rtlLocales, type Locale } from "@/i18n";
 import { buildPageMetadata } from "@/lib/seo";
 import { HOME_DEPARTMENT_SERVICES, HOME_POPULAR } from "@/lib/orders";
@@ -271,6 +272,8 @@ export default async function HomePage({ params }: Props) {
           </Link>
         </div>
       </section>
+
+      <CustomerReviews />
 
       <PlatformsShowcase />
 

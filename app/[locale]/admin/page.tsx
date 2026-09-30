@@ -6,6 +6,7 @@ import {
   UserPlus,
 } from "@phosphor-icons/react/dist/ssr";
 import { prisma } from "@/lib/prisma";
+import { NOT_REVIEW_WHERE } from "@/lib/reviews";
 import { Link } from "@/navigation";
 import {
   StatusBadge,
@@ -34,9 +35,10 @@ async function safeMetrics() {
         where: { status: { in: ["PENDING", "IN_PROGRESS", "WAITING"] } },
       }),
       prisma.conversation.count({
-        where: { created_at: { gte: startOfDay } },
+        where: { AND: [NOT_REVIEW_WHERE, { created_at: { gte: startOfDay } }] },
       }),
       prisma.conversation.findMany({
+        where: NOT_REVIEW_WHERE,
         take: 6,
         orderBy: { created_at: "desc" },
         include: { customer: { select: { id: true, name: true } } },

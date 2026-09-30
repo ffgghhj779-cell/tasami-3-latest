@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { prisma } from "@/lib/prisma";
+import { NOT_REVIEW_WHERE } from "@/lib/reviews";
 import AdminConversationsClient from "./AdminConversationsClient";
 
 type Props = { params: { locale: string } };
@@ -23,6 +24,7 @@ export default async function AdminConversationsPage({ params }: Props) {
   try {
     [rows, customers] = await Promise.all([
       prisma.conversation.findMany({
+        where: NOT_REVIEW_WHERE,
         take: 150,
         orderBy: { created_at: "desc" },
         include: { customer: { select: { id: true, name: true, phone: true } } },

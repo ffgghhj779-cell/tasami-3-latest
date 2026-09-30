@@ -1098,7 +1098,8 @@
       "conversations": "Conversations",
       "tasks": "Tasks",
       "campaigns": "Campaigns",
-      "reminders": "Reminders"
+      "reminders": "Reminders",
+      "reviews": "Reviews"
     },
     "requests": {
       "title": "Service Requests",
@@ -1288,6 +1289,36 @@
       "APPOINTMENT": "Appointment",
       "RENEWAL": "Renewal",
       "CUSTOM": "Custom"
+    },
+    "reviews": {
+      "title": "Customer reviews",
+      "subtitle": "Reviews arrive from the order tracking page once an order is done, or from invite links. Nothing is shown on the site until you approve it.",
+      "refresh": "Refresh",
+      "error": "Something went wrong. Try again.",
+      "inviteTitle": "Review invite link",
+      "inviteHint": "For clients served over WhatsApp without a site order: create one link per client and send it. Single use, valid for 30 days.",
+      "inviteCreate": "Create new link",
+      "inviteExpires": "Valid until {date}",
+      "inviteMessage": "Thank you for trusting Tasami 🌟 We'd love your review of your experience (one minute):",
+      "copy": "Copy link",
+      "copied": "Copied",
+      "shareWa": "Send via WhatsApp",
+      "tabs": {
+        "pending": "Awaiting approval",
+        "approved": "Published",
+        "rejected": "Rejected",
+        "all": "All"
+      },
+      "empty": "No reviews in this section.",
+      "stars": "{n} out of 5 stars",
+      "anonymous": "No name",
+      "sourceOrder": "From order",
+      "sourceInvite": "From invite link",
+      "approve": "Approve & publish",
+      "unpublish": "Unpublish",
+      "reject": "Reject",
+      "delete": "Delete",
+      "confirmDelete": "Delete this review permanently?"
     }
   },
   "trustStats": {
@@ -1537,5 +1568,57 @@
     "arabicOnly": "Articles are currently available in Arabic.",
     "gov": "Government",
     "tech": "Tech"
+  },
+  "reviews": {
+    "form": {
+      "title": "How was your experience?",
+      "subtitle": "Your feedback helps others choose with confidence. It is published after our team reviews it.",
+      "ratingLabel": "Your rating",
+      "stars": "{n} out of 5 stars",
+      "ratingHint": {
+        "1": "Poor",
+        "2": "Below expectations",
+        "3": "Okay",
+        "4": "Very good",
+        "5": "Excellent"
+      },
+      "textLabel": "Tell us about your experience",
+      "textPlaceholder": "e.g. They handled my sponsorship transfer quickly and kept me updated…",
+      "nameLabel": "Display name (optional)",
+      "namePlaceholder": "e.g. Ahmed",
+      "cityLabel": "City (optional)",
+      "cityPlaceholder": "e.g. Riyadh",
+      "submit": "Submit review",
+      "sending": "Sending…",
+      "consent": "By submitting, you agree to publish your review on the Tasami website under the name you entered only. We never publish your number or personal data.",
+      "errRating": "Please choose a star rating first.",
+      "errText": "Please write at least {min} characters.",
+      "errAlready": "A review for this order was already received. Thank you.",
+      "errTooMany": "Too many attempts. Please try again shortly.",
+      "errExpired": "This review link has expired. Ask our team on WhatsApp for a new one.",
+      "errInvalid": "We couldn't verify this order. Check the link or message us on WhatsApp.",
+      "errGeneric": "Couldn't send right now. Please try again.",
+      "thanksTitle": "Thank you! We received your review",
+      "thanksBody": "It will appear on the website after our team reviews it.",
+      "alreadyTitle": "You already reviewed this order",
+      "alreadyBody": "Thanks for your time. For any further feedback, message us on WhatsApp."
+    },
+    "invite": {
+      "badge": "Your personal review link",
+      "title": "Rate your experience with Tasami",
+      "subtitle": "One minute of your time helps us improve and helps others choose with confidence.",
+      "invalidTitle": "Invalid review link",
+      "expiredTitle": "This review link has expired",
+      "invalidBody": "Ask our team on WhatsApp for a new link and we'll send it right away.",
+      "contactWa": "Message us on WhatsApp"
+    },
+    "section": {
+      "title": "What our clients say",
+      "subtitle": "Real reviews from clients whose transactions we completed, published only after verifying they relate to actual orders.",
+      "summary": "{count, plural, one {# verified review} other {# verified reviews}}",
+      "stars": "{n} out of 5 stars",
+      "verified": "Verified client",
+      "anonymous": "Tasami client"
+    }
   }
 }

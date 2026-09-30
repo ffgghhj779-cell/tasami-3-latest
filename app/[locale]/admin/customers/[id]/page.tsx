@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 import { prisma } from "@/lib/prisma";
+import { parseReview } from "@/lib/reviews";
 import { Link } from "@/navigation";
 import {
   StatusBadge,
@@ -134,7 +135,7 @@ export default async function AdminCustomerDetailPage({ params }: Props) {
                     msg.sender
                   )}`}
                 >
-                  {msg.message}
+                  {reviewSummary(msg.intent, msg.message) ?? msg.message}
                 </div>
               </div>
             ))
@@ -143,6 +144,13 @@ export default async function AdminCustomerDetailPage({ params }: Props) {
       </section>
     </div>
   );
+}
+
+function reviewSummary(intent: string | null, message: string): string | null {
+  if (!intent?.startsWith("review_")) return null;
+  const review = parseReview(message);
+  if (!review) return null;
+  return `${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)} — ${review.text}`;
 }
 
 function loadCustomer(id: string) {

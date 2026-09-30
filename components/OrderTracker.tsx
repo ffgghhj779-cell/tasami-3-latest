@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Check, MagnifyingGlass } from "@phosphor-icons/react";
 import { TRACK_STEPS, type TrackStep } from "@/lib/orders";
+import ReviewForm from "@/components/ReviewForm";
 
 type Result = {
   orderNo: string;
@@ -11,6 +12,7 @@ type Result = {
   createdAt: string;
   updatedAt: string;
   service: { name_ar: string; name_en: string } | null;
+  reviewed?: boolean;
 };
 
 export default function OrderTracker() {
@@ -41,6 +43,12 @@ export default function OrderTracker() {
         return;
       }
       setResult(data as Result);
+      if (window.location.hash === "#review" && (data as Result).step === "done") {
+        window.setTimeout(
+          () => document.getElementById("review")?.scrollIntoView({ behavior: "smooth", block: "start" }),
+          150
+        );
+      }
     } catch {
       setError(t("error"));
     } finally {
@@ -157,6 +165,14 @@ export default function OrderTracker() {
               })}
             </ol>
           )}
+
+          {result.step === "done" ? (
+            <ReviewForm
+              key={result.orderNo}
+              order={result.orderNo}
+              alreadyReviewed={result.reviewed}
+            />
+          ) : null}
         </div>
       ) : null}
     </section>
