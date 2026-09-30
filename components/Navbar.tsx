@@ -126,7 +126,7 @@ export default function Navbar() {
         mobileOpen
           ? "border-[rgba(26,53,80,0.08)] bg-white"
           : onHero
-            ? "border-white/20 bg-[#1A3550]/40 backdrop-blur-md"
+            ? "border-white/10 bg-gradient-to-b from-[#0b1a2a]/75 to-[#0b1a2a]/30 backdrop-blur-md"
             : "border-[rgba(26,53,80,0.08)] bg-white/95 backdrop-blur-md"
       }`}
     >

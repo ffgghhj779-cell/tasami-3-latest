@@ -308,6 +308,7 @@ export function articleJsonLd(args: {
   description: string;
   path: string;
   publishedAt: string;
+  image?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -318,7 +319,7 @@ export function articleJsonLd(args: {
     datePublished: args.publishedAt,
     dateModified: args.publishedAt,
     mainEntityOfPage: `${SITE_URL}/ar${args.path}`,
-    image: OG_IMAGE_URL,
+    image: args.image ? `${SITE_URL}${args.image}` : OG_IMAGE_URL,
     author: { "@id": `${SITE_URL}/#organization` },
     publisher: { "@id": `${SITE_URL}/#organization` },
   };

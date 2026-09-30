@@ -10,8 +10,9 @@ export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
 }
 
-export default getRequestConfig(async ({ locale }) => {
-  if (!isLocale(locale)) notFound();
+export default getRequestConfig(async ({ requestLocale }) => {
+  const locale = await requestLocale;
+  if (!locale || !isLocale(locale)) notFound();
 
   return {
     locale,

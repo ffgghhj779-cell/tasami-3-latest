@@ -10,13 +10,11 @@ export default function SimpleHeader({
   children?: ReactNode;
 }) {
   return (
-    <header className="border-b border-[rgba(26,53,80,0.08)] bg-tasami-offwhite">
-      <div className="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
-        <h1 className="text-[1.75rem] font-bold leading-[1.3] text-tasami-dark sm:text-4xl">
-          {title}
-        </h1>
+    <header className="lux-dark">
+      <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
+        <h1 className="lux-title lux-title--light text-[1.9rem] sm:text-5xl">{title}</h1>
         {subtitle ? (
-          <p className="mt-4 max-w-[65ch] leading-[1.8] text-tasami-gray">{subtitle}</p>
+          <p className="mt-4 max-w-[60ch] text-lg leading-[1.85] text-white/85">{subtitle}</p>
         ) : null}
         {children}
       </div>

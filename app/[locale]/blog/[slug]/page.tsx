@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import { Link } from "@/navigation";
 import WaLink from "@/components/WaLink";
 import CrossSellBox from "@/components/CrossSellBox";
-import { BLOG_POSTS, getPost, readingMinutes } from "@/lib/blog";
+import { BLOG_POSTS, blogCover, getPost, readingMinutes } from "@/lib/blog";
 import { locales } from "@/i18n";
 import {
   articleJsonLd,
@@ -32,10 +33,13 @@ export async function generateMetadata({ params }: Props) {
     path: `/blog/${post.slug}`,
     locale: params.locale,
   });
+  const cover = { url: `${SITE_URL}${blogCover(post.slug)}`, width: 1200, height: 675, alt: post.title };
   // Articles are written in Arabic only — every locale points to the Arabic original.
   return {
     ...meta,
     alternates: { canonical: `${SITE_URL}/ar/blog/${post.slug}` },
+    openGraph: { ...meta.openGraph, type: "article", images: [cover] },
+    twitter: { ...meta.twitter, images: [cover.url] },
   };
 }
 
@@ -57,6 +61,7 @@ export default async function BlogPostPage({ params }: Props) {
       description: post.summary,
       path: `/blog/${post.slug}`,
       publishedAt: post.publishedAt,
+      image: blogCover(post.slug),
     }),
     breadcrumbJsonLd(locale, [
       { name: tBrand("name"), path: "" },
@@ -90,7 +95,19 @@ export default async function BlogPostPage({ params }: Props) {
         <h1 className="mt-3 text-[1.75rem] font-bold leading-[1.3] text-tasami-dark sm:text-4xl">
           {post.title}
         </h1>
-        <p className="mt-5 rounded-2xl bg-tasami-offwhite p-5 text-[1.0625rem] leading-[1.8] text-tasami-dark">
+
+        <div className="blog-cover mt-7">
+          <Image
+            src={blogCover(post.slug)}
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 720px"
+            className="object-cover"
+          />
+        </div>
+
+        <p className="mt-7 rounded-2xl bg-tasami-offwhite p-5 text-[1.0625rem] leading-[1.8] text-tasami-dark">
           {post.summary}
         </p>
 

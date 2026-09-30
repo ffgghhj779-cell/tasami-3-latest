@@ -46,7 +46,8 @@ export default function Footer() {
   const contactEmail = getPublicContactEmail();
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/20 bg-[#0057B8] text-white">
+    <footer className="lux-footer relative overflow-hidden text-white">
+      <span className="lux-footer-mark" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-5 py-14 pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))] sm:px-8 sm:pb-16 lg:px-10 lg:py-20">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
           <div>

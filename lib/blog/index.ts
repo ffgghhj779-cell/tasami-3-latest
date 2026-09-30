@@ -13,6 +13,10 @@ export function getPost(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
 }
 
+export function blogCover(slug: string): string {
+  return `/blog/${slug}.webp`;
+}
+
 export function latestPosts(n: number): BlogPost[] {
   return BLOG_POSTS.slice(0, n);
 }

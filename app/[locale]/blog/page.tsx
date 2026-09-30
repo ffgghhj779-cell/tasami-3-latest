@@ -32,10 +32,10 @@ export default async function BlogIndexPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <SimpleHeader title={t("title")} subtitle={t("subtitle")}>
         {t("arabicOnly") ? (
-          <p className="mt-3 text-sm text-tasami-gray">{t("arabicOnly")}</p>
+          <p className="mt-3 text-sm text-white/80">{t("arabicOnly")}</p>
         ) : null}
       </SimpleHeader>
-      <div className="mx-auto grid max-w-5xl gap-4 px-5 py-12 sm:grid-cols-2 sm:px-8 sm:py-16 lg:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-6 px-5 py-12 sm:grid-cols-2 sm:px-8 sm:py-16 lg:grid-cols-3">
         {BLOG_POSTS.map((post) => (
           <BlogCard
             key={post.slug}
