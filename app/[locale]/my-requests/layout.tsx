@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildPageMetadata } from "@/lib/seo";
 
 type Props = {
@@ -12,8 +12,9 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }) {
+  const t = await getTranslations({ locale: params.locale, namespace: "request" });
   return buildPageMetadata({
-    title: "My requests",
+    title: t("myTitle"),
     path: "/my-requests",
     locale: params.locale,
     index: false,

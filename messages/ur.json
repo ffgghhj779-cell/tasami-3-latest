@@ -208,7 +208,7 @@
       }
     },
     "ctaBandTech": "تکنیکی حل کی درخواست",
-    "trustLine": "We work through official platforms and are not a government entity."
+    "trustLine": "ہم سرکاری پلیٹ فارمز کے ذریعے کام کرتے ہیں اور سرکاری ادارہ نہیں ہیں۔"
   },
   "footer": {
     "brand": "تسامی",
@@ -472,13 +472,13 @@
         "desc": "اپنی تنصیب کا ویٹ ریٹرن تیار اور جمع کروائیں۔"
       }
     },
-    "briefWhat": "What we deliver",
-    "briefPlatform": "Platform",
-    "briefNeeds": "What we need from you",
-    "briefDuration": "Approximate timing",
-    "briefDisclaimer": "We work through official platforms and are not a government entity. No prices on the site — details on WhatsApp.",
-    "waTaqeeb": "Taqeeb WhatsApp",
-    "waTech": "Tech WhatsApp"
+    "briefWhat": "ہم کیا کرتے ہیں",
+    "briefPlatform": "پلیٹ فارم",
+    "briefNeeds": "آپ سے کیا درکار ہے",
+    "briefDuration": "متوقع مدت",
+    "briefDisclaimer": "ہم سرکاری پلیٹ فارمز کے ذریعے کام کرتے ہیں اور سرکاری ادارہ نہیں ہیں۔ ویب سائٹ پر قیمتیں نہیں — تفصیل واٹس ایپ پر۔",
+    "waTaqeeb": "تعقیب واٹس ایپ",
+    "waTech": "ٹیک واٹس ایپ"
   },
   "tech": {
     "eyebrow": "خدمات",
@@ -524,12 +524,12 @@
         "desc": "ہوسٹنگ، منتقلی، اور محفوظ کلاؤڈ آپریشنز۔"
       }
     },
-    "briefWhat": "What we deliver",
-    "briefNeeds": "What we need from you",
-    "briefDuration": "Approximate timing",
-    "briefDisclaimer": "We work through official platforms and are not a government entity. No prices on the site — details on WhatsApp.",
-    "waTech": "Tech WhatsApp",
-    "briefPlatform": "Platform"
+    "briefWhat": "ہم کیا کرتے ہیں",
+    "briefNeeds": "آپ سے کیا درکار ہے",
+    "briefDuration": "متوقع مدت",
+    "briefDisclaimer": "ویب سائٹ پر قیمتیں نہیں — آپ کے پروجیکٹ کے مطابق پیشکش واٹس ایپ پر بھیجتے ہیں۔",
+    "waTech": "ٹیک واٹس ایپ",
+    "briefPlatform": "پلیٹ فارم"
   },
   "sectors": {
     "eyebrow": "شعبے",

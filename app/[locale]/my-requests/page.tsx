@@ -89,8 +89,9 @@ export default function MyRequestsPage() {
 
   if (!authChecked) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p className="text-sm text-tasami-gray">{tAuth("loading")}</p>
+      <div className="mx-auto min-h-screen max-w-xl px-5 py-14 text-center sm:py-20">
+        <h1 className="font-display text-2xl text-tasami-dark">{t("myTitle")}</h1>
+        <p className="mt-6 text-sm text-tasami-gray">{tAuth("loading")}</p>
       </div>
     );
   }

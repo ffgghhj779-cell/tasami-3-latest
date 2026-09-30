@@ -11,6 +11,7 @@ type Props = {
     disclaimer: string;
   };
   platformNames?: Record<string, string>;
+  locale?: string;
 };
 
 export default function ServiceBriefPanel({
@@ -18,14 +19,15 @@ export default function ServiceBriefPanel({
   kind = "government",
   labels,
   platformNames = {},
+  locale = "ar",
 }: Props) {
-  const brief = getServiceBrief(serviceKey, kind);
+  const brief = getServiceBrief(serviceKey, kind, locale);
   const platforms = brief.platformKeys
     .map((k) => platformNames[k] || k)
     .filter(Boolean);
 
   return (
-    <div className="mt-8 space-y-5">
+    <div className="mt-8 space-y-5 first:mt-0">
       <div className="rounded-card border border-tasami-purple/10 bg-white/90 p-5 shadow-soft">
         <p className="text-xs font-semibold uppercase tracking-wide text-[#006BDE]">
           {labels.whatTitle}

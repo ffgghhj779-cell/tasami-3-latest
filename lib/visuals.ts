@@ -1,8 +1,8 @@
 export const VISUALS = {
-  hero: "/visuals/hero-plate.png",
+  hero: "/visuals/hero-plate.webp",
+  heroSmall: "/visuals/hero-plate-sm.webp",
   heroVideo: "/visuals/hero.mp4",
   heroVideoMobile: "/visuals/hero-mobile.mp4",
-  heroVideoWebm: "/visuals/hero.webm",
   offerings: {
     gov: "/visuals/offering-gov.png",
     tech: "/visuals/offering-tech.png",

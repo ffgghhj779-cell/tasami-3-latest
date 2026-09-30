@@ -21,7 +21,7 @@ export default async function CrossSellBox({ from, locale }: Props) {
         <p className="mt-1 text-sm leading-relaxed text-tasami-gray">{t(`${from}.body`)}</p>
         <Link
           href={href}
-          className="mt-2 inline-flex min-h-[44px] items-center gap-1.5 font-bold text-[#006BDE]"
+          className="mt-2 inline-flex min-h-[44px] items-center gap-1.5 font-bold text-[#0057B8]"
         >
           {t(`${from}.cta`)}
           <Arrow weight="bold" className="h-4 w-4" />

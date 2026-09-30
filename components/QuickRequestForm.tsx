@@ -119,13 +119,13 @@ export default function QuickRequestForm({
         <h2 className="mt-4 text-xl font-bold text-tasami-dark">
           {t("successTitle", { orderNo })}
         </h2>
-        <p className="mt-2 leading-relaxed text-tasami-gray">{t("successBody")}</p>
         <p
-          className="mx-auto mt-5 w-fit rounded-xl bg-tasami-offwhite px-5 py-3 text-2xl font-bold tracking-widest text-tasami-dark"
+          className="mx-auto mt-3 w-fit rounded-xl bg-tasami-offwhite px-5 py-3 text-2xl font-bold tracking-widest text-tasami-dark"
           dir="ltr"
         >
           #{orderNo}
         </p>
+        <p className="mt-3 leading-relaxed text-tasami-gray">{t("successBody")}</p>
         <a
           href={waHref}
           target="_blank"

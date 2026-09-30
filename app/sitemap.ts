@@ -75,16 +75,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
 
-    for (const post of BLOG_POSTS) {
-      const path = `/blog/${post.slug}`;
-      entries.push({
-        url: `${SITE_URL}/${locale}${path}`,
-        lastModified: new Date(post.publishedAt),
-        changeFrequency: "monthly",
-        priority: locale === "ar" ? 0.7 : 0.4,
-        alternates: { languages: languageAlternates(path) },
-      });
-    }
+  }
+
+  // Articles exist in Arabic only; other locales canonicalise to /ar.
+  for (const post of BLOG_POSTS) {
+    entries.push({
+      url: `${SITE_URL}/ar/blog/${post.slug}`,
+      lastModified: new Date(post.publishedAt),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
   }
 
   return entries;

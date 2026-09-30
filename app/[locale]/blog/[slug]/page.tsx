@@ -15,6 +15,8 @@ import {
 
 type Props = { params: { locale: string; slug: string } };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
     BLOG_POSTS.map((post) => ({ locale, slug: post.slug }))

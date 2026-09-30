@@ -208,7 +208,7 @@
       }
     },
     "ctaBandTech": "तकनीकी समाधान अनुरोध",
-    "trustLine": "We work through official platforms and are not a government entity."
+    "trustLine": "हम आधिकारिक प्लेटफ़ॉर्म के ज़रिए काम करते हैं और सरकारी संस्था नहीं हैं।"
   },
   "footer": {
     "brand": "तसामी",
@@ -472,13 +472,13 @@
         "desc": "अपनी सुविधा का VAT रिटर्न तैयार और सबमिट करें।"
       }
     },
-    "briefWhat": "What we deliver",
-    "briefPlatform": "Platform",
-    "briefNeeds": "What we need from you",
-    "briefDuration": "Approximate timing",
-    "briefDisclaimer": "We work through official platforms and are not a government entity. No prices on the site — details on WhatsApp.",
-    "waTaqeeb": "Taqeeb WhatsApp",
-    "waTech": "Tech WhatsApp"
+    "briefWhat": "हम क्या करते हैं",
+    "briefPlatform": "प्लेटफ़ॉर्म",
+    "briefNeeds": "आपसे क्या चाहिए",
+    "briefDuration": "अनुमानित समय",
+    "briefDisclaimer": "हम आधिकारिक प्लेटफ़ॉर्म के ज़रिए काम करते हैं और सरकारी संस्था नहीं हैं। वेबसाइट पर कीमतें नहीं — जानकारी व्हाट्सऐप पर।",
+    "waTaqeeb": "तक़ीब व्हाट्सऐप",
+    "waTech": "टेक व्हाट्सऐप"
   },
   "tech": {
     "eyebrow": "सेवाएं",
@@ -524,12 +524,12 @@
         "desc": "होस्टिंग, माइग्रेशन, और सुरक्षित क्लाउड संचालन।"
       }
     },
-    "briefWhat": "What we deliver",
-    "briefNeeds": "What we need from you",
-    "briefDuration": "Approximate timing",
-    "briefDisclaimer": "We work through official platforms and are not a government entity. No prices on the site — details on WhatsApp.",
-    "waTech": "Tech WhatsApp",
-    "briefPlatform": "Platform"
+    "briefWhat": "हम क्या करते हैं",
+    "briefNeeds": "आपसे क्या चाहिए",
+    "briefDuration": "अनुमानित समय",
+    "briefDisclaimer": "वेबसाइट पर कीमतें नहीं — आपके प्रोजेक्ट के अनुसार ऑफ़र व्हाट्सऐप पर भेजते हैं।",
+    "waTech": "टेक व्हाट्सऐप",
+    "briefPlatform": "प्लेटफ़ॉर्म"
   },
   "sectors": {
     "eyebrow": "क्षेत्र",

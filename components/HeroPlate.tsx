@@ -67,18 +67,17 @@ export default function HeroPlate() {
           loop
           playsInline
           preload={mobile ? "metadata" : "auto"}
-          poster={VISUALS.hero}
+          poster={mobile ? VISUALS.heroSmall : VISUALS.hero}
           aria-label={t("heroVideoLabel")}
         >
-          {!mobile ? (
-            <source src={VISUALS.heroVideoWebm} type="video/webm" />
-          ) : null}
           <source src={src} type="video/mp4" />
         </video>
       ) : (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={VISUALS.hero}
+          srcSet={`${VISUALS.heroSmall} 828w, ${VISUALS.hero} 1536w`}
+          sizes="100vw"
           alt=""
           className="hero-plate-img hero-plate-img--poster"
           decoding="async"

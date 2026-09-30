@@ -19,6 +19,8 @@ const SLUG_TO_KEY = Object.fromEntries(
 
 type Props = { params: { locale: string; slug: string } };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return Object.values(TECH_SLUGS).map((slug) => ({ slug }));
 }
@@ -61,15 +63,9 @@ export default async function TechServicePage({ params }: Props) {
 
       <div className="mx-auto max-w-xl px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
         <article className="card-premium p-7 sm:p-8">
-          <h2 className="text-base font-medium text-tasami-dark sm:text-lg">
-            {title}
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-tasami-gray">
-            {t(`items.${key}.desc`)}
-          </p>
-
           <ServiceBriefPanel
             serviceKey={key}
+            locale={locale}
             kind="tech"
             labels={{
               whatTitle: t("briefWhat"),

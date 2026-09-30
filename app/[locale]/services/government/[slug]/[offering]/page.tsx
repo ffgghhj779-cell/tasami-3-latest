@@ -56,9 +56,23 @@ const SLUG_TO_KEY = Object.fromEntries(
   (Object.entries(GOV_SLUGS) as [GovKey, string][]).map(([k, slug]) => [slug, k])
 ) as Record<string, GovKey>;
 
+const PLATFORM_KEYS = [
+  "absher",
+  "qiwa",
+  "muqeem",
+  "commerce",
+  "businessCenter",
+  "balady",
+  "zakat",
+  "najiz",
+  "gosi",
+] as const;
+
 type Props = {
   params: { locale: string; slug: string; offering: string };
 };
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return GOV_OFFERINGS.map((o) => ({
@@ -97,6 +111,7 @@ export default async function GovernmentOfferingPage({ params }: Props) {
   const t = await getTranslations("gov");
   const tReq = await getTranslations("request");
   const tSearch = await getTranslations("search");
+  const tTrust = await getTranslations("trust");
   const tAr = await getTranslations({ locale: "ar", namespace: "gov" });
   const tEn = await getTranslations({ locale: "en", namespace: "gov" });
 
@@ -152,6 +167,7 @@ export default async function GovernmentOfferingPage({ params }: Props) {
 
             <ServiceBriefPanel
               serviceKey={offering.key}
+              locale={locale}
               kind="government"
               labels={{
                 whatTitle: t("briefWhat"),
@@ -160,34 +176,10 @@ export default async function GovernmentOfferingPage({ params }: Props) {
                 durationTitle: t("briefDuration"),
                 disclaimer: t("briefDisclaimer"),
               }}
-              platformNames={{
-                absher: "أبشر",
-                qiwa: "قوى",
-                muqeem: "مقيم",
-                commerce: "وزارة التجارة",
-                businessCenter: "المركز السعودي للأعمال",
-                balady: "بلدي",
-                zakat: "الزكاة والضريبة",
-                najiz: "ناجز",
-                gosi: "التأمينات",
-              }}
+              platformNames={Object.fromEntries(
+                PLATFORM_KEYS.map((k) => [k, tTrust(`platforms.${k}`)])
+              )}
             />
-
-            {form.docs.length > 0 ? (
-              <div className="mt-8 rounded-card border border-tasami-purple/8 bg-white/80 p-5">
-                <p className="text-xs font-medium text-tasami-dark">
-                  {tReq("requiredDocs")}
-                </p>
-                <ul className="mt-3 space-y-2 text-sm text-tasami-gray">
-                  {form.docs.map((doc) => (
-                    <li key={doc} className="flex gap-2">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-tasami-pink" />
-                      <span>{tReq(`docs.${doc}`)}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
 
             {siblings.length > 0 ? (
               <div className="mt-8">

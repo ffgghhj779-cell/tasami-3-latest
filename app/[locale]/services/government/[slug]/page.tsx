@@ -18,6 +18,8 @@ const SLUG_TO_KEY = Object.fromEntries(
 
 type Props = { params: { locale: string; slug: string } };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return Object.values(GOV_SLUGS).map((slug) => ({ slug }));
 }

@@ -29,7 +29,7 @@ export default function BrandHeader({
           {name}
         </span>
         <span
-          className={`brand-header-slogan truncate ${
+          className={`brand-header-slogan line-clamp-2 sm:truncate ${
             onDark ? "text-white/78" : "text-[#006BDE]"
           }`}
         >
