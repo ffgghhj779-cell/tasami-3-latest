@@ -18,6 +18,7 @@ import {
   getSeoPack,
   keywordsForOffering,
 } from "@/lib/search-intelligence";
+import CrossSellBox from "@/components/CrossSellBox";
 import ServiceRequestActions from "@/components/ServiceRequestActions";
 import {
   IdentificationCard,
@@ -246,10 +247,12 @@ export default async function GovernmentOfferingPage({ params }: Props) {
                 serviceSlug={`gov-${slug}-${offering.slug}`}
                 serviceNameAr={titleAr}
                 serviceNameEn={titleEn}
+                serviceName={title}
                 category="government"
                 subcategory={offering.key}
               />
             </article>
+            <CrossSellBox from="gov" locale={locale} />
           </div>
         </div>
       </div>

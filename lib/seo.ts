@@ -287,6 +287,43 @@ export function professionalServiceJsonLd() {
   };
 }
 
+export function breadcrumbJsonLd(
+  locale: string,
+  items: { name: string; path: string }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: `${SITE_URL}/${locale}${item.path}`,
+    })),
+  };
+}
+
+export function articleJsonLd(args: {
+  title: string;
+  description: string;
+  path: string;
+  publishedAt: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: args.title,
+    description: args.description,
+    inLanguage: "ar",
+    datePublished: args.publishedAt,
+    dateModified: args.publishedAt,
+    mainEntityOfPage: `${SITE_URL}/ar${args.path}`,
+    image: OG_IMAGE_URL,
+    author: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
 export function seoGraphJsonLd() {
   return {
     "@context": "https://schema.org",

@@ -27,7 +27,7 @@ export default function ServiceBriefPanel({
   return (
     <div className="mt-8 space-y-5">
       <div className="rounded-card border border-tasami-purple/10 bg-white/90 p-5 shadow-soft">
-        <p className="text-xs font-semibold uppercase tracking-wide text-[#007AFF]">
+        <p className="text-xs font-semibold uppercase tracking-wide text-[#006BDE]">
           {labels.whatTitle}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-tasami-dark">
@@ -44,7 +44,7 @@ export default function ServiceBriefPanel({
             {platforms.map((name) => (
               <span
                 key={name}
-                className="rounded-full bg-[#007AFF]/10 px-3 py-1 text-xs font-medium text-[#0066D6]"
+                className="rounded-full bg-[#006BDE]/10 px-3 py-1 text-xs font-medium text-[#0066D6]"
               >
                 {name}
               </span>
@@ -58,7 +58,7 @@ export default function ServiceBriefPanel({
         <ul className="mt-2 space-y-2 text-sm text-tasami-gray">
           {brief.clientNeeds.map((item) => (
             <li key={item} className="flex gap-2">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#007AFF]" />
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#006BDE]" />
               <span>{item}</span>
             </li>
           ))}

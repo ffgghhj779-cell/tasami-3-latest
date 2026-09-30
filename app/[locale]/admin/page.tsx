@@ -44,7 +44,14 @@ async function safeMetrics() {
       prisma.task.findMany({
         take: 5,
         orderBy: { updated_at: "desc" },
-        include: { customer: { select: { id: true, name: true } } },
+        select: {
+        id: true,
+        status: true,
+        assigned_to: true,
+        due_date: true,
+        notes: true,
+        customer: { select: { id: true, name: true } },
+      },
       }),
     ]);
 

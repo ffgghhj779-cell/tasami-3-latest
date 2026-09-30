@@ -10,13 +10,13 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#007AFF",
+          DEFAULT: "#006BDE",
           50: "#F7FBFF",
           100: "#E8F4FF",
           200: "#C7E8FF",
           300: "#5AC8FA",
           400: "#2B9AEF",
-          500: "#007AFF",
+          500: "#006BDE",
           600: "#0066D6",
           700: "#0066D6",
           800: "#0066D6",
@@ -29,7 +29,7 @@ const config: Config = {
           200: "#C7E8FF",
           300: "#5AC8FA",
           400: "#2B9AEF",
-          500: "#007AFF",
+          500: "#006BDE",
           600: "#0066D6",
           700: "#0066D6",
           800: "#0066D6",
@@ -42,7 +42,7 @@ const config: Config = {
           200: "#C7E8FF",
           300: "#5AC8FA",
           400: "#2B9AEF",
-          500: "#007AFF",
+          500: "#006BDE",
           600: "#0066D6",
           700: "#0066D6",
           800: "#0066D6",

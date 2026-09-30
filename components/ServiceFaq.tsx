@@ -1,3 +1,5 @@
+import { SITE_URL } from "@/lib/seo";
+
 type FaqItem = { q: string; a: string };
 
 export default function ServiceFaq({
@@ -64,11 +66,7 @@ export function serviceJsonLd({
     name,
     description,
     url,
-    provider: {
-      "@type": "Organization",
-      name: "تسامي",
-      url: "https://www.tasamiservices.com",
-    },
+    provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: {
       "@type": "Country",
       name: "Saudi Arabia",

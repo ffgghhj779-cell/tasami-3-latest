@@ -5,6 +5,7 @@ import ServiceBriefPanel from "@/components/ServiceBriefPanel";
 import { TECH_KEYS, TECH_SLUGS, type TechKey } from "@/lib/content-keys";
 import { VISUALS } from "@/lib/visuals";
 import { buildPageMetadata } from "@/lib/seo";
+import CrossSellBox from "@/components/CrossSellBox";
 import ServiceRequestActions, {
   MonjezHint,
 } from "@/components/ServiceRequestActions";
@@ -83,11 +84,13 @@ export default async function TechServicePage({ params }: Props) {
             serviceSlug={`tech-${slug}`}
             serviceNameAr={titleAr}
             serviceNameEn={titleEn}
+                serviceName={title}
             category="tech"
             subcategory={key}
           />
           <MonjezHint />
         </article>
+        <CrossSellBox from="tech" locale={locale} />
       </div>
     </div>
   );

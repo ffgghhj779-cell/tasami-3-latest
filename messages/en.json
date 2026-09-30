@@ -16,7 +16,9 @@
     "search": "Search",
     "changeLanguage": "Change language",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "blog": "Blog",
+    "contact": "Contact"
   },
   "languages": {
     "ar": "العربية",
@@ -221,8 +223,8 @@
     "legalTitle": "Quick links",
     "sectors": "Business Sectors",
     "myRequests": "My requests",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
+    "privacy": "Data policy",
+    "terms": "Terms of service",
     "contactCta": "Taqeeb WhatsApp",
     "viewAll": "View all →",
     "rights": "All rights reserved.",
@@ -233,7 +235,11 @@
       "address": "Address",
       "parent": "Tasami Al-Wataniya",
       "city": "Sheikh Muhammad St, Al Naseem, Al Awali — Makkah 24251"
-    }
+    },
+    "ourWork": "Our work",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "contact": "Contact"
   },
   "location": {
     "eyebrow": "Our location",
@@ -997,64 +1003,85 @@
         "other": "Other"
       }
     },
-    "ctaWhatsappTech": "Tech WhatsApp"
+    "ctaWhatsappTech": "Tech WhatsApp",
+    "formLink": "Or fill in a request, get an order number and track it"
   },
   "legal": {
     "back": "Back to home",
     "updated": "Last updated: {date}",
     "privacy": {
-      "eyebrow": "Legal",
-      "title": "Privacy Policy",
-      "subtitle": "How Tasami collects, uses, and protects your information.",
-      "intro": "Tasami (\"we\", \"us\", \"our\") provides government and technology services to businesses and individuals in Saudi Arabia. This Privacy Policy explains what information we collect, why we collect it, and how we handle it when you use our website, WhatsApp channels, or Monjez assistant.",
+      "eyebrow": "Data",
+      "title": "Our data policy",
+      "subtitle": "What we ask for, what we don't, and how we keep and delete your data.",
+      "intro": "Tasami Alwataniyah Establishment provides government transaction and tech services to individuals and businesses in Saudi Arabia. This page explains in plain language how we handle your data on the website, the request form and WhatsApp.",
       "sections": {
         "s1": {
-          "title": "1. Information We Collect",
-          "body": "We collect information you provide directly — such as your name, mobile number, email, national ID or commercial registration details, and any documents you share when requesting a service. We also collect basic technical data (device, browser, and usage patterns) to keep the platform secure and improve performance."
+          "title": "1. What we ask for",
+          "body": "Only what your transaction needs: name and mobile number, client type, city and requested service, then the documents the official authority requires (such as ID, iqama or CR copies). We tell you the list before starting."
         },
         "s2": {
-          "title": "2. How We Use Your Information",
-          "body": "We use your information to process service requests, communicate updates via WhatsApp, email, or Monjez, verify your identity where required by law, and improve the quality and speed of our services. We do not sell your personal data to third parties."
+          "title": "2. What we don't ask for",
+          "body": "We never ask for your bank card details on WhatsApp or the website, and we don't ask for documents unrelated to your transaction. If a transaction needs an authorisation on an official platform, we explain its type and duration before you grant it."
         },
         "s3": {
-          "title": "3. Sharing With Official Platforms & Partners",
-          "body": "To complete government transactions, we may submit your information to official Saudi platforms (such as Absher, Qiwa, or Najiz) or licensed authorized agents acting on your behalf, strictly for the purpose of fulfilling your request and in line with applicable regulations."
+          "title": "3. How we use your data",
+          "body": "Only to complete your transaction and contact you about it. We share it with the official authority handling your transaction when needed. We never sell it or use it for other purposes."
         },
         "s4": {
-          "title": "4. Data Security & Retention",
-          "body": "We apply reasonable technical and organizational safeguards to protect your data against unauthorized access, loss, or misuse. We retain information only for as long as necessary to deliver our services and meet legal or regulatory obligations."
+          "title": "4. Request form and tracking",
+          "body": "When you use the request form we store the service, city, client type and your mobile number if you enter it, and give you an order number. The tracking page shows only the status and service name, never personal data."
         },
         "s5": {
-          "title": "5. Your Rights & Contact",
-          "body": "You may request access to, correction of, or deletion of your personal information at any time by contacting us via WhatsApp or email below. We will respond to reasonable requests within a reasonable timeframe."
+          "title": "5. Analytics and ads",
+          "body": "We use analytics tools such as Google Analytics, Meta Pixel and TikTok Pixel to count visits, WhatsApp button clicks and form submissions, to improve the site and our ads. We don't send your name, number or documents to these tools."
+        },
+        "s6": {
+          "title": "6. Retention and deletion",
+          "body": "We keep your data and documents for the duration of the transaction and as required by law afterwards. You can ask for a copy, a correction or deletion at any time on WhatsApp, and we delete unless a legal obligation prevents it."
+        },
+        "s7": {
+          "title": "7. Contact us",
+          "body": "For any question about your data, message either department on WhatsApp or call us during working hours."
         }
       }
     },
     "terms": {
-      "eyebrow": "Legal",
-      "title": "Terms of Service",
-      "subtitle": "The terms that govern your use of Tasami's services.",
-      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the Tasami website, WhatsApp channels, and Monjez assistant. By requesting a service or using our platform, you agree to these Terms.",
+      "eyebrow": "Terms",
+      "title": "Terms of service",
+      "subtitle": "Government fees vs. service fees, rejection and cancellation, in plain language.",
+      "intro": "These terms govern your dealings with Tasami Alwataniyah Establishment through the website or WhatsApp. By sending a request and accepting a quote you agree to them.",
       "sections": {
         "s1": {
-          "title": "1. Scope of Services",
-          "body": "Tasami facilitates government transactions and technology solutions on your behalf, either directly or through licensed authorized agents and official Saudi platforms. Availability, processing time, and requirements for each service depend on the relevant government or technical authority and may change without prior notice."
+          "title": "1. Nature of the service",
+          "body": "We are a services establishment, not a government entity. We complete transactions on your behalf through the official platforms and build tech solutions as agreed. Acceptance or rejection is decided by the official authority."
         },
         "s2": {
-          "title": "2. Client Responsibilities",
-          "body": "You are responsible for providing accurate, complete, and up-to-date information and documents. Delays, rejections, or additional fees resulting from incorrect or incomplete information provided by you are not the responsibility of Tasami."
+          "title": "2. Quote",
+          "body": "Each service has its own quote, sent within an hour during working hours, showing our fee, the expected duration and the required documents. We don't start before you approve the quote."
         },
         "s3": {
-          "title": "3. Fees & Payment",
-          "body": "Service fees, where applicable, are communicated transparently before work begins, either via WhatsApp, Monjez, or our secretary team. Government fees, third-party charges, and taxes are separate from our service fees and are your responsibility."
+          "title": "3. Government fees vs. service fees",
+          "body": "Government fees (such as renewal fees, levies or fines) are paid to the authority and are separate from our service fee. The quote lists each item separately."
         },
         "s4": {
-          "title": "4. Service Delivery & Timelines",
-          "body": "We aim to keep you informed at every stage of your request through your preferred channel. Estimated timelines are provided in good faith but are not guaranteed, as many transactions depend on external government or technical systems outside our control."
+          "title": "4. Your responsibilities",
+          "body": "Provide correct, valid information and documents and respond to document requests on time. Delays or rejections caused by incomplete or incorrect information are not Tasami's responsibility."
         },
         "s5": {
-          "title": "5. Limitation of Liability & Governing Law",
-          "body": "Tasami is not liable for delays, losses, or damages arising from circumstances beyond our reasonable control, including outages or changes at official government platforms. These Terms are governed by the laws of the Kingdom of Saudi Arabia, and any dispute shall be subject to the exclusive jurisdiction of its competent courts."
+          "title": "5. If a transaction is rejected",
+          "body": "We review the reason with you, fix what is needed and resubmit as agreed in the quote. Government fees paid to the authority are subject to that authority's rules."
+        },
+        "s6": {
+          "title": "6. Cancellation",
+          "body": "You can cancel before work starts at no charge. After work starts, completed work is charged according to the quote, and government fees already paid are not refundable."
+        },
+        "s7": {
+          "title": "7. Timelines",
+          "body": "The duration in the quote is an estimate that depends on the authority and its systems. We update you at every step and tell you immediately about any delay outside our control."
+        },
+        "s8": {
+          "title": "8. Governing law",
+          "body": "These terms are governed by the laws of the Kingdom of Saudi Arabia, and Saudi courts have jurisdiction over any dispute."
         }
       }
     }
@@ -1211,7 +1238,7 @@
       "ARCHIVED": "Archived",
       "PENDING": "Pending",
       "IN_PROGRESS": "In progress",
-      "WAITING": "Waiting",
+      "WAITING": "Awaiting document",
       "COMPLETED": "Completed",
       "DONE": "Done",
       "CANCELLED": "Cancelled"
@@ -1278,5 +1305,237 @@
     "openNow": "Open now",
     "closedNow": "Closed now",
     "quoteNote": "Quote within one hour during working hours"
+  },
+  "waChooser": {
+    "title": "Contact us on WhatsApp",
+    "subtitle": "Choose the right department for your request.",
+    "taqeeb": "Government services",
+    "taqeebDesc": "Iqamas, CRs, licences, zakat & VAT, GOSI",
+    "tech": "Tech department",
+    "techDesc": "Websites, stores, apps, automation & AI",
+    "close": "Close"
+  },
+  "requestForm": {
+    "title": "Request a service and get an order number",
+    "subtitle": "Just four fields. After sending you get an order number and a ready WhatsApp message, and you can track the status any time.",
+    "lineLabel": "Request type",
+    "lineGov": "Government",
+    "lineTech": "Tech",
+    "clientTypeLabel": "Client type",
+    "individual": "Individual",
+    "company": "Business",
+    "serviceLabel": "Service",
+    "servicePlaceholder": "Choose a service",
+    "other": "Other service",
+    "cityLabel": "City",
+    "cityPlaceholder": "e.g. Makkah",
+    "cities": [
+      "Makkah",
+      "Jeddah",
+      "Riyadh",
+      "Madinah",
+      "Dammam",
+      "Taif",
+      "Khobar",
+      "Yanbu",
+      "Abha",
+      "Tabuk",
+      "Buraidah",
+      "Jazan",
+      "Hail",
+      "Najran",
+      "Al Ahsa"
+    ],
+    "phoneLabel": "Mobile number",
+    "optional": "(optional)",
+    "phoneHint": "Leave it empty and we will reply on WhatsApp after you send the message.",
+    "submit": "Send request",
+    "sending": "Sending…",
+    "error": "Could not send the request. Try again or message us on WhatsApp.",
+    "successTitle": "We received your request number",
+    "successBody": "We will send the quote within an hour during working hours.",
+    "sendWhatsapp": "Send on WhatsApp",
+    "sendWhatsappHint": "The message is ready with your order number. Just press send.",
+    "trackLink": "Track your request",
+    "privacyNote": "We use your data only to complete your request.",
+    "privacyLink": "Data policy"
+  },
+  "tracker": {
+    "title": "Track your request",
+    "subtitle": "Enter the order number you received after sending.",
+    "label": "Order number",
+    "submit": "Track",
+    "notFound": "No request found with this number. Check it or message us on WhatsApp.",
+    "tooMany": "Too many attempts. Try again in a minute.",
+    "error": "Could not check right now. Please try again.",
+    "cancelled": "This request was cancelled. Message us on WhatsApp if you have questions.",
+    "steps": {
+      "received": "Received",
+      "inProgress": "In progress",
+      "waitingDoc": "Waiting for a document from you",
+      "done": "Done",
+      "cancelled": "Cancelled"
+    },
+    "stepHints": {
+      "received": "We will send the quote within an hour during working hours.",
+      "inProgress": "Our team is working on your request.",
+      "waitingDoc": "We need a document from you to continue. Check your WhatsApp.",
+      "done": "Your request is complete. Thank you."
+    }
+  },
+  "crossSell": {
+    "gov": {
+      "title": "Is your business compliant?",
+      "body": "Start your digital presence: a website, store or app that introduces you to customers.",
+      "cta": "Start your digital presence"
+    },
+    "tech": {
+      "title": "Website ready?",
+      "body": "Make sure your licences and compliance are in order: CR, licences, zakat & VAT, and GOSI.",
+      "cta": "Check your licences"
+    }
+  },
+  "homeSections": {
+    "departments": {
+      "title": "Two departments, one place",
+      "gov": {
+        "title": "Government services",
+        "body": "We follow your government transactions from start to finish: iqamas, commercial registrations, licences, zakat & VAT, and GOSI. Send your request and we set the path.",
+        "cta": "Government request"
+      },
+      "tech": {
+        "title": "Tech department",
+        "body": "We build your website, store or app, and automate your work with smart solutions that fit your business.",
+        "cta": "Tech request"
+      },
+      "viewAll": "All department services"
+    },
+    "how": {
+      "title": "How we work",
+      "one": {
+        "title": "Send your request",
+        "body": "On WhatsApp or the request form, in Arabic, English, Urdu or Hindi."
+      },
+      "two": {
+        "title": "We set the path",
+        "body": "We review your request and send the required documents and a quote within an hour during working hours."
+      },
+      "three": {
+        "title": "We deliver and update you",
+        "body": "We work through the official platforms and update you at every step."
+      }
+    },
+    "popular": {
+      "title": "Most requested services",
+      "viewAll": "View all services"
+    },
+    "faq": {
+      "title": "Common questions",
+      "viewAll": "All questions"
+    },
+    "blog": {
+      "title": "From the blog",
+      "viewAll": "All articles"
+    },
+    "finalCta": {
+      "title": "Ready to start? Quote within an hour",
+      "body": "During working hours: daily 9 AM to 9 PM, closed Friday.",
+      "cta": "Start on WhatsApp"
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Short answers about our government services and how we work. Didn't find your question? Message us on WhatsApp.",
+    "ask": "Ask on WhatsApp",
+    "items": [
+      {
+        "q": "What is government transaction follow-up (taqeeb)?",
+        "a": "Following up and completing government transactions on your behalf through the official platforms."
+      },
+      {
+        "q": "Are you a government entity?",
+        "a": "No. We are a services establishment, and we complete your transactions through the official platforms."
+      },
+      {
+        "q": "Which documents are required?",
+        "a": "It depends on the service. After you send your request we give you the full list."
+      },
+      {
+        "q": "How long does a transaction take?",
+        "a": "It depends on the transaction and the authority. We give you the expected duration with the quote."
+      },
+      {
+        "q": "How much does it cost?",
+        "a": "Each service has its own quote, sent within an hour during working hours. Government fees are separate from our service fee and are shown in the quote."
+      },
+      {
+        "q": "Is my data safe?",
+        "a": "We use your data only to complete your transaction, and share it only with the official authority handling it. Before we start, we tell you exactly which documents or authorisation we need."
+      },
+      {
+        "q": "How do I track my request?",
+        "a": "On the \"My requests\" page with your order number, and on WhatsApp with updates at every step."
+      },
+      {
+        "q": "Do you serve outside Makkah?",
+        "a": "Yes, we serve all regions of the Kingdom online."
+      },
+      {
+        "q": "Do you serve individuals and businesses?",
+        "a": "Yes: individuals (iqamas, visas) and businesses (CRs, licences, zakat, GOSI)."
+      },
+      {
+        "q": "What if the transaction is rejected?",
+        "a": "We review the reason with you, fix what is needed and resubmit as agreed."
+      }
+    ]
+  },
+  "contactPage": {
+    "title": "Contact us",
+    "subtitle": "We reply during working hours. Choose the right department.",
+    "taqeebDesc": "Government transactions: iqamas, CRs, licences, zakat, GOSI.",
+    "techDesc": "Websites, stores, apps and automation.",
+    "whatsapp": "Message on WhatsApp",
+    "call": "Call",
+    "hoursTitle": "Working hours",
+    "addressTitle": "Address",
+    "directions": "Directions",
+    "emailTitle": "Email",
+    "formTitle": "Prefer a form?",
+    "formBody": "Fill in four fields and get an order number to track the status.",
+    "formCta": "Fill in the request form"
+  },
+  "ourWork": {
+    "title": "Samples of our work",
+    "subtitle": "Real transactions we completed, published with customer consent and all personal data hidden.",
+    "service": "Service",
+    "duration": "Actual duration",
+    "result": "Result",
+    "emptyTitle": "We are adding samples gradually",
+    "emptyBody": "We collect samples from completed transactions after customer consent and full anonymisation. Until then, here are our official business details so you can verify us yourself.",
+    "aboutTitle": "About Tasami",
+    "cr": "Commercial registration",
+    "vat": "VAT number",
+    "founded": "Founded",
+    "address": "Address",
+    "taqeeb": "Government services",
+    "tech": "Tech department",
+    "hours": "Working hours"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Short, clear guides to government transactions and tech solutions for businesses in Saudi Arabia.",
+    "readMore": "Read article",
+    "minutes": "{n} min read",
+    "published": "Published {date}",
+    "back": "All articles",
+    "ctaTitle": "Need help with this?",
+    "ctaBody": "Send your request and we set the path and send a quote within an hour during working hours.",
+    "ctaGov": "Ask government services",
+    "ctaTech": "Ask the tech department",
+    "related": "Related service",
+    "arabicOnly": "Articles are currently available in Arabic.",
+    "gov": "Government",
+    "tech": "Tech"
   }
 }

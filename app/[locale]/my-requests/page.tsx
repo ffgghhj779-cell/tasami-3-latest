@@ -9,6 +9,8 @@ import {
   formatDate,
 } from "@/components/admin/StatusBadge";
 import { Link, useRouter } from "@/navigation";
+import OrderTracker from "@/components/OrderTracker";
+import { orderNoFromId, trackStepFor } from "@/lib/orders";
 
 type RequestRow = {
   id: string;
@@ -27,7 +29,7 @@ type MeUser = {
 
 export default function MyRequestsPage() {
   const t = useTranslations("request");
-  const ta = useTranslations("admin");
+  const tTrack = useTranslations("tracker");
   const tAuth = useTranslations("auth");
   const locale = useLocale();
   const router = useRouter();
@@ -96,13 +98,16 @@ export default function MyRequestsPage() {
   if (!user) {
     return (
       <div className="min-h-screen">
-        <div className="mx-auto max-w-md px-5 py-20 text-center">
-          <h1 className="font-display text-2xl text-tasami-dark">
+        <div className="mx-auto max-w-xl px-5 py-14 sm:py-20">
+          <h1 className="font-display text-center text-2xl text-tasami-dark">
             {t("myTitle")}
           </h1>
           <span className="highlight-line mx-auto" />
-          <p className="mt-4 text-sm text-tasami-gray">{t("loginRequired")}</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <div className="mt-8">
+            <OrderTracker />
+          </div>
+          <p className="mt-10 text-center text-tasami-gray">{t("loginRequired")}</p>
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Link href="/login" className="btn-secondary text-sm">
               {tAuth("loginCta")}
             </Link>
@@ -144,6 +149,10 @@ export default function MyRequestsPage() {
           </p>
         </header>
 
+        <div className="mb-10">
+          <OrderTracker />
+        </div>
+
         {loading && (
           <p className="mb-4 text-sm text-tasami-gray">{tAuth("loading")}</p>
         )}
@@ -176,11 +185,11 @@ export default function MyRequestsPage() {
                           : row.service?.name_en || row.service?.name_ar}
                       </h2>
                       <p className="mt-1 font-mono text-[11px] text-tasami-gray">
-                        {t("refLabel")}: {row.id.slice(0, 10).toUpperCase()}
+                        {t("refLabel")}: <span dir="ltr">#{orderNoFromId(row.id)}</span>
                       </p>
                     </div>
                     <StatusBadge
-                      label={ta(`status.${row.status}`)}
+                      label={tTrack(`steps.${trackStepFor(row.status)}`)}
                       tone={taskStatusClass(row.status)}
                     />
                   </div>

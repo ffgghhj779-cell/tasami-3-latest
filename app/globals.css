@@ -4,7 +4,7 @@
 
 :root {
   --color-primary: #125196; /* Premium Deep Royal Blue */
-  --color-secondary: #007aff; /* Kept bright blue for secondary accents */
+  --color-secondary: #006BDE; /* Kept bright blue for secondary accents */
   --color-accent: #5ac8fa;
   --color-deep: #0a305c; /* Enterprise Navy */
   --color-ink: #0d2136; /* Very dark rich blue-grey for text */
@@ -331,7 +331,7 @@
     inset-inline: 0;
     z-index: 80;
     height: 3px;
-    background: linear-gradient(90deg, #5ac8fa, #2b9aef, #007aff);
+    background: linear-gradient(90deg, #5ac8fa, #2b9aef, #006BDE);
     pointer-events: none;
   }
 
@@ -392,7 +392,7 @@
     background:
       radial-gradient(ellipse 55% 80% at 0% 100%, rgba(90, 200, 250, 0.42), transparent 58%),
       radial-gradient(ellipse 42% 70% at 100% 0%, rgba(43, 154, 239, 0.38), transparent 52%),
-      linear-gradient(135deg, #007aff 0%, #2b9aef 48%, #5ac8fa 100%);
+      linear-gradient(135deg, #006BDE 0%, #2b9aef 48%, #5ac8fa 100%);
     border-top: 1px solid rgba(255, 255, 255, 0.28);
   }
 
@@ -2199,7 +2199,7 @@
     @apply inline-flex items-center justify-center gap-2 px-7 py-3.5
       text-sm font-semibold text-white transition-all duration-200
       hover:opacity-90 active:scale-[0.98];
-    background-color: #128c4a;
+    background-color: #0F7A40;
     border-radius: var(--radius-button);
     min-height: 48px;
   }
@@ -2240,7 +2240,7 @@
       90deg,
       #5ac8fa,
       #2b9aef,
-      #007aff
+      #006BDE
     );
     border-radius: 9999px;
     opacity: 1;
@@ -2496,7 +2496,7 @@
       #c8a84b 38%,
       #e8c96a 50%,
       #c8a84b 62%,
-      #007aff 80%,
+      #006BDE 80%,
       #5ac8fa 100%
     );
     flex-shrink: 0;
@@ -2632,7 +2632,7 @@
     height: 2px;
     background: linear-gradient(
       90deg,
-      #007aff 0%,
+      #006BDE 0%,
       #5ac8fa 50%,
       #5856d6 100%
     );
@@ -2913,7 +2913,7 @@
      SECTION HEADING highlight line — keep brand blue
      ============================================================ */
   .highlight-line {
-    background: linear-gradient(90deg, #5ac8fa, #2b9aef, #007aff);
+    background: linear-gradient(90deg, #5ac8fa, #2b9aef, #006BDE);
   }
 
   /* ============================================================
@@ -3288,7 +3288,7 @@
   .trust-value--xl {
     font-size: 2.6rem;
     line-height: 1.1;
-    color: #007aff;
+    color: #006BDE;
   }
 
   @media (min-width: 1024px) {
@@ -3393,5 +3393,43 @@
     font-size: 0.85rem;
     line-height: 1.7;
     color: #5f6672;
+  }
+}
+
+/* Blog article body — long-form reading comfort */
+.blog-body h2 {
+  margin-top: 2.25rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #1a1a1a;
+}
+.blog-body p,
+.blog-body li {
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  color: #2b2f36;
+}
+.blog-body p {
+  margin-top: 1rem;
+}
+.blog-body ul,
+.blog-body ol {
+  margin-top: 1rem;
+  padding-inline-start: 1.4rem;
+}
+.blog-body ul {
+  list-style: disc;
+}
+.blog-body ol {
+  list-style: decimal;
+}
+.blog-body li + li {
+  margin-top: 0.5rem;
+}
+@media (min-width: 1024px) {
+  .blog-body p,
+  .blog-body li {
+    font-size: 1.125rem;
   }
 }

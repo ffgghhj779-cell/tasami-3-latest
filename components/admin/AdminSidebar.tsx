@@ -29,7 +29,7 @@ export default function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex w-full shrink-0 flex-col bg-[#007AFF] text-white md:sticky md:top-0 md:h-screen md:w-64">
+    <aside className="flex w-full shrink-0 flex-col bg-[#006BDE] text-white md:sticky md:top-0 md:h-screen md:w-64">
       <div className="border-b border-white/10 px-6 py-5">
         <BrandLogo lockupSize="sm" wordmark="تسامي" />
         <p className="mt-2 text-[11px] text-white/55">{t("secretary")}</p>

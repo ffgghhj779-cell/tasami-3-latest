@@ -31,7 +31,14 @@ export default async function AdminTasksPage({ params }: Props) {
     tasks = await prisma.task.findMany({
       take: 150,
       orderBy: [{ due_date: "asc" }, { updated_at: "desc" }],
-      include: { customer: { select: { id: true, name: true } } },
+      select: {
+        id: true,
+        status: true,
+        assigned_to: true,
+        due_date: true,
+        notes: true,
+        customer: { select: { id: true, name: true } },
+      },
     });
   } catch {
     dbOk = false;

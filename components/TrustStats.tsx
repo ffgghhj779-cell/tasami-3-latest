@@ -37,7 +37,7 @@ export default async function TrustStats() {
           {showCounter ? (
             <div className="trust-cell trust-cell--primary">
               <p className="trust-label">
-                <CheckCircle weight="regular" aria-hidden className="h-5 w-5 text-[#007AFF]" />
+                <CheckCircle weight="regular" aria-hidden className="h-5 w-5 text-[#006BDE]" />
                 {t("completedLabel")}
               </p>
               <p className="trust-value trust-value--xl">
@@ -59,7 +59,7 @@ export default async function TrustStats() {
 
           <div className="trust-cell">
             <p className="trust-label">
-              <IdentificationCard weight="regular" aria-hidden className="h-5 w-5 text-[#007AFF]" />
+              <IdentificationCard weight="regular" aria-hidden className="h-5 w-5 text-[#006BDE]" />
               {t("crLabel")}
             </p>
             <p className="trust-value">
@@ -74,7 +74,7 @@ export default async function TrustStats() {
 
           <div className="trust-cell">
             <p className="trust-label">
-              <Receipt weight="regular" aria-hidden className="h-5 w-5 text-[#007AFF]" />
+              <Receipt weight="regular" aria-hidden className="h-5 w-5 text-[#006BDE]" />
               {t("vatLabel")}
             </p>
             <p className="trust-value">
@@ -85,7 +85,7 @@ export default async function TrustStats() {
 
           <div className="trust-cell">
             <p className="trust-label">
-              <Clock weight="regular" aria-hidden className="h-5 w-5 text-[#007AFF]" />
+              <Clock weight="regular" aria-hidden className="h-5 w-5 text-[#006BDE]" />
               {t("hoursLabel")}
             </p>
             <p className="trust-value">{t("hoursValue")}</p>

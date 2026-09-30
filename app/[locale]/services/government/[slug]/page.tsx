@@ -9,6 +9,7 @@ import { buildPageMetadata } from "@/lib/seo";
 import { rtlLocales, type Locale } from "@/i18n";
 import ServiceCard from "@/components/ServiceCard";
 import Reveal from "@/components/Reveal";
+import CrossSellBox from "@/components/CrossSellBox";
 import ServiceRequestActions from "@/components/ServiceRequestActions";
 
 const SLUG_TO_KEY = Object.fromEntries(
@@ -107,10 +108,12 @@ export default async function GovernmentCategoryPage({ params }: Props) {
               serviceSlug={`gov-${slug}`}
               serviceNameAr={titleAr}
               serviceNameEn={titleEn}
+                serviceName={title}
               category="government"
               subcategory={key}
             />
           </article>
+          <CrossSellBox from="gov" locale={locale} />
         </section>
       </div>
     </div>

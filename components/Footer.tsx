@@ -19,14 +19,21 @@ import {
   getWhatsAppDisplay,
   getWhatsAppDirectDisplay,
   telUrl,
-  whatsappUrl,
-  whatsappDirectUrl,
 } from "@/lib/site";
-import { taqeebWhatsAppMessage, techWhatsAppMessage } from "@/lib/whatsapp-templates";
+import WaLink from "@/components/WaLink";
 import { GOV_SLUGS, TECH_SLUGS } from "@/lib/content-keys";
 
 const GOV_LINKS = ["passports", "commerce", "zakat", "najiz"] as const;
 const TECH_LINKS = ["websites", "mobile", "ai", "cloud"] as const;
+const QUICK_LINKS = [
+  { href: "/our-work", key: "ourWork" },
+  { href: "/faq", key: "faq" },
+  { href: "/blog", key: "blog" },
+  { href: "/my-requests", key: "myRequests" },
+  { href: "/contact", key: "contact" },
+  { href: "/privacy", key: "privacy" },
+  { href: "/terms", key: "terms" },
+] as const;
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -39,7 +46,7 @@ export default function Footer() {
   const contactEmail = getPublicContactEmail();
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/20 bg-[#007AFF] text-white">
+    <footer className="relative overflow-hidden border-t border-white/20 bg-[#0057B8] text-white">
       <div className="relative mx-auto max-w-7xl px-5 py-14 pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))] sm:px-8 sm:pb-16 lg:px-10 lg:py-20">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
           <div>
@@ -51,13 +58,9 @@ export default function Footer() {
               {t("affiliation")}
             </p>
             <div className="mt-6 flex flex-col gap-2.5 text-sm text-white/90">
-              <a
-                href={whatsappDirectUrl(
-                  taqeebWhatsAppMessage("استفسار من الفوتر")
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-wa-location="footer"
+              <WaLink
+                line="taqeeb"
+                location="footer"
                 className="inline-flex items-center gap-2 hover:text-white"
               >
                 <WhatsappLogo weight="regular" className="h-4 w-4 text-tasami-lilac" />
@@ -67,12 +70,10 @@ export default function Footer() {
                     {getWhatsAppDirectDisplay()}
                   </span>
                 </span>
-              </a>
-              <a
-                href={whatsappUrl(techWhatsAppMessage("استفسار من الفوتر"))}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-wa-location="footer"
+              </WaLink>
+              <WaLink
+                line="tech"
+                location="footer"
                 className="inline-flex items-center gap-2 hover:text-white"
               >
                 <WhatsappLogo weight="regular" className="h-4 w-4 text-tasami-lilac" />
@@ -82,7 +83,7 @@ export default function Footer() {
                     {getWhatsAppDisplay()}
                   </span>
                 </span>
-              </a>
+              </WaLink>
               <a
                 href={getTikTokUrl()}
                 target="_blank"
@@ -149,7 +150,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/government"
-                  className="text-sm font-medium text-tasami-lilac hover:text-white"
+                  className="text-sm font-semibold text-white underline underline-offset-4 hover:text-white/90"
                 >
                   {t("viewAll")}
                 </Link>
@@ -176,7 +177,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/tech"
-                  className="text-sm font-medium text-tasami-teal hover:text-white"
+                  className="text-sm font-semibold text-white underline underline-offset-4 hover:text-white/90"
                 >
                   {t("viewAll")}
                 </Link>
@@ -187,57 +188,31 @@ export default function Footer() {
           <div>
             <h3 className="mb-5 text-sm font-medium text-white">{t("legalTitle")}</h3>
             <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/sectors"
-                  className="text-sm text-white/90 transition-colors hover:text-white"
-                >
-                  {t("sectors")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/my-requests"
-                  className="text-sm text-white/90 transition-colors hover:text-white"
-                >
-                  {t("myRequests")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy"
-                  className="text-sm text-white/90 transition-colors hover:text-white"
-                >
-                  {t("privacy")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/terms"
-                  className="text-sm text-white/90 transition-colors hover:text-white"
-                >
-                  {t("terms")}
-                </Link>
-              </li>
+              {QUICK_LINKS.map(({ href, key }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="text-sm text-white/90 transition-colors hover:text-white"
+                  >
+                    {t(key)}
+                  </Link>
+                </li>
+              ))}
               <li className="pt-2">
-                <a
-                  href={whatsappDirectUrl(
-                    taqeebWhatsAppMessage("تواصل من الفوتر")
-                  )}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-wa-location="footer_cta"
+                <WaLink
+                  line="taqeeb"
+                  location="footer_cta"
                   className="inline-flex min-h-[44px] items-center rounded-button border border-white/50 bg-white px-4 py-2.5 text-sm font-semibold text-tasami-purple transition-colors hover:bg-tasami-lilac hover:text-tasami-purple"
                 >
                   {t("contactCta")}
-                </a>
+                </WaLink>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center sm:flex-row sm:text-start">
-          <p className="text-xs text-white/70">
+          <p className="text-xs text-white/90">
             © {year} {t("brand")}. {t("rights")}
           </p>
           <p className="max-w-md text-sm font-medium leading-relaxed text-white/85 sm:text-end">

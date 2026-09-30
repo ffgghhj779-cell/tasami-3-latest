@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { MagnifyingGlass, ArrowRight, WhatsappLogo, WarningCircle } from "@phosphor-icons/react";
 import { Link } from "@/navigation";
 import { whatsappForService } from "@/lib/site";
@@ -78,6 +78,7 @@ export default function SearchRouter({
   autoFocus = false,
 }: Props) {
   const t = useTranslations("search");
+  const locale = useLocale();
   const tGov = useTranslations("gov");
   const tTech = useTranslations("tech");
   const tHome = useTranslations("home");
@@ -146,12 +147,12 @@ export default function SearchRouter({
             onChange={(e) => setQ(e.target.value)}
             placeholder={t("placeholder")}
             autoFocus={autoFocus}
-            className="w-full rounded-button border border-tasami-purple/10 bg-white py-3.5 pe-4 ps-11 text-sm text-tasami-dark shadow-soft outline-none ring-[#007AFF]/20 placeholder:text-tasami-gray/80 focus:ring-2"
+            className="w-full rounded-button border border-tasami-purple/10 bg-white py-3.5 pe-4 ps-11 text-sm text-tasami-dark shadow-soft outline-none ring-[#006BDE]/20 placeholder:text-tasami-gray/80 focus:ring-2"
           />
         </label>
         <button
           type="submit"
-          className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-button bg-[#007AFF] px-6 text-sm font-semibold text-white active:opacity-90"
+          className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-button bg-[#006BDE] px-6 text-sm font-semibold text-white active:opacity-90"
         >
           {t("submit")}
           <ArrowRight weight="bold" className="h-4 w-4 rtl:rotate-180" />
@@ -174,7 +175,7 @@ export default function SearchRouter({
                 key={s}
                 type="button"
                 onClick={() => setQ(s)}
-                className="rounded-full border border-tasami-purple/10 bg-white px-3 py-1.5 text-xs text-tasami-dark transition hover:border-[#007AFF]/40 hover:text-[#007AFF]"
+                className="rounded-full border border-tasami-purple/10 bg-white px-3 py-1.5 text-xs text-tasami-dark transition hover:border-[#006BDE]/40 hover:text-[#006BDE]"
               >
                 {s}
               </button>
@@ -231,7 +232,7 @@ export default function SearchRouter({
                   : ("government" as const);
               const wa = whatsappForService(
                 channel,
-                whatsappPrefillFor(channel, title)
+                whatsappPrefillFor(channel, title, locale)
               );
               return (
                 <li
@@ -241,7 +242,7 @@ export default function SearchRouter({
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="rounded-full bg-[#007AFF]/10 px-2 py-0.5 text-[11px] font-medium text-[#007AFF]">
+                        <span className="rounded-full bg-[#006BDE]/10 px-2 py-0.5 text-[11px] font-medium text-[#006BDE]">
                           {t(`kind.${hit.kind}` as "kind.offering")}
                         </span>
                         <span className="rounded-full bg-tasami-offwhite px-2 py-0.5 text-[11px] text-tasami-gray">
@@ -262,7 +263,7 @@ export default function SearchRouter({
                   <div className="mt-4 flex flex-wrap gap-2">
                     <Link
                       href={hit.href as "/"}
-                      className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-button bg-[#007AFF] px-4 text-sm font-semibold text-white"
+                      className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-button bg-[#006BDE] px-4 text-sm font-semibold text-white"
                     >
                       {t("openService")}
                       <ArrowRight weight="bold" className="h-4 w-4 rtl:rotate-180" />
@@ -272,7 +273,7 @@ export default function SearchRouter({
                       target="_blank"
                       rel="noopener noreferrer"
                       data-wa-location="search"
-                      className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-button border border-[#128C4A]/25 bg-[#128C4A]/8 px-4 text-sm font-semibold text-[#0B6B38]"
+                      className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-button border border-[#0F7A40]/25 bg-[#0F7A40]/8 px-4 text-sm font-semibold text-[#0B6B38]"
                     >
                       <WhatsappLogo weight="fill" className="h-4 w-4" />
                       {t("whatsappCta")}
@@ -293,7 +294,7 @@ export default function SearchRouter({
               <li key={hit.id}>
                 <Link
                   href={hit.href as "/"}
-                  className="flex min-h-[48px] items-center justify-between gap-2 rounded-button border border-tasami-purple/8 bg-white px-4 py-3 text-sm text-tasami-dark transition hover:border-[#007AFF]/30"
+                  className="flex min-h-[48px] items-center justify-between gap-2 rounded-button border border-tasami-purple/8 bg-white px-4 py-3 text-sm text-tasami-dark transition hover:border-[#006BDE]/30"
                 >
                   <span>{labelForHit(hit, tGov, tTech, tHome)}</span>
                   <ArrowRight weight="regular" className="h-4 w-4 shrink-0 text-tasami-gray rtl:rotate-180" />

@@ -8,20 +8,23 @@ import {
   X,
   Buildings,
   Cpu,
-  SquaresFour,
+  Article,
+  Phone,
   GlobeHemisphereWest,
   UserCircle,
-  MagnifyingGlass,
+  WhatsappLogo,
 } from "@phosphor-icons/react";
 import { Link, usePathname } from "@/navigation";
 import { locales, type Locale } from "@/i18n";
 import BrandHeader from "@/components/BrandHeader";
 import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
+import { useWaChooser } from "@/components/WaChooser";
 
 const NAV_LINKS = [
   { href: "/services/government", key: "government" as const, icon: Buildings },
   { href: "/services/tech", key: "tech" as const, icon: Cpu },
-  { href: "/sectors", key: "sectors" as const, icon: SquaresFour },
+  { href: "/blog", key: "blog" as const, icon: Article },
+  { href: "/contact", key: "contact" as const, icon: Phone },
 ] as const;
 
 const springSoft = { type: "spring" as const, stiffness: 280, damping: 26 };
@@ -32,6 +35,7 @@ export default function Navbar() {
   const tLang = useTranslations("languages");
   const locale = useLocale() as Locale;
   const pathname = usePathname();
+  const { openWhatsApp } = useWaChooser();
   const isRtl = locale === "ar" || locale === "ur";
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -71,20 +75,6 @@ export default function Navbar() {
 
   const mobileMenu = (
     <ul className="flex flex-col gap-1 px-4 py-4">
-      <li>
-        <Link
-          href="/search"
-          onClick={() => setMobileOpen(false)}
-          className={`flex min-h-[48px] items-center gap-3 rounded-button px-3 py-3 text-sm font-medium ${
-            pathname.includes("/search")
-              ? "bg-tasami-offwhite text-tasami-dark"
-              : "text-tasami-dark/80"
-          }`}
-        >
-          <MagnifyingGlass weight="regular" className="h-5 w-5 text-[#007AFF]" />
-          {t("search")}
-        </Link>
-      </li>
       {NAV_LINKS.map(({ href, key, icon: Icon }) => {
         const active = pathname.includes(href);
         return (
@@ -98,7 +88,7 @@ export default function Navbar() {
                   : "text-tasami-dark/80"
               }`}
             >
-              <Icon weight="regular" className="h-5 w-5 text-[#007AFF]" />
+              <Icon weight="regular" className="h-5 w-5 text-[#006BDE]" />
               {t(key)}
             </Link>
           </li>
@@ -110,7 +100,7 @@ export default function Navbar() {
           onClick={() => setMobileOpen(false)}
           className="flex min-h-[48px] items-center gap-3 rounded-button px-3 py-3 text-sm font-medium text-tasami-dark"
         >
-          <UserCircle weight="regular" className="h-5 w-5 text-[#007AFF]" />
+          <UserCircle weight="regular" className="h-5 w-5 text-[#006BDE]" />
           {loggedIn ? t("account") : t("login")}
         </Link>
       </li>
@@ -119,7 +109,7 @@ export default function Navbar() {
           <Link
             href="/register"
             onClick={() => setMobileOpen(false)}
-            className="mt-1 flex min-h-[48px] items-center justify-center rounded-button bg-[#007AFF] px-3 py-3 text-sm font-semibold text-white"
+            className="mt-1 flex min-h-[48px] items-center justify-center rounded-button bg-[#006BDE] px-3 py-3 text-sm font-semibold text-white"
           >
             {t("register")}
           </Link>
@@ -157,21 +147,6 @@ export default function Navbar() {
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
-          <li>
-            <Link
-              href="/search"
-              className={`relative flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium transition-colors duration-200 ${
-                pathname.includes("/search") ? inkActive : ink
-              }`}
-              aria-label={t("search")}
-            >
-              <MagnifyingGlass weight="regular" className="h-4 w-4" />
-              <span className="hidden lg:inline">{t("search")}</span>
-              {pathname.includes("/search") ? (
-                <span className="absolute inset-x-3.5 -bottom-0.5 h-px bg-tasami-purple" />
-              ) : null}
-            </Link>
-          </li>
           {NAV_LINKS.map(({ href, key }) => {
             const active = pathname.includes(href);
             return (
@@ -263,6 +238,19 @@ export default function Navbar() {
               {loggedIn ? t("account") : t("login")}
             </span>
           </Link>
+
+          <button
+            type="button"
+            onClick={() => {
+              setMobileOpen(false);
+              openWhatsApp("header");
+            }}
+            aria-label={t("whatsapp")}
+            className="inline-flex h-11 min-w-[44px] items-center justify-center gap-1.5 rounded-button bg-[#0F7A40] px-3 text-sm font-bold text-white transition-opacity hover:opacity-95 active:opacity-90"
+          >
+            <WhatsappLogo weight="fill" className="h-5 w-5" />
+            <span className="hidden sm:inline">{t("whatsapp")}</span>
+          </button>
 
           <button
             type="button"

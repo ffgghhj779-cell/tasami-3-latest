@@ -177,13 +177,13 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
             role="dialog"
             aria-label={t("monjezTitle")}
           >
-            <div className="relative flex shrink-0 items-center justify-between bg-[#007AFF] px-4 py-3.5">
+            <div className="relative flex shrink-0 items-center justify-between bg-[#006BDE] px-4 py-3.5">
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/40 text-base font-semibold text-white">
                     م
                   </span>
-                  <span className="absolute bottom-0 end-0 h-3 w-3 rounded-full border-2 border-[#007AFF] bg-[#5AC8FA]" />
+                  <span className="absolute bottom-0 end-0 h-3 w-3 rounded-full border-2 border-[#006BDE] bg-[#5AC8FA]" />
                 </div>
                 <div>
                   <p className="text-[15px] font-medium tracking-wide text-white">
@@ -216,7 +216,7 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
                   <div
                     className={`max-w-[82%] px-3.5 py-2.5 text-[14px] leading-[1.55] ${
                       msg.sender === "user"
-                        ? "rounded-[14px] rounded-ee-md bg-[#007AFF] text-white"
+                        ? "rounded-[14px] rounded-ee-md bg-[#006BDE] text-white"
                         : "rounded-[18px] rounded-es-md bg-white text-tasami-dark shadow-soft"
                     }`}
                   >
@@ -252,7 +252,7 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
                 type="submit"
                 disabled={sending || !input.trim()}
                 aria-label={t("send")}
-                className="touch-target flex h-11 w-11 shrink-0 items-center justify-center rounded-button bg-[#007AFF] text-white active:opacity-90 disabled:opacity-35"
+                className="touch-target flex h-11 w-11 shrink-0 items-center justify-center rounded-button bg-[#006BDE] text-white active:opacity-90 disabled:opacity-35"
               >
                 <PaperPlaneTilt weight="fill" className="h-[18px] w-[18px]" />
               </button>
@@ -267,7 +267,7 @@ export default function ChatWidget({ forceClose, onOpenChange }: Props) {
         onClick={() => setOpenSafe(!open)}
         whileTap={{ scale: 0.94 }}
         transition={spring}
-        className={`pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#007AFF] text-white shadow-soft ${
+        className={`pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#006BDE] text-white shadow-soft ${
           open ? "max-sm:hidden" : ""
         }`}
       >

@@ -85,7 +85,7 @@ export function StatusBadge({
 
 export function senderBubbleClass(sender: Sender): string {
   return sender === "CUSTOMER"
-    ? "bg-[#007AFF] text-white ms-auto"
+    ? "bg-[#006BDE] text-white ms-auto"
     : sender === "BOT"
       ? "bg-white text-tasami-dark shadow-soft me-auto"
       : "bg-tasami-gold/15 text-tasami-dark me-auto";

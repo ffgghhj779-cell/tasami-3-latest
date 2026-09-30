@@ -11,6 +11,7 @@ import LocationMap from "@/components/LocationMap";
 import Footer from "@/components/Footer";
 import SkipToContent from "@/components/SkipToContent";
 import ScrollProgress from "@/components/ScrollProgress";
+import { WaChooserProvider } from "@/components/WaChooser";
 import { forceUnlockBody, isBodyScrollLocked } from "@/lib/useBodyScrollLock";
 
 /** Defer chat/WhatsApp widgets — keeps first paint lighter on mobile */
@@ -73,7 +74,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
   }
 
   return (
-    <>
+    <WaChooserProvider>
       <BodyLockSafety />
       <SkipToContent label={t("skip")} />
       <ScrollProgress />
@@ -85,6 +86,6 @@ export default function SiteShell({ children }: { children: ReactNode }) {
       <LocationMap />
       <Footer />
       <FloatingWidgets />
-    </>
+    </WaChooserProvider>
   );
 }

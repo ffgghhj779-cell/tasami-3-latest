@@ -11,6 +11,7 @@ import { prisma } from "@/lib/prisma";
 import { getSession, normalizePhone, requireAdmin } from "@/lib/auth";
 import { clientIp, rateLimitAsync } from "@/lib/rate-limit";
 import { notifyNewRequest, notifyRequestStatusChange } from "@/lib/notify";
+import { orderNoFromId } from "@/lib/orders";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -42,6 +43,10 @@ type CreateBody = {
   category?: "government" | "tech" | "sector";
   subcategory?: string;
   attachments?: AttachmentIn[];
+  /** Short public form: name and phone are optional. */
+  quick?: boolean;
+  clientType?: "individual" | "company";
+  city?: string;
 };
 
 const MAX_FILES = 3;
@@ -75,8 +80,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const name = body.name?.trim();
-  const phone = body.phone ? normalizePhone(body.phone) : "";
+  const quick = body.quick === true;
+  const city = body.city?.trim().slice(0, 60) || "";
+  const clientType = body.clientType === "company" ? "company" : "individual";
+  const givenPhone = body.phone ? normalizePhone(body.phone) : "";
+  const phone = givenPhone || (quick ? `site-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}` : "");
+  const name = body.name?.trim() || (quick ? "زائر الموقع" : "");
   const serviceSlug = body.serviceSlug?.trim();
   const serviceNameAr = body.serviceNameAr?.trim();
   const serviceNameEn = body.serviceNameEn?.trim() || serviceNameAr;
@@ -88,7 +97,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  if (phone.length < 8) {
+  if (givenPhone ? givenPhone.length < 8 : !quick) {
     return NextResponse.json({ error: "Invalid phone" }, { status: 400 });
   }
 
@@ -115,11 +124,14 @@ export async function POST(req: NextRequest) {
         email: body.email?.trim() || null,
         language,
         status: "LEAD",
-        notes: "Created via website service request",
+        segment: clientType === "company" ? "COMPANY" : "INDIVIDUAL",
+        notes: givenPhone
+          ? "Created via website service request"
+          : "Website quick form without phone — contact comes via WhatsApp",
         last_interaction: new Date(),
       },
       update: {
-        name,
+        name: body.name?.trim() || undefined,
         email: body.email?.trim() || undefined,
         language,
         last_interaction: new Date(),
@@ -161,8 +173,10 @@ export async function POST(req: NextRequest) {
       : "";
 
     const notesParts = [
-      `طلب خدمة من الموقع`,
+      quick ? `طلب سريع من الموقع` : `طلب خدمة من الموقع`,
       `الخدمة: ${serviceNameAr}`,
+      quick ? `نوع العميل: ${clientType === "company" ? "منشأة" : "فرد"}` : null,
+      city ? `المدينة: ${city}` : null,
       body.subcategory ? `التصنيف: ${body.subcategory}` : null,
       body.notes?.trim() ? `\n${body.notes.trim()}` : null,
       fieldsBlock || null,
@@ -178,10 +192,7 @@ export async function POST(req: NextRequest) {
         notes: notesParts.join("\n"),
         attachments: attachments ?? undefined,
       },
-      include: {
-        service: true,
-        customer: { select: { id: true, name: true, phone: true, email: true } },
-      },
+      select: { id: true, status: true },
     });
 
     await prisma.conversation.create({
@@ -200,13 +211,14 @@ export async function POST(req: NextRequest) {
       customerName: customer.name,
       customerPhone: customer.phone,
       customerEmail: customer.email,
-      serviceName: serviceNameAr,
-      requestId: task.id,
+      serviceName: [serviceNameAr, city].filter(Boolean).join(" — "),
+      requestId: `#${orderNoFromId(task.id)}`,
     });
 
     return NextResponse.json({
       ok: true,
       requestId: task.id,
+      orderNo: orderNoFromId(task.id),
       customerId: customer.id,
       status: task.status,
       service: {
@@ -239,7 +251,16 @@ export async function GET(req: NextRequest) {
       const tasks = await prisma.task.findMany({
         take: 200,
         orderBy: { created_at: "desc" },
-        include: {
+        select: {
+          id: true,
+          customer_id: true,
+          service_id: true,
+          status: true,
+          assigned_to: true,
+          due_date: true,
+          notes: true,
+          created_at: true,
+          updated_at: true,
           customer: {
             select: { id: true, name: true, phone: true, language: true, email: true },
           },
@@ -285,7 +306,11 @@ export async function GET(req: NextRequest) {
     const tasks = await prisma.task.findMany({
       where: { customer_id: customer.id },
       orderBy: { created_at: "desc" },
-      include: {
+      select: {
+        id: true,
+        status: true,
+        notes: true,
+        created_at: true,
         service: {
           select: {
             name_ar: true,
@@ -338,10 +363,7 @@ export async function PATCH(req: NextRequest) {
   try {
     const prev = await prisma.task.findUnique({
       where: { id: body.requestId },
-      include: {
-        customer: true,
-        service: true,
-      },
+      select: { status: true },
     });
     if (!prev) {
       return NextResponse.json({ error: "Not found" }, { status: 404 });
@@ -354,9 +376,16 @@ export async function PATCH(req: NextRequest) {
         assigned_to: body.assigned_to,
         notes: body.notes,
       },
-      include: {
-        customer: true,
-        service: true,
+      select: {
+        id: true,
+        status: true,
+        assigned_to: true,
+        notes: true,
+        customer_id: true,
+        created_at: true,
+        updated_at: true,
+        customer: { select: { name: true, phone: true, email: true } },
+        service: { select: { name_ar: true, name_en: true, slug: true } },
       },
     });
 
@@ -368,7 +397,7 @@ export async function PATCH(req: NextRequest) {
         customerEmail: task.customer.email,
         serviceName: task.service?.name_ar || "خدمة",
         status: task.status,
-        requestId: task.id,
+        requestId: `#${orderNoFromId(task.id)}`,
       });
 
       await prisma.conversation.create({

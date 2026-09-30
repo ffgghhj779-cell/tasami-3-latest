@@ -3,8 +3,6 @@ import PageHeader from "@/components/PageHeader";
 import { buildPageMetadata } from "@/lib/seo";
 import { getPublicContactEmail, getPhoneDisplay, getWhatsAppUrl, telUrl } from "@/lib/site";
 
-const SECTION_KEYS = ["s1", "s2", "s3", "s4", "s5"] as const;
-
 type Props = {
   params: { locale: string };
 };
@@ -52,7 +50,7 @@ export default async function TermsPage({ params }: Props) {
         <div className="card-premium space-y-10 p-7 sm:p-10">
           <p className="text-sm leading-[1.9] text-tasami-dark">{tt("intro")}</p>
 
-          {SECTION_KEYS.map((key) => (
+          {Object.keys(tt.raw("sections") as Record<string, unknown>).map((key) => (
             <section key={key}>
               <h2 className="text-base font-medium text-tasami-dark sm:text-lg">
                 {tt(`sections.${key}.title`)}

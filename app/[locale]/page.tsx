@@ -1,34 +1,26 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Buildings,
+  ClipboardText,
+  Cpu,
+  WhatsappLogo,
+} from "@phosphor-icons/react/dist/ssr";
 import { Link } from "@/navigation";
 import HeroAurora from "@/components/HeroAurora";
 import HeroPlate from "@/components/HeroPlate";
 import HeroServiceReel from "@/components/HeroServiceReel";
-import OfferingTheater from "@/components/OfferingTheater";
 import PlatformsShowcase from "@/components/PlatformsShowcase";
-import ProcessScene from "@/components/ProcessScene";
-import WhyScene from "@/components/WhyScene";
-import Reveal from "@/components/Reveal";
 import TrustStats from "@/components/TrustStats";
-import {
-  HOME_CORE_KEYS,
-  HOME_WHY_KEYS,
-  HOME_PROCESS_KEYS,
-} from "@/lib/content-keys";
+import WaLink from "@/components/WaLink";
+import WaChooserButton from "@/components/WaChooserButton";
+import FaqList, { type FaqEntry } from "@/components/FaqList";
+import BlogCard from "@/components/BlogCard";
 import { rtlLocales, type Locale } from "@/i18n";
-import { getWhatsAppDirectUrl, getWhatsAppUrl } from "@/lib/site";
 import { buildPageMetadata } from "@/lib/seo";
-import {
-  taqeebWhatsAppMessage,
-  techWhatsAppMessage,
-} from "@/lib/whatsapp-templates";
-import { WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
-
-const CORE_HREF = {
-  gov: "/services/government",
-  tech: "/services/tech",
-  sectors: "/sectors",
-} as const;
+import { HOME_DEPARTMENT_SERVICES, HOME_POPULAR } from "@/lib/orders";
+import { latestPosts } from "@/lib/blog";
 
 export const revalidate = 1800;
 
@@ -49,34 +41,29 @@ export async function generateMetadata({ params }: Props) {
   });
 }
 
+const HOW_STEPS = ["one", "two", "three"] as const;
+
 export default async function HomePage({ params }: Props) {
   const { locale } = params;
   setRequestLocale(locale);
 
   const t = await getTranslations("home");
   const tBrand = await getTranslations("brand");
+  const tS = await getTranslations("homeSections");
+  const tReq = await getTranslations("request");
+  const tFaq = await getTranslations("faq");
+  const tBlog = await getTranslations("blog");
+  const tAll = await getTranslations();
   const isRtl = rtlLocales.includes(locale as Locale);
   const Arrow = isRtl ? ArrowLeft : ArrowRight;
-  const waTaqeeb = getWhatsAppDirectUrl(
-    taqeebWhatsAppMessage("استفسار عام — الصفحة الرئيسية")
-  );
-  const waTech = getWhatsAppUrl(
-    techWhatsAppMessage("استفسار عام — حلول تقنية")
-  );
 
-  const theaterItems = HOME_CORE_KEYS.map((key) => ({
-    key,
-    href: CORE_HREF[key],
-    title: t(`core.${key}.title`),
-    description: t(`core.${key}.desc`),
-    cta: t(`core.${key}.cta`),
-    meta:
-      key === "gov"
-        ? t("coreCountGov")
-        : key === "tech"
-          ? t("coreCountTech")
-          : t("coreCountSectors"),
-  }));
+  const faqItems = (tFaq.raw("items") as FaqEntry[]).slice(0, 5);
+  const posts = latestPosts(3);
+
+  const departments = [
+    { key: "gov" as const, line: "taqeeb" as const, icon: Buildings, href: "/services/government" },
+    { key: "tech" as const, line: "tech" as const, icon: Cpu, href: "/services/tech" },
+  ];
 
   return (
     <div>
@@ -97,28 +84,31 @@ export default async function HomePage({ params }: Props) {
               {t("hero")}
             </p>
             <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:mt-10 sm:w-auto sm:grid-cols-2">
-              <a
-                href={waTaqeeb}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-wa-location="home_hero"
+              <WaLink
+                line="taqeeb"
+                location="home_hero"
                 className="btn-hero inline-flex min-h-[48px] w-full items-center justify-center gap-2 text-base sm:min-w-[220px]"
               >
                 <WhatsappLogo weight="fill" className="h-5 w-5" />
                 {t("ctaWhatsapp")}
-              </a>
-              <a
-                href={waTech}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-wa-location="home_hero"
+              </WaLink>
+              <WaLink
+                line="tech"
+                location="home_hero"
                 className="btn-hero inline-flex min-h-[48px] w-full items-center justify-center gap-2 text-base sm:min-w-[220px]"
               >
                 <WhatsappLogo weight="fill" className="h-5 w-5" />
                 {t("ctaTech")}
-              </a>
+              </WaLink>
             </div>
-            <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/80">
+            <Link
+              href="/request"
+              className="mt-3 inline-flex min-h-[44px] items-center gap-1.5 text-sm font-bold text-white underline-offset-4 hover:underline"
+            >
+              <ClipboardText weight="regular" className="h-4 w-4" />
+              {tReq("formLink")}
+            </Link>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/80">
               {t("trustLine")}
             </p>
           </div>
@@ -137,66 +127,171 @@ export default async function HomePage({ params }: Props) {
 
       <TrustStats />
 
-      <OfferingTheater
-        title={t("offerTitle")}
-        subtitle={t("offerSubtitle")}
-        items={theaterItems}
-        rtl={isRtl}
-      />
+      <section className="bg-tasami-offwhite py-14 sm:py-20" aria-labelledby="departments-title">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+          <h2 id="departments-title" className="text-2xl font-bold leading-[1.3] text-tasami-dark sm:text-3xl">
+            {tS("departments.title")}
+          </h2>
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            {departments.map(({ key, line, icon: Icon, href }) => (
+              <article key={key} className="flex flex-col rounded-2xl border border-[rgba(26,53,80,0.1)] bg-white p-5 sm:p-7">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#006BDE]/10 text-[#006BDE]">
+                  <Icon weight="regular" className="h-6 w-6" />
+                </span>
+                <h3 className="mt-4 text-xl font-bold text-tasami-dark">{tS(`departments.${key}.title`)}</h3>
+                <p className="mt-2 leading-[1.8] text-tasami-gray">{tS(`departments.${key}.body`)}</p>
+                <ul className="mt-4 flex-1 space-y-1">
+                  {HOME_DEPARTMENT_SERVICES[key].map((s) => (
+                    <li key={s.id}>
+                      <Link
+                        href={s.href as "/"}
+                        className="flex min-h-[44px] items-center justify-between gap-3 border-b border-[rgba(26,53,80,0.08)] py-2 text-tasami-dark hover:text-[#006BDE]"
+                      >
+                        {tAll(s.labelKey)}
+                        <Arrow weight="bold" className="h-4 w-4 shrink-0 text-tasami-gray" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <WaLink
+                  line={line}
+                  location={`home_department_${key}`}
+                  className="mt-5 flex min-h-[48px] items-center justify-center gap-2 rounded-button bg-[#0F7A40] px-4 text-base font-bold text-white active:opacity-90"
+                >
+                  <WhatsappLogo weight="fill" className="h-5 w-5" />
+                  {tS(`departments.${key}.cta`)}
+                </WaLink>
+                <Link
+                  href={href}
+                  className="mt-2 inline-flex min-h-[44px] items-center justify-center text-sm font-bold text-[#006BDE]"
+                >
+                  {tS("departments.viewAll")}
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <WhyScene
-        title={t("whyTitle")}
-        subtitle={t("whySubtitle")}
-        items={HOME_WHY_KEYS.map((key) => ({
-          key,
-          title: t(`why.${key}.title`),
-          description: t(`why.${key}.desc`),
-        }))}
-      />
+      <section className="bg-white py-14 sm:py-20" aria-labelledby="how-title">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+          <h2 id="how-title" className="text-2xl font-bold leading-[1.3] text-tasami-dark sm:text-3xl">
+            {tS("how.title")}
+          </h2>
+          <ol className="mt-8 grid gap-5 md:grid-cols-3">
+            {HOW_STEPS.map((step, i) => (
+              <li key={step} className="flex gap-4 md:flex-col md:gap-3">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#006BDE] text-lg font-bold text-white">
+                  {(i + 1).toLocaleString(locale === "ar" ? "ar-SA" : "en-US")}
+                </span>
+                <div>
+                  <h3 className="text-lg font-bold text-tasami-dark">{tS(`how.${step}.title`)}</h3>
+                  <p className="mt-1 leading-[1.8] text-tasami-gray">{tS(`how.${step}.body`)}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
 
-      <ProcessScene
-        title={t("processTitle")}
-        subtitle={t("processSubtitle")}
-        steps={HOME_PROCESS_KEYS.map((key) => ({
-          key,
-          title: t(`process.${key}.title`),
-          description: t(`process.${key}.desc`),
-        }))}
-      />
+      <section className="bg-tasami-offwhite py-14 sm:py-20" aria-labelledby="popular-title">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+          <h2 id="popular-title" className="text-2xl font-bold leading-[1.3] text-tasami-dark sm:text-3xl">
+            {tS("popular.title")}
+          </h2>
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {HOME_POPULAR.map((s) => (
+              <li key={s.id}>
+                <Link
+                  href={s.href as "/"}
+                  className="flex min-h-[64px] items-center justify-between gap-3 rounded-xl border border-[rgba(26,53,80,0.1)] bg-white px-4 py-3 font-bold text-tasami-dark transition-colors hover:border-[#006BDE]"
+                >
+                  <span className="flex items-center gap-3">
+                    {s.line === "gov" ? (
+                      <Buildings weight="regular" className="h-5 w-5 shrink-0 text-[#006BDE]" />
+                    ) : (
+                      <Cpu weight="regular" className="h-5 w-5 shrink-0 text-[#006BDE]" />
+                    )}
+                    {tAll(s.labelKey)}
+                  </span>
+                  <Arrow weight="bold" className="h-4 w-4 shrink-0 text-tasami-gray" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link
+            href="/services/government"
+            className="mt-5 inline-flex min-h-[44px] items-center gap-1.5 font-bold text-[#006BDE]"
+          >
+            {tS("popular.viewAll")}
+            <Arrow weight="bold" className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
 
       <PlatformsShowcase />
 
-      <section className="cta-band relative py-16 sm:py-24">
-        <Reveal y={20}>
-          <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
-            <p className="eyebrow mx-auto">{tBrand("name")}</p>
-            <h2 className="font-display mt-4 text-3xl text-white sm:text-4xl">
-              {t("ctaBandTitle")}
-            </h2>
-            <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-white/90 sm:text-base">
-              {t("ctaBandSubtitle")}
-            </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-              <a
-                href={waTaqeeb}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-wa-location="home_cta_band"
-                className="btn-hero inline-flex w-full min-w-0 items-center justify-center gap-2 sm:w-auto sm:min-w-[200px]"
-              >
-                <WhatsappLogo weight="fill" className="h-5 w-5" />
-                {t("ctaBandAction")}
-              </a>
-              <Link
-                href="/services/government"
-                className="btn-outline-light w-full min-w-0 sm:w-auto sm:min-w-[200px]"
-              >
-                {t("core.gov.cta")}
-                <Arrow weight="regular" className="h-4 w-4" />
-              </Link>
-            </div>
+      <section className="bg-tasami-offwhite py-14 sm:py-20" aria-labelledby="faq-title">
+        <div className="mx-auto max-w-3xl px-5 sm:px-8">
+          <h2 id="faq-title" className="text-2xl font-bold leading-[1.3] text-tasami-dark sm:text-3xl">
+            {tS("faq.title")}
+          </h2>
+          <div className="mt-8">
+            <FaqList items={faqItems} />
           </div>
-        </Reveal>
+          <Link href="/faq" className="mt-5 inline-flex min-h-[44px] items-center gap-1.5 font-bold text-[#006BDE]">
+            {tS("faq.viewAll")}
+            <Arrow weight="bold" className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
+      <section className="bg-white py-14 sm:py-20" aria-labelledby="blog-title">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+          <h2 id="blog-title" className="text-2xl font-bold leading-[1.3] text-tasami-dark sm:text-3xl">
+            {tS("blog.title")}
+          </h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {posts.map((post) => (
+              <BlogCard
+                key={post.slug}
+                post={post}
+                labels={{
+                  line: tBlog(post.line),
+                  minutes: tBlog.raw("minutes") as string,
+                  readMore: tBlog("readMore"),
+                }}
+              />
+            ))}
+          </div>
+          <Link href="/blog" className="mt-5 inline-flex min-h-[44px] items-center gap-1.5 font-bold text-[#006BDE]">
+            {tS("blog.viewAll")}
+            <Arrow weight="bold" className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
+      <section className="bg-tasami-offwhite py-14 sm:py-20" aria-labelledby="final-cta-title">
+        <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
+          <h2 id="final-cta-title" className="text-2xl font-bold leading-[1.3] text-tasami-dark sm:text-3xl">
+            {tS("finalCta.title")}
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl leading-[1.8] text-tasami-gray">{tS("finalCta.body")}</p>
+          <WaChooserButton
+            location="home_final_cta"
+            className="mx-auto mt-7 flex min-h-[52px] w-full max-w-sm items-center justify-center gap-2 rounded-button bg-[#0F7A40] px-6 text-lg font-bold text-white active:opacity-90"
+          >
+            <WhatsappLogo weight="fill" className="h-6 w-6" />
+            {tS("finalCta.cta")}
+          </WaChooserButton>
+          <Link
+            href="/request"
+            className="mt-3 inline-flex min-h-[44px] items-center gap-1.5 text-sm font-bold text-[#006BDE]"
+          >
+            <ClipboardText weight="regular" className="h-4 w-4" />
+            {tReq("formLink")}
+          </Link>
+        </div>
       </section>
     </div>
   );

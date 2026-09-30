@@ -24,7 +24,7 @@ export default function LocationMap() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-3">
-            <span className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#007AFF]/10 text-[#007AFF]">
+            <span className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#006BDE]/10 text-[#006BDE]">
               <MapPin weight="regular" className="h-5 w-5" />
             </span>
             <div>
@@ -44,7 +44,7 @@ export default function LocationMap() {
             href={directionsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-[48px] shrink-0 items-center justify-center gap-2 rounded-button bg-[#007AFF] px-6 text-base font-bold text-white transition-colors hover:bg-[#0066d6] active:bg-[#0058b8]"
+            className="inline-flex min-h-[48px] shrink-0 items-center justify-center gap-2 rounded-button bg-[#006BDE] px-6 text-base font-bold text-white transition-colors hover:bg-[#0066d6] active:bg-[#0058b8]"
           >
             <NavigationArrow weight="fill" className="h-5 w-5" />
             {t("directions")}
