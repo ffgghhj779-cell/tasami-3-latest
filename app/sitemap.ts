@@ -7,7 +7,7 @@ import { BLOG_POSTS } from "@/lib/blog";
 
 const STATIC: { path: string; priority: number; changeFrequency: "weekly" | "monthly" }[] = [
   { path: "", priority: 1, changeFrequency: "weekly" },
-  { path: "/search", priority: 0.95, changeFrequency: "weekly" },
+  { path: "/about", priority: 0.7, changeFrequency: "monthly" },
   { path: "/services/government", priority: 0.9, changeFrequency: "weekly" },
   { path: "/services/tech", priority: 0.9, changeFrequency: "weekly" },
   { path: "/sectors", priority: 0.85, changeFrequency: "weekly" },
@@ -26,8 +26,11 @@ function languageAlternates(path: string) {
   ) as Record<string, string>;
 }
 
+/** Date of the last content release — bump when page content changes. */
+const CONTENT_UPDATED = new Date("2026-10-03T00:00:00+03:00");
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const now = CONTENT_UPDATED;
   const entries: MetadataRoute.Sitemap = [];
 
   for (const locale of locales) {

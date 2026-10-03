@@ -35,12 +35,12 @@ type Props = {
 
 export async function generateMetadata({ params }: Props) {
   const { locale } = params;
-  const t = await getTranslations({ locale, namespace: "home" });
-  const tBrand = await getTranslations({ locale, namespace: "brand" });
+  const t = await getTranslations({ locale, namespace: "seo" });
 
   return buildPageMetadata({
-    title: t("title"),
-    description: `${t("hero")} ${tBrand("slogan")}. ${t("trustLine")}`,
+    title: t("homeTitle"),
+    absoluteTitle: t("homeTitle"),
+    description: t("homeDescription"),
     path: "",
     locale,
   });

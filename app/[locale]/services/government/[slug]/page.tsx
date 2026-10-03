@@ -5,7 +5,8 @@ import { GOV_KEYS, GOV_SLUGS, type GovKey } from "@/lib/content-keys";
 import { VISUALS } from "@/lib/visuals";
 import { offeringsByCategory } from "@/lib/gov-offerings";
 import { getOfferingIcon } from "@/lib/gov-offering-icons";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, serviceDescription, serviceTitle } from "@/lib/seo";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { rtlLocales, type Locale } from "@/i18n";
 import ServiceCard from "@/components/ServiceCard";
 import Reveal from "@/components/Reveal";
@@ -29,8 +30,8 @@ export async function generateMetadata({ params }: Props) {
   if (!key) return {};
   const t = await getTranslations({ locale: params.locale, namespace: "gov" });
   return buildPageMetadata({
-    title: t(`items.${key}.title`),
-    description: t(`items.${key}.desc`),
+    title: serviceTitle(t(`items.${key}.title`), params.locale),
+    description: serviceDescription(t(`items.${key}.desc`), params.locale),
     path: `/services/government/${params.slug}`,
     locale: params.locale,
   });
@@ -51,12 +52,18 @@ export default async function GovernmentCategoryPage({ params }: Props) {
   const titleAr = tAr(`items.${key}.title`);
   const titleEn = tEn(`items.${key}.title`);
   const offerings = offeringsByCategory(key);
+  const tSeo = await getTranslations("seo");
+  const crumbs = [
+    { label: tSeo("crumbHome"), href: "/" },
+    { label: tSeo("crumbGov"), href: "/services/government" },
+    { label: title, href: `/services/government/${slug}` },
+  ];
 
   return (
     <div className="min-h-screen">
+      <BreadcrumbSchema locale={locale} crumbs={crumbs} />
       <PageHeader
-        backHref="/services/government"
-        backLabel={t("back")}
+        crumbs={crumbs}
         eyebrow={
           offerings.length > 0
             ? t("offeringCount", { count: offerings.length })

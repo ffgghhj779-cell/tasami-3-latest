@@ -26,6 +26,7 @@ import { GOV_SLUGS, TECH_SLUGS } from "@/lib/content-keys";
 const GOV_LINKS = ["passports", "commerce", "zakat", "najiz"] as const;
 const TECH_LINKS = ["websites", "mobile", "ai", "cloud"] as const;
 const QUICK_LINKS = [
+  { href: "/about", key: "aboutLink" },
   { href: "/our-work", key: "ourWork" },
   { href: "/faq", key: "faq" },
   { href: "/blog", key: "blog" },

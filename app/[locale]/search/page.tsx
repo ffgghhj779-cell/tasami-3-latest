@@ -16,14 +16,7 @@ export async function generateMetadata({ params }: Props) {
     description: t("subtitle"),
     path: "/search",
     locale: params.locale,
-    keywords: [
-      "بحث خدمات تسامي",
-      "نقل كفالة",
-      "تجديد إقامة",
-      "سجل تجاري",
-      "Tasami search",
-      "Saudi government services search",
-    ],
+    index: false,
   });
 }
 

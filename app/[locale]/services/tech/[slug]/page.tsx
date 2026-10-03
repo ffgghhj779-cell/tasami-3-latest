@@ -4,7 +4,8 @@ import PageHeader from "@/components/PageHeader";
 import ServiceBriefPanel from "@/components/ServiceBriefPanel";
 import { TECH_KEYS, TECH_SLUGS, type TechKey } from "@/lib/content-keys";
 import { VISUALS } from "@/lib/visuals";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, serviceDescription, serviceTitle } from "@/lib/seo";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import CrossSellBox from "@/components/CrossSellBox";
 import ServiceRequestActions, {
   MonjezHint,
@@ -30,8 +31,8 @@ export async function generateMetadata({ params }: Props) {
   if (!key) return {};
   const t = await getTranslations({ locale: params.locale, namespace: "tech" });
   return buildPageMetadata({
-    title: t(`items.${key}.title`),
-    description: t(`items.${key}.desc`),
+    title: serviceTitle(t(`items.${key}.title`), params.locale),
+    description: serviceDescription(t(`items.${key}.desc`), params.locale, "tech"),
     path: `/services/tech/${params.slug}`,
     locale: params.locale,
   });
@@ -50,12 +51,18 @@ export default async function TechServicePage({ params }: Props) {
   const title = t(`items.${key}.title`);
   const titleAr = tAr(`items.${key}.title`);
   const titleEn = tEn(`items.${key}.title`);
+  const tSeo = await getTranslations("seo");
+  const crumbs = [
+    { label: tSeo("crumbHome"), href: "/" },
+    { label: tSeo("crumbTech"), href: "/services/tech" },
+    { label: title, href: `/services/tech/${slug}` },
+  ];
 
   return (
     <div className="min-h-screen">
+      <BreadcrumbSchema locale={locale} crumbs={crumbs} />
       <PageHeader
-        backHref="/services/tech"
-        backLabel={t("back")}
+        crumbs={crumbs}
         title={title}
         subtitle={t(`items.${key}.desc`)}
         visual={VISUALS.offerings.tech}

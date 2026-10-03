@@ -37,29 +37,42 @@ export function formatPageTitle(title: string, locale = "ar"): string {
   return `${title} — ${brand}`;
 }
 
-const DEFAULT_KEYWORDS = [
-  "تسامي",
-  "تسامي",
-  "Tasami",
-  "tasamiservices",
-  "خدمات حكومية سعودية",
-  "إنجاز معاملات حكومية",
-  "تجديد إقامة",
-  "سجل تجاري",
-  "ناجز",
-  "أبشر",
-  "قوى",
-  "مقيم",
-  "زكاة وضريبة",
-  "خدمات تقنية",
-  "تصميم مواقع السعودية",
-  "تطبيقات جوال",
-  "أتمتة أعمال",
-  "Saudi government services",
-  "Saudi business services Riyadh",
-  "iqama renewal service",
-  "commercial registration Saudi Arabia",
-];
+const SERVICE_TITLE: Record<string, (t: string) => string> = {
+  ar: (t) => `${t} في السعودية`,
+  en: (t) => `${t} in Saudi Arabia`,
+  ur: (t) => `سعودی عرب میں ${t}`,
+  hi: (t) => `सऊदी अरब में ${t}`,
+};
+
+/** Service page title per the SEO template: "{service} in Saudi Arabia". */
+export function serviceTitle(title: string, locale: string): string {
+  return (SERVICE_TITLE[locale] || SERVICE_TITLE.ar)(title);
+}
+
+const META_TAIL: Record<string, string> = {
+  ar: "نتابعها لك عبر المنصات الرسمية ونحدّثك على واتساب. لسنا جهة حكومية.",
+  en: "We handle it through the official platforms and update you on WhatsApp. Not a government entity.",
+  ur: "ہم سرکاری پلیٹ فارمز کے ذریعے کام مکمل کرتے ہیں اور واٹس ایپ پر آگاہ رکھتے ہیں۔ ہم سرکاری ادارہ نہیں۔",
+  hi: "हम आधिकारिक प्लेटफ़ॉर्म से काम पूरा करते हैं और व्हाट्सऐप पर अपडेट देते हैं। हम सरकारी संस्था नहीं हैं।",
+};
+
+const META_TAIL_TECH: Record<string, string> = {
+  ar: "تصميم وتنفيذ احترافي بفريق سعودي، واستشارة مجانية عبر واتساب.",
+  en: "Professional design and build by a Saudi team, with a free WhatsApp consultation.",
+  ur: "سعودی ٹیم کی پیشہ ورانہ ڈیزائن و تیاری، واٹس ایپ پر مفت مشورہ۔",
+  hi: "सऊदी टीम द्वारा पेशेवर डिज़ाइन और निर्माण, व्हाट्सऐप पर मुफ़्त परामर्श।",
+};
+
+/** Extend a short service blurb into a full meta description (≈140–160 chars). */
+export function serviceDescription(desc: string, locale: string, kind: "gov" | "tech" = "gov"): string {
+  const base = desc.trim().replace(/[.。۔।]?$/, "");
+  const end = locale === "ur" ? "۔" : locale === "hi" ? "।" : ".";
+  const tails = kind === "tech" ? META_TAIL_TECH : META_TAIL;
+  return `${base}${end} ${tails[locale] || tails.ar}`;
+}
+
+/** Office coordinates (Al Awali, Makkah) — must match Google Business Profile. */
+export const GEO = { latitude: 21.3622838, longitude: 39.8904982 };
 
 const OG_LOCALE: Record<string, string> = {
   ar: "ar_SA",
@@ -70,22 +83,25 @@ const OG_LOCALE: Record<string, string> = {
 
 export function buildPageMetadata({
   title,
+  absoluteTitle,
   description,
   path = "",
   locale = "ar",
   index = true,
-  keywords = DEFAULT_KEYWORDS,
 }: {
   title: string;
+  /** Use as-is instead of appending the brand suffix. */
+  absoluteTitle?: string;
   description?: string;
   path?: string;
   locale?: string;
   index?: boolean;
+  /** Ignored: Google does not use meta keywords. Kept so older call sites compile. */
   keywords?: string[];
 }): Metadata {
   const cleanPath = path.startsWith("/") || path === "" ? path : `/${path}`;
   const url = `${SITE_URL}/${locale}${cleanPath}`;
-  const fullTitle = formatPageTitle(title, locale);
+  const fullTitle = absoluteTitle || formatPageTitle(title, locale);
   const desc =
     description ||
     (locale === "en" ? DEFAULT_DESCRIPTION_EN : DEFAULT_DESCRIPTION_AR);
@@ -94,9 +110,8 @@ export function buildPageMetadata({
   const bingVerify = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION?.trim();
 
   return {
-    title: fullTitle,
+    title: { absolute: fullTitle },
     description: desc,
-    keywords,
     authors: [{ name: SITE_NAME_EN, url: SITE_URL }],
     creator: SITE_NAME_EN,
     publisher: SITE_NAME_EN,
@@ -224,15 +239,18 @@ export function organizationJsonLd() {
       "@type": "Country",
       name: "Saudi Arabia",
     },
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Sheikh Muhammad Street, Al Naseem, Al Awali",
-      addressLocality: "Makkah",
-      postalCode: "24251",
-      addressCountry: "SA",
-    },
+    address: POSTAL_ADDRESS,
   };
 }
+
+const POSTAL_ADDRESS = {
+  "@type": "PostalAddress",
+  streetAddress: "Sheikh Muhammad Street, Al Naseem, Al Awali",
+  addressLocality: "Makkah",
+  addressRegion: "Makkah Province",
+  postalCode: "24251",
+  addressCountry: "SA",
+};
 
 export function websiteJsonLd() {
   return {
@@ -272,6 +290,23 @@ export function professionalServiceJsonLd() {
     image: OG_IMAGE_URL,
     description: DEFAULT_DESCRIPTION_EN,
     provider: { "@id": `${SITE_URL}/#organization` },
+    telephone: `+${getPhoneNumber()}`,
+    address: POSTAL_ADDRESS,
+    geo: { "@type": "GeoCoordinates", ...GEO },
+    hasMap: `https://www.google.com/maps?q=${GEO.latitude},${GEO.longitude}`,
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        opens: "09:00",
+        closes: "21:00",
+      },
+    ],
+    identifier: {
+      "@type": "PropertyValue",
+      propertyID: "Commercial Registration",
+      value: COMPANY_LEGAL.cr,
+    },
     areaServed: {
       "@type": "Country",
       name: "Saudi Arabia",

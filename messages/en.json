@@ -239,7 +239,8 @@
     "ourWork": "Our work",
     "faq": "FAQ",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "aboutLink": "About us"
   },
   "location": {
     "eyebrow": "Our location",
@@ -1620,5 +1621,44 @@
       "verified": "Verified client",
       "anonymous": "Tasami client"
     }
+  },
+  "seo": {
+    "homeTitle": "Tasami — Government Services & Tech Solutions in Saudi Arabia",
+    "homeDescription": "Makkah-based government services office serving all Saudi Arabia: iqama, sponsorship transfer, exit/re-entry, CR, Zakat and GOSI, plus websites and apps. Not a government entity.",
+    "crumbHome": "Home",
+    "crumbGov": "Government services",
+    "crumbTech": "Tech solutions"
+  },
+  "serviceGuide": {
+    "whoTitle": "Who is {service} for?",
+    "stepsTitle": "{service} steps with Tasami",
+    "tipsTitle": "Tips to avoid delays",
+    "localTitle": "Serving every city in the Kingdom"
+  },
+  "aboutPage": {
+    "metaTitle": "About Tasami — Government Services & Tech Solutions in Saudi Arabia",
+    "metaDescription": "Meet Tasami Alwataniyah Establishment: a government services and business office in Makkah serving individuals and companies across Saudi Arabia. Verified CR and VAT. Not a government entity.",
+    "title": "About us",
+    "subtitle": "A Saudi establishment that completes your government transactions and builds your digital presence",
+    "intro1": "Tasami (Tasami Alwataniyah Establishment) is a government services and business office based in Al Naseem, Al Awali, Makkah, serving individuals and companies in every Saudi city remotely. We follow up government transactions on behalf of our clients through official platforms such as Absher, Qiwa, Mudad, the Business Platform, ZATCA and GOSI, and keep them updated at every step on WhatsApp.",
+    "intro2": "We started because many business owners and workers lose a lot of time on changing requirements and multiple platforms. Our goal is to take that off your hands: you tell us what you need, we review your documents, submit the request correctly the first time and follow it until it is done.",
+    "govTitle": "Government services department",
+    "govBody": "Iqama renewal, sponsorship transfer, exit/re-entry and final exit visas, opening a commercial registration and confirming its data, municipal licenses, Zakat and tax, GOSI, and passports and labor services.",
+    "techTitle": "Tech solutions department",
+    "techBody": "Websites and online stores, mobile apps, business automation and AI, and digital marketing to help your business grow and reach more customers.",
+    "browse": "Browse services",
+    "howTitle": "How we work",
+    "howBody": "You contact us on WhatsApp or through the request form, we tell you exactly which documents are needed, then we process the transaction on the official platform with your authorization and update you at every stage until completion. We only ask for account passwords when necessary and with your consent, and we keep your data confidential.",
+    "legalTitle": "Company details",
+    "legalName": "Trade name",
+    "cr": "Commercial registration no.",
+    "vat": "VAT number",
+    "founded": "Founded",
+    "address": "Address",
+    "hours": "Working hours",
+    "disclaimer": "Tasami is a private services office, not a government entity. Government fees are paid to the relevant authority, and approval of any request rests with that authority alone.",
+    "ctaTitle": "Ready to help",
+    "ctaBody": "Tell us about your transaction and we will reply with clear requirements and steps.",
+    "ctaButton": "Contact us"
   }
 }
