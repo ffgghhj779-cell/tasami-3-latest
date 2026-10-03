@@ -21,7 +21,11 @@ import { GOV_KEYS, GOV_SLUGS, type GovKey } from "@/lib/content-keys";
 import { VISUALS } from "@/lib/visuals";
 import { offeringsByCategory } from "@/lib/gov-offerings";
 import { rtlLocales, type Locale } from "@/i18n";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, serviceDescription, SITE_URL } from "@/lib/seo";
+import { getServiceGuide } from "@/lib/service-guides";
+import ServiceGuide from "@/components/ServiceGuide";
+import ServiceFaq, { faqJsonLd, serviceJsonLd } from "@/components/ServiceFaq";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 const GOV_ICONS: Record<GovKey, typeof IdentificationCard> = {
   passports: IdentificationCard,
@@ -45,9 +49,11 @@ type Props = {
 
 export async function generateMetadata({ params }: Props) {
   const t = await getTranslations({ locale: params.locale, namespace: "gov" });
+  const tSeo = await getTranslations({ locale: params.locale, namespace: "seo" });
+  const guide = getServiceGuide("proServices", params.locale);
   return buildPageMetadata({
-    title: t("title"),
-    description: t("subtitle"),
+    title: tSeo("govHubTitle"),
+    description: guide?.metaDescription ?? serviceDescription(t("subtitle"), params.locale),
     path: "/services/government",
     locale: params.locale,
   });
@@ -58,13 +64,30 @@ export default async function GovernmentServicesPage({ params }: Props) {
   setRequestLocale(locale);
 
   const t = await getTranslations("gov");
+  const tSeo = await getTranslations("seo");
+  const tSearch = await getTranslations("search");
   const isRtl = rtlLocales.includes(locale as Locale);
+  const guide = getServiceGuide("proServices", locale);
+  const hubTitle = tSeo("govHubTitle");
+  const crumbs = [
+    { label: tSeo("crumbHome"), href: "/" },
+    { label: tSeo("crumbGov"), href: "/services/government" },
+  ];
+  const structured = guide
+    ? [
+        serviceJsonLd({ name: hubTitle, description: guide.intro, url: `${SITE_URL}/${locale}/services/government` }),
+        faqJsonLd(guide.faqs),
+      ]
+    : [];
 
   return (
     <div className="min-h-screen">
+      {structured.map((data, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
+      ))}
+      <BreadcrumbSchema locale={locale} crumbs={crumbs} />
       <PageHeader
-        backHref="/"
-        backLabel={t("back")}
+        crumbs={crumbs}
         eyebrow={t("eyebrow")}
         title={t("title")}
         subtitle={t("subtitle")}
@@ -72,6 +95,14 @@ export default async function GovernmentServicesPage({ params }: Props) {
       />
 
       <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16 lg:px-10">
+        {guide ? (
+          <section className="mb-10 max-w-4xl">
+            <h2 className="text-2xl font-bold text-tasami-dark">{hubTitle}</h2>
+            <p className="mt-3 rounded-2xl border-s-4 border-[#0057B8] bg-white p-5 text-[1.05rem] leading-[1.9] text-tasami-dark shadow-soft sm:p-6">
+              {guide.intro}
+            </p>
+          </section>
+        ) : null}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {GOV_KEYS.map((key, i) => {
             const count = offeringsByCategory(key).length;
@@ -94,6 +125,16 @@ export default async function GovernmentServicesPage({ params }: Props) {
             );
           })}
         </div>
+        {guide ? (
+          <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-7">
+              <ServiceGuide guide={guide} service={tSeo("govHubService")} />
+            </div>
+            <div className="lg:col-span-5 lg:pt-8">
+              <ServiceFaq title={tSearch("faqTitle")} items={guide.faqs} />
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

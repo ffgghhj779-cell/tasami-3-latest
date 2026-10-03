@@ -715,6 +715,99 @@ export const SERVICE_FORMS: Record<string, ServiceFormDef> = {
       { id: "details", type: "textarea", required: true },
     ],
   },
+  zakatFiling: {
+    docs: ["crCopy", "financials"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text", required: true },
+      { id: "tinNumber", type: "text" },
+      { id: "fiscalYear", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  eInvoicing: {
+    docs: ["crCopy"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "tinNumber", type: "text" },
+      { id: "currentSoftware", type: "text" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  companySetup: {
+    docs: ["nationalId", "ownerId", "articles"],
+    fields: [
+      { id: "tradeName", type: "text", required: true },
+      { id: "activityType", type: "text", required: true },
+      { id: "capitalEstimate", type: "text" },
+      { id: "city", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  openRestaurant: {
+    docs: ["crCopy", "leaseContract", "floorPlan", "idIqama"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text" },
+      { id: "city", type: "text", required: true },
+      { id: "district", type: "text" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  openShop: {
+    docs: ["crCopy", "leaseContract", "idIqama"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text" },
+      { id: "activityType", type: "text", required: true },
+      { id: "city", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  lostIqama: {
+    docs: ["passportCopy", "policeReport", "sponsorAuth"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "passportNumber", type: "text" },
+      { id: "establishmentName", type: "text" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  muqeem: {
+    docs: ["crCopy", "idIqama"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text", required: true },
+      { id: "workersCount", type: "number" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  qiwaContracts: {
+    docs: ["crCopy", "qiwaAccess", "contractCopy"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "crNumber", type: "text" },
+      { id: "workersCount", type: "number", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  workPermit: {
+    docs: ["crCopy", "qiwaAccess", "idIqama", "passportCopy"],
+    fields: [
+      { id: "establishmentName", type: "text", required: true },
+      { id: "workersCount", type: "number", required: true },
+      { id: "profession", type: "text" },
+      { id: "nationalId", type: "text" },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
+  najizPoa: {
+    docs: ["nationalId", "agencyDoc"],
+    fields: [
+      { id: "nationalId", type: "text", required: true },
+      { id: "details", type: "textarea", required: true },
+    ],
+  },
 };
 
 export function getServiceForm(subcategory?: string): ServiceFormDef {

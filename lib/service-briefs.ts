@@ -64,6 +64,16 @@ const DEFAULT_TECH: BriefDef = {
 
 /** Per-offering / tech-key overrides */
 const SERVICE_BRIEFS: Record<string, BriefDef> = {
+  lostIqama: { ...DEFAULT_GOV, platformKeys: ["absher", "muqeem"] },
+  muqeem: { ...DEFAULT_GOV, platformKeys: ["muqeem"] },
+  qiwaContracts: { ...DEFAULT_GOV, platformKeys: ["qiwa"] },
+  workPermit: { ...DEFAULT_GOV, platformKeys: ["qiwa"] },
+  companySetup: { ...DEFAULT_GOV, platformKeys: ["businessCenter", "commerce"] },
+  openRestaurant: { ...DEFAULT_GOV, platformKeys: ["balady", "commerce"] },
+  openShop: { ...DEFAULT_GOV, platformKeys: ["balady", "commerce"] },
+  najizPoa: { ...DEFAULT_GOV, platformKeys: ["najiz"] },
+  zakatFiling: { ...DEFAULT_GOV, platformKeys: ["zakat"] },
+  eInvoicing: { ...DEFAULT_GOV, platformKeys: ["zakat"] },
   transferSponsorship: {
     platformKeys: ["qiwa", "absher"],
     whatWeDo: {

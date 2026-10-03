@@ -7,6 +7,9 @@
  * no government fees, fixed durations or legal promises.
  */
 
+import { BUSINESS_GUIDES } from "./service-guides-business";
+import { WORKFORCE_GUIDES } from "./service-guides-workforce";
+
 type Lang = "ar" | "en" | "ur" | "hi";
 
 export type ServiceGuide = {
@@ -21,7 +24,7 @@ export type ServiceGuide = {
   faqs: { q: string; a: string }[];
 };
 
-type GuideDef = Record<Lang, ServiceGuide>;
+export type GuideDef = Record<Lang, ServiceGuide>;
 
 const GUIDES: Record<string, GuideDef> = {
   workerIqamaRenew: {
@@ -937,10 +940,12 @@ const GUIDES: Record<string, GuideDef> = {
   },
 };
 
+const ALL_GUIDES: Record<string, GuideDef> = { ...GUIDES, ...BUSINESS_GUIDES, ...WORKFORCE_GUIDES };
+
 export function getServiceGuide(key: string, locale: string): ServiceGuide | null {
-  const def = GUIDES[key];
+  const def = ALL_GUIDES[key];
   if (!def) return null;
   return def[(locale as Lang) in def ? (locale as Lang) : "ar"];
 }
 
-export const GUIDED_SERVICE_KEYS = Object.keys(GUIDES);
+export const GUIDED_SERVICE_KEYS = Object.keys(ALL_GUIDES);

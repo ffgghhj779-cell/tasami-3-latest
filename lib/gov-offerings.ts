@@ -20,6 +20,8 @@ export const GOV_OFFERINGS: GovOfferingDef[] = [
   { key: "exitReentryExtend", slug: "tamdid-khuroj-wa-awda", category: "passports" },
   { key: "finalExit", slug: "khuroj-nihai", category: "passports" },
   { key: "consulateAppointment", slug: "mawid-qunsuliya", category: "passports" },
+  { key: "lostIqama", slug: "badal-faqid-iqama", category: "passports" },
+  { key: "muqeem", slug: "bawabat-muqeem", category: "passports" },
 
   // —— العمالة ——
   { key: "transferSponsorship", slug: "naql-kafala", category: "labor" },
@@ -29,8 +31,11 @@ export const GOV_OFFERINGS: GovOfferingDef[] = [
   { key: "ajeerContract", slug: "aqd-ajeer", category: "labor" },
   { key: "changeProfession", slug: "tadil-mihna", category: "labor" },
   { key: "mudadWagesFile", slug: "raf-milaff-mudad", category: "labor" },
+  { key: "qiwaContracts", slug: "tawthiq-uqud-amal", category: "labor" },
+  { key: "workPermit", slug: "rukhsat-amal", category: "labor" },
 
   // —— التجارة ——
+  { key: "companySetup", slug: "tasis-sharika", category: "commerce" },
   { key: "openCr", slug: "fath-sijill-tijari", category: "commerce" },
   { key: "renewCr", slug: "tajdid-sijill-tijari", category: "commerce" },
   { key: "addActivity", slug: "idafa-nashat", category: "commerce" },
@@ -45,6 +50,8 @@ export const GOV_OFFERINGS: GovOfferingDef[] = [
 
   // —— البلدية ——
   { key: "municipalLicense", slug: "rukhsa-baladiya", category: "municipal" },
+  { key: "openRestaurant", slug: "fath-mataam", category: "municipal" },
+  { key: "openShop", slug: "fath-mahal", category: "municipal" },
   { key: "wasteContract", slug: "aqd-nifayat", category: "municipal" },
 
   // —— الدفاع المدني ——
@@ -58,6 +65,7 @@ export const GOV_OFFERINGS: GovOfferingDef[] = [
 
   // —— ناجز ——
   { key: "najizAppointment", slug: "hajz-najiz-tasahil", category: "najiz" },
+  { key: "najizPoa", slug: "tawthiq-wakala", category: "najiz" },
 
   // —— التأمينات / الضمان ——
   { key: "socialInsuranceReg", slug: "tasjil-daman-ijtimaei", category: "gosi" },
@@ -68,6 +76,8 @@ export const GOV_OFFERINGS: GovOfferingDef[] = [
 
   // —— الزكاة والضريبة ——
   { key: "vatFiling", slug: "raf-daribat-qima", category: "zakat" },
+  { key: "zakatFiling", slug: "iqrar-zakat", category: "zakat" },
+  { key: "eInvoicing", slug: "fawtara-electroniya", category: "zakat" },
 ];
 
 export function offeringsByCategory(category: GovKey): GovOfferingDef[] {

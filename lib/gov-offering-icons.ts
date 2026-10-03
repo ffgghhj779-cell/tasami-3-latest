@@ -37,6 +37,16 @@ import {
   Receipt,
   City,
   UserCircleGear,
+  Buildings,
+  ForkKnife,
+  ShoppingBag,
+  IdentificationBadge,
+  FileArrowUp,
+  ClipboardText,
+  Calculator,
+  Invoice,
+  Signature,
+  Desktop,
 } from "@phosphor-icons/react/dist/ssr";
 
 type PhosphorIcon = ComponentType<
@@ -84,6 +94,16 @@ export const GOV_OFFERING_ICONS: Record<string, PhosphorIcon> = {
   noorRegistration: Student,
   citizenAccount: Wallet,
   vatFiling: Receipt,
+  lostIqama: IdentificationBadge,
+  muqeem: Desktop,
+  qiwaContracts: FileArrowUp,
+  workPermit: ClipboardText,
+  companySetup: Buildings,
+  openRestaurant: ForkKnife,
+  openShop: ShoppingBag,
+  najizPoa: Signature,
+  zakatFiling: Calculator,
+  eInvoicing: Invoice,
 };
 
 export function getOfferingIcon(key: string): PhosphorIcon {

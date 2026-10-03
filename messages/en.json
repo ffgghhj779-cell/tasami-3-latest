@@ -471,6 +471,46 @@
       "vatFiling": {
         "title": "VAT Filing",
         "desc": "Prepare and submit your facility's VAT return."
+      },
+      "companySetup": {
+        "title": "Company Formation",
+        "desc": "Form an LLC through the Saudi Business Center platform through to CR issuance."
+      },
+      "openRestaurant": {
+        "title": "Open a Restaurant",
+        "desc": "Licensing for your restaurant or café, from the CR to the municipal license and safety certificate."
+      },
+      "openShop": {
+        "title": "Open a Shop",
+        "desc": "Steps to open a retail shop: CR, lease, municipal license and signboard."
+      },
+      "lostIqama": {
+        "title": "Lost Iqama Replacement",
+        "desc": "Loss report and replacement of a lost or damaged iqama through Absher and Muqeem."
+      },
+      "muqeem": {
+        "title": "Muqeem Portal Services",
+        "desc": "Manage your business's expat workforce services on Muqeem with regular reports."
+      },
+      "qiwaContracts": {
+        "title": "Qiwa Contract Documentation",
+        "desc": "Document employee contracts electronically on Qiwa and follow their approvals."
+      },
+      "workPermit": {
+        "title": "Work Permit",
+        "desc": "Issue and renew work permits for expat workers through Qiwa, aligned with the iqama."
+      },
+      "najizPoa": {
+        "title": "Power of Attorney",
+        "desc": "Issue and cancel electronic powers of attorney through Najiz."
+      },
+      "zakatFiling": {
+        "title": "Zakat Return",
+        "desc": "File your business's annual Zakat return on the ZATCA portal through to the certificate."
+      },
+      "eInvoicing": {
+        "title": "E-Invoicing (Fatoora)",
+        "desc": "Get ready for Fatoora requirements and link your invoicing system to ZATCA."
       }
     },
     "briefWhat": "What we deliver",
@@ -1627,7 +1667,9 @@
     "homeDescription": "Makkah-based government services office serving all Saudi Arabia: iqama, sponsorship transfer, exit/re-entry, CR, Zakat and GOSI, plus websites and apps. Not a government entity.",
     "crumbHome": "Home",
     "crumbGov": "Government services",
-    "crumbTech": "Tech solutions"
+    "crumbTech": "Tech solutions",
+    "govHubTitle": "Government Services (PRO) in Saudi Arabia",
+    "govHubService": "PRO services"
   },
   "serviceGuide": {
     "whoTitle": "Who is {service} for?",
