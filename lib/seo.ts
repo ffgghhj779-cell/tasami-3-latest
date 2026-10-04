@@ -6,6 +6,7 @@ import {
   getWhatsAppNumber,
   getWhatsAppUrl,
 } from "@/lib/site";
+import { ID_ALTERNATE_BY_PATH } from "@/lib/id-landing";
 
 /** Canonical production domain (Cloudflare + www). */
 export const SITE_URL =
@@ -125,6 +126,9 @@ export function buildPageMetadata({
         en: `${SITE_URL}/en${cleanPath}`,
         ur: `${SITE_URL}/ur${cleanPath}`,
         hi: `${SITE_URL}/hi${cleanPath}`,
+        ...(ID_ALTERNATE_BY_PATH[cleanPath]
+          ? { id: `${SITE_URL}${ID_ALTERNATE_BY_PATH[cleanPath]}` }
+          : {}),
         "x-default": `${SITE_URL}/ar${cleanPath}`,
       },
     },

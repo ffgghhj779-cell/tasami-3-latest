@@ -5,6 +5,7 @@ import { GOV_OFFERINGS } from "@/lib/gov-offerings";
 import { TECH_OFFERINGS } from "@/lib/tech-offerings";
 import { SITE_URL } from "@/lib/seo";
 import { BLOG_POSTS } from "@/lib/blog";
+import { ID_BASE, ID_SERVICES, ID_SERVICES_BASE } from "@/lib/id-landing";
 
 const STATIC: { path: string; priority: number; changeFrequency: "weekly" | "monthly" }[] = [
   { path: "", priority: 1, changeFrequency: "weekly" },
@@ -89,6 +90,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
         alternates: { languages: languageAlternates(path) },
       });
     }
+  }
+
+  entries.push({
+    url: `${SITE_URL}${ID_BASE}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+    alternates: { languages: { ...languageAlternates(""), id: `${SITE_URL}${ID_BASE}` } },
+  });
+  for (const s of ID_SERVICES) {
+    const idUrl = `${SITE_URL}${ID_SERVICES_BASE}/${s.slug}`;
+    entries.push({
+      url: idUrl,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.65,
+      ...(s.equivalentPath
+        ? { alternates: { languages: { ...languageAlternates(s.equivalentPath), id: idUrl } } }
+        : {}),
+    });
   }
 
   // Articles exist in Arabic only; other locales canonicalise to /ar.
