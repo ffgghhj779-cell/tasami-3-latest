@@ -13,6 +13,7 @@ import { TECH_GUIDES } from "./service-guides-tech";
 import { SYSTEMS_GUIDES } from "./service-guides-systems";
 import { GOV2_GUIDES } from "./service-guides-gov2";
 import { TECH_CATEGORY_GUIDES } from "./service-guides-techcat";
+import { TECH_CATEGORY_GUIDES_2 } from "./service-guides-techcat2";
 
 type Lang = "ar" | "en" | "ur" | "hi";
 
@@ -952,6 +953,7 @@ const ALL_GUIDES: Record<string, GuideDef> = {
   ...SYSTEMS_GUIDES,
   ...GOV2_GUIDES,
   ...TECH_CATEGORY_GUIDES,
+  ...TECH_CATEGORY_GUIDES_2,
 };
 
 export function getServiceGuide(key: string, locale: string): ServiceGuide | null {
