@@ -7,6 +7,7 @@ import { SITE_URL } from "@/lib/seo";
 import { BLOG_POSTS } from "@/lib/blog";
 import { ID_BASE, ID_SERVICES, ID_SERVICES_BASE } from "@/lib/id-landing";
 import { ID_BLOG_BASE, ID_BLOG_POSTS } from "@/lib/id-blog";
+import { BN_BASE, BN_SERVICES, BN_SERVICES_BASE } from "@/lib/bn-landing";
 
 const STATIC: { path: string; priority: number; changeFrequency: "weekly" | "monthly" }[] = [
   { path: "", priority: 1, changeFrequency: "weekly" },
@@ -30,7 +31,7 @@ function languageAlternates(path: string) {
 }
 
 /** Date of the last content release — bump when page content changes. */
-const CONTENT_UPDATED = new Date("2026-10-03T00:00:00+03:00");
+const CONTENT_UPDATED = new Date("2026-10-04T00:00:00+03:00");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = CONTENT_UPDATED;
@@ -98,7 +99,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: "monthly",
     priority: 0.7,
-    alternates: { languages: { ...languageAlternates(""), id: `${SITE_URL}${ID_BASE}` } },
+    alternates: { languages: { ...languageAlternates(""), id: `${SITE_URL}${ID_BASE}`, bn: `${SITE_URL}${BN_BASE}` } },
   });
   for (const s of ID_SERVICES) {
     const idUrl = `${SITE_URL}${ID_SERVICES_BASE}/${s.slug}`;
@@ -109,6 +110,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.65,
       ...(s.equivalentPath
         ? { alternates: { languages: { ...languageAlternates(s.equivalentPath), id: idUrl } } }
+        : {}),
+    });
+  }
+  entries.push({
+    url: `${SITE_URL}${BN_BASE}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+    alternates: { languages: { ...languageAlternates(""), id: `${SITE_URL}${ID_BASE}`, bn: `${SITE_URL}${BN_BASE}` } },
+  });
+  for (const s of BN_SERVICES) {
+    const bnUrl = `${SITE_URL}${BN_SERVICES_BASE}/${s.slug}`;
+    entries.push({
+      url: bnUrl,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.65,
+      ...(s.equivalentPath
+        ? { alternates: { languages: { ...languageAlternates(s.equivalentPath), bn: bnUrl } } }
         : {}),
     });
   }

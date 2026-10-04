@@ -9,10 +9,14 @@ const intl = createMiddleware({
   localeDetection: false,
 });
 
-/** /id is a standalone Indonesian landing section outside the next-intl locales. */
+/** /id and /bn are standalone Indonesian and Bengali landing sections outside the next-intl locales. */
+const STANDALONE_LANDINGS = ["/id", "/bn"];
+
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  if (pathname === "/id" || pathname.startsWith("/id/")) return NextResponse.next();
+  if (STANDALONE_LANDINGS.some((base) => pathname === base || pathname.startsWith(`${base}/`))) {
+    return NextResponse.next();
+  }
   return intl(request);
 }
 

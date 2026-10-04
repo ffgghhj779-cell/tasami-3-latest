@@ -1,6 +1,7 @@
 import {
   Montserrat,
   Noto_Nastaliq_Urdu,
+  Noto_Sans_Bengali,
   Noto_Sans_Devanagari,
   Tajawal,
 } from "next/font/google";
@@ -40,9 +41,18 @@ export const fontUrdu = Noto_Nastaliq_Urdu({
   preload: false,
 });
 
+export const fontBengali = Noto_Sans_Bengali({
+  subsets: ["bengali"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-noto-bengali",
+  display: "swap",
+  preload: false,
+});
+
 export const fontVariables = [
   fontArabic.variable,
   fontLatin.variable,
   fontHindi.variable,
   fontUrdu.variable,
+  fontBengali.variable,
 ].join(" ");

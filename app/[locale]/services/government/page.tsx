@@ -25,6 +25,8 @@ import { buildPageMetadata, serviceDescription, SITE_URL } from "@/lib/seo";
 import { getServiceGuide } from "@/lib/service-guides";
 import ServiceGuide from "@/components/ServiceGuide";
 import ServiceFaq, { faqJsonLd, serviceJsonLd } from "@/components/ServiceFaq";
+import EgyptianNote from "@/components/EgyptianNote";
+import { getEgyptianNote } from "@/lib/egyptian-dialect";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 const GOV_ICONS: Record<GovKey, typeof IdentificationCard> = {
@@ -68,6 +70,8 @@ export default async function GovernmentServicesPage({ params }: Props) {
   const tSearch = await getTranslations("search");
   const isRtl = rtlLocales.includes(locale as Locale);
   const guide = getServiceGuide("proServices", locale);
+  const egyptian = getEgyptianNote("proServices", locale);
+  const hubFaqs = [...(guide?.faqs ?? []), ...(egyptian?.faqs ?? [])];
   const hubTitle = tSeo("govHubTitle");
   const crumbs = [
     { label: tSeo("crumbHome"), href: "/" },
@@ -76,7 +80,7 @@ export default async function GovernmentServicesPage({ params }: Props) {
   const structured = guide
     ? [
         serviceJsonLd({ name: hubTitle, description: guide.intro, url: `${SITE_URL}/${locale}/services/government` }),
-        faqJsonLd(guide.faqs),
+        faqJsonLd(hubFaqs),
       ]
     : [];
 
@@ -101,6 +105,7 @@ export default async function GovernmentServicesPage({ params }: Props) {
             <p className="mt-3 rounded-2xl border-s-4 border-[#0057B8] bg-white p-5 text-[1.05rem] leading-[1.9] text-tasami-dark shadow-soft sm:p-6">
               {guide.intro}
             </p>
+            {egyptian ? <EgyptianNote text={egyptian.text} className="mt-5" /> : null}
           </section>
         ) : null}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
@@ -131,7 +136,7 @@ export default async function GovernmentServicesPage({ params }: Props) {
               <ServiceGuide guide={guide} service={tSeo("govHubService")} />
             </div>
             <div className="lg:col-span-5 lg:pt-8">
-              <ServiceFaq title={tSearch("faqTitle")} items={guide.faqs} />
+              <ServiceFaq title={tSearch("faqTitle")} items={hubFaqs} />
             </div>
           </div>
         ) : null}

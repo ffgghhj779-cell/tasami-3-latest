@@ -15,6 +15,8 @@ import { getServiceForm } from "@/lib/service-forms";
 import { buildPageMetadata, SITE_URL, serviceDescription, serviceTitle } from "@/lib/seo";
 import { getNodeById, getSeoPack } from "@/lib/search-intelligence";
 import { getServiceGuide } from "@/lib/service-guides";
+import { getEgyptianNote } from "@/lib/egyptian-dialect";
+import EgyptianNote from "@/components/EgyptianNote";
 import ServiceGuide from "@/components/ServiceGuide";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import CrossSellBox from "@/components/CrossSellBox";
@@ -132,8 +134,12 @@ export default async function GovernmentOfferingPage({ params }: Props) {
     .slice(0, 4);
 
   const guide = getServiceGuide(offering.key, locale);
+  const egyptian = getEgyptianNote(offering.key, locale);
   // seo-packs FAQs are Arabic-only; other locales get FAQs only from a localized guide.
-  const faqs = guide?.faqs ?? (locale === "ar" ? seoPack?.faqs : undefined) ?? [];
+  const faqs = [
+    ...(guide?.faqs ?? (locale === "ar" ? seoPack?.faqs : undefined) ?? []),
+    ...(egyptian?.faqs ?? []),
+  ];
   const tSeo = await getTranslations("seo");
   const categoryTitle = t(`items.${categoryKey}.title`);
   const crumbs = [
@@ -174,6 +180,7 @@ export default async function GovernmentOfferingPage({ params }: Props) {
             {guide.intro}
           </p>
         ) : null}
+        {egyptian ? <EgyptianNote text={egyptian.text} className="mb-10" /> : null}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <p className="inline-flex items-center gap-2 text-sm font-medium text-tasami-dark">
