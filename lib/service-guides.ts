@@ -11,6 +11,7 @@ import { BUSINESS_GUIDES } from "./service-guides-business";
 import { WORKFORCE_GUIDES } from "./service-guides-workforce";
 import { TECH_GUIDES } from "./service-guides-tech";
 import { SYSTEMS_GUIDES } from "./service-guides-systems";
+import { GOV2_GUIDES } from "./service-guides-gov2";
 
 type Lang = "ar" | "en" | "ur" | "hi";
 
@@ -948,6 +949,7 @@ const ALL_GUIDES: Record<string, GuideDef> = {
   ...WORKFORCE_GUIDES,
   ...TECH_GUIDES,
   ...SYSTEMS_GUIDES,
+  ...GOV2_GUIDES,
 };
 
 export function getServiceGuide(key: string, locale: string): ServiceGuide | null {
