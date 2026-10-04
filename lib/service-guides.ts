@@ -15,6 +15,7 @@ import { GOV2_GUIDES } from "./service-guides-gov2";
 import { GOV3_GUIDES } from "./service-guides-gov3";
 import { GOV4_GUIDES } from "./service-guides-gov4";
 import { GOV5_GUIDES } from "./service-guides-gov5";
+import { GOV6_GUIDES } from "./service-guides-gov6";
 import { TECH_CATEGORY_GUIDES } from "./service-guides-techcat";
 import { TECH_CATEGORY_GUIDES_2 } from "./service-guides-techcat2";
 
@@ -958,6 +959,7 @@ const ALL_GUIDES: Record<string, GuideDef> = {
   ...GOV3_GUIDES,
   ...GOV4_GUIDES,
   ...GOV5_GUIDES,
+  ...GOV6_GUIDES,
   ...TECH_CATEGORY_GUIDES,
   ...TECH_CATEGORY_GUIDES_2,
 };
