@@ -19,7 +19,7 @@ export const SITE_NAME_EN = "Tasami";
 export const SITE_DOMAIN = "tasamiservices.com";
 
 /** Open Graph share image — Tasami only (new filename busts WhatsApp/FB cache). */
-export const OG_IMAGE_PATH = "/og-tasami.jpg";
+export const OG_IMAGE_PATH = "/og-tasami-white.jpg";
 export const OG_IMAGE_URL = `${SITE_URL}${OG_IMAGE_PATH}`;
 
 const DEFAULT_DESCRIPTION_AR =
