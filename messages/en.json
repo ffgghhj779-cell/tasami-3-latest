@@ -570,7 +570,57 @@
     "briefNeeds": "What we need from you",
     "briefDuration": "Approximate timing",
     "briefDisclaimer": "No prices on the site — we send a quote that fits your project on WhatsApp.",
-    "waTech": "Tech WhatsApp"
+    "waTech": "Tech WhatsApp",
+    "offeringsTitle": "Other services in this category",
+    "offeringsHeading": "Services in this category",
+    "askService": "Request the service",
+    "askServiceSubtitle": "Send your project details and we will get back to you with a plan and a suitable proposal on WhatsApp.",
+    "offerings": {
+      "ecommerceStore": {
+        "title": "E-commerce Store Design",
+        "desc": "A ready-to-sell store with payments, shipping and invoices on the right platform for you."
+      },
+      "sallaStore": {
+        "title": "Salla Store Design",
+        "desc": "Your Salla store set up: branded theme, products, payments, shipping and custom domain."
+      },
+      "zidStore": {
+        "title": "Zid Store Design",
+        "desc": "Your Zid store set up with a professional storefront, organized products, payments and shipping."
+      },
+      "shopifyStore": {
+        "title": "Shopify Store Design",
+        "desc": "An Arabic Shopify store for the Saudi market with SAR pricing and local payments and shipping."
+      },
+      "paymentsShipping": {
+        "title": "Payment & Shipping Integration",
+        "desc": "Connect mada, Apple Pay, pay-later and shipping companies to your store or website."
+      },
+      "uiuxDesign": {
+        "title": "UI/UX Design",
+        "desc": "Easy-to-use Arabic interfaces and an interactive prototype before development."
+      },
+      "crmSystem": {
+        "title": "CRM System",
+        "desc": "Customers, sales and follow-ups in one system connected to WhatsApp."
+      },
+      "erpPos": {
+        "title": "ERP & POS System",
+        "desc": "Sales, inventory, accounting and cashier in one system with e-invoicing integration."
+      },
+      "whatsappApi": {
+        "title": "WhatsApp Business API",
+        "desc": "An official WhatsApp account with multiple agents, automation and approved template notifications."
+      },
+      "customSoftware": {
+        "title": "Custom Software & Dashboards",
+        "desc": "Management systems, portals and report dashboards built around your business."
+      },
+      "aiChatbot": {
+        "title": "AI Chatbot",
+        "desc": "A smart assistant answering your customers in Arabic around the clock on WhatsApp and your website."
+      }
+    }
   },
   "sectors": {
     "eyebrow": "Sectors",
@@ -1675,7 +1725,8 @@
     "whoTitle": "Who is {service} for?",
     "stepsTitle": "{service} steps with Tasami",
     "tipsTitle": "Tips to avoid delays",
-    "localTitle": "Serving every city in the Kingdom"
+    "localTitle": "Serving every city in the Kingdom",
+    "tipsTitleTech": "Tips before you start"
   },
   "aboutPage": {
     "metaTitle": "About Tasami — Government Services & Tech Solutions in Saudi Arabia",

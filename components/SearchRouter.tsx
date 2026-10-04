@@ -47,7 +47,10 @@ function labelForHit(
   try {
     if (hit.kind === "offering") return tGov(`offerings.${hit.i18nKey}.title`);
     if (hit.kind === "category") return tGov(`items.${hit.i18nKey}.title`);
-    if (hit.kind === "tech") return tTech(`items.${hit.i18nKey}.title`);
+    if (hit.kind === "tech") {
+      const group = hit.id.startsWith("techoffer-") ? "offerings" : "items";
+      return tTech(`${group}.${hit.i18nKey}.title`);
+    }
     if (hit.kind === "pillar") return tHome(`core.${hit.i18nKey}.title`);
   } catch {
     /* fall through */
@@ -64,7 +67,10 @@ function descForHit(
   try {
     if (hit.kind === "offering") return tGov(`offerings.${hit.i18nKey}.desc`);
     if (hit.kind === "category") return tGov(`items.${hit.i18nKey}.desc`);
-    if (hit.kind === "tech") return tTech(`items.${hit.i18nKey}.desc`);
+    if (hit.kind === "tech") {
+      const group = hit.id.startsWith("techoffer-") ? "offerings" : "items";
+      return tTech(`${group}.${hit.i18nKey}.desc`);
+    }
     if (hit.kind === "pillar") return tHome(`core.${hit.i18nKey}.desc`);
   } catch {
     /* fall through */

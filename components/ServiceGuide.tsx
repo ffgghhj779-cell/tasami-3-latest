@@ -3,7 +3,15 @@ import { CheckCircle, Lightbulb, MapPin, UsersThree } from "@phosphor-icons/reac
 import type { ServiceGuide as Guide } from "@/lib/service-guides";
 
 /** Long-form service content: who it is for, steps, tips and service area. */
-export default async function ServiceGuide({ guide, service }: { guide: Guide; service: string }) {
+export default async function ServiceGuide({
+  guide,
+  service,
+  kind = "government",
+}: {
+  guide: Guide;
+  service: string;
+  kind?: "government" | "tech";
+}) {
   const t = await getTranslations("serviceGuide");
 
   return (
@@ -42,7 +50,7 @@ export default async function ServiceGuide({ guide, service }: { guide: Guide; s
       <section aria-labelledby="guide-tips" className="rounded-2xl border border-[#c8a84b]/30 bg-[#fffaf0] p-5 sm:p-6">
         <h2 id="guide-tips" className="flex items-center gap-2 text-lg font-bold text-tasami-dark">
           <Lightbulb weight="duotone" className="h-5 w-5 text-[#8a6d1f]" />
-          {t("tipsTitle", { service })}
+          {t(kind === "tech" ? "tipsTitleTech" : "tipsTitle", { service })}
         </h2>
         <ul className="mt-3 space-y-2.5 leading-[1.85] text-tasami-dark">
           {guide.tips.map((tip) => (

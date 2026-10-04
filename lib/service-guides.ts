@@ -9,6 +9,8 @@
 
 import { BUSINESS_GUIDES } from "./service-guides-business";
 import { WORKFORCE_GUIDES } from "./service-guides-workforce";
+import { TECH_GUIDES } from "./service-guides-tech";
+import { SYSTEMS_GUIDES } from "./service-guides-systems";
 
 type Lang = "ar" | "en" | "ur" | "hi";
 
@@ -940,7 +942,13 @@ const GUIDES: Record<string, GuideDef> = {
   },
 };
 
-const ALL_GUIDES: Record<string, GuideDef> = { ...GUIDES, ...BUSINESS_GUIDES, ...WORKFORCE_GUIDES };
+const ALL_GUIDES: Record<string, GuideDef> = {
+  ...GUIDES,
+  ...BUSINESS_GUIDES,
+  ...WORKFORCE_GUIDES,
+  ...TECH_GUIDES,
+  ...SYSTEMS_GUIDES,
+};
 
 export function getServiceGuide(key: string, locale: string): ServiceGuide | null {
   const def = ALL_GUIDES[key];

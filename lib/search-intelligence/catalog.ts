@@ -1,4 +1,5 @@
 import { GOV_SLUGS, TECH_SLUGS } from "@/lib/content-keys";
+import { TECH_OFFERINGS } from "@/lib/tech-offerings";
 import { GOV_OFFERINGS } from "@/lib/gov-offerings";
 import type { SearchNode } from "./types";
 
@@ -928,7 +929,34 @@ export const SEARCH_CATALOG: SearchNode[] = [
     priority: 45,
     tier: "B" as const,
   })),
+  ...TECH_OFFERINGS.map((o) => ({
+    id: `techoffer-${o.key}`,
+    kind: "tech" as const,
+    i18nKey: o.key,
+    href: `/services/tech/${TECH_SLUGS[o.category]}/${o.slug}`,
+    hubs: ["تقني"],
+    aliases: techOfferingAliases(o.key),
+    priority: 55,
+    tier: "B" as const,
+  })),
 ];
+
+function techOfferingAliases(key: string): string[] {
+  const map: Record<string, string[]> = {
+  ecommerceStore: ["متجر الكتروني", "تصميم متجر", "انشاء متجر", "متجر اونلاين", "ecommerce", "online store"],
+  sallaStore: ["سلة", "متجر سلة", "تصميم متجر سلة", "ثيم سلة", "salla"],
+  zidStore: ["زد", "متجر زد", "تصميم متجر زد", "zid"],
+  shopifyStore: ["شوبيفاي", "شوبفاي", "متجر شوبيفاي", "shopify"],
+  paymentsShipping: ["بوابة دفع", "ربط الدفع", "ربط الشحن", "مدى", "ابل باي", "تابي", "تمارا", "payment gateway"],
+  uiuxDesign: ["تصميم واجهات", "تجربة المستخدم", "ui", "ux", "ui ux", "فيجما", "figma"],
+  crmSystem: ["crm", "نظام crm", "ادارة العملاء", "ادارة علاقات العملاء", "نظام مبيعات"],
+  erpPos: ["erp", "pos", "نقاط بيع", "نظام كاشير", "كاشير", "نظام محاسبي", "نظام مخزون", "اودو", "odoo"],
+  whatsappApi: ["واتساب api", "واتس اب api", "واتساب بزنس", "واتساب للاعمال", "whatsapp api", "whatsapp business"],
+  customSoftware: ["برمجة نظام", "نظام خاص", "برمجة خاصة", "لوحة تحكم", "داشبورد", "dashboard", "custom software"],
+  aiChatbot: ["شات بوت", "بوت", "روبوت محادثة", "chatbot", "bot", "شات جي بي تي"],
+  };
+  return map[key] || [key];
+}
 
 function techAliases(key: string): string[] {
   const map: Record<string, string[]> = {

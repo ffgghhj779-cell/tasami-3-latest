@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { locales } from "@/i18n";
 import { GOV_SLUGS, TECH_SLUGS } from "@/lib/content-keys";
 import { GOV_OFFERINGS } from "@/lib/gov-offerings";
+import { TECH_OFFERINGS } from "@/lib/tech-offerings";
 import { SITE_URL } from "@/lib/seo";
 import { BLOG_POSTS } from "@/lib/blog";
 
@@ -78,6 +79,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
 
+    for (const offering of TECH_OFFERINGS) {
+      const path = `/services/tech/${TECH_SLUGS[offering.category]}/${offering.slug}`;
+      entries.push({
+        url: `${SITE_URL}/${locale}${path}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.65,
+        alternates: { languages: languageAlternates(path) },
+      });
+    }
   }
 
   // Articles exist in Arabic only; other locales canonicalise to /ar.
