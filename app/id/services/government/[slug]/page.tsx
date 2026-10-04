@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { ID_BLOG_BASE, findIdPost, idBlogCover } from "@/lib/id-blog";
 import { notFound } from "next/navigation";
 import { CheckCircle, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import ServiceFaq, { faqJsonLd, serviceJsonLd } from "@/components/ServiceFaq";
@@ -37,6 +39,7 @@ export default function IndonesianServicePage({ params }: { params: { slug: stri
   const url = `${SITE_URL}${ID_SERVICES_BASE}/${s.slug}`;
   const faqs = [...s.faqs, ...ID_COMMON_FAQS];
   const others = ID_SERVICES.filter((o) => o.slug !== s.slug);
+  const guide = findIdPost(s.slug);
   const wa = whatsappDirectUrl(`Halo Tasami, saya butuh bantuan: ${s.title}`);
 
   const structured = [
@@ -120,6 +123,21 @@ export default function IndonesianServicePage({ params }: { params: { slug: stri
             Kami melayani klien di Makkah, Jeddah, Riyadh, Dammam, Madinah dan seluruh kota di Arab Saudi. Hampir
             semua proses bisa dipantau jarak jauh lewat WhatsApp.
           </p>
+
+          {guide && (
+            <Link
+              href={`${ID_BLOG_BASE}/${guide.slug}`}
+              className="group mt-8 flex items-center gap-4 rounded-2xl border border-[#C9A54C]/40 bg-gradient-to-br from-[#FFF9EC] to-white p-4 transition hover:shadow-soft"
+            >
+              <div className="relative hidden aspect-[16/9] w-36 shrink-0 overflow-hidden rounded-xl sm:block">
+                <Image src={idBlogCover(guide.slug)} alt="" fill sizes="144px" className="object-cover" />
+              </div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wider text-[#9A7A26]">Panduan lengkap</p>
+                <p className="mt-1 font-semibold leading-snug text-tasami-dark group-hover:text-[#0057B8]">{guide.title}</p>
+              </div>
+            </Link>
+          )}
 
           <ServiceFaq title="Pertanyaan yang sering diajukan" items={faqs} />
         </article>

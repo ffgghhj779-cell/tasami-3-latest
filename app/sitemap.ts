@@ -6,6 +6,7 @@ import { TECH_OFFERINGS } from "@/lib/tech-offerings";
 import { SITE_URL } from "@/lib/seo";
 import { BLOG_POSTS } from "@/lib/blog";
 import { ID_BASE, ID_SERVICES, ID_SERVICES_BASE } from "@/lib/id-landing";
+import { ID_BLOG_BASE, ID_BLOG_POSTS } from "@/lib/id-blog";
 
 const STATIC: { path: string; priority: number; changeFrequency: "weekly" | "monthly" }[] = [
   { path: "", priority: 1, changeFrequency: "weekly" },
@@ -109,6 +110,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ...(s.equivalentPath
         ? { alternates: { languages: { ...languageAlternates(s.equivalentPath), id: idUrl } } }
         : {}),
+    });
+  }
+  entries.push({ url: `${SITE_URL}${ID_BLOG_BASE}`, lastModified: now, changeFrequency: "weekly", priority: 0.6 });
+  for (const post of ID_BLOG_POSTS) {
+    entries.push({
+      url: `${SITE_URL}${ID_BLOG_BASE}/${post.slug}`,
+      lastModified: new Date(post.publishedAt),
+      changeFrequency: "monthly",
+      priority: 0.6,
     });
   }
 

@@ -6,11 +6,15 @@ export function buildIdMetadata({
   description,
   path,
   equivalentPath,
+  image,
+  publishedTime,
 }: {
   title: string;
   description: string;
   path: string;
   equivalentPath?: string;
+  image?: string;
+  publishedTime?: string;
 }): Metadata {
   const url = `${SITE_URL}${path}`;
   const fullTitle = `${title} — Tasami`;
@@ -19,6 +23,9 @@ export function buildIdMetadata({
     for (const l of ["ar", "en", "ur", "hi"]) languages[l] = `${SITE_URL}/${l}${equivalentPath}`;
     languages["x-default"] = `${SITE_URL}/ar${equivalentPath}`;
   }
+  const og = image
+    ? { url: `${SITE_URL}${image}`, width: 1200, height: 675, alt: title }
+    : { url: OG_IMAGE_URL, width: 1200, height: 630, alt: "Tasami" };
 
   return {
     title: { absolute: fullTitle },
@@ -26,15 +33,15 @@ export function buildIdMetadata({
     metadataBase: new URL(SITE_URL),
     alternates: { canonical: url, languages },
     openGraph: {
-      type: "website",
+      ...(publishedTime ? { type: "article" as const, publishedTime } : { type: "website" as const }),
       locale: "id_ID",
       url,
       siteName: "Tasami",
       title: fullTitle,
       description,
-      images: [{ url: OG_IMAGE_URL, width: 1200, height: 630, alt: "Tasami" }],
+      images: [og],
     },
-    twitter: { card: "summary_large_image", title: fullTitle, description, images: [OG_IMAGE_URL] },
+    twitter: { card: "summary_large_image", title: fullTitle, description, images: [og.url] },
     robots: { index: true, follow: true },
   };
 }

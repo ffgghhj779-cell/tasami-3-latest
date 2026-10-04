@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { ID_BLOG_BASE, ID_BLOG_POSTS, idBlogCover } from "@/lib/id-blog";
 import { ArrowRight, CheckCircle, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import ServiceFaq, { faqJsonLd } from "@/components/ServiceFaq";
 import { SITE_URL } from "@/lib/seo";
@@ -92,6 +94,29 @@ export default function IndonesianHubPage() {
             </ul>
           </div>
         </div>
+
+        <section className="mt-14">
+          <div className="flex items-end justify-between gap-4">
+            <h2 className="text-xl font-semibold text-tasami-dark">Panduan: cara, syarat dan biaya</h2>
+            <Link href={ID_BLOG_BASE} className="inline-flex items-center gap-1 text-sm font-medium text-[#0057B8]">
+              Semua panduan <ArrowRight size={14} />
+            </Link>
+          </div>
+          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {ID_BLOG_POSTS.slice(0, 4).map((p) => (
+              <Link
+                key={p.slug}
+                href={`${ID_BLOG_BASE}/${p.slug}`}
+                className="group overflow-hidden rounded-2xl border border-tasami-purple/10 bg-white shadow-soft transition hover:-translate-y-0.5"
+              >
+                <div className="relative aspect-[16/9]">
+                  <Image src={idBlogCover(p.slug)} alt="" fill sizes="(max-width: 640px) 100vw, 280px" className="object-cover" />
+                </div>
+                <p className="p-4 text-sm font-semibold leading-snug text-tasami-dark group-hover:text-[#0057B8]">{p.title}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <ServiceFaq title="Pertanyaan yang sering diajukan" items={ID_COMMON_FAQS} />
       </div>

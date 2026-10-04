@@ -5,6 +5,7 @@ import { WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import { LocaleHtmlAttrs } from "@/components/LocaleHtmlAttrs";
 import { COMPANY_LEGAL, whatsappDirectUrl, WHATSAPP_DIRECT_DISPLAY } from "@/lib/site";
 import { ID_BASE, ID_SERVICES, ID_SERVICES_BASE, ID_WHATSAPP_TEXT } from "@/lib/id-landing";
+import { ID_BLOG_BASE } from "@/lib/id-blog";
 
 export default function IndonesianLayout({ children }: { children: ReactNode }) {
   const wa = whatsappDirectUrl(ID_WHATSAPP_TEXT);
@@ -20,6 +21,9 @@ export default function IndonesianLayout({ children }: { children: ReactNode }) 
             <span className="text-base font-semibold text-tasami-dark">Tasami</span>
           </Link>
           <nav className="flex items-center gap-3 text-sm">
+            <Link href={ID_BLOG_BASE} className="font-medium text-tasami-dark hover:text-[#0057B8]">
+              Panduan
+            </Link>
             <Link href="/ar" hrefLang="ar" className="text-tasami-gray hover:text-tasami-dark">
               العربية
             </Link>
@@ -70,6 +74,9 @@ export default function IndonesianLayout({ children }: { children: ReactNode }) 
                 </li>
               ))}
             </ul>
+            <Link href={ID_BLOG_BASE} className="mt-4 inline-block font-semibold text-tasami-dark hover:text-[#0057B8]">
+              Panduan: cara, syarat dan biaya →
+            </Link>
           </div>
         </div>
       </footer>

@@ -3907,3 +3907,26 @@
     transform: none;
   }
 }
+
+@layer base {
+  html [lang="id"] {
+    font-family: var(--font-latin), Montserrat, system-ui, sans-serif;
+    letter-spacing: -0.011em;
+  }
+
+  html [lang="id"] h1,
+  html [lang="id"] h2,
+  html [lang="id"] h3,
+  html [lang="id"] h4 {
+    font-family: var(--font-latin), Montserrat, system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.18;
+  }
+
+  html [lang="id"] h3,
+  html [lang="id"] h4 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
