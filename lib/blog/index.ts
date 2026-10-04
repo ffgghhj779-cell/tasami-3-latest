@@ -1,11 +1,12 @@
 import type { BlogPost } from "./types";
 import { POSTS_GOV_1 } from "./posts-gov-1";
 import { POSTS_GOV_2 } from "./posts-gov-2";
+import { POSTS_GOV_3 } from "./posts-gov-3";
 import { POSTS_TECH } from "./posts-tech";
 
 export type { BlogPost, BlogBlock } from "./types";
 
-export const BLOG_POSTS: BlogPost[] = [...POSTS_GOV_1, ...POSTS_GOV_2, ...POSTS_TECH].sort(
+export const BLOG_POSTS: BlogPost[] = [...POSTS_GOV_1, ...POSTS_GOV_2, ...POSTS_GOV_3, ...POSTS_TECH].sort(
   (a, b) => b.publishedAt.localeCompare(a.publishedAt)
 );
 
