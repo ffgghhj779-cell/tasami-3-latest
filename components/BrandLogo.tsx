@@ -2,7 +2,7 @@ import Image from "next/image";
 
 /** Official Tasami lockup dimensions (trimmed transparent PNG). */
 export const LOGO_LOCKUP = { w: 266, h: 340 } as const;
-export const LOGO_MARK = { w: 259, h: 259 } as const;
+export const LOGO_MARK = { w: 512, h: 512 } as const;
 
 const LOCKUP_WIDTH: Record<"xs" | "sm" | "md" | "lg", string> = {
   xs: "h-9 w-auto sm:h-10",
