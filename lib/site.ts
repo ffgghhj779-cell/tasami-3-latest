@@ -5,7 +5,7 @@
  * server components, client components, and route handlers.
  *
  * WhatsApp routing (product rule):
- * - Government taqeeb (Ibrahim) → +966 54 228 9575
+ * - Government taqeeb (Ibrahim) → +966 53 436 0467
  * - Tech solutions (Mustafa) → +966 55 996 2847
  */
 
@@ -19,12 +19,12 @@ export const WHATSAPP_PHONE_E164 = WHATSAPP_SECRETARY_E164;
 export const WHATSAPP_PHONE_DISPLAY = WHATSAPP_SECRETARY_DISPLAY;
 
 /** Direct / Ibrahim — government taqeeb WhatsApp (+ main call line). */
-export const WHATSAPP_DIRECT_E164 = "966542289575";
-export const WHATSAPP_DIRECT_DISPLAY = "+966 54 228 9575";
+export const WHATSAPP_DIRECT_E164 = "966534360467";
+export const WHATSAPP_DIRECT_DISPLAY = "+966 53 436 0467";
 
 /** Main public phone number (calls) — same digits as direct WhatsApp. */
 export const OFFICIAL_PHONE_E164 = WHATSAPP_DIRECT_E164;
-export const OFFICIAL_PHONE_DISPLAY = "054 228 9575";
+export const OFFICIAL_PHONE_DISPLAY = "053 436 0467";
 
 /** Official Tasami TikTok profile. */
 export const TIKTOK_URL = "https://vt.tiktok.com/ZSVNHcDfP/";

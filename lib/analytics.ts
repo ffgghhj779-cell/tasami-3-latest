@@ -103,7 +103,7 @@ export function resolveWaLineFromHref(href: string): {
   if (number && secretary && number === secretary) {
     return { line: "tech", number };
   }
-  if (number.includes("542289575")) return { line: "taqeeb", number };
+  if (number.includes("534360467")) return { line: "taqeeb", number };
   if (number.includes("559962847")) return { line: "tech", number };
   return { line: "unknown", number };
 }
