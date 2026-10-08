@@ -26,6 +26,13 @@ declare global {
   }
 }
 
+/** Google Tag Manager container from the ads account. */
+export const GTM_ID = "GTM-NM9PHPVG";
+
+export function getGtmId(): string {
+  return (process.env.NEXT_PUBLIC_GTM_ID || GTM_ID).trim();
+}
+
 export function getGaId(): string {
   return (process.env.NEXT_PUBLIC_GA_ID || "").trim();
 }
@@ -43,7 +50,7 @@ export function isAnalyticsEnabled(): boolean {
 }
 
 export function isAnyTrackingEnabled(): boolean {
-  return Boolean(getGaId() || getMetaPixelId() || getTikTokPixelId());
+  return Boolean(getGtmId() || getGaId() || getMetaPixelId() || getTikTokPixelId());
 }
 
 function trackAdEvent(
@@ -60,13 +67,12 @@ function trackAdEvent(
   }
 }
 
-/** Fire a GA4 event when gtag is available. No-op if GA is off. */
+/** Fire an event to GTM's dataLayer, and to gtag when GA4 is configured directly. */
 export function trackEvent(
   name: string,
   params?: Record<string, string | number | boolean | undefined>
 ): void {
-  if (typeof window === "undefined" || !isAnalyticsEnabled()) return;
-  if (typeof window.gtag !== "function") return;
+  if (typeof window === "undefined") return;
 
   const cleaned: Record<string, string | number | boolean> = {};
   if (params) {
@@ -74,6 +80,13 @@ export function trackEvent(
       if (value !== undefined) cleaned[key] = value;
     }
   }
+
+  if (getGtmId()) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: name, ...cleaned });
+  }
+
+  if (!isAnalyticsEnabled() || typeof window.gtag !== "function") return;
   window.gtag("event", name, cleaned);
 }
 

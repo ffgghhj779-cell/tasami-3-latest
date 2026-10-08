@@ -2,6 +2,10 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import JsonLd from "@/components/JsonLd";
 import Analytics from "@/components/Analytics";
+import GoogleTagManager, {
+  GoogleTagManagerNoScript,
+} from "@/components/GoogleTagManager";
+import GtmRouteEvents from "@/components/GtmRouteEvents";
 import { buildPageMetadata } from "@/lib/seo";
 import { fontVariables } from "@/lib/fonts";
 
@@ -32,10 +36,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning className={fontVariables}>
       <head>
+        <GoogleTagManager />
         <JsonLd />
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
+        <GoogleTagManagerNoScript />
         {children}
+        <GtmRouteEvents />
         <Analytics />
       </body>
     </html>

@@ -5,6 +5,7 @@ import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
 import {
   getGaId,
+  getGtmId,
   getMetaPixelId,
   getTikTokPixelId,
   isAnalyticsEnabled,
@@ -75,7 +76,8 @@ export default function Analytics() {
   const gaId = getGaId();
   const metaId = getMetaPixelId();
   const tiktokId = getTikTokPixelId();
-  if (!gaId && !metaId && !tiktokId) return null;
+  const gtmId = getGtmId();
+  if (!gaId && !metaId && !tiktokId && !gtmId) return null;
 
   return (
     <>
